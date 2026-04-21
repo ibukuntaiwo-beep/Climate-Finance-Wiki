@@ -1,0 +1,168 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import KeyStats from '../components/KeyStats.astro';
+import SeeAlso from '../components/SeeAlso.astro';
+import Unexpected from '../components/Unexpected.astro';
+import ThreadBar from '../components/ThreadBar.astro';
+
+interface Props {
+  title: string;
+  subtitle: string;
+  category: string;
+  categorySlug: string;
+  stats: Array<{value: string; label: string}>;
+  seeAlso: Array<{title: string; category: string; description: string; slug: string}>;
+  unexpected?: {headline: string; body: string};
+  sources: string[];
+  trail?: {
+    trailName: string;
+    current: number;
+    total: number;
+    prevHref?: string;
+    nextHref?: string;
+  };
+  tocSections: Array<{id: string; title: string}>;
+}
+
+const {
+  title, subtitle, category, categorySlug,
+  stats, seeAlso, unexpected, sources, trail, tocSections
+} = Astro.props;
+
+const categoryDisplay = category.charAt(0).toUpperCase() + category.slice(1);
+
+const seeAlsoWithHrefs = seeAlso.map(a => ({
+  title: a.title,
+  category: a.category,
+  description: a.description,
+  href: `/${a.slug.includes('/') ? a.slug : (
+    a.category.toLowerCase() === 'concepts' ? 'concepts' :
+    a.category.toLowerCase() === 'instruments' ? 'instruments' :
+    a.category.toLowerCase() === 'actors' ? 'actors' :
+    a.category.toLowerCase() === 'frameworks' ? 'frameworks' :
+    a.category.toLowerCase() === 'case studies' || a.category.toLowerCase() === 'case-studies' ? 'case-studies' :
+    a.category.toLowerCase()
+  ) + '/' + a.slug}/`
+}));
+---
+<BaseLayout title={`${title} | Climate Finance Wiki`} footerType="internal">
+  {trail && (
+    <ThreadBar
+      trailName={trail.trailName}
+      current={trail.current}
+      total={trail.total}
+      prevHref={trail.prevHref}
+      nextHref={trail.nextHref}
+    />
+  )}
+
+  <header class="article-header">
+    <Breadcrumbs items={[
+      {label: 'Home', href: '/'},
+      {label: categoryDisplay, href: `/${categorySlug}/`},
+      {label: title}
+    ]} />
+    <div class="category-label fade-up fade-up-d1">{categoryDisplay}</div>
+    <h1 class="article-title fade-up fade-up-d2">{title}</h1>
+    <p class="article-subtitle fade-up fade-up-d3">{subtitle}</p>
+  </header>
+
+  <KeyStats stats={stats} />
+
+  <div class="article-layout">
+    <main class="article-main">
+      <article class="article-body">
+        <slot />
+
+        {unexpected && (
+          <Unexpected headline={unexpected.headline}>
+            <Fragment set:html={unexpected.body} />
+          </Unexpected>
+        )}
+
+        {sources && sources.length > 0 && (
+        <div class="sources-section">
+          <h2>Sources</h2>
+          <ul class="sources-list">
+            {sources.map(source => (
+              <li set:html={source}></li>
+            ))}
+          </ul>
+        </div>
+        )}
+      </article>
+
+      <SeeAlso articles={seeAlsoWithHrefs} />
+
+      {trail && (
+        <div class="thread-bottom" style="margin-top: 48px;">
+          <div class="thread-bottom-inner">
+            <div class="thread-bottom-info">
+              <div class="thread-dots">
+                {Array.from({length: trail.total}).map((_, i) => (
+                  <span class={`thread-dot ${i < trail.current - 1 ? 'filled' : ''} ${i === trail.current - 1 ? 'current' : ''}`}></span>
+                ))}
+              </div>
+              <div class="thread-bottom-text">
+                Article {trail.current} of {trail.total} in <strong>{trail.trailName}</strong>
+              </div>
+            </div>
+            {trail.nextHref ? (
+              <a href={trail.nextHref} class="thread-cta">Next in thread &rarr;</a>
+            ) : trail.prevHref ? (
+              <a href={trail.prevHref} class="thread-prev">&larr; Previous</a>
+            ) : null}
+          </div>
+        </div>
+      )}
+    </main>
+
+    <aside class="article-sidebar">
+      <div class="toc-card">
+        <div class="toc-label">In This Article</div>
+        <ul class="toc-list">
+          {tocSections.map(section => (
+            <li><a href={`#${section.id}`} data-section={section.id}>{section.title}</a></li>
+          ))}
+        </ul>
+      </div>
+    </aside>
+  </div>
+
+  <script>
+    // TOC active state tracking
+    (function() {
+      const sections = document.querySelectorAll('.article-body section[id], .article-body h2[id]');
+      const tocLinks = document.querySelectorAll('.toc-list a[data-section]');
+
+      if (!sections.length || !tocLinks.length) return;
+
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            tocLinks.forEach(function(link) { link.classList.remove('active'); });
+            const activeLink = document.querySelector('.toc-list a[data-section="' + entry.target.id + '"]');
+            if (activeLink) activeLink.classList.add('active');
+          }
+        });
+      }, { rootMargin: '-80px 0px -60% 0px', threshold: 0 });
+
+      sections.forEach(function(section) { observer.observe(section); });
+
+      tocLinks.forEach(function(link) {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          var target = document.getElementById(this.getAttribute('data-section'));
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            history.pushState(null, '', '#' + this.getAttribute('data-section'));
+          }
+        });
+      });
+
+      // Set first TOC link as active by default
+      if (tocLinks.length > 0) tocLinks[0].classList.add('active');
+    })();
+  </script>
+</BaseLayout>

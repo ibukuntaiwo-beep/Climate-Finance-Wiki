@@ -1,0 +1,16 @@
+---
+interface Props {
+  events: Array<{year: string, description: string}>;
+}
+const { events } = Astro.props;
+---
+<div class="timeline-section">
+  <div class="timeline">
+    {events.map((event) => (
+      <div class="timeline-item">
+        <div class="timeline-year">{event.year}</div>
+        <div class="timeline-desc">{event.description}</div>
+      </div>
+    ))}
+  </div>
+</div>

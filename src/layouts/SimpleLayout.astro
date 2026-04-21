@@ -1,0 +1,14 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+<BaseLayout title={title} footerType="internal">
+  <div class="simple-layout">
+    <slot />
+  </div>
+</BaseLayout>

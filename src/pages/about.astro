@@ -1,0 +1,156 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="About This Wiki" activePage="about" footerType="internal">
+
+  <!-- Breadcrumbs -->
+  <div class="breadcrumbs" style="max-width:var(--max-width);margin:0 auto;padding:20px 32px 0;display:flex;align-items:center;gap:8px;">
+    <a href="/">Home</a>
+    <span class="sep">&rarr;</span>
+    <span>About</span>
+  </div>
+
+  <!-- About Layout: main + sidebar -->
+  <div class="about-layout">
+
+    <!-- Main Column -->
+    <main class="about-main">
+
+      <!-- Page Header -->
+      <header class="page-header" style="padding:0;margin-bottom:40px;">
+        <h1 class="page-title" style="font-size:2.5rem;">About This Wiki</h1>
+        <p class="page-subtitle" style="font-size:1.125rem;">A curated reference for communications professionals navigating climate finance.</p>
+      </header>
+
+      <!-- Section 1: What This Is -->
+      <section class="body-section">
+        <h2>What This Is</h2>
+        <p>This wiki is a curated, editorially maintained reference covering the language, instruments, institutions, and case studies of climate finance. It is not a textbook, not a database, and not crowdsourced. Every article is written to the same standard: clear enough for a non-specialist, rigorous enough for a professional.</p>
+        <p>The wiki currently contains 48 articles across five categories (Concepts, Instruments, Actors, Frameworks, and Case Studies) with over 240 cross-connections between them. Three guided reading trails offer structured paths through the material for readers who prefer a curated sequence over free browsing.</p>
+      </section>
+
+      <!-- Section 2: Who's It For? -->
+      <section class="body-section">
+        <h2>Who It&rsquo;s For</h2>
+        <p>Communications professionals. The people who write press releases about green bonds, brief executives before climate summits, advise clients on sustainability messaging, and need to know whether a &ldquo;net zero&rdquo; claim will hold up under scrutiny.</p>
+        <p>Every editorial decision (what to include, how to explain it, what angle to take) passes one test: would a comms professional need to know this to do their job well? Technical financial modelling, quantitative methods, and regulatory compliance detail are excluded or summarised. The story behind the mechanism, the landscape of key players, what&rsquo;s contested, and what&rsquo;s emerging: that&rsquo;s what stays.</p>
+
+        <div class="callout">
+          <div class="callout-label">Editorial Standard</div>
+          <div class="callout-text">&ldquo;Informed and curious, like a smart journalist. Not academic, not corporate. Plain English first. Define jargon immediately. Short paragraphs. Active voice.&rdquo;</div>
+        </div>
+      </section>
+
+      <!-- Section 3: How to Use It -->
+      <section class="body-section">
+        <h2 id="how-to-use">How to Use It</h2>
+        <p>There are four ways in:</p>
+
+        <div class="ways-in">
+          <div class="way">
+            <p><strong>Browse by category.</strong> The five category pages (<a href="/concepts/">Concepts</a>, <a href="/instruments/">Instruments</a>, <a href="/actors/">Actors</a>, <a href="/frameworks/">Frameworks</a>, and <a href="/case-studies/">Case Studies</a>) each show every article in that domain with a one-sentence summary. Start here if you know the general area but not the specific article.</p>
+          </div>
+          <div class="way">
+            <p><strong>Follow a trail.</strong> Three expert-curated reading paths take you through the material in a deliberate sequence. &ldquo;The Greenwashing Trail&rdquo; moves from definition to typology to real-world cases. &ldquo;Follow the Money&rdquo; traces how climate finance flows from green bonds through to carbon offsets. &ldquo;Architecture of Climate Policy&rdquo; covers the agreements and standards that set the rules. Each article shows your position in the trail and links to the next.</p>
+          </div>
+          <div class="way">
+            <p><strong>Search or scan the glossary.</strong> The glossary offers plain-English definitions of every key term in two sentences or less. If you need depth, each entry links to its full article. If you just need a quick decode, the definition is enough.</p>
+          </div>
+          <div class="way">
+            <p><strong>Follow the connections.</strong> Every article links to related concepts, instruments, and cases through inline wikilinks and &ldquo;See Also&rdquo; sections. Some connections are expected; others are deliberately surprising, flagged in &ldquo;You Might Not Expect&rdquo; blocks at the end of each article.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: What's Included -->
+      <section class="body-section">
+        <h2>What&rsquo;s Included</h2>
+        <p>The wiki covers:</p>
+
+        <ul class="category-list">
+          <li><strong>Concepts:</strong> Climate finance, physical and transition risks, stranded assets, greenwashing, net zero vs carbon neutral, the 1.5&deg;C threshold, and more. The foundational vocabulary.</li>
+          <li><strong>Instruments:</strong> Green bonds, sustainability-linked bonds, transition bonds, carbon offsets, cap-and-trade, and the greenium. The financial products through which climate capital moves.</li>
+          <li><strong>Actors:</strong> The IPCC, UNFCCC, GFANZ, development finance institutions, Climate Action 100+, and key individuals like Mark Carney. The institutions and people shaping the field.</li>
+          <li><strong>Frameworks:</strong> The Paris Agreement, TCFD, IFRS S1 and S2, EU Taxonomy, CSRD, SFDR, and more. The policy architecture and disclosure regimes.</li>
+          <li><strong>Case Studies:</strong> Volkswagen Dieselgate, HSBC greenwashing, the ENEL SLB, PG&amp;E bankruptcy, the Seychelles Blue Bond, and others. Real-world stories with real consequences.</li>
+        </ul>
+      </section>
+
+      <!-- Section 5: Sources -->
+      <section class="body-section">
+        <h2>Sources</h2>
+        <p>This wiki is built from:</p>
+
+        <ul class="sources-list">
+          <li><a href="https://www.cfainstitute.org/programs/climate-investing-certificate" target="_blank" rel="noopener">My course notes</a>, CFA Institute Climate Finance Certificate</li>
+          <li>ICMA Green Bond Principles</li>
+          <li>UNFCCC official reports and treaty texts</li>
+          <li>SEC enforcement filings</li>
+          <li>EU Taxonomy Regulation</li>
+          <li>IPCC Assessment Reports</li>
+          <li>World Bank project documentation</li>
+          <li>Academic and financial press reporting</li>
+        </ul>
+
+        <p>While every article cites its specific sources, this wiki is a hobby project and should not be considered conclusive.</p>
+      </section>
+
+      <!-- Section 6: Contact -->
+      <section class="body-section">
+        <h2 id="contact">Contact</h2>
+        <p>This wiki is a Red Barrow publication, maintained by <span class="placeholder">Ibukun Taiwo</span>.</p>
+        <p>For corrections, suggestions, or inquiries:</p>
+        <p>Email: <span class="placeholder">linkedin.com/in/ibukuntaiwo</span><br>
+        GitHub: <span class="placeholder">https://github.com/ibukuntaiwo-beep</span></p>
+      </section>
+
+    </main>
+
+    <!-- Sidebar -->
+    <aside class="about-sidebar">
+
+      <!-- Card 1: Wiki at a Glance -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-label">Wiki at a Glance</div>
+        <div class="stat-row">
+          <span class="stat-number">48</span>
+          <span class="stat-label">articles</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-number">240+</span>
+          <span class="stat-label">connections</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-number">5</span>
+          <span class="stat-label">categories</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-number">3</span>
+          <span class="stat-label">guided trails</span>
+        </div>
+        <div class="stat-meta">Last updated: April 2026</div>
+      </div>
+
+      <!-- Sidebar photo -->
+      <div class="sidebar-photo">
+        <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=400&q=80" alt="Library shelves" loading="lazy">
+      </div>
+
+      <!-- Card 2: Built From -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-label">Built From</div>
+        <ul class="built-from-list">
+          <li>CFA Institute</li>
+          <li>ICMA</li>
+          <li>UNFCCC</li>
+          <li>IPCC</li>
+          <li>SEC / EU Commission</li>
+          <li>World Bank</li>
+        </ul>
+      </div>
+
+    </aside>
+
+  </div>
+
+</BaseLayout>

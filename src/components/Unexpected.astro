@@ -1,0 +1,13 @@
+---
+interface Props {
+  headline: string;
+}
+const { headline } = Astro.props;
+---
+<div class="unexpected-block">
+  <div class="unexpected-label">You Might Not Expect</div>
+  <div class="unexpected-headline">{headline}</div>
+  <div class="unexpected-text">
+    <slot />
+  </div>
+</div>

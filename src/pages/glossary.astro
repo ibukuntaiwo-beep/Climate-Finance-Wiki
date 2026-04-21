@@ -1,0 +1,120 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const glossaryTerms = [
+  { term: 'Adaptation', def: 'Actions that reduce vulnerability to the impacts of climate change already locked in.', article: '/concepts/adaptation-vs-mitigation/' },
+  { term: 'Blended Finance', def: 'The strategic use of public or philanthropic capital to de-risk and mobilise private investment in climate outcomes.', article: null },
+  { term: 'Carbon Neutral', def: 'Achieving zero net carbon dioxide emissions, typically by offsetting residual emissions.', article: '/concepts/net-zero-vs-carbon-neutral/' },
+  { term: 'Carbon Offsets', def: 'Credits representing one tonne of CO\u2082 reduced or removed from the atmosphere.', article: '/instruments/carbon-offsets/' },
+  { term: 'Climate Action 100+', def: 'An investor-led initiative pressing the world\'s largest corporate emitters to take action.', article: '/actors/climate-action-100-plus/' },
+  { term: 'Climate Finance', def: 'The flow of capital directed at reducing emissions, building resilience, and managing climate-related financial risk.', article: '/concepts/climate-finance/' },
+  { term: 'CSRD', def: 'EU regulation requiring large companies to report on sustainability topics under European Sustainability Reporting Standards.', article: '/frameworks/csrd/' },
+  { term: 'EU Taxonomy', def: 'The EU\'s classification system defining what economic activities qualify as environmentally sustainable.', article: '/frameworks/eu-taxonomy/' },
+  { term: 'GFANZ', def: 'A coalition of leading financial institutions committed to transitioning portfolios to net zero by 2050.', article: '/actors/gfanz/' },
+  { term: 'Green Bond Principles', def: 'Voluntary guidelines by ICMA setting out best practice for green bond issuance across four pillars.', article: '/frameworks/green-bond-principles/' },
+  { term: 'Green Bonds', def: 'Bonds whose proceeds are ring-fenced exclusively for qualifying environmental projects.', article: '/instruments/green-bonds/' },
+  { term: 'Greenwashing', def: 'Making misleading or unsubstantiated claims about the environmental credentials of a product, service, or institution.', article: '/concepts/greenwashing/' },
+  { term: 'IFRS S1 and S2', def: 'The ISSB\'s standards for general sustainability (S1) and climate-specific (S2) disclosure.', article: '/frameworks/ifrs-s1-s2/' },
+  { term: 'IPCC', def: 'The UN body that synthesises global climate science and produces Assessment Reports.', article: '/actors/ipcc/' },
+  { term: 'MDBs', def: 'Institutions like the World Bank that use public capital to mobilise private climate finance.', article: '/actors/development-finance-institutions/' },
+  { term: 'Mitigation', def: 'Actions that reduce or prevent greenhouse gas emissions.', article: '/concepts/adaptation-vs-mitigation/' },
+  { term: 'Net Zero', def: 'A state in which greenhouse gas emissions entering the atmosphere are balanced by removals.', article: '/concepts/net-zero-vs-carbon-neutral/' },
+  { term: 'Paris Agreement', def: 'The 2015 international treaty committing signatories to limit global warming to well below 2\u00b0C.', article: '/frameworks/paris-agreement/' },
+  { term: 'Physical Risks', def: 'Financial risks arising from the direct physical effects of climate change.', article: '/concepts/physical-risks/' },
+  { term: 'Science Based Targets', def: 'Emissions reduction targets validated as consistent with limiting warming to 1.5\u00b0C or well below 2\u00b0C.', article: '/actors/science-based-targets-initiative/' },
+  { term: 'Stranded Assets', def: 'Assets that have lost value or must be retired early due to climate policy, regulation, or market shifts.', article: '/concepts/stranded-assets/' },
+  { term: 'Sustainability-Linked Bonds', def: 'Bonds whose financial terms change if the issuer hits or misses pre-agreed sustainability targets.', article: '/instruments/sustainability-linked-bonds/' },
+  { term: 'TCFD', def: 'A framework for companies to disclose climate-related risks and opportunities.', article: '/frameworks/tcfd/' },
+  { term: 'The 1.5\u00b0C Threshold', def: 'The aspirational warming limit set by the Paris Agreement. Breached on an annual basis in 2024.', article: '/concepts/the-1.5c-threshold/' },
+  { term: 'The Greenium', def: 'The lower borrowing cost that green bond issuers may achieve compared to conventional bonds.', article: '/instruments/the-greenium/' },
+  { term: 'Transition Bonds', def: 'Bonds designed to finance the decarbonisation of high-emitting sectors.', article: '/instruments/transition-bonds/' },
+  { term: 'Transition Risks', def: 'Financial risks arising from the shift to a low-carbon economy.', article: '/concepts/transition-risks/' },
+  { term: 'UNFCCC and COP', def: 'The UN Framework Convention on Climate Change and its annual Conference of the Parties.', article: '/actors/unfccc-and-cop/' },
+];
+
+// Group by first letter
+const grouped: Record<string, typeof glossaryTerms> = {};
+for (const t of glossaryTerms) {
+  const letter = t.term[0].toUpperCase();
+  if (!grouped[letter]) grouped[letter] = [];
+  grouped[letter].push(t);
+}
+const letters = Object.keys(grouped).sort();
+---
+<BaseLayout title="Glossary | Climate Finance Wiki" footerType="internal">
+  <div class="breadcrumb-strip">
+    <div class="breadcrumb-inner">
+      <a href="/">Home</a>
+      <span class="breadcrumb-sep">&rarr;</span>
+      <span class="breadcrumb-current">Glossary</span>
+    </div>
+  </div>
+
+  <div class="page-header">
+    <div class="header-top">
+      <h1 class="page-title">Glossary</h1>
+    </div>
+    <p class="page-subtitle">Plain-English definitions for the terms that matter in climate finance</p>
+    <p class="term-count" id="termCount">{glossaryTerms.length} terms</p>
+  </div>
+
+  <div class="search-container">
+    <div class="search-wrapper">
+      <span class="search-icon">
+        <svg width="16" height="16" viewBox="0 0 17 17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="7" cy="7" r="5"/><line x1="10.8" y1="10.8" x2="15.5" y2="15.5"/></svg>
+      </span>
+      <input type="text" class="search-input" id="glossarySearch" placeholder="Search terms..." aria-label="Search glossary terms">
+    </div>
+  </div>
+
+  <div class="glossary-container" id="glossaryList">
+    {letters.map(letter => (
+      <div class="letter-section" id={`letter-${letter}`}>
+        <h2 class="letter-header">{letter}</h2>
+        <div class="terms-grid">
+          {grouped[letter].map(t => (
+            <div class="term-entry revealed" data-term={t.term.toLowerCase()}>
+              <div class="term-name">{t.term}</div>
+              <p class="term-def">{t.def}</p>
+              {t.article && <a href={t.article} class="term-link">Read full article &rarr;</a>}
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const searchInput = document.getElementById('glossarySearch');
+      const entries = document.querySelectorAll('.term-entry');
+      const letterSections = document.querySelectorAll('.letter-section');
+      const termCount = document.getElementById('termCount');
+      const totalTerms = entries.length;
+
+      searchInput.addEventListener('input', function() {
+        const query = this.value.toLowerCase().trim();
+        let visibleCount = 0;
+
+        entries.forEach(function(entry) {
+          const term = entry.getAttribute('data-term');
+          const def = entry.querySelector('.term-def').textContent.toLowerCase();
+          const match = !query || term.includes(query) || def.includes(query);
+          entry.style.display = match ? '' : 'none';
+          if (match) visibleCount++;
+        });
+
+        letterSections.forEach(function(section) {
+          const visibleEntries = section.querySelectorAll('.term-entry:not([style*="display: none"])');
+          section.style.display = visibleEntries.length > 0 ? '' : 'none';
+        });
+
+        if (query) {
+          termCount.textContent = visibleCount + ' result' + (visibleCount !== 1 ? 's' : '') + " for '" + query + "'";
+        } else {
+          termCount.textContent = totalTerms + ' terms';
+        }
+      });
+    });
+  </script>
+</BaseLayout>

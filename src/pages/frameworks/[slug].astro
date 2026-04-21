@@ -1,0 +1,43 @@
+---
+import { getCollection, render } from 'astro:content';
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import CaseStudyLayout from '../../layouts/CaseStudyLayout.astro';
+import { findTrailForArticle } from '../../data/trails';
+
+export async function getStaticPaths() {
+  const allArticles = await getCollection('articles');
+  const frameworkArticles = allArticles.filter(a => a.data.category === 'frameworks');
+  return frameworkArticles.map(article => ({
+    params: { slug: article.id },
+    props: { article }
+  }));
+}
+
+const { article } = Astro.props;
+const { Content, headings } = await render(article);
+
+const trail = findTrailForArticle('frameworks', article.id);
+
+// Build TOC from headings
+const tocSections = headings
+  .filter(h => h.depth === 2)
+  .map(h => ({
+    id: h.slug,
+    title: h.text
+  }));
+---
+
+<ArticleLayout
+  title={article.data.title}
+  subtitle={article.data.subtitle}
+  category="Frameworks"
+  categorySlug="frameworks"
+  stats={article.data.stats}
+  seeAlso={article.data.seeAlso}
+  unexpected={article.data.unexpected}
+  sources={article.data.sources}
+  trail={trail}
+  tocSections={tocSections}
+>
+  <Content />
+</ArticleLayout>

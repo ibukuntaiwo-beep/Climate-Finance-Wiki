@@ -1,0 +1,24 @@
+<div class="toggle-section">
+  <div class="style-toggle">
+    <button class="active" data-style="economist">Economist</button>
+    <button data-style="nature">Nature</button>
+  </div>
+</div>
+
+<script is:inline>
+(function() {
+  var buttons = document.querySelectorAll('.style-toggle button');
+  buttons.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var style = this.getAttribute('data-style');
+      buttons.forEach(function(b) { b.classList.remove('active'); });
+      this.classList.add('active');
+      document.querySelectorAll('.body-version').forEach(function(el) {
+        el.classList.remove('active');
+      });
+      var target = document.querySelector('.body-version[data-style="' + style + '"]');
+      if (target) target.classList.add('active');
+    });
+  });
+})();
+</script>

@@ -1,0 +1,144 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import KeyStats from '../components/KeyStats.astro';
+import Timeline from '../components/Timeline.astro';
+import BeforeAfter from '../components/BeforeAfter.astro';
+import Unexpected from '../components/Unexpected.astro';
+
+interface Props {
+  title: string;
+  subtitle: string;
+  stats: Array<{value: string; label: string}>;
+  seeAlso: Array<{title: string; category: string; description: string; slug: string}>;
+  unexpected?: {headline: string; body: string};
+  sources: string[];
+  caseStudy?: {
+    body?: string;
+    visualFormat?: 'timeline' | 'before-after';
+    timeline?: Array<{year: string; description: string}>;
+    before?: string[];
+    after?: string[];
+    debate?: string;
+  };
+  trail?: {
+    trailName: string;
+    current: number;
+    total: number;
+    prevHref?: string;
+    nextHref?: string;
+  };
+}
+
+const { title, subtitle, stats, seeAlso, unexpected, sources, caseStudy, trail } = Astro.props;
+
+const seeAlsoHrefs = seeAlso.map(a => {
+  const cat = a.category.toLowerCase() === 'case studies' ? 'case-studies' : a.category.toLowerCase();
+  return { ...a, href: `/${cat}/${a.slug}/` };
+});
+---
+<BaseLayout title={`${title} | Climate Finance Wiki`} footerType="internal">
+  <header class="case-header">
+    <div class="case-header-inner">
+      <div class="breadcrumbs anim-1">
+        <a href="/">Home</a><span class="sep">&rarr;</span>
+        <a href="/case-studies/">Case Studies</a><span class="sep">&rarr;</span>
+        {title}
+      </div>
+      <div class="case-label anim-2">Case Study</div>
+      <h1 class="anim-3">{title}</h1>
+      <p class="case-subtitle anim-4" set:html={subtitle}></p>
+    </div>
+  </header>
+
+  <div class="stats-panel anim-5">
+    <div class="stats-panel-inner">
+      {stats.map(stat => (
+        <div class="stat-item">
+          <div class="stat-number" set:html={stat.value}></div>
+          <div class="stat-label">{stat.label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <article class="case-article-body">
+    {caseStudy?.body ? (
+      <div set:html={caseStudy.body}></div>
+    ) : (
+      <slot />
+    )}
+  </article>
+
+  {caseStudy?.visualFormat === 'timeline' && caseStudy.timeline && (
+    <div class="timeline-section reveal">
+      <div class="section-label">Timeline</div>
+      <Timeline events={caseStudy.timeline} />
+    </div>
+  )}
+
+  {caseStudy?.visualFormat === 'before-after' && caseStudy.before && caseStudy.after && (
+    <div class="before-after reveal">
+      <div class="section-label">Before &amp; After</div>
+      <BeforeAfter before={caseStudy.before} after={caseStudy.after} />
+    </div>
+  )}
+
+  {caseStudy?.debate && (
+    <div class="debate-section reveal">
+      <div class="debate-card">
+        <h2>The Debate</h2>
+        <Fragment set:html={caseStudy.debate} />
+      </div>
+    </div>
+  )}
+
+  {trail && (
+    <div class="thread-bar-card reveal">
+      <div class="thread-bar-inner">
+        <div class="thread-info">
+          <div class="thread-label">Article {trail.current} of {trail.total} in <strong>{trail.trailName}</strong></div>
+          <div class="thread-progress">
+            {Array.from({length: trail.total}).map((_, i) => (
+              <span class={`thread-dot ${i < trail.current - 1 ? 'filled' : ''} ${i === trail.current - 1 ? 'current' : ''}`}></span>
+            ))}
+          </div>
+        </div>
+        <div class="thread-nav">
+          {trail.prevHref ? <a href={trail.prevHref}>&larr; Previous</a> : null}
+          {trail.nextHref ? <a href={trail.nextHref}>Next &rarr;</a> : null}
+        </div>
+      </div>
+    </div>
+  )}
+
+  {unexpected && (
+    <div class="surprise-section reveal">
+      <div class="surprise-card">
+        <div class="surprise-label">You Might Not Expect</div>
+        <div class="surprise-headline">{unexpected.headline}</div>
+        <p set:html={unexpected.body}></p>
+      </div>
+    </div>
+  )}
+
+  <div class="see-also-section reveal" style="max-width:780px;margin:0 auto;padding:0 32px;">
+    <div class="section-label">See Also</div>
+    <div class="see-also-list">
+      {seeAlsoHrefs.map(a => (
+        <a href={a.href}>{a.title}</a>
+      ))}
+    </div>
+  </div>
+
+  {sources && sources.length > 0 && (
+  <div class="case-sources-section reveal">
+    <div class="section-label">Sources</div>
+    <ul class="sources-list">
+      {sources.map((source, i) => (
+        <li><span class="source-num">{i + 1}</span><span set:html={source}></span></li>
+      ))}
+    </ul>
+  </div>
+  )}
+
+</BaseLayout>

@@ -1,0 +1,39 @@
+---
+interface Props {
+  trailName: string;
+  current: number;
+  total: number;
+  prevHref?: string;
+  nextHref?: string;
+}
+const { trailName, current, total, prevHref, nextHref } = Astro.props;
+
+const dots = Array.from({ length: total }, (_, i) => i + 1);
+---
+<div class="thread-bar">
+  <div class="thread-bar-inner">
+    <div class="thread-info">
+      <span class="thread-label">Trail:</span>
+      <span class="thread-name">{trailName}</span>
+      <div class="thread-dots">
+        {dots.map((dot) => (
+          <span class:list={[
+            'thread-dot',
+            dot < current ? 'filled' : '',
+            dot === current ? 'current' : '',
+          ]} />
+        ))}
+      </div>
+    </div>
+    <div class="thread-nav-links">
+      {prevHref
+        ? <a href={prevHref}>&larr; Previous</a>
+        : <a class="disabled">&larr; Previous</a>
+      }
+      {nextHref
+        ? <a href={nextHref}>Next &rarr;</a>
+        : <a class="disabled">Next &rarr;</a>
+      }
+    </div>
+  </div>
+</div>

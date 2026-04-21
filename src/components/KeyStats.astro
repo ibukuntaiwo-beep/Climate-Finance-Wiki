@@ -1,0 +1,16 @@
+---
+interface Props {
+  stats: Array<{value: string, label: string}>;
+}
+const { stats } = Astro.props;
+---
+<div class="key-stats">
+  <div class="key-stats-inner">
+    {stats.map((stat) => (
+      <div class="stat-item">
+        <div class="stat-number">{stat.value}</div>
+        <div class="stat-label">{stat.label}</div>
+      </div>
+    ))}
+  </div>
+</div>

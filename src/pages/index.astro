@@ -1,0 +1,172 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { trails } from '../data/trails';
+import { categories } from '../data/categories';
+---
+<BaseLayout title="Climate Finance Wiki" footerType="landing">
+
+<!-- HERO -->
+<section class="hero-split">
+  <div class="hero-photo">
+    <img id="hero-img" src="https://images.unsplash.com/photo-1600581808016-6fa27d8742a1?auto=format&fit=crop&w=1200&q=80" alt="House surrounded by wildfire glow at night">
+    <div class="hero-photo-overlay"></div>
+  </div>
+  <div class="hero-text">
+    <div class="hero-case-label">Featured Case Study</div>
+    <h1 id="hero-headline">The First Climate Change Bankruptcy</h1>
+    <blockquote class="hero-pullquote">
+      <p id="hero-quote">$30 billion in wildfire liabilities destroyed California&rsquo;s largest utility, proving physical climate risk isn&rsquo;t theoretical.</p>
+    </blockquote>
+    <div class="hero-meta">Case Studies &middot; 4 connected articles</div>
+    <a id="hero-cta" href="/case-studies/pge-bankruptcy/" class="hero-cta">Read the case study &rarr;</a>
+  </div>
+</section>
+<script is:inline>
+(function () {
+  var studies = [
+    {
+      headline: 'The First Climate Change Bankruptcy',
+      quote: '$30 billion in wildfire liabilities destroyed California\u2019s largest utility, proving physical climate risk isn\u2019t theoretical.',
+      link: '/case-studies/pge-bankruptcy/',
+      img: 'https://images.unsplash.com/photo-1600581808016-6fa27d8742a1?auto=format&fit=crop&w=1200&q=80',
+      alt: 'House surrounded by wildfire glow at night'
+    },
+    {
+      headline: 'The Ad Campaign That Became a Criminal Evidence File',
+      quote: '11 million cars. 40\u00d7 the legal emissions limit. And a \u201cClean Diesel\u201d campaign that became evidence for prosecutors.',
+      link: '/case-studies/volkswagen-dieselgate/',
+      img: 'https://images.unsplash.com/photo-1486006920555-c77dcf18193c?auto=format&fit=crop&w=1200&q=80',
+      alt: 'Car exhaust fumes on a city street'
+    }
+  ];
+  var idx = parseInt(localStorage.getItem('heroIdx') || '0', 10);
+  var pick = studies[idx % studies.length];
+  localStorage.setItem('heroIdx', String(idx + 1));
+  document.getElementById('hero-headline').textContent = pick.headline;
+  document.getElementById('hero-quote').textContent = pick.quote;
+  document.getElementById('hero-cta').href = pick.link;
+  var img = document.getElementById('hero-img');
+  img.src = pick.img;
+  img.alt = pick.alt;
+})();
+</script>
+
+<!-- FLOATING CARDS -->
+<div class="floating-cards">
+  <div class="floating-card floating-card--topic">
+    <div class="floating-card-label">Topic of the Day</div>
+    <h3>Stranded Assets</h3>
+    <p>Why $1.4 trillion in fossil fuel reserves may never be burned, and what that means for every portfolio still holding them.</p>
+    <a href="/concepts/stranded-assets/">Read &rarr;</a>
+  </div>
+  <div class="floating-card floating-card--news">
+    <div class="floating-card-label">In the News</div>
+    <h3>EU Carbon Border Tax Takes Effect</h3>
+    <p>CBAM begins charging importers, a landmark for global carbon pricing.</p>
+    <div class="floating-card-source">Carbon Brief &middot; Apr 14, 2026</div>
+    <a href="/instruments/cap-and-trade/">Read &amp; explore linked topics &rarr;</a>
+  </div>
+</div>
+
+<!-- STATS STRIP -->
+<div class="stats-strip reveal">
+  <div class="stats-strip-inner">
+    <span class="strip-stat">48 articles</span>
+    <span class="strip-sep">&middot;</span>
+    <span class="strip-stat">240+ connections</span>
+    <span class="strip-sep">&middot;</span>
+    <span class="strip-stat">5 categories</span>
+    <span class="strip-sep">&middot;</span>
+    <span class="strip-stat">3 guided trails</span>
+  </div>
+</div>
+
+<!-- THREAD CARDS -->
+<section class="trails-section reveal">
+  <div class="section-label">Choose Your Path</div>
+  <p class="trails-subtitle">Three expert-curated paths through the material. Pick the one that matches your need.</p>
+  <div class="trails-grid">
+    {trails.map((trail) => (
+      <div class="trail-card">
+        <div class="trail-card-photo">
+          <img src={trail.photo} alt={trail.name} loading="lazy">
+          <div class="trail-card-photo-overlay"></div>
+          <span class="trail-card-photo-label">6 articles &middot; ~35 min</span>
+        </div>
+        <div class="trail-card-body">
+          <h3>{trail.name}</h3>
+          <p class="trail-card-tagline">{trail.tagline}</p>
+          <ol class="trail-card-list">
+            {trail.articles.map((article, i) => (
+              <li>
+                <span class="trail-num">{String(i + 1).padStart(2, '0')}</span>
+                <a href={`/${article.category}/${article.slug}/`} class="trail-article">{article.title}</a>
+              </li>
+            ))}
+          </ol>
+          <a href={`/${trail.articles[0].category}/${trail.articles[0].slug}/`} class="trail-card-cta">Start this trail &rarr;</a>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<!-- PHOTO DIVIDER -->
+<div class="photo-divider">
+  <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1400&q=80" alt="Wind turbines on green hillside at sunset">
+  <div class="photo-divider-overlay"></div>
+  <p class="photo-divider-text">How the world funds its response to climate change.</p>
+</div>
+
+<!-- CATEGORIES WITH DEPTH -->
+<section class="categories-section reveal" id="categories">
+  <div class="section-label">Browse by Category</div>
+  <div class="categories-grid">
+    {categories.slice(0, 3).map(cat => (
+      <div class="category-card">
+        <div class="category-card-header">
+          <h3>{cat.name}</h3>
+          <div class="category-card-counts">
+            <span class="category-card-count">{cat.articleCount} articles</span>
+            <span class="category-card-count-label">{cat.connectionCount} connections</span>
+            <div class="category-depth-bar"><div class="category-depth-bar-fill" style={`width:${cat.depthPercent}%`}></div></div>
+          </div>
+        </div>
+        <div class="category-card-top-label">Top Articles</div>
+        <ul class="category-card-articles">
+          {cat.topArticles.map(a => <li>{a}</li>)}
+        </ul>
+        <a href={`/${cat.slug}/`} class="category-card-link">Browse {cat.name} &rarr;</a>
+      </div>
+    ))}
+  </div>
+  <div class="categories-grid-bottom">
+    {categories.slice(3).map(cat => (
+      <div class="category-card">
+        <div class="category-card-header">
+          <h3>{cat.name}</h3>
+          <div class="category-card-counts">
+            <span class="category-card-count">{cat.articleCount} articles</span>
+            <span class="category-card-count-label">{cat.connectionCount} connections</span>
+            <div class="category-depth-bar"><div class="category-depth-bar-fill" style={`width:${cat.depthPercent}%`}></div></div>
+          </div>
+        </div>
+        <div class="category-card-top-label">Top Articles</div>
+        <ul class="category-card-articles">
+          {cat.topArticles.map(a => <li>{a}</li>)}
+        </ul>
+        <a href={`/${cat.slug}/`} class="category-card-link">Browse {cat.name} &rarr;</a>
+      </div>
+    ))}
+  </div>
+</section>
+
+<!-- SOURCES BAR -->
+<div class="sources-bar reveal">
+  <div class="sources-bar-inner">
+    <span class="sources-bar-label">Built From</span>
+    <span class="sources-bar-text">ICMA Green Bond Principles, UNFCCC official reports, SEC enforcement filings, EU Taxonomy Regulation, IPCC Assessment Reports</span>
+  </div>
+</div>
+
+</BaseLayout>

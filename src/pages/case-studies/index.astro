@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { categories } from '../../data/categories';
+
+const catData = categories.find(c => c.slug === 'case-studies')!;
+const allArticles = await getCollection('articles');
+const articles = allArticles.filter(a => a.data.category === 'case-studies');
+const otherCategories = categories.filter(c => c.slug !== 'case-studies');
+---
+<BaseLayout title="Case Studies | Climate Finance Wiki" footerType="internal">
+  <div class="breadcrumb" aria-label="Breadcrumb">
+    <ol class="breadcrumb__list">
+      <li><a href="/" class="breadcrumb__link">Home</a></li>
+      <li class="breadcrumb__separator" aria-hidden="true">&rarr;</li>
+      <li class="breadcrumb__current" aria-current="page">Case Studies</li>
+    </ol>
+  </div>
+  <header class="category-header">
+    <div class="category-header__label">Case Studies</div>
+    <h1 class="category-header__title">Case Studies</h1>
+    <p class="category-header__description">{catData.description}</p>
+    <div class="category-header__meta"><span>{articles.length}</span>&nbsp;articles&ensp;&middot;&ensp;<span>{catData.connectionCount}</span>&nbsp;connections</div>
+  </header>
+  <div class="category-banner" aria-hidden="true">
+    <img class="category-banner__img" src={catData.photo} alt="Case Studies category" loading="eager">
+    <div class="category-banner__overlay"></div>
+    <span class="category-banner__caption">{catData.caption}</span>
+  </div>
+  <div class="content-area">
+    <main class="main-column" id="articles">
+      {articles.map((article) => (
+        <article class="article-card">
+          <a href={`/case-studies/${article.id}/`} class="article-card__link">
+            <h2 class="article-card__title">{article.data.title}</h2>
+            <p class="article-card__subtitle">{article.data.subtitle}</p>
+            <div class="article-card__footer">
+              <span class="article-card__stats"><span>{article.data.seeAlso.length}</span>&nbsp;connections</span>
+              <span class="article-card__read-cta">Read&ensp;&rarr;</span>
+            </div>
+          </a>
+        </article>
+      ))}
+    </main>
+    <aside class="sidebar" aria-label="Category context">
+      <div class="sidebar-box">
+        <h2 class="sidebar-box__heading">Related Categories</h2>
+        {otherCategories.map(cat => (
+          <a href={`/${cat.slug}/`} class="related-cat">
+            <span class="related-cat__name">{cat.name}</span>
+            <span class="related-cat__count">{cat.articleCount} articles</span>
+          </a>
+        ))}
+      </div>
+    </aside>
+  </div>
+  <script>
+    (function(){var p=window.matchMedia('(prefers-reduced-motion: reduce)').matches;var c=document.querySelectorAll('.article-card');if(p){c.forEach(function(d){d.classList.add('is-visible')});return}if('IntersectionObserver' in window){var o=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting){en.target.classList.add('is-visible');o.unobserve(en.target)}})},{threshold:0.15,rootMargin:'0px 0px -40px 0px'});c.forEach(function(d){o.observe(d)})}else{c.forEach(function(d){d.classList.add('is-visible')})}})();
+  </script>
+</BaseLayout>

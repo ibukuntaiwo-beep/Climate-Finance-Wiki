@@ -1,0 +1,18 @@
+---
+interface Props {
+  articles: Array<{title: string, category: string, description: string, href: string}>;
+}
+const { articles } = Astro.props;
+---
+<div class="see-also">
+  <h2>See Also</h2>
+  <div class="see-also-grid">
+    {articles.map((article) => (
+      <a href={article.href} class="see-also-card">
+        <span class="see-also-badge">{article.category}</span>
+        <div class="see-also-title">{article.title}</div>
+        <div class="see-also-desc">{article.description}</div>
+      </a>
+    ))}
+  </div>
+</div>

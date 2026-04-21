@@ -1,0 +1,29 @@
+---
+import { getCollection, render } from 'astro:content';
+import CaseStudyLayout from '../../layouts/CaseStudyLayout.astro';
+import { findTrailForArticle } from '../../data/trails';
+
+export async function getStaticPaths() {
+  const allArticles = await getCollection('articles');
+  return allArticles.filter(a => a.data.category === 'case-studies').map(article => ({
+    params: { slug: article.id },
+    props: { article }
+  }));
+}
+
+const { article } = Astro.props;
+const { Content } = await render(article);
+const trail = findTrailForArticle('case-studies', article.id);
+---
+<CaseStudyLayout
+  title={article.data.title}
+  subtitle={article.data.subtitle}
+  stats={article.data.stats}
+  seeAlso={article.data.seeAlso}
+  unexpected={article.data.unexpected}
+  sources={article.data.sources}
+  caseStudy={article.data.caseStudy}
+  trail={trail}
+>
+  <Content />
+</CaseStudyLayout>
