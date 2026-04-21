@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { url } from '../../lib/url';
 import { getCollection } from 'astro:content';
 import { categories } from '../../data/categories';
 
@@ -11,7 +12,7 @@ const otherCategories = categories.filter(c => c.slug !== 'case-studies');
 <BaseLayout title="Case Studies | Climate Finance Wiki" footerType="internal">
   <div class="breadcrumb" aria-label="Breadcrumb">
     <ol class="breadcrumb__list">
-      <li><a href="/" class="breadcrumb__link">Home</a></li>
+      <li><a href={url('/')} class="breadcrumb__link">Home</a></li>
       <li class="breadcrumb__separator" aria-hidden="true">&rarr;</li>
       <li class="breadcrumb__current" aria-current="page">Case Studies</li>
     </ol>
@@ -31,7 +32,7 @@ const otherCategories = categories.filter(c => c.slug !== 'case-studies');
     <main class="main-column" id="articles">
       {articles.map((article) => (
         <article class="article-card">
-          <a href={`/case-studies/${article.id}/`} class="article-card__link">
+          <a href={url(`/case-studies/${article.id}/`)} class="article-card__link">
             <h2 class="article-card__title">{article.data.title}</h2>
             <p class="article-card__subtitle">{article.data.subtitle}</p>
             <div class="article-card__footer">
@@ -46,7 +47,7 @@ const otherCategories = categories.filter(c => c.slug !== 'case-studies');
       <div class="sidebar-box">
         <h2 class="sidebar-box__heading">Related Categories</h2>
         {otherCategories.map(cat => (
-          <a href={`/${cat.slug}/`} class="related-cat">
+          <a href={url(`/${cat.slug}/`)} class="related-cat">
             <span class="related-cat__name">{cat.name}</span>
             <span class="related-cat__count">{cat.articleCount} articles</span>
           </a>

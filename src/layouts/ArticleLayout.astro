@@ -1,5 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import { url } from '../lib/url';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import KeyStats from '../components/KeyStats.astro';
 import SeeAlso from '../components/SeeAlso.astro';
@@ -36,14 +37,14 @@ const seeAlsoWithHrefs = seeAlso.map(a => ({
   title: a.title,
   category: a.category,
   description: a.description,
-  href: `/${a.slug.includes('/') ? a.slug : (
+  href: url(`/${a.slug.includes('/') ? a.slug : (
     a.category.toLowerCase() === 'concepts' ? 'concepts' :
     a.category.toLowerCase() === 'instruments' ? 'instruments' :
     a.category.toLowerCase() === 'actors' ? 'actors' :
     a.category.toLowerCase() === 'frameworks' ? 'frameworks' :
     a.category.toLowerCase() === 'case studies' || a.category.toLowerCase() === 'case-studies' ? 'case-studies' :
     a.category.toLowerCase()
-  ) + '/' + a.slug}/`
+  ) + '/' + a.slug}/`)
 }));
 ---
 <BaseLayout title={`${title} | Climate Finance Wiki`} footerType="internal">
@@ -59,8 +60,8 @@ const seeAlsoWithHrefs = seeAlso.map(a => ({
 
   <header class="article-header">
     <Breadcrumbs items={[
-      {label: 'Home', href: '/'},
-      {label: categoryDisplay, href: `/${categorySlug}/`},
+      {label: 'Home', href: url('/')},
+      {label: categoryDisplay, href: url(`/${categorySlug}/`)},
       {label: title}
     ]} />
     <div class="category-label fade-up fade-up-d1">{categoryDisplay}</div>

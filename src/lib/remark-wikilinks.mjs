@@ -1,7 +1,8 @@
 import { visit } from 'unist-util-visit';
 import { wikiLinkMap } from './wikilinks.ts';
 
-export default function remarkWikilinks() {
+export default function remarkWikilinks(options = {}) {
+  const base = (options.base || '').replace(/\/$/, '');
   return (tree) => {
     visit(tree, 'text', (node, index, parent) => {
       if (!parent || index === null || index === undefined) return;
@@ -26,7 +27,7 @@ export default function remarkWikilinks() {
 
         const entry = wikiLinkMap[target];
         if (entry) {
-          const href = `/${entry.category}/${entry.slug}/`;
+          const href = `${base}/${entry.category}/${entry.slug}/`;
           children.push({
             type: 'link',
             url: href,

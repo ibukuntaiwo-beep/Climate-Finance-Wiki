@@ -1,11 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { url } from '../lib/url';
 ---
 <BaseLayout title="About This Wiki" activePage="about" footerType="internal">
 
   <!-- Breadcrumbs -->
   <div class="breadcrumbs" style="max-width:var(--max-width);margin:0 auto;padding:20px 32px 0;display:flex;align-items:center;gap:8px;">
-    <a href="/">Home</a>
+    <a href={url('/')}>Home</a>
     <span class="sep">&rarr;</span>
     <span>About</span>
   </div>
@@ -48,7 +49,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
         <div class="ways-in">
           <div class="way">
-            <p><strong>Browse by category.</strong> The five category pages (<a href="/concepts/">Concepts</a>, <a href="/instruments/">Instruments</a>, <a href="/actors/">Actors</a>, <a href="/frameworks/">Frameworks</a>, and <a href="/case-studies/">Case Studies</a>) each show every article in that domain with a one-sentence summary. Start here if you know the general area but not the specific article.</p>
+            <p><strong>Browse by category.</strong> The five category pages (<a href={url('/concepts/')}>Concepts</a>, <a href={url('/instruments/')}>Instruments</a>, <a href={url('/actors/')}>Actors</a>, <a href={url('/frameworks/')}>Frameworks</a>, and <a href={url('/case-studies/')}>Case Studies</a>) each show every article in that domain with a one-sentence summary. Start here if you know the general area but not the specific article.</p>
           </div>
           <div class="way">
             <p><strong>Follow a trail.</strong> Three expert-curated reading paths take you through the material in a deliberate sequence. &ldquo;The Greenwashing Trail&rdquo; moves from definition to typology to real-world cases. &ldquo;Follow the Money&rdquo; traces how climate finance flows from green bonds through to carbon offsets. &ldquo;Architecture of Climate Policy&rdquo; covers the agreements and standards that set the rules. Each article shows your position in the trail and links to the next.</p>

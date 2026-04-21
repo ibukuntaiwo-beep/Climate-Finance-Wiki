@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { url } from '../lib/url';
 import { trails } from '../data/trails';
 import { categories } from '../data/categories';
 ---
@@ -18,23 +19,24 @@ import { categories } from '../data/categories';
       <p id="hero-quote">$30 billion in wildfire liabilities destroyed California&rsquo;s largest utility, proving physical climate risk isn&rsquo;t theoretical.</p>
     </blockquote>
     <div class="hero-meta">Case Studies &middot; 4 connected articles</div>
-    <a id="hero-cta" href="/case-studies/pge-bankruptcy/" class="hero-cta">Read the case study &rarr;</a>
+    <a id="hero-cta" href={url('/case-studies/pge-bankruptcy/')} class="hero-cta">Read the case study &rarr;</a>
   </div>
 </section>
 <script is:inline>
 (function () {
+  var base = document.querySelector('meta[name="base"]').content;
   var studies = [
     {
       headline: 'The First Climate Change Bankruptcy',
       quote: '$30 billion in wildfire liabilities destroyed California\u2019s largest utility, proving physical climate risk isn\u2019t theoretical.',
-      link: '/case-studies/pge-bankruptcy/',
+      link: base + '/case-studies/pge-bankruptcy/',
       img: 'https://images.unsplash.com/photo-1600581808016-6fa27d8742a1?auto=format&fit=crop&w=1200&q=80',
       alt: 'House surrounded by wildfire glow at night'
     },
     {
       headline: 'The Ad Campaign That Became a Criminal Evidence File',
       quote: '11 million cars. 40\u00d7 the legal emissions limit. And a \u201cClean Diesel\u201d campaign that became evidence for prosecutors.',
-      link: '/case-studies/volkswagen-dieselgate/',
+      link: base + '/case-studies/volkswagen-dieselgate/',
       img: 'https://images.unsplash.com/photo-1486006920555-c77dcf18193c?auto=format&fit=crop&w=1200&q=80',
       alt: 'Car exhaust fumes on a city street'
     }
@@ -57,14 +59,14 @@ import { categories } from '../data/categories';
     <div class="floating-card-label">Topic of the Day</div>
     <h3>Stranded Assets</h3>
     <p>Why $1.4 trillion in fossil fuel reserves may never be burned, and what that means for every portfolio still holding them.</p>
-    <a href="/concepts/stranded-assets/">Read &rarr;</a>
+    <a href={url('/concepts/stranded-assets/')}>Read &rarr;</a>
   </div>
   <div class="floating-card floating-card--news">
     <div class="floating-card-label">In the News</div>
     <h3>EU Carbon Border Tax Takes Effect</h3>
     <p>CBAM begins charging importers, a landmark for global carbon pricing.</p>
     <div class="floating-card-source">Carbon Brief &middot; Apr 14, 2026</div>
-    <a href="/instruments/cap-and-trade/">Read &amp; explore linked topics &rarr;</a>
+    <a href={url('/instruments/cap-and-trade/')}>Read &amp; explore linked topics &rarr;</a>
   </div>
 </div>
 
@@ -100,11 +102,11 @@ import { categories } from '../data/categories';
             {trail.articles.map((article, i) => (
               <li>
                 <span class="trail-num">{String(i + 1).padStart(2, '0')}</span>
-                <a href={`/${article.category}/${article.slug}/`} class="trail-article">{article.title}</a>
+                <a href={url(`/${article.category}/${article.slug}/`)} class="trail-article">{article.title}</a>
               </li>
             ))}
           </ol>
-          <a href={`/${trail.articles[0].category}/${trail.articles[0].slug}/`} class="trail-card-cta">Start this trail &rarr;</a>
+          <a href={url(`/${trail.articles[0].category}/${trail.articles[0].slug}/`)} class="trail-card-cta">Start this trail &rarr;</a>
         </div>
       </div>
     ))}
@@ -136,7 +138,7 @@ import { categories } from '../data/categories';
         <ul class="category-card-articles">
           {cat.topArticles.map(a => <li>{a}</li>)}
         </ul>
-        <a href={`/${cat.slug}/`} class="category-card-link">Browse {cat.name} &rarr;</a>
+        <a href={url(`/${cat.slug}/`)} class="category-card-link">Browse {cat.name} &rarr;</a>
       </div>
     ))}
   </div>
@@ -155,7 +157,7 @@ import { categories } from '../data/categories';
         <ul class="category-card-articles">
           {cat.topArticles.map(a => <li>{a}</li>)}
         </ul>
-        <a href={`/${cat.slug}/`} class="category-card-link">Browse {cat.name} &rarr;</a>
+        <a href={url(`/${cat.slug}/`)} class="category-card-link">Browse {cat.name} &rarr;</a>
       </div>
     ))}
   </div>

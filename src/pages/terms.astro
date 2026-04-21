@@ -1,5 +1,6 @@
 ---
 import SimpleLayout from '../layouts/SimpleLayout.astro';
+import { url } from '../lib/url';
 ---
 <SimpleLayout title="Terms of Use">
   <h1>Terms of Use</h1>
@@ -35,5 +36,5 @@ import SimpleLayout from '../layouts/SimpleLayout.astro';
   <p>These terms are governed by applicable law. Any disputes will be resolved in the appropriate jurisdiction.</p>
 
   <h2>Contact</h2>
-  <p>For questions about these terms, contact us via the details on the <a href="/about/#contact">About page</a>.</p>
+  <p>For questions about these terms, contact us via the details on the <a href={url('/about/#contact')}>About page</a>.</p>
 </SimpleLayout>

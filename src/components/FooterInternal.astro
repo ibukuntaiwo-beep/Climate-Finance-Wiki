@@ -1,3 +1,6 @@
+---
+import { url } from '../lib/url';
+---
 <footer class="site-footer">
   <div class="site-footer-inner">
     <div class="site-footer-brand">
@@ -8,27 +11,27 @@
     <div>
       <h3 class="site-footer-section-title">Categories</h3>
       <div class="site-footer-links">
-        <a href="/concepts/">Concepts</a>
-        <a href="/instruments/">Instruments</a>
-        <a href="/actors/">Actors</a>
-        <a href="/frameworks/">Frameworks</a>
-        <a href="/case-studies/">Case Studies</a>
+        <a href={url('/concepts/')}>Concepts</a>
+        <a href={url('/instruments/')}>Instruments</a>
+        <a href={url('/actors/')}>Actors</a>
+        <a href={url('/frameworks/')}>Frameworks</a>
+        <a href={url('/case-studies/')}>Case Studies</a>
       </div>
     </div>
     <div>
       <h3 class="site-footer-section-title">Wiki</h3>
       <div class="site-footer-links">
-        <a href="/about/">About this project</a>
-        <a href="/about/#how-to-use">How to use the wiki</a>
-        <a href="/about/#contact">Contact</a>
+        <a href={url('/about/')}>About this project</a>
+        <a href={url('/about/#how-to-use')}>How to use the wiki</a>
+        <a href={url('/about/#contact')}>Contact</a>
       </div>
     </div>
   </div>
   <div class="site-footer-bottom">
     <span class="site-footer-copyright">&copy; 2026 Red Barrow. All rights reserved.</span>
     <div class="site-footer-legal">
-      <a href="/privacy/">Privacy</a>
-      <a href="/terms/">Terms</a>
+      <a href={url('/privacy/')}>Privacy</a>
+      <a href={url('/terms/')}>Terms</a>
     </div>
   </div>
 </footer>

@@ -1,3 +1,6 @@
+---
+import { url } from '../lib/url';
+---
 <footer class="footer-landing">
   <div class="footer-inner">
     <div class="footer-top">
@@ -5,11 +8,11 @@
       <span class="footer-date">Last updated April 2026</span>
     </div>
     <nav class="footer-nav">
-      <a href="/concepts/">Concepts</a>
-      <a href="/instruments/">Instruments</a>
-      <a href="/actors/">Actors</a>
-      <a href="/frameworks/">Frameworks</a>
-      <a href="/case-studies/">Case Studies</a>
+      <a href={url('/concepts/')}>Concepts</a>
+      <a href={url('/instruments/')}>Instruments</a>
+      <a href={url('/actors/')}>Actors</a>
+      <a href={url('/frameworks/')}>Frameworks</a>
+      <a href={url('/case-studies/')}>Case Studies</a>
     </nav>
   </div>
 </footer>

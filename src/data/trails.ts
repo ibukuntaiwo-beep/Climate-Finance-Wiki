@@ -1,3 +1,5 @@
+import { url } from '../lib/url';
+
 export const trails = [
   {
     name: 'The Greenwashing Trail',
@@ -50,8 +52,8 @@ export function findTrailForArticle(category: string, slug: string) {
         trailName: trail.name,
         current: idx + 1,
         total: trail.articles.length,
-        prevHref: prev ? `/${prev.category}/${prev.slug}/` : undefined,
-        nextHref: next ? `/${next.category}/${next.slug}/` : undefined,
+        prevHref: prev ? url(`/${prev.category}/${prev.slug}/`) : undefined,
+        nextHref: next ? url(`/${next.category}/${next.slug}/`) : undefined,
       };
     }
   }

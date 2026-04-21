@@ -1,5 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import { url } from '../lib/url';
 import KeyStats from '../components/KeyStats.astro';
 import Timeline from '../components/Timeline.astro';
 import BeforeAfter from '../components/BeforeAfter.astro';
@@ -33,15 +34,15 @@ const { title, subtitle, stats, seeAlso, unexpected, sources, caseStudy, trail }
 
 const seeAlsoHrefs = seeAlso.map(a => {
   const cat = a.category.toLowerCase() === 'case studies' ? 'case-studies' : a.category.toLowerCase();
-  return { ...a, href: `/${cat}/${a.slug}/` };
+  return { ...a, href: url(`/${cat}/${a.slug}/`) };
 });
 ---
 <BaseLayout title={`${title} | Climate Finance Wiki`} footerType="internal">
   <header class="case-header">
     <div class="case-header-inner">
       <div class="breadcrumbs anim-1">
-        <a href="/">Home</a><span class="sep">&rarr;</span>
-        <a href="/case-studies/">Case Studies</a><span class="sep">&rarr;</span>
+        <a href={url('/')}>Home</a><span class="sep">&rarr;</span>
+        <a href={url('/case-studies/')}>Case Studies</a><span class="sep">&rarr;</span>
         {title}
       </div>
       <div class="case-label anim-2">Case Study</div>

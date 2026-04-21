@@ -10,6 +10,6 @@ export default defineConfig({
     format: 'directory'
   },
   markdown: {
-    remarkPlugins: [remarkWikilinks]
+    remarkPlugins: [[remarkWikilinks, { base: '/Climate-Finance-Wiki' }]]
   }
 });

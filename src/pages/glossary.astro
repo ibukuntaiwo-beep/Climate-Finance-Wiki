@@ -1,35 +1,36 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { url } from '../lib/url';
 
 const glossaryTerms = [
-  { term: 'Adaptation', def: 'Actions that reduce vulnerability to the impacts of climate change already locked in.', article: '/concepts/adaptation-vs-mitigation/' },
+  { term: 'Adaptation', def: 'Actions that reduce vulnerability to the impacts of climate change already locked in.', article: url('/concepts/adaptation-vs-mitigation/') },
   { term: 'Blended Finance', def: 'The strategic use of public or philanthropic capital to de-risk and mobilise private investment in climate outcomes.', article: null },
-  { term: 'Carbon Neutral', def: 'Achieving zero net carbon dioxide emissions, typically by offsetting residual emissions.', article: '/concepts/net-zero-vs-carbon-neutral/' },
-  { term: 'Carbon Offsets', def: 'Credits representing one tonne of CO\u2082 reduced or removed from the atmosphere.', article: '/instruments/carbon-offsets/' },
-  { term: 'Climate Action 100+', def: 'An investor-led initiative pressing the world\'s largest corporate emitters to take action.', article: '/actors/climate-action-100-plus/' },
-  { term: 'Climate Finance', def: 'The flow of capital directed at reducing emissions, building resilience, and managing climate-related financial risk.', article: '/concepts/climate-finance/' },
-  { term: 'CSRD', def: 'EU regulation requiring large companies to report on sustainability topics under European Sustainability Reporting Standards.', article: '/frameworks/csrd/' },
-  { term: 'EU Taxonomy', def: 'The EU\'s classification system defining what economic activities qualify as environmentally sustainable.', article: '/frameworks/eu-taxonomy/' },
-  { term: 'GFANZ', def: 'A coalition of leading financial institutions committed to transitioning portfolios to net zero by 2050.', article: '/actors/gfanz/' },
-  { term: 'Green Bond Principles', def: 'Voluntary guidelines by ICMA setting out best practice for green bond issuance across four pillars.', article: '/frameworks/green-bond-principles/' },
-  { term: 'Green Bonds', def: 'Bonds whose proceeds are ring-fenced exclusively for qualifying environmental projects.', article: '/instruments/green-bonds/' },
-  { term: 'Greenwashing', def: 'Making misleading or unsubstantiated claims about the environmental credentials of a product, service, or institution.', article: '/concepts/greenwashing/' },
-  { term: 'IFRS S1 and S2', def: 'The ISSB\'s standards for general sustainability (S1) and climate-specific (S2) disclosure.', article: '/frameworks/ifrs-s1-s2/' },
-  { term: 'IPCC', def: 'The UN body that synthesises global climate science and produces Assessment Reports.', article: '/actors/ipcc/' },
-  { term: 'MDBs', def: 'Institutions like the World Bank that use public capital to mobilise private climate finance.', article: '/actors/development-finance-institutions/' },
-  { term: 'Mitigation', def: 'Actions that reduce or prevent greenhouse gas emissions.', article: '/concepts/adaptation-vs-mitigation/' },
-  { term: 'Net Zero', def: 'A state in which greenhouse gas emissions entering the atmosphere are balanced by removals.', article: '/concepts/net-zero-vs-carbon-neutral/' },
-  { term: 'Paris Agreement', def: 'The 2015 international treaty committing signatories to limit global warming to well below 2\u00b0C.', article: '/frameworks/paris-agreement/' },
-  { term: 'Physical Risks', def: 'Financial risks arising from the direct physical effects of climate change.', article: '/concepts/physical-risks/' },
-  { term: 'Science Based Targets', def: 'Emissions reduction targets validated as consistent with limiting warming to 1.5\u00b0C or well below 2\u00b0C.', article: '/actors/science-based-targets-initiative/' },
-  { term: 'Stranded Assets', def: 'Assets that have lost value or must be retired early due to climate policy, regulation, or market shifts.', article: '/concepts/stranded-assets/' },
-  { term: 'Sustainability-Linked Bonds', def: 'Bonds whose financial terms change if the issuer hits or misses pre-agreed sustainability targets.', article: '/instruments/sustainability-linked-bonds/' },
-  { term: 'TCFD', def: 'A framework for companies to disclose climate-related risks and opportunities.', article: '/frameworks/tcfd/' },
-  { term: 'The 1.5\u00b0C Threshold', def: 'The aspirational warming limit set by the Paris Agreement. Breached on an annual basis in 2024.', article: '/concepts/the-1.5c-threshold/' },
-  { term: 'The Greenium', def: 'The lower borrowing cost that green bond issuers may achieve compared to conventional bonds.', article: '/instruments/the-greenium/' },
-  { term: 'Transition Bonds', def: 'Bonds designed to finance the decarbonisation of high-emitting sectors.', article: '/instruments/transition-bonds/' },
-  { term: 'Transition Risks', def: 'Financial risks arising from the shift to a low-carbon economy.', article: '/concepts/transition-risks/' },
-  { term: 'UNFCCC and COP', def: 'The UN Framework Convention on Climate Change and its annual Conference of the Parties.', article: '/actors/unfccc-and-cop/' },
+  { term: 'Carbon Neutral', def: 'Achieving zero net carbon dioxide emissions, typically by offsetting residual emissions.', article: url('/concepts/net-zero-vs-carbon-neutral/') },
+  { term: 'Carbon Offsets', def: 'Credits representing one tonne of CO\u2082 reduced or removed from the atmosphere.', article: url('/instruments/carbon-offsets/') },
+  { term: 'Climate Action 100+', def: 'An investor-led initiative pressing the world\'s largest corporate emitters to take action.', article: url('/actors/climate-action-100-plus/') },
+  { term: 'Climate Finance', def: 'The flow of capital directed at reducing emissions, building resilience, and managing climate-related financial risk.', article: url('/concepts/climate-finance/') },
+  { term: 'CSRD', def: 'EU regulation requiring large companies to report on sustainability topics under European Sustainability Reporting Standards.', article: url('/frameworks/csrd/') },
+  { term: 'EU Taxonomy', def: 'The EU\'s classification system defining what economic activities qualify as environmentally sustainable.', article: url('/frameworks/eu-taxonomy/') },
+  { term: 'GFANZ', def: 'A coalition of leading financial institutions committed to transitioning portfolios to net zero by 2050.', article: url('/actors/gfanz/') },
+  { term: 'Green Bond Principles', def: 'Voluntary guidelines by ICMA setting out best practice for green bond issuance across four pillars.', article: url('/frameworks/green-bond-principles/') },
+  { term: 'Green Bonds', def: 'Bonds whose proceeds are ring-fenced exclusively for qualifying environmental projects.', article: url('/instruments/green-bonds/') },
+  { term: 'Greenwashing', def: 'Making misleading or unsubstantiated claims about the environmental credentials of a product, service, or institution.', article: url('/concepts/greenwashing/') },
+  { term: 'IFRS S1 and S2', def: 'The ISSB\'s standards for general sustainability (S1) and climate-specific (S2) disclosure.', article: url('/frameworks/ifrs-s1-s2/') },
+  { term: 'IPCC', def: 'The UN body that synthesises global climate science and produces Assessment Reports.', article: url('/actors/ipcc/') },
+  { term: 'MDBs', def: 'Institutions like the World Bank that use public capital to mobilise private climate finance.', article: url('/actors/development-finance-institutions/') },
+  { term: 'Mitigation', def: 'Actions that reduce or prevent greenhouse gas emissions.', article: url('/concepts/adaptation-vs-mitigation/') },
+  { term: 'Net Zero', def: 'A state in which greenhouse gas emissions entering the atmosphere are balanced by removals.', article: url('/concepts/net-zero-vs-carbon-neutral/') },
+  { term: 'Paris Agreement', def: 'The 2015 international treaty committing signatories to limit global warming to well below 2\u00b0C.', article: url('/frameworks/paris-agreement/') },
+  { term: 'Physical Risks', def: 'Financial risks arising from the direct physical effects of climate change.', article: url('/concepts/physical-risks/') },
+  { term: 'Science Based Targets', def: 'Emissions reduction targets validated as consistent with limiting warming to 1.5\u00b0C or well below 2\u00b0C.', article: url('/actors/science-based-targets-initiative/') },
+  { term: 'Stranded Assets', def: 'Assets that have lost value or must be retired early due to climate policy, regulation, or market shifts.', article: url('/concepts/stranded-assets/') },
+  { term: 'Sustainability-Linked Bonds', def: 'Bonds whose financial terms change if the issuer hits or misses pre-agreed sustainability targets.', article: url('/instruments/sustainability-linked-bonds/') },
+  { term: 'TCFD', def: 'A framework for companies to disclose climate-related risks and opportunities.', article: url('/frameworks/tcfd/') },
+  { term: 'The 1.5\u00b0C Threshold', def: 'The aspirational warming limit set by the Paris Agreement. Breached on an annual basis in 2024.', article: url('/concepts/the-1.5c-threshold/') },
+  { term: 'The Greenium', def: 'The lower borrowing cost that green bond issuers may achieve compared to conventional bonds.', article: url('/instruments/the-greenium/') },
+  { term: 'Transition Bonds', def: 'Bonds designed to finance the decarbonisation of high-emitting sectors.', article: url('/instruments/transition-bonds/') },
+  { term: 'Transition Risks', def: 'Financial risks arising from the shift to a low-carbon economy.', article: url('/concepts/transition-risks/') },
+  { term: 'UNFCCC and COP', def: 'The UN Framework Convention on Climate Change and its annual Conference of the Parties.', article: url('/actors/unfccc-and-cop/') },
 ];
 
 // Group by first letter
@@ -44,7 +45,7 @@ const letters = Object.keys(grouped).sort();
 <BaseLayout title="Glossary | Climate Finance Wiki" footerType="internal">
   <div class="breadcrumb-strip">
     <div class="breadcrumb-inner">
-      <a href="/">Home</a>
+      <a href={url('/')}>Home</a>
       <span class="breadcrumb-sep">&rarr;</span>
       <span class="breadcrumb-current">Glossary</span>
     </div>
