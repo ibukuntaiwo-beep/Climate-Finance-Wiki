@@ -1,43 +1,29 @@
-# Astro Starter Kit: Minimal
+# Climate Finance Wiki
 
-```sh
-npm create astro@latest -- --template minimal
-```
+A curated reference for communications professionals navigating climate finance.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+48 articles across five categories, 240+ cross-references, and three guided reading trails. Every article is written in plain English, takes 2-3 minutes to read, and is built for the people who brief teams, write copy, and spot misleading claims.
 
-## 🚀 Project Structure
+## What's inside
 
-Inside of your Astro project, you'll see the following folders and files:
+**Categories**
+- Concepts: climate finance, greenwashing, stranded assets, just transition, and more
+- Instruments: green bonds, carbon offsets, cap-and-trade, sustainability-linked bonds
+- Frameworks: Paris Agreement, EU Taxonomy, TCFD, CSRD, IFRS S1/S2
+- Actors: UNFCCC, GFANZ, Mark Carney, Climate Action 100+, CDP
+- Case Studies: VW Dieselgate, HSBC greenwashing, PG&E bankruptcy, Seychelles blue bond
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+**Guided trails**
+- *Follow the Money* -- how climate finance flows and where it gets stuck (6 parts)
+- *The Greenwashing Trail* -- from misleading claims to criminal charges (6 parts)
+- *Architecture of Climate Policy* -- the agreements, taxonomies, and standards that set the rules (6 parts)
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+**Features**
+- New featured case study on every page refresh
+- Connected topics with wikilinks between articles
+- Key stats panels, callout boxes, and sidebar navigation
+- Full-text search across all articles and glossary terms
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## A Red Barrow publication
 
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Built and maintained by [Ibukun Taiwo](https://github.com/ibukuntaiwo-beep).
