@@ -4,10 +4,10 @@ subtitle: "Assets that lose value earlier or more severely than expected due to 
 category: "concepts"
 type: "article"
 stats:
-  - { value: "2011", label: "Carbon Tracker 'carbon bubble' analysis" }
-  - { value: "#1", label: "Fossil fuel reserves as largest category" }
-  - { value: "3 forces", label: "Physical, transition, and market" }
-  - { value: "Required", label: "Disclosure under TCFD" }
+  - { value: "$2tn+", label: "In fossil fuel assets at risk of stranding" }
+  - { value: "82%", label: "Of coal reserves unburnable under 2°C (Nature, 2015)" }
+  - { value: "2011", label: "Year Carbon Tracker coined the 'carbon bubble'" }
+  - { value: "3 forces", label: "Physical, transition, and market risk drivers" }
 seeAlso:
   - { title: "Physical Risks", category: "Concepts", description: "Climate impacts that can strand assets directly through damage or uninsurability.", slug: "physical-risks" }
   - { title: "Transition Risks", category: "Concepts", description: "Policy, technology, and market shifts that make operating certain assets uneconomical.", slug: "transition-risks" }

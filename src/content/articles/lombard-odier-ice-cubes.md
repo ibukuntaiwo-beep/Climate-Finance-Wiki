@@ -4,10 +4,10 @@ subtitle: "A Swiss bank created a four-word metaphor that became the standard la
 category: "case-studies"
 type: "case-study"
 stats:
-  - { value: "4", label: "Company Categories" }
-  - { value: "Trajectory", label: "What Matters Most" }
-  - { value: "CVI", label: "Framework Name" }
-  - { value: "2022", label: "Podcast Launch" }
+  - { value: "4", label: "Company categories in the Climate Value Impact framework" }
+  - { value: "2021", label: "Year CVI framework first published" }
+  - { value: "$75B", label: "Assets managed by Lombard Odier Investment Managers" }
+  - { value: "Trajectory", label: "The key variable, not current emissions level" }
 seeAlso:
   - { title: "Transition Risks", category: "Concepts", description: "Burning logs are the corporate embodiment of transition risk, high-emitting with no credible plan.", slug: "transition-risks" }
   - { title: "Stranded Assets", category: "Concepts", description: "Burning logs as the company-level version of stranded asset risk.", slug: "stranded-assets" }

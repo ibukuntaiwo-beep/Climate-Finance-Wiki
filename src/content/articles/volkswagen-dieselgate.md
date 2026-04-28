@@ -31,12 +31,12 @@ caseStudy:
   visualFormat: "timeline"
   timeline:
     - { year: "2009", description: "First vehicles with defeat device software enter production" }
-    - { year: "2009&ndash;2015", description: "Approximately 11 million cars sold worldwide with cheat software under the &ldquo;Clean Diesel&rdquo; campaign" }
+    - { year: "2009-2015", description: "Approximately 11 million cars sold worldwide with cheat software under the \"Clean Diesel\" campaign" }
     - { year: "2014", description: "West Virginia University researchers discover real-world emissions anomalies during on-road testing" }
     - { year: "Sep 2015", description: "EPA issues notice of violation; CEO Martin Winterkorn resigns days later" }
     - { year: "2016", description: "FTC charges Volkswagen with deceiving consumers; civil settlements begin" }
     - { year: "Jan 2017", description: "VW pleads guilty to three criminal felony counts; $14.7B US settlement finalised" }
-    - { year: "2017&ndash;ongoing", description: "European authorities pursue parallel cases; additional penalties in Germany and across Europe" }
+    - { year: "2017 onwards", description: "European authorities pursue parallel cases; additional penalties in Germany and across Europe" }
   debate: |
     <p>Dieselgate raises a fundamental question about corporate environmental claims: where does optimistic marketing end and fraud begin? Volkswagen did not merely exaggerate, it engineered deception into the product itself. But the case sits at one end of a spectrum. Many companies make environmental claims that are technically accurate in isolation but misleading in context. The question for regulators, and for the communications professionals who advise companies, is how far down that spectrum enforcement should reach.</p>
     <p>Critics argue that Dieselgate was an extreme outlier, deliberate criminal fraud, and that using it as a reference point for all greenwashing risks overstating the problem. Most companies that overstate their environmental credentials do so through carelessness or ambition, not conspiracy. Treating every vague sustainability claim as a potential Dieselgate creates a chilling effect that discourages genuine communication about real, if imperfect, progress.</p>

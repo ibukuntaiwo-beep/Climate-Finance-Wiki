@@ -1,12 +1,12 @@
 ---
 title: "Marfrig Transition Bond"
-subtitle: "A meatpacker labelled a bond &lsquo;transition&rsquo; to clean up its supply chain. Then proceeds were traced to illegal Amazon deforestation."
+subtitle: "A meatpacker labelled a bond 'transition' to clean up its supply chain. Then proceeds were traced to illegal Amazon deforestation."
 category: "case-studies"
 type: "case-study"
 stats:
   - { value: "$500M", label: "Bond Issued" }
   - { value: "3&times;", label: "Oversubscribed" }
-  - { value: "~$1B", label: "Cattle Purchases" }
+  - { value: "~$1B", label: "Cattle purchases linked to deforested Amazon land" }
   - { value: "2019", label: "Year Issued" }
 seeAlso:
   - { title: "Transition Bonds", category: "Concepts", description: "The instrument category whose credibility the Marfrig case challenged.", slug: "transition-bonds" }

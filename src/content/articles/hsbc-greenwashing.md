@@ -1,6 +1,6 @@
 ---
 title: "HSBC Greenwashing"
-subtitle: "A UK regulator banned a major bank&rsquo;s ads for promoting tree-planting while it continued financing fossil fuels at scale."
+subtitle: "A UK regulator banned a major bank's ads for promoting tree-planting while it continued financing fossil fuels at scale."
 category: "case-studies"
 type: "case-study"
 stats:

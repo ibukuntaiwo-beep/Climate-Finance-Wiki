@@ -6,7 +6,7 @@ type: "case-study"
 stats:
   - { value: "$1.5B", label: "First SLB Issued" }
   - { value: "$500B+", label: "SLB Market by 2023" }
-  - { value: "$11B", label: "Bonds with Step-Ups" }
+  - { value: "$11B", label: "ENEL bonds subject to penalty coupon if targets missed" }
   - { value: "2019", label: "Market Created" }
 seeAlso:
   - { title: "Sustainability-Linked Bonds", category: "Concepts", description: "The instrument category ENEL invented with its 2019 issuance.", slug: "sustainability-linked-bonds" }
@@ -30,11 +30,11 @@ caseStudy:
     <p>For communications professionals advising on SLB issuance or corporate climate commitments, the ENEL case provides both the template for what rigorous target-setting looks like and the benchmark for what accountability looks like when targets are missed.</p>
   visualFormat: "timeline"
   timeline:
-    - { year: "Sep 2019", description: "ENEL issues world&rsquo;s first major corporate sustainability-linked bond, $1.5B with a 25bp coupon step-up tied to 55% renewable capacity by 2021" }
-    - { year: "2019&ndash;2020", description: "Other issuers follow ENEL&rsquo;s model; ICMA publishes Sustainability-Linked Bond Principles in 2020" }
-    - { year: "2019&ndash;2023", description: "SLB market grows from zero to over $500B in total issuance" }
+    - { year: "Sep 2019", description: "ENEL issues world's first major corporate sustainability-linked bond, $1.5B with a 25bp coupon step-up tied to 55% renewable capacity by 2021" }
+    - { year: "2019-2020", description: "Other issuers follow ENEL's model; ICMA publishes Sustainability-Linked Bond Principles in 2020" }
+    - { year: "2019-2023", description: "SLB market grows from zero to over $500B in total issuance" }
     - { year: "Late 2023", description: "ENEL triggers coupon step-ups on approximately $11B of bonds after missing sustainability targets" }
-    - { year: "2024", description: "ENEL&rsquo;s step-ups become the defining test case for SLB market credibility and target-setting rigour" }
+    - { year: "2024", description: "ENEL's step-ups become the defining test case for SLB market credibility and target-setting rigour" }
   debate: |
     <p>The ENEL case crystallises the central tension in sustainability-linked finance: should the market reward the existence of accountability mechanisms, or should it demand that those mechanisms actually change behaviour? ENEL&rsquo;s step-ups worked as designed, but if the penalty is small enough to absorb without altering corporate strategy, the instrument risks becoming a sophisticated form of greenwashing rather than a driver of real transition.</p>
     <p>Supporters argue that the SLB structure is inherently superior to traditional green bonds because it ties financing to outcomes, not inputs. Even when targets are missed, the step-up creates transparency, investors and the public can see exactly where the issuer fell short. Perfection is not the standard; accountability is. And the market is self-correcting: future SLBs will face pressure to set more ambitious targets and larger penalties precisely because ENEL&rsquo;s experience demonstrated the cost of insufficient rigour.</p>

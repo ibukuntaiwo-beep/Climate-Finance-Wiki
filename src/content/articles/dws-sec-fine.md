@@ -1,6 +1,6 @@
 ---
 title: "DWS SEC Fine"
-subtitle: "A whistleblower exposed the gap between an asset manager&rsquo;s ESG marketing and its actual investment practice."
+subtitle: "A whistleblower exposed the gap between an asset manager's ESG marketing and its actual investment practice."
 category: "case-studies"
 type: "case-study"
 stats:

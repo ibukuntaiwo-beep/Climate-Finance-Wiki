@@ -52,7 +52,7 @@ const seeAlsoHrefs = seeAlso.map(a => {
   </header>
 
   <div class="stats-panel anim-5">
-    <div class="stats-panel-inner">
+    <div class="stats-panel-inner" style={`grid-template-columns: repeat(${stats.length}, 1fr);`}>
       {stats.map(stat => (
         <div class="stat-item">
           <div class="stat-number" set:html={stat.value}></div>

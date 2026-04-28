@@ -1,13 +1,13 @@
 ---
 title: "Seychelles Blue Bond"
-subtitle: "The world&rsquo;s smallest economies are pioneering the most innovative climate finance instruments."
+subtitle: "The world's smallest economies are pioneering the most innovative climate finance instruments."
 category: "case-studies"
 type: "case-study"
 stats:
   - { value: "$15M", label: "Bond Raised" }
   - { value: "100K", label: "Population" }
   - { value: "115", label: "Islands" }
-  - { value: "2018", label: "World&rsquo;s First" }
+  - { value: "2018", label: "World's First" }
 seeAlso:
   - { title: "Green Bonds", category: "Concepts", description: "The sovereign labelled bond category that the blue bond extended to ocean conservation.", slug: "green-bonds" }
   - { title: "Development Finance Institutions", category: "Concepts", description: "The World Bank guarantee and concessional financing that made the deal viable.", slug: "development-finance-institutions" }
