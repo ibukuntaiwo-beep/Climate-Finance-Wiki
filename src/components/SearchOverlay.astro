@@ -11,7 +11,7 @@
       </button>
     </div>
     <div class="search-overlay-results" id="searchResults">
-      <div class="search-overlay-hint">Type to search across all 48 articles and 30 glossary terms</div>
+      <div class="search-overlay-hint">Type to search across all 52 articles and 30 glossary terms</div>
     </div>
   </div>
 </div>
@@ -81,7 +81,7 @@
     overlay.classList.add('active');
     overlay.setAttribute('aria-hidden', 'false');
     input.value = '';
-    results.innerHTML = '<div class="search-overlay-hint">Type to search across all 48 articles and 30 glossary terms</div>';
+    results.innerHTML = '<div class="search-overlay-hint">Type to search across all 52 articles and 30 glossary terms</div>';
     setTimeout(function() { input.focus(); }, 100);
     document.body.style.overflow = 'hidden';
   }
@@ -114,7 +114,7 @@
     input.addEventListener('input', function() {
       var q = this.value.toLowerCase().trim();
       if (!q) {
-        results.innerHTML = '<div class="search-overlay-hint">Type to search across all 48 articles and 30 glossary terms</div>';
+        results.innerHTML = '<div class="search-overlay-hint">Type to search across all 52 articles and 30 glossary terms</div>';
         return;
       }
       var matches = articles.filter(function(a) {
