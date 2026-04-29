@@ -6,7 +6,13 @@ import { categories } from '../../data/categories';
 
 const catData = categories.find(c => c.slug === 'frameworks')!;
 const allArticles = await getCollection('articles');
-const articles = allArticles.filter(a => a.data.category === 'frameworks');
+const articles = allArticles
+  .filter(a => a.data.category === 'frameworks')
+  .sort((a, b) => {
+    const aFoundational = catData.foundational.includes(a.id) ? 0 : 1;
+    const bFoundational = catData.foundational.includes(b.id) ? 0 : 1;
+    return aFoundational - bFoundational;
+  });
 const otherCategories = categories.filter(c => c.slug !== 'frameworks');
 ---
 <BaseLayout title="Frameworks | Climate Finance Wiki" footerType="internal">

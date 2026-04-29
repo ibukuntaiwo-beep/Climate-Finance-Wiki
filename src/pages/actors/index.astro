@@ -6,7 +6,13 @@ import { categories } from '../../data/categories';
 
 const catData = categories.find(c => c.slug === 'actors')!;
 const allArticles = await getCollection('articles');
-const articles = allArticles.filter(a => a.data.category === 'actors');
+const articles = allArticles
+  .filter(a => a.data.category === 'actors')
+  .sort((a, b) => {
+    const aFoundational = catData.foundational.includes(a.id) ? 0 : 1;
+    const bFoundational = catData.foundational.includes(b.id) ? 0 : 1;
+    return aFoundational - bFoundational;
+  });
 const otherCategories = categories.filter(c => c.slug !== 'actors');
 ---
 <BaseLayout title="Actors | Climate Finance Wiki" footerType="internal">

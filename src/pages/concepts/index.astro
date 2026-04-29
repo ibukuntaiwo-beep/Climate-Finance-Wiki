@@ -6,7 +6,13 @@ import { categories } from '../../data/categories';
 
 const catData = categories.find(c => c.slug === 'concepts')!;
 const allArticles = await getCollection('articles');
-const articles = allArticles.filter(a => a.data.category === 'concepts');
+const articles = allArticles
+  .filter(a => a.data.category === 'concepts')
+  .sort((a, b) => {
+    const aFoundational = catData.foundational.includes(a.id) ? 0 : 1;
+    const bFoundational = catData.foundational.includes(b.id) ? 0 : 1;
+    return aFoundational - bFoundational;
+  });
 const otherCategories = categories.filter(c => c.slug !== 'concepts');
 ---
 <BaseLayout title="Concepts | Climate Finance Wiki" footerType="internal">
