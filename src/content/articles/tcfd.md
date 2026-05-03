@@ -23,7 +23,7 @@ unexpected:
 
 The Task Force on Climate-related Financial Disclosures (TCFD) was established in 2015 by the Financial Stability Board (FSB), at the instigation of [[Mark Carney and the Tragedy of the Horizon|Mark Carney]], then FSB Chair and Governor of the Bank of England. Its mandate was to develop voluntary, consistent recommendations for how companies should disclose climate-related risks and opportunities to investors and lenders. The final recommendations were published in June 2017.
 
-TCFD's core insight was that climate change is a financial risk, not just an environmental one, and that markets cannot price that risk if companies do not disclose it. This was not a radical idea in environmental circles, but it was genuinely new language for mainstream financial regulators and the companies they oversaw. TCFD gave [[Climate Finance]] practitioners a shared vocabulary and a structured way to engage with boards and CFOs.
+TCFD's core insight was that beyond being an environmental problem, climate change is a financial risk, and that markets cannot price that risk if companies do not disclose it. This was not a radical idea in environmental circles, but it was genuinely new language for mainstream financial regulators and the companies they oversaw. TCFD gave [[Climate Finance]] practitioners a shared vocabulary and a structured way to engage with boards and CFOs.
 
 Adoption grew faster than almost anyone predicted. By 2023, more than 4,000 organisations in over 100 countries had expressed support. Major regulators, including the UK's FCA, New Zealand, Switzerland, and Hong Kong, moved to make TCFD-aligned disclosure mandatory. The framework became the de facto global standard.
 
@@ -45,7 +45,7 @@ TCFD organised climate disclosure around four interconnected themes. These pilla
 
 TCFD gave mainstream finance its standard taxonomy of climate risk. Physical risks are the direct impacts of a changing climate, storms, floods, heat, drought, split between acute (event-driven) and chronic (gradual shifts). Transition risks are the financial consequences of moving to a low-carbon economy, policy changes, technology shifts, market repricing, reputational damage. See [[Physical Risks]] and [[Transition Risks]] for full treatments.
 
-This two-category framework is now used by central banks, regulators, rating agencies, and every major disclosure standard. It is one of TCFD's most durable contributions.
+This two-category framework is now used by central banks, regulators, rating agencies, and every major disclosure standard.
 
 ## Scenario Analysis
 

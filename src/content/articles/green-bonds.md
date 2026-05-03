@@ -27,7 +27,7 @@ The market is governed by the [[Green Bond Principles]] (GBP), a voluntary frame
 
 Green bonds have become the backbone of the broader [[Climate Finance]] market. By Q3 2024, cumulative issuance of thematic bonds, a category that includes green, social, and sustainability bonds, had surpassed USD 5.4 trillion. Green bonds account for the largest share of that total, issued by sovereign governments, development banks, municipalities, and corporations across every major economy.
 
-The asset class sits at an interesting intersection: it channels private capital toward climate solutions while giving issuers a reputational and potentially financial reward. That financial reward, a lower borrowing cost compared to conventional bonds, is known as [[The Greenium]].
+The asset class has a dual function: it channels private capital toward climate solutions while giving issuers a reputational and potentially financial reward. That financial reward, a lower borrowing cost compared to conventional bonds, is known as [[The Greenium]].
 
 ## The Four Pillars
 

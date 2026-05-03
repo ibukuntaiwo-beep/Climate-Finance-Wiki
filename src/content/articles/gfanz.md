@@ -42,10 +42,10 @@ GFANZ ran into serious political headwinds in the United States. From 2022 onwar
 
 This created a communications challenge that GFANZ was structurally ill-equipped to handle. A voluntary alliance designed to signal ambition struggles to hold together when membership itself becomes a political liability for some members. The exits attracted more media coverage than the original launches, and each departure was framed as evidence that net-zero finance commitments were fragile.
 
-By 2025, GFANZ had restructured into an independent "Principals Group," stepping back from the UN-affiliated Race to Zero framework and operating with a lower public profile. Whether this represented a pragmatic adaptation or a significant retreat from ambition depends on who you ask, and that interpretive question sits squarely in the communications brief for anyone working in this space.
+By 2025, GFANZ had restructured into an independent "Principals Group," stepping back from the UN-affiliated Race to Zero framework and operating with a lower public profile. Whether this represented pragmatic adaptation or a significant retreat from ambition remains contested.
 
 ## GFANZ and the Broader Ecosystem
 
 GFANZ was designed to sit at the top of the [[Climate Finance]] architecture, a high-level coordination body that would give credibility and momentum to more granular initiatives. Its members were expected to use tools like the [[Science Based Targets Initiative]] to validate their commitments, report via [[CDP]], and engage portfolio companies through [[Climate Action 100+]].
 
-The GFANZ experiment raised fundamental questions about the limits of voluntary private-sector action. Mandatory frameworks, the [[EU Taxonomy]], [[CSRD]], and [[SFDR]] in Europe, provide a different model, one where the rules are set by regulators rather than negotiated among willing participants. The tension between voluntary coalitions and mandatory frameworks is one of the defining debates in climate finance, and GFANZ's trajectory sits at its centre.
+The GFANZ experiment tested the limits of voluntary private-sector action. Mandatory frameworks, the [[EU Taxonomy]], [[CSRD]], and [[SFDR]] in Europe, provide a different model, one where the rules are set by regulators rather than negotiated among willing participants. The tension between voluntary coalitions and mandatory frameworks is a central debate in climate finance, and GFANZ's trajectory sits at its centre.

@@ -33,7 +33,7 @@ The most consequential concept introduced by CSRD is double materiality. Traditi
 
 CSRD requires both perspectives simultaneously. Companies must also report on their impact on people and the environment, "impact materiality" or "inside-out" materiality. A company must assess and disclose both how climate change threatens its operations and how its own emissions and activities affect the climate. Neither perspective is optional.
 
-This is philosophically distinct from the approach taken by [[IFRS S1 and S2|ISSB]], which is explicitly investor-focused and uses single (financial) materiality. The difference is not just philosophical, it affects what gets reported, how much, and to whom. ESRS tends to require more disclosure than ISSB S2 precisely because the audience is broader: civil society and affected communities, not just investors.
+This is philosophically distinct from the approach taken by [[IFRS S1 and S2|ISSB]], which is explicitly investor-focused and uses single (financial) materiality. Beyond the philosophical distinction, it affects what gets reported, how much, and to whom. ESRS tends to require more disclosure than ISSB S2 precisely because the audience is broader: civil society and affected communities, not just investors.
 
 ## What Companies Must Report
 

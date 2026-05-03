@@ -25,7 +25,7 @@ Greenwashing is when the environmental story an organisation tells is better tha
 
 The term has been around since the 1980s, but it has become a central concern of [[Climate Finance]] in the last decade as money has flooded into sustainable investment products and regulatory frameworks have multiplied. The more financial value attached to a "green" label, the stronger the incentive to claim it without earning it.
 
-Greenwashing is not just a reputational problem, it is increasingly a legal one. Regulators in the EU, UK, US, and Australia have all moved to prosecute misleading environmental claims. The [[SFDR]] in the EU, for instance, requires investment products labelled as sustainable to meet specific criteria. The [[EU Taxonomy]] sets standards for what economic activities qualify as environmentally sustainable. Both were partly designed to make greenwashing harder to get away with.
+Beyond being a reputational problem, greenwashing is increasingly a legal one. Regulators in the EU, UK, US, and Australia have all moved to prosecute misleading environmental claims. The [[SFDR]] in the EU, for instance, requires investment products labelled as sustainable to meet specific criteria. The [[EU Taxonomy]] sets standards for what economic activities qualify as environmentally sustainable. Both were partly designed to make greenwashing harder to get away with.
 
 ## The Spectrum of Greenwashing
 

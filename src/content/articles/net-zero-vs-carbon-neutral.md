@@ -21,7 +21,7 @@ unexpected:
 
 ## Overview
 
-Carbon neutral and net zero are both used to describe a state where an organisation's greenhouse gas emissions are "balanced" in some sense. The gap between them is not semantic, it is the difference between a genuine emissions reduction strategy and an accounting exercise.
+Carbon neutral and net zero are both used to describe a state where an organisation's greenhouse gas emissions are "balanced" in some sense. The gap between them goes beyond semantics, it is the difference between a genuine emissions reduction strategy and an accounting exercise.
 
 Carbon neutral means that a company offsets its emissions by purchasing [[Carbon Offsets]], credits representing emissions reductions made somewhere else, like a forest preservation project or a methane capture scheme. The company does not necessarily reduce its own emissions at all. It keeps emitting and buys enough credits to declare the emissions balanced. Done well, this can be legitimate. Done poorly or misleadingly, it is a form of [[Greenwashing]].
 
