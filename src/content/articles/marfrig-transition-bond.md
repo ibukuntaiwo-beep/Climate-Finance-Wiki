@@ -17,9 +17,9 @@ unexpected:
   headline: "The board chairman ran the feedlots"
   body: "Approximately $1 billion of bond proceeds went to cattle purchases from feedlots operated by Marcos Antonio Molina dos Santos, Marfrig&rsquo;s own board chairman. Cattle from those feedlots were later traced to ranches in illegally deforested areas of the Amazon and Cerrado, creating a conflict of interest at the heart of the instrument&rsquo;s stated purpose."
 sources:
-  - "FAIRR, Marfrig&rsquo;s Transition Bond"
-  - "Mongabay, Marfrig&rsquo;s bonds funded beef from illegally deforested areas in Brazil"
-  - "Global Witness, How the beef industry is driving the deforestation of the Brazilian Amazon"
+  - '<a href="https://www.fairr.org/resources/reports/marfrigs-transition-bond" target="_blank" rel="noopener">FAIRR, Marfrig&rsquo;s Transition Bond</a>'
+  - '<a href="https://news.mongabay.com/2025/09/marfrigs-bonds-funded-beef-from-illegally-deforested-areas-in-brazil/" target="_blank" rel="noopener">Mongabay, Marfrig&rsquo;s bonds funded beef from illegally deforested areas in Brazil</a>'
+  - '<a href="https://globalwitness.org/en/campaigns/forests/how-beef-industry-driving-deforestation-brazilian-amazon/" target="_blank" rel="noopener">Global Witness, How the beef industry is driving the deforestation of the Brazilian Amazon</a>'
 caseStudy:
   body: |
     <p>In 2019, Marfrig, one of Brazil&rsquo;s largest beef producers and among the world&rsquo;s biggest meatpackers, issued a $500 million, 10-year transition bond at a yield of 6.625%. It was one of the first transition bonds from the agriculture sector and was three times oversubscribed. In its publicly available framework, Marfrig stated that proceeds would fund traceability in its cattle supply chain to mitigate the risk of sourcing from deforested land.</p>

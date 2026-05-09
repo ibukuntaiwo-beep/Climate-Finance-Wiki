@@ -17,6 +17,10 @@ seeAlso:
 unexpected:
   headline: "Declining to answer CDP is technically voluntary, but practically costly"
   body: "Over 680 financial institutions with $130 trillion in combined assets back CDP's disclosure requests. Ignoring a questionnaire backed by your major shareholders earns an F grade that shows up on investor screens, making non-disclosure a reputational and relational risk, not just an information gap."
+sources:
+  - '<a href="https://www.cdp.net/en" target="_blank" rel="noopener">CDP, Official Website</a>'
+  - '<a href="https://www.cdp.net/en/info/about-us" target="_blank" rel="noopener">CDP, About Us</a>'
+  - '<a href="https://www.cdp.net/en/companies/companies-scores" target="_blank" rel="noopener">CDP, Companies Scores</a>'
 ---
 
 ## Overview

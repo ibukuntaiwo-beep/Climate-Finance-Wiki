@@ -18,6 +18,10 @@ seeAlso:
 unexpected:
   headline: "The exits got more coverage than the launches"
   body: "When US banks withdrew from GFANZ sub-alliances under political and legal pressure, each departure was framed as evidence that net-zero finance commitments were fragile. A voluntary alliance designed to signal ambition struggles to hold together when membership itself becomes a political liability, and GFANZ was structurally ill-equipped to handle that communications challenge."
+sources:
+  - '<a href="https://www.gfanzero.com/" target="_blank" rel="noopener">GFANZ, Official Website</a>'
+  - '<a href="https://www.gfanzero.com/progress-report/" target="_blank" rel="noopener">GFANZ, Progress Report</a>'
+  - '<a href="https://www.cnbc.com/2024/12/06/goldman-sachs-quits-global-climate-coalition-for-banks.html" target="_blank" rel="noopener">CNBC, Goldman Sachs quits global climate coalition for banks (2024)</a>'
 ---
 
 ## Overview

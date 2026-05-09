@@ -17,6 +17,10 @@ seeAlso:
 unexpected:
   headline: "A large proportion of forest protection credits may be worthless"
   body: "Investigative journalism in 2023, including work by The Guardian, found that a large proportion of REDD+ forest credits from a major certifier significantly overstated their carbon benefit, because the forests were never going to be cut down in the first place, violating the central quality test of additionality."
+sources:
+  - '<a href="https://verra.org/programs/verified-carbon-standard/" target="_blank" rel="noopener">Verra, Verified Carbon Standard</a>'
+  - '<a href="https://www.goldstandard.org/about" target="_blank" rel="noopener">Gold Standard, About</a>'
+  - '<a href="https://icvcm.org/the-core-carbon-principles/" target="_blank" rel="noopener">ICVCM, Core Carbon Principles</a>'
 ---
 
 ## Overview

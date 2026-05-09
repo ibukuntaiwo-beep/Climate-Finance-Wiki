@@ -17,6 +17,11 @@ seeAlso:
 unexpected:
   headline: "The pandemic recovery fund became a climate tool"
   body: "The EU designed its EUR 800 billion NextGenerationEU recovery fund with a 'do no significant harm' rule aligned to the EU Taxonomy, requiring that 37% of spending be climate-relevant. A crisis response became one of the largest deployments of taxonomy-aligned public spending in history."
+sources:
+  - '<a href="https://commission.europa.eu/strategy-and-policy/priorities-2019-2024/european-green-deal_en" target="_blank" rel="noopener">European Commission, The European Green Deal</a>'
+  - '<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:52019DC0640" target="_blank" rel="noopener">EUR-Lex, Communication COM(2019) 640 final: The European Green Deal</a>'
+  - '<a href="https://climate.ec.europa.eu/eu-action/european-climate-law_en" target="_blank" rel="noopener">European Commission, European Climate Law</a>'
+  - '<a href="https://eur-lex.europa.eu/EN/legal-content/summary/european-climate-law.html" target="_blank" rel="noopener">EUR-Lex, European Climate Law: Summary</a>'
 ---
 
 ## Overview

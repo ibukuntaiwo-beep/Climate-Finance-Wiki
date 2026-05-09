@@ -17,6 +17,10 @@ seeAlso:
 unexpected:
   headline: "A single flood in Thailand disrupted global hard drive production for over a year"
   body: "The 2011 Thailand floods caused an estimated $45 billion in economic losses and cascaded through supply chains worldwide, disrupting hard drive manufacturing for more than 12 months. It was a relatively contained physical event with outsized indirect financial consequences, illustrating why physical risk assessment must look beyond direct asset damage."
+sources:
+  - '<a href="https://www.ipcc.ch/report/ar6/wg1/" target="_blank" rel="noopener">IPCC, Climate Change 2021: The Physical Science Basis (AR6 WGI)</a>'
+  - '<a href="https://www.swissre.com/institute/research/sigma-research.html" target="_blank" rel="noopener">Swiss Re, sigma Research: Natural Catastrophes</a>'
+  - '<a href="https://www.fsb-tcfd.org/recommendations/" target="_blank" rel="noopener">FSB-TCFD, Recommendations (physical risk guidance)</a>'
 ---
 
 ## Overview

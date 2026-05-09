@@ -17,6 +17,10 @@ seeAlso:
 unexpected:
   headline: "Good governance does not guarantee good emissions performance"
   body: "TPI's two-dimensional assessment reveals that a company can score highly on Management Quality, with board-level climate oversight, dedicated sustainability committees, and TCFD-aligned disclosure, while its actual emissions trajectory remains incompatible with 1.5°C. That gap between governance structures and real-world results is precisely the conversation investor engagements are designed to target."
+sources:
+  - '<a href="https://www.transitionpathwayinitiative.org/" target="_blank" rel="noopener">Transition Pathway Initiative, Official Website</a>'
+  - '<a href="https://www.transitionpathwayinitiative.org/methodology" target="_blank" rel="noopener">Transition Pathway Initiative, Methodology</a>'
+  - '<a href="https://www.lse.ac.uk/granthaminstitute/tpi/" target="_blank" rel="noopener">Grantham Research Institute (LSE), Transition Pathway Initiative</a>'
 ---
 
 ## Overview

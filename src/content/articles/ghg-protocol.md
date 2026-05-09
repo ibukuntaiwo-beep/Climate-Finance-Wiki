@@ -17,6 +17,11 @@ seeAlso:
 unexpected:
   headline: "The world's carbon accounting standard hasn't been updated since 2011"
   body: "The Corporate Standard, the main framework most people mean when they say 'GHG Protocol', was last revised in 2011. Discussions about updating it to address financed emissions, carbon removal accounting, and net-zero alignment have been ongoing for years. The gap between the standard and current practice is a live tension in the field."
+sources:
+  - '<a href="https://ghgprotocol.org/corporate-standard" target="_blank" rel="noopener">GHG Protocol, Corporate Standard</a>'
+  - '<a href="https://ghgprotocol.org/about-wri-wbcsd" target="_blank" rel="noopener">GHG Protocol, About WRI and WBCSD</a>'
+  - '<a href="https://ghgprotocol.org/standards-guidance" target="_blank" rel="noopener">GHG Protocol, Standards and Guidance</a>'
+  - '<a href="https://www.wri.org/initiatives/greenhouse-gas-protocol" target="_blank" rel="noopener">WRI, Greenhouse Gas Protocol Initiative</a>'
 ---
 
 ## Overview

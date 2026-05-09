@@ -17,6 +17,10 @@ seeAlso:
 unexpected:
   headline: "The ozone treaty has done more for the climate than the Kyoto Protocol"
   body: "The Montreal Protocol is estimated to have reduced global warming by up to 1 degree Celsius, because CFCs are themselves potent greenhouse gases. Add the Kigali Amendment's projected 0.5 degree Celsius avoided by 2100 from phasing down HFCs, and this ozone treaty has arguably delivered more climate benefit than any dedicated climate agreement."
+sources:
+  - '<a href="https://ozone.unep.org/treaties/montreal-protocol" target="_blank" rel="noopener">UNEP Ozone Secretariat, The Montreal Protocol</a>'
+  - '<a href="https://www.epa.gov/ozone-layer-protection/international-actions-montreal-protocol-substances-deplete-ozone-layer" target="_blank" rel="noopener">US EPA, International Actions: The Montreal Protocol on Substances that Deplete the Ozone Layer</a>'
+  - '<a href="https://ozone.unep.org/kigali-amendment-overview" target="_blank" rel="noopener">UNEP Ozone Secretariat, Kigali Amendment Overview</a>'
 ---
 
 ## Overview

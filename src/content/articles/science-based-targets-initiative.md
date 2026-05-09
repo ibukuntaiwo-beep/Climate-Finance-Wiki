@@ -18,6 +18,11 @@ seeAlso:
 unexpected:
   headline: "SBTi almost allowed companies to offset their way out of supply chain emissions"
   body: "In 2024, SBTi proposed allowing carbon credits to meet Scope 3 targets, the hardest emissions for companies to control. The backlash was immediate: board members and scientists publicly opposed the proposal, arguing it would let companies pay their way out of supply chain decarbonisation and undermine the framework's entire credibility. The controversy became a case study in the tension between pragmatism and scientific integrity."
+sources:
+  - '<a href="https://sciencebasedtargets.org/" target="_blank" rel="noopener">SBTi, Official Website</a>'
+  - '<a href="https://sciencebasedtargets.org/about-us" target="_blank" rel="noopener">SBTi, About Us</a>'
+  - '<a href="https://sciencebasedtargets.org/net-zero" target="_blank" rel="noopener">SBTi, Corporate Net Zero Standard</a>'
+  - '<a href="https://sciencebasedtargets.org/companies-taking-action" target="_blank" rel="noopener">SBTi, Companies Taking Action</a>'
 ---
 
 ## Overview

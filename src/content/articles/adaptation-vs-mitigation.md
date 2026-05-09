@@ -16,6 +16,10 @@ seeAlso:
 unexpected:
   headline: "Adaptation is not infinitely scalable"
   body: "Beyond 1.5-2°C of warming, some physical impacts become impossible or economically infeasible to adapt to, entire island nations may become uninhabitable, productive agricultural zones may shift irreversibly, and extreme heat may make outdoor work physiologically impossible in some regions. This is why faster mitigation preserves more adaptation options."
+sources:
+  - '<a href="https://www.ipcc.ch/report/ar6/syr/" target="_blank" rel="noopener">IPCC, Sixth Assessment Report: Synthesis Report (2023)</a>'
+  - '<a href="https://www.unep.org/resources/adaptation-gap-report" target="_blank" rel="noopener">UNEP, Adaptation Gap Report</a>'
+  - '<a href="https://www.worldbank.org/en/topic/climatechange/brief/climate-adaptation" target="_blank" rel="noopener">World Bank, Climate Adaptation</a>'
 ---
 
 ## Overview

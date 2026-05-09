@@ -18,11 +18,11 @@ unexpected:
   headline: "Norway divested to reduce oil exposure, not because it stopped drilling"
   body: "Norway continued pumping oil after the 2019 vote. The fund&rsquo;s rationale was portfolio construction: the Norwegian state already had enormous exposure to oil prices through its own petroleum revenues. Owning upstream oil company shares on top of that was double exposure to the same risk factor. Divesting was a hedging decision, not a political statement. The fact that the world&rsquo;s largest oil-funded sovereign wealth fund reached this conclusion entirely on financial grounds was the point."
 sources:
-  - "Norwegian Ministry of Finance, Recommendation on divestiture from oil and gas exploration, March 2019"
-  - "Chief Investment Officer, Norway Approves Sovereign Wealth Fund Fossil Fuel Divestment, 2019"
-  - "IEEFA, Norway&rsquo;s fossil fuel epiphany, 2019"
-  - "Offshore Technology Focus, End of an era: Norway&rsquo;s sovereign wealth fund divests from oil and gas, June 2019"
-  - "Market Forces, Norwegian sovereign wealth fund pulls $3 billion out of AGL, BHP and South32"
+  - '<a href="https://www.ipe.com/norway-to-cut-67bn-of-upstream-oil-and-gas-companies-from-swf/10029969.article" target="_blank" rel="noopener">IPE, Norway to cut &euro;6.7bn of upstream oil and gas companies from sovereign wealth fund, March 2019</a>'
+  - '<a href="https://www.ai-cio.com/news/norway-approves-sovereign-wealth-fund-fossil-fuel-divestment/" target="_blank" rel="noopener">Chief Investment Officer, Norway Approves Sovereign Wealth Fund Fossil Fuel Divestment, 2019</a>'
+  - '<a href="https://ieefa.org/articles/ieefa-update-get-out-now-norways-fossil-fuel-epiphany" target="_blank" rel="noopener">IEEFA, Norway&rsquo;s fossil fuel epiphany, 2019</a>'
+  - '<a href="https://www.offshore-technology.com/features/norways-sovereign-wealth-fund-divests-from-oil-and-gas/" target="_blank" rel="noopener">Offshore Technology Focus, End of an era: Norway&rsquo;s sovereign wealth fund divests from oil and gas, June 2019</a>'
+  - '<a href="https://www.marketforces.org.au/gpfgdivest2019/" target="_blank" rel="noopener">Market Forces, Norwegian sovereign wealth fund pulls $3 billion out of AGL, BHP and South32</a>'
 caseStudy:
   body: |
     <p>Norway&rsquo;s Government Pension Fund Global (GPFG) was created in 1990 to manage the revenues from Norway&rsquo;s North Sea oil production. By 2019, it had grown to approximately $1 trillion and was the largest sovereign wealth fund on earth, holding stakes in more than 9,000 companies across 70 countries. It is, in the most literal sense, a fund built from oil money.</p>

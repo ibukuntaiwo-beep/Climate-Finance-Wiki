@@ -17,6 +17,10 @@ seeAlso:
 unexpected:
   headline: "A bank's real climate impact is not its offices, it is what it finances"
   body: "For financial institutions, Scope 3 includes financed emissions, the climate impact of their loans and investments. A bank's direct emissions from offices and servers are trivial compared to the carbon embedded in the companies it finances, which is why financed emissions have become a central accountability metric."
+sources:
+  - '<a href="https://ghgprotocol.org/corporate-standard" target="_blank" rel="noopener">GHG Protocol, Corporate Standard</a>'
+  - '<a href="https://ghgprotocol.org/corporate-value-chain-scope-3-standard" target="_blank" rel="noopener">GHG Protocol, Corporate Value Chain (Scope 3) Standard</a>'
+  - '<a href="https://www.epa.gov/climateleadership/scope-1-and-scope-2-inventory-guidance" target="_blank" rel="noopener">US EPA, Scope 1 and Scope 2 Inventory Guidance</a>'
 ---
 
 ## Overview

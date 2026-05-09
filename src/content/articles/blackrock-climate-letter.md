@@ -17,12 +17,12 @@ unexpected:
   headline: "The world's largest fossil fuel investor declared fossil fuels a financial risk"
   body: "BlackRock&rsquo;s passive index funds hold shares in every company in their benchmark indices, including the largest oil and gas producers on earth. BlackRock cannot divest from these companies without abandoning the index. When Fink published his letter, BlackRock was simultaneously one of the largest institutional shareholders in ExxonMobil, Chevron, and BP. The letter was a statement about stewardship and new product strategy, not a divestment announcement. Understanding the distinction helps explain both its significance and its limits."
 sources:
-  - "Larry Fink&rsquo;s Letter to CEOs, BlackRock, January 2020"
-  - "BlackRock 2020 Client Letter on Sustainability"
-  - "MinterEllison, BlackRock CEO Larry Fink&rsquo;s Annual Letter 2020: Climate risk is investment risk"
-  - "Morningstar analysis of BlackRock climate resolution voting, 2021"
-  - "Washington Times, BlackRock&rsquo;s Larry Fink says he&rsquo;s ditching the term ESG, June 2023"
-  - "NYC Comptroller letter to BlackRock, demanding stronger net-zero action"
+  - '<a href="https://www.blackrock.com/corporate/investor-relations/2020-larry-fink-ceo-letter" target="_blank" rel="noopener">Larry Fink&rsquo;s Letter to CEOs, BlackRock, January 2020</a>'
+  - '<a href="https://www.blackrock.com/corporate/investor-relations/2020-blackrock-client-letter" target="_blank" rel="noopener">BlackRock 2020 Client Letter on Sustainability</a>'
+  - '<a href="https://www.minterellison.com/articles/summary-blackrock-ceo-larry-fink-annual-ceo-letter-2020" target="_blank" rel="noopener">MinterEllison, BlackRock CEO Larry Fink&rsquo;s Annual Letter 2020: Climate risk is investment risk</a>'
+  - '<a href="https://www.morningstar.com/sustainable-investing/2021-proxy-voting-season-7-charts" target="_blank" rel="noopener">Morningstar analysis of BlackRock climate resolution voting, 2021</a>'
+  - '<a href="https://www.washingtontimes.com/news/2023/jun/26/blackrocks-larry-fink-says-hes-ditching-term-esg-a/" target="_blank" rel="noopener">Washington Times, BlackRock&rsquo;s Larry Fink says he&rsquo;s ditching the term ESG, June 2023</a>'
+  - '<a href="https://comptroller.nyc.gov/newsroom/comptroller-lander-sends-letter-to-blackrock-ceo-larry-fink-demanding-stronger-action-toward-net-zero-emissions-reduction-across-portfolio/" target="_blank" rel="noopener">NYC Comptroller letter to BlackRock, demanding stronger net-zero action</a>'
 caseStudy:
   body: |
     <p>On 14 January 2020, Larry Fink published his annual letter to CEOs. The title was &ldquo;A Fundamental Reshaping of Finance.&rdquo; The core argument was precise: climate risk is investment risk, and because climate change is going to reshape the economy over coming decades, it will reshape the value of every asset class. BlackRock, Fink declared, would put sustainability at the centre of its investment approach.</p>

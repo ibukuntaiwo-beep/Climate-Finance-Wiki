@@ -17,6 +17,10 @@ seeAlso:
 unexpected:
   headline: "A coal company can issue a green bond"
   body: "Because green bonds are 'use of proceeds' instruments, the label attaches to what the money finances, not to the issuer's overall environmental performance. A coal company could issue a green bond to finance a solar project and comply with the Green Bond Principles while continuing to emit at full speed."
+sources:
+  - '<a href="https://www.icmagroup.org/sustainable-finance/the-principles-guidelines-and-handbooks/green-bond-principles-gbp/" target="_blank" rel="noopener">ICMA, Green Bond Principles</a>'
+  - '<a href="https://www.climatebonds.net/" target="_blank" rel="noopener">Climate Bonds Initiative</a>'
+  - '<a href="https://finance.ec.europa.eu/sustainable-finance/tools-and-standards/european-green-bond-standard_en" target="_blank" rel="noopener">European Commission, European Green Bond Standard</a>'
 ---
 
 ## Overview

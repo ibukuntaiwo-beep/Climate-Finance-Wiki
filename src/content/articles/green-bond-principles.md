@@ -17,6 +17,11 @@ seeAlso:
 unexpected:
   headline: "The greenium creates a financial incentive to greenwash"
   body: "Some green bonds command a pricing premium over conventional equivalents, the greenium. This means issuers can borrow more cheaply by labelling a bond green, creating a direct financial incentive to claim green status for projects that may not fully deserve it. The voluntary nature of the Principles means the guardrails depend on market discipline, not law."
+sources:
+  - '<a href="https://www.icmagroup.org/sustainable-finance/the-principles-guidelines-and-handbooks/green-bond-principles-gbp/" target="_blank" rel="noopener">ICMA, Green Bond Principles</a>'
+  - '<a href="https://www.icmagroup.org/sustainable-finance/the-principles-guidelines-and-handbooks/" target="_blank" rel="noopener">ICMA, The Principles, Guidelines and Handbooks</a>'
+  - '<a href="https://www.climatebonds.net/data-insights/publications/global-state-market-2024" target="_blank" rel="noopener">Climate Bonds Initiative, Sustainable Debt: Global State of the Market 2024</a>'
+  - '<a href="https://www.climatebonds.net/" target="_blank" rel="noopener">Climate Bonds Initiative</a>'
 ---
 
 ## Overview

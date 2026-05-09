@@ -17,10 +17,10 @@ unexpected:
   headline: "Advertising regulators now carry climate enforcement power"
   body: "The HSBC ruling established that advertising standards bodies, not just financial regulators, have standing to act on greenwashing claims. This widened the accountability landscape considerably. A company&rsquo;s communications team, not just its compliance department, now carries live regulatory risk when making environmental claims in public-facing materials."
 sources:
-  - "ASA Ruling on HSBC UK Bank plc, October 2022"
-  - "Chapman Tripp, HSBC ads banned for greenwashing"
-  - "Campaign Asia, HSBC greenwashing ad ban is example to other banks"
-  - "edie, HSBC sees UK ad campaign banned on greenwashing grounds"
+  - '<a href="https://www.asa.org.uk/rulings/hsbc-uk-bank-plc-g21-1127656-hsbc-uk-bank-plc.html" target="_blank" rel="noopener">ASA Ruling on HSBC UK Bank plc, October 2022</a>'
+  - '<a href="https://chapmantripp.com/trends-insights/hsbc-ads-banned-for-greenwashing/" target="_blank" rel="noopener">Chapman Tripp, HSBC ads banned for greenwashing</a>'
+  - '<a href="https://www.campaignasia.com/article/hsbc-greenwashing-ad-ban-is-example-to-other-banks-uk-ad-watchdog-warns/481866" target="_blank" rel="noopener">Campaign Asia, HSBC greenwashing ad ban is example to other banks</a>'
+  - '<a href="https://www.edie.net/hsbc-sees-uk-ad-campaign-banned-on-greenwashing-grounds/" target="_blank" rel="noopener">edie, HSBC sees UK ad campaign banned on greenwashing grounds</a>'
 caseStudy:
   body: |
     <p>In October 2021, HSBC launched a poster campaign on bus stops in London and Bristol. One ad featured waves crashing on a shore with text announcing the bank was &ldquo;aiming to provide up to $1 trillion in financing and investment globally to help our clients transition to net zero.&rdquo; A second poster highlighted a programme to plant two million trees in the UK, claiming they would lock in 1.25 million tonnes of carbon over their lifetime.</p>

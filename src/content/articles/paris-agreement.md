@@ -18,7 +18,7 @@ unexpected:
   headline: "The Paris Agreement is as much about money as about temperature"
   body: "Article 2.1(c), the finance flows clause, is the legal basis for everything from GFANZ to the EU Taxonomy to central bank climate stress tests. The temperature targets get the headlines, but the finance clause is doing more work."
 sources:
-  - "UNFCCC Paris Agreement text (2015)"
+  - '<a href="https://unfccc.int/process-and-meetings/the-paris-agreement" target="_blank" rel="noopener">UNFCCC Paris Agreement text (2015)</a>'
 ---
 
 ## Overview

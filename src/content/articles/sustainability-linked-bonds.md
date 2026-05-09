@@ -17,6 +17,10 @@ seeAlso:
 unexpected:
   headline: "The penalty for missing climate targets can be a rounding error"
   body: "A typical 25 basis point step-up on a EUR 500 million SLB amounts to EUR 1.25 million per year in additional interest, which may be far less than the capital investment required to actually hit the target. Critics argue this makes the penalty more symbolic than deterrent."
+sources:
+  - '<a href="https://www.icmagroup.org/sustainable-finance/the-principles-guidelines-and-handbooks/sustainability-linked-bond-principles-slbp/" target="_blank" rel="noopener">ICMA, Sustainability-Linked Bond Principles</a>'
+  - '<a href="https://www.icmagroup.org/sustainable-finance/the-principles-guidelines-and-handbooks/" target="_blank" rel="noopener">ICMA, The Principles, Guidelines and Handbooks</a>'
+  - '<a href="https://www.climatebonds.net/market/sustainability-linked-bonds" target="_blank" rel="noopener">Climate Bonds Initiative, Sustainability-Linked Bonds</a>'
 ---
 
 ## Overview

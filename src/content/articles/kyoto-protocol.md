@@ -17,6 +17,10 @@ seeAlso:
 unexpected:
   headline: "The US Senate killed Kyoto before it was even signed"
   body: "The Byrd-Hagel Resolution passed 95-0 in the US Senate in 1997, declaring the US would not ratify any climate treaty that exempted developing countries from binding commitments. The US signed Kyoto but never ratified it, and without the world's then-largest emitter, the Protocol covered a shrinking share of global emissions as China surpassed the US in the 2000s."
+sources:
+  - '<a href="https://unfccc.int/process-and-meetings/the-kyoto-protocol" target="_blank" rel="noopener">UNFCCC, The Kyoto Protocol</a>'
+  - '<a href="https://unfccc.int/process-and-meetings/the-kyoto-protocol/history-of-the-kyoto-protocol/text-of-the-kyoto-protocol" target="_blank" rel="noopener">UNFCCC, Text of the Kyoto Protocol</a>'
+  - '<a href="https://www.congress.gov/crs-product/R46204" target="_blank" rel="noopener">Congressional Research Service, The UNFCCC, Kyoto Protocol, and Paris Agreement: A Summary</a>'
 ---
 
 ## Overview

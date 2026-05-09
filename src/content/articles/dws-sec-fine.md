@@ -17,10 +17,10 @@ unexpected:
   headline: "The whistleblower was the head of sustainability"
   body: "Desiree Fixler was not a disgruntled outsider; she was DWS&rsquo;s own head of sustainability. Her decision to go public, giving interviews, writing op-eds, and briefing journalists, illustrated that the gap between a company&rsquo;s public sustainability narrative and its actual practice creates not just regulatory risk but human risk: people who know the truth exists will eventually tell it."
 sources:
-  - "SEC Press Release, DWS to Pay $25 Million (September 2023)"
-  - "ESG Today, Deutsche Bank&rsquo;s DWS Fined $27 Million for Greenwashing"
-  - "Bloomberg, DWS to Pay $25M to Settle SEC Probes"
-  - "Irish Times, Deutsche Bank&rsquo;s asset manager fined &euro;25mn over greenwashing scandal (April 2025)"
+  - '<a href="https://www.sec.gov/newsroom/press-releases/2023-194" target="_blank" rel="noopener">SEC Press Release, DWS to Pay $25 Million (September 2023)</a>'
+  - '<a href="https://www.esgtoday.com/deutsche-banks-dws-fined-27-million-for-greenwashing/" target="_blank" rel="noopener">ESG Today, Deutsche Bank&rsquo;s DWS Fined $27 Million for Greenwashing</a>'
+  - '<a href="https://www.cnbc.com/2023/09/25/dws-to-pay-25-mln-over-us-charges-over-esg-misstatements.html" target="_blank" rel="noopener">CNBC, DWS to pay $25 mln over US charges over ESG misstatements</a>'
+  - '<a href="https://www.irishtimes.com/business/2025/04/02/deutsche-banks-asset-manager-fined-25mn-over-greenwashing-scandal/" target="_blank" rel="noopener">Irish Times, Deutsche Bank&rsquo;s asset manager fined &euro;25mn over greenwashing scandal (April 2025)</a>'
 caseStudy:
   body: |
     <p>DWS, Deutsche Bank&rsquo;s asset management division and one of Europe&rsquo;s largest fund managers, marketed ESG integration as central to its investment approach, &ldquo;in our DNA,&rdquo; in the company&rsquo;s own words. In August 2021, Desiree Fixler, DWS&rsquo;s former head of sustainability, went public as a whistleblower, alleging that the firm had painted a &ldquo;rosier-than-reality picture&rdquo; of how ESG was actually applied across its funds.</p>

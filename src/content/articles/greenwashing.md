@@ -17,6 +17,10 @@ seeAlso:
 unexpected:
   headline: "Hiding your sustainability progress is now a documented risk too"
   body: "The term 'greenhushing' describes organisations that deliberately downplay legitimate sustainability activities to avoid the scrutiny that comes with making public claims. It is the mirror image of greenwashing, and it means companies face reputational and regulatory exposure from both saying too much and saying too little."
+sources:
+  - '<a href="https://environment.ec.europa.eu/topics/circular-economy/green-claims_en" target="_blank" rel="noopener">European Commission, Proposal for a Directive on Green Claims</a>'
+  - '<a href="https://www.ftc.gov/legal-library/browse/federal-register-notices/guides-use-environmental-marketing-claims-green-guides" target="_blank" rel="noopener">FTC, Guides for the Use of Environmental Marketing Claims (Green Guides)</a>'
+  - '<a href="https://asic.gov.au/regulatory-resources/financial-services/how-to-avoid-greenwashing-when-offering-or-promoting-sustainability-related-products/" target="_blank" rel="noopener">ASIC, How to Avoid Greenwashing When Offering or Promoting Sustainability-Related Products</a>'
 ---
 
 ## Overview

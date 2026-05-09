@@ -17,6 +17,10 @@ seeAlso:
 unexpected:
   headline: "Gas and nuclear made the cut, and it's still controversial"
   body: "In 2022, the European Commission published a delegated act including natural gas and nuclear energy as taxonomy-aligned under specific conditions. Both remain contested and have been challenged in court by environmental groups, showing that even a science-based classification system cannot escape politics."
+sources:
+  - '<a href="https://eur-lex.europa.eu/eli/reg/2020/852/oj/eng" target="_blank" rel="noopener">EUR-Lex, Regulation (EU) 2020/852 (Taxonomy Regulation)</a>'
+  - '<a href="https://finance.ec.europa.eu/sustainable-finance/tools-and-standards/eu-taxonomy-sustainable-activities_en" target="_blank" rel="noopener">European Commission, EU Taxonomy for Sustainable Activities</a>'
+  - '<a href="https://finance.ec.europa.eu/regulation-and-supervision/financial-services-legislation/implementing-and-delegated-acts/taxonomy-regulation_en" target="_blank" rel="noopener">European Commission, Implementing and Delegated Acts: Taxonomy Regulation</a>'
 ---
 
 ## Overview

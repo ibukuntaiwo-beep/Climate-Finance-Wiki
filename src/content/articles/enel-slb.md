@@ -17,10 +17,10 @@ unexpected:
   headline: "Missing targets was the mechanism working as designed"
   body: "When ENEL triggered coupon step-ups on approximately $11 billion of bonds after missing sustainability targets, critics called it a failure. But the step-up mechanism was designed precisely for this scenario: investors received higher returns as compensation for underperformance, and ENEL paid a financial price. The question was not whether accountability worked, but whether 25 basis points was enough of a deterrent."
 sources:
-  - "Environmental Finance, Why Enel turned to sustainability-linked bonds"
-  - "IEEFA, Takeaways from Enel&rsquo;s sustainability-linked bonds performance targets"
-  - "Capital Monitor, Why Enel&rsquo;s record-breaking sustainability-linked bond matters"
-  - "Energy Connects, Enel Forced to Raise Coupons on $11 Billion of ESG Bonds (2024)"
+  - '<a href="https://www.enel.com/investors/investing/sustainable-finance/sustainability-linked-finance/sustainability-linked-bonds" target="_blank" rel="noopener">Enel Group, Sustainability-Linked Bonds (official investor page)</a>'
+  - '<a href="https://ieefa.org/resources/takeaways-enels-sustainability-linked-bonds-performance-targets" target="_blank" rel="noopener">IEEFA, Takeaways from Enel&rsquo;s sustainability-linked bonds performance targets</a>'
+  - '<a href="https://capitalmonitor.ai/sector/energy-and-utilities/why-enels-record-breaking-sustainability-linked-bond-matters/" target="_blank" rel="noopener">Capital Monitor, Why Enel&rsquo;s record-breaking sustainability-linked bond matters</a>'
+  - '<a href="https://www.energyconnects.com/news/renewables/2024/april/enel-forced-to-raise-coupons-on-11-billion-of-esg-bonds/" target="_blank" rel="noopener">Energy Connects, Enel Forced to Raise Coupons on $11 Billion of ESG Bonds (2024)</a>'
 caseStudy:
   body: |
     <p>In September 2019, Italian energy giant ENEL issued a $1.5 billion bond in the US market with an unprecedented feature: the interest rate was tied to a specific sustainability target. If ENEL failed to reach 55% renewable capacity in its total installed base by the end of 2021, the coupon would step up by 25 basis points. It was the first time a major corporate bond had structured financial consequences directly around a sustainability metric.</p>

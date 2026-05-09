@@ -17,6 +17,11 @@ seeAlso:
 unexpected:
   headline: "The IPCC's most influential document is negotiated by politicians, not scientists"
   body: "Summaries for Policymakers, the most-read part of any IPCC report, are approved line-by-line by government delegates. They represent a floor of consensus, sometimes watered down from the underlying science. The gap between what scientists wrote and what governments approved is essential context for any climate claim."
+sources:
+  - '<a href="https://www.ipcc.ch/" target="_blank" rel="noopener">IPCC, Official Website</a>'
+  - '<a href="https://www.ipcc.ch/about/" target="_blank" rel="noopener">IPCC, About the IPCC</a>'
+  - '<a href="https://www.ipcc.ch/report/ar6/syr/" target="_blank" rel="noopener">IPCC, Sixth Assessment Report: Synthesis Report (2023)</a>'
+  - '<a href="https://www.ipcc.ch/sr15/" target="_blank" rel="noopener">IPCC, Special Report on Global Warming of 1.5&deg;C (2018)</a>'
 ---
 
 ## Overview

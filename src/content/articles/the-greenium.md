@@ -17,6 +17,10 @@ seeAlso:
 unexpected:
   headline: "The greenium creates a financial incentive to greenwash"
   body: "Because issuers enjoy cheaper borrowing costs with a green label, there is a built-in incentive to label bonds as green whether or not they genuinely are. If investors cannot reliably distinguish high-quality green bonds from low-quality ones, the greenium rewards the label rather than the substance, degrading the signal over time."
+sources:
+  - '<a href="https://www.climatebonds.net/resources/reports/green-bond-pricing-primary-market-h1-2024" target="_blank" rel="noopener">Climate Bonds Initiative, Green Bond Pricing in the Primary Market</a>'
+  - '<a href="https://www.bis.org/publ/work936.htm" target="_blank" rel="noopener">BIS, Green bond finance and certification (Working Paper No. 936)</a>'
+  - '<a href="https://www.icmagroup.org/sustainable-finance/the-principles-guidelines-and-handbooks/green-bond-principles-gbp/" target="_blank" rel="noopener">ICMA, Green Bond Principles</a>'
 ---
 
 ## Overview

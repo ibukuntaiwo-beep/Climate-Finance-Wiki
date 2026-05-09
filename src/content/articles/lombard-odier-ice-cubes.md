@@ -17,9 +17,9 @@ unexpected:
   headline: "The dirtiest companies might be the best climate investments"
   body: "Lombard Odier&rsquo;s framework argues that a high-emitting steel or cement company actively decarbonising, an &lsquo;ice cube&rsquo;, may be a better climate investment than a clean-tech solutions provider with flat growth. The transition value is created in the act of decarbonising, not in being already green. This counterintuitive insight reframes the entire debate between divestment and engagement."
 sources:
-  - "Lombard Odier, Ice cubes, burning logs and the road to net zero (podcast, 2022)"
-  - "Lombard Odier, Leading sustainable finance: the race to net zero (2022)"
-  - "Lombard Odier, Holistic approach to investing for net zero (2021)"
+  - '<a href="https://am.lombardodier.com/contents/news/loim-tube/2022/april/ice-cubes-burning-logs-and-the-r.html" target="_blank" rel="noopener">Lombard Odier, Ice cubes, burning logs and the road to net zero (podcast, 2022)</a>'
+  - '<a href="https://www.lombardodier.com/contents/corporate-news/corporate/2022/may/leading-sustainable-finance-the-.html" target="_blank" rel="noopener">Lombard Odier, Leading sustainable finance: the race to net zero (2022)</a>'
+  - '<a href="https://www.lombardodier.com/contents/corporate-news/ft-rethink/2021/september/the-unexpected-portfolio--a-holi.html" target="_blank" rel="noopener">Lombard Odier, Holistic approach to investing for net zero (2021)</a>'
 caseStudy:
   body: |
     <p>Lombard Odier Investment Managers (LOIM), the asset management arm of the Swiss private bank, developed a classification framework called Climate Value Impact (CVI) that sorts companies into four categories based on their emissions profile and decarbonisation trajectory. The framework uses deliberately vivid language: burning logs, ice cubes, solutions providers, and climate insulated.</p>

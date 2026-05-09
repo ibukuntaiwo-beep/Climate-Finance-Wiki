@@ -17,6 +17,11 @@ seeAlso:
 unexpected:
   headline: "The law's biggest political shield is Republican geography"
   body: "Much of the clean energy investment catalysed by the IRA flowed to Republican-leaning states and congressional districts. This has complicated efforts to repeal IRA tax credits, even legislators who voted against the law face pressure to protect jobs and investment in their own constituencies."
+sources:
+  - '<a href="https://www.congress.gov/crs-product/R47262" target="_blank" rel="noopener">Congressional Research Service, Inflation Reduction Act: Provisions Related to Climate Change</a>'
+  - '<a href="https://www.energy.gov/edf/inflation-reduction-act-2022" target="_blank" rel="noopener">US Department of Energy, Inflation Reduction Act of 2022</a>'
+  - '<a href="https://bidenwhitehouse.archives.gov/cleanenergy/inflation-reduction-act-guidebook/" target="_blank" rel="noopener">The White House, Inflation Reduction Act Guidebook</a>'
+  - '<a href="https://rhg.com/research/inflation-reduction-act/" target="_blank" rel="noopener">Rhodium Group, A Congressional Climate Breakthrough: The Inflation Reduction Act</a>'
 ---
 
 ## Overview

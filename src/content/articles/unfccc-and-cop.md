@@ -18,6 +18,10 @@ seeAlso:
 unexpected:
   headline: "Most COP announcements carry no legal weight"
   body: "Pledges made in COP side events or by private-sector actors at parallel forums do not carry the same weight as negotiated COP decisions. The distinction between what is agreed in the official presidency zone and what is announced on the margins is essential for any communications professional, yet coverage often treats them as equivalent."
+sources:
+  - '<a href="https://unfccc.int/" target="_blank" rel="noopener">UNFCCC, Official Website</a>'
+  - '<a href="https://unfccc.int/process-and-meetings/what-is-the-united-nations-framework-convention-on-climate-change" target="_blank" rel="noopener">UNFCCC, What is the United Nations Framework Convention on Climate Change?</a>'
+  - '<a href="https://unfccc.int/process/bodies/supreme-bodies/conference-of-the-parties-cop" target="_blank" rel="noopener">UNFCCC, Conference of the Parties (COP)</a>'
 ---
 
 ## Overview

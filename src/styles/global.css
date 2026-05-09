@@ -600,6 +600,11 @@ footer.footer-landing { background: var(--color-dark-surface); padding: 32px 32p
   padding: 8px 0; border-bottom: 1px solid var(--color-alt-surface);
 }
 .sources-list li:last-child { border-bottom: none; }
+.sources-list a[target="_blank"]::after {
+  content: " \2197";
+  font-size: 0.75em;
+  opacity: 0.6;
+}
 .source-type {
   font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-secondary);
   background: rgba(78,111,142,0.08); padding: 2px 8px; border-radius: var(--radius-pill);

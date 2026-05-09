@@ -18,11 +18,11 @@ unexpected:
   headline: "The three biggest index funds did the actual work"
   body: "Engine No. 1 owned just 0.02% of ExxonMobil. What they had was a compelling investment thesis and the ear of the institutions that mattered. When BlackRock, Vanguard, and State Street collectively owned around 20% of ExxonMobil voted with Engine No. 1, the outcome became inevitable. The campaign was a demonstration of how a small, determined actor can move markets by persuading the giants who have no choice but to hold the stock."
 sources:
-  - "NPR, A Tiny Fund Has Scored A Historic Win Against ExxonMobil Over The Future Of Oil, May 2021"
-  - "CNBC, Engine No. 1 wins at least 2 Exxon board seats, May 2021"
-  - "Axios, Climate activists gain third seat on Exxon Mobil&rsquo;s board, June 2021"
-  - "Harvard Business School Working Knowledge, ESG Activists Met the Moment at ExxonMobil, But Did They Succeed?"
-  - "Engine No. 1 Investor Presentation, April 2021"
+  - '<a href="https://www.npr.org/2021/05/26/1000448553/tiny-fund-scores-historic-win-in-battle-against-exxonmobil-over-future-of-oil" target="_blank" rel="noopener">NPR, A Tiny Fund Has Scored A Historic Win Against ExxonMobil Over The Future Of Oil, May 2021</a>'
+  - '<a href="https://www.cnbc.com/2021/05/26/engine-no-1-gets-at-least-2-candidates-elected-to-exxons-board-in-win-for-the-activist.html" target="_blank" rel="noopener">CNBC, Engine No. 1 wins at least 2 Exxon board seats, May 2021</a>'
+  - '<a href="https://www.axios.com/2021/06/02/exxonmobil-board-seat-activist-investor" target="_blank" rel="noopener">Axios, Climate activists gain third seat on Exxon Mobil&rsquo;s board, June 2021</a>'
+  - '<a href="https://www.library.hbs.edu/working-knowledge/esg-activists-met-the-moment-at-exxon-mobil-but-did-they-succeed" target="_blank" rel="noopener">Harvard Business School Working Knowledge, ESG Activists Met the Moment at ExxonMobil, But Did They Succeed?</a>'
+  - '<a href="https://www.businesswire.com/news/home/20210426005523/en/Engine-No.-1-Releases-Investor-Presentation-Highlighting-Need-for-Change-at-ExxonMobil" target="_blank" rel="noopener">Engine No. 1 Investor Presentation, April 2021</a>'
 caseStudy:
   body: |
     <p>In December 2020, a newly founded activist hedge fund called Engine No. 1 wrote to ExxonMobil&rsquo;s board. The letter was blunt: ExxonMobil had destroyed billions of dollars in shareholder value by clinging to a business model built for a world of rising oil demand, a world that was ending. The fund proposed four alternative board candidates with energy transition experience. The board declined to engage seriously. So Engine No. 1 launched a proxy campaign to install them anyway.</p>

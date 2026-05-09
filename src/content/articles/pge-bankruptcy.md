@@ -17,10 +17,10 @@ unexpected:
   headline: "No negligence required"
   body: "California&rsquo;s doctrine of inverse condemnation means utilities are strictly liable for damage caused by their equipment, regardless of whether they maintained it reasonably. If a power line starts a fire, the utility pays, even without proof of negligence. As climate change extends wildfire season, this legal doctrine turned a physical risk into an existential financial one."
 sources:
-  - "Columbia Climate School, PG&E: The First Climate Change Bankruptcy"
-  - "Bloomberg, The California Rule That Doomed PG&E: Inverse Condemnation"
-  - "Utility Dive, Wildfires pushed PG&E into bankruptcy"
-  - "CalMatters, The big problem this bankruptcy won't solve for PG&E"
+  - '<a href="https://www.energypolicy.columbia.edu/publications/pge-market-and-policy-perspectives-first-climate-change-bankruptcy/" target="_blank" rel="noopener">Columbia Climate School, PG&amp;E: The First Climate Change Bankruptcy</a>'
+  - '<a href="https://www.utilitydive.com/news/pge-escape-inverse-condemnation/567676/" target="_blank" rel="noopener">Utility Dive, PG&amp;E challenges inverse condemnation as it presses judge to reject California liability standards</a>'
+  - '<a href="https://www.utilitydive.com/news/wildfires-pushed-pge-into-bankruptcy-should-other-utilities-be-worried/588435/" target="_blank" rel="noopener">Utility Dive, Wildfires pushed PG&amp;E into bankruptcy</a>'
+  - '<a href="https://calmatters.org/economy/2019/01/pge-bankruptcy-problems-wildfires-outcomes/" target="_blank" rel="noopener">CalMatters, The big problem this bankruptcy won&rsquo;t solve for PG&amp;E</a>'
 caseStudy:
   body: |
     <p>Pacific Gas and Electric, California&rsquo;s largest utility serving approximately 16 million customers, filed for Chapter 11 bankruptcy protection in January 2019. The trigger was wildfire liability. PG&amp;E&rsquo;s equipment had been linked to multiple catastrophic blazes, most devastatingly the Camp Fire of November 2018, which killed 85 people and destroyed the town of Paradise, the deadliest and most destructive wildfire in California history.</p>

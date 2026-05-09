@@ -17,6 +17,11 @@ seeAlso:
 unexpected:
   headline: "S2 made Scope 3 mandatory, including financed emissions for banks"
   body: "Where TCFD treated Scope 3 as optional in most cases, IFRS S2 requires disclosure of Scope 1, 2, and 3 emissions for all companies, and for financial institutions specifically, it requires disclosure of financed emissions. This single change brought the lending and investment portfolios of banks and asset managers into the disclosure spotlight."
+sources:
+  - '<a href="https://www.ifrs.org/sustainability/knowledge-hub/introduction-to-issb-and-ifrs-sustainability-disclosure-standards/" target="_blank" rel="noopener">IFRS, Introduction to the ISSB and IFRS Sustainability Disclosure Standards</a>'
+  - '<a href="https://www.ifrs.org/issued-standards/ifrs-sustainability-standards-navigator/ifrs-s1-general-requirements/" target="_blank" rel="noopener">IFRS, IFRS S1 General Requirements for Disclosure of Sustainability-related Financial Information</a>'
+  - '<a href="https://www.ifrs.org/issued-standards/ifrs-sustainability-standards-navigator/ifrs-s2-climate-related-disclosures/" target="_blank" rel="noopener">IFRS, IFRS S2 Climate-related Disclosures</a>'
+  - '<a href="https://www.ifrs.org/news-and-events/news/2023/07/issb-standards-endorsed-by-iosco/" target="_blank" rel="noopener">IFRS, ISSB Standards Endorsed by IOSCO (2023)</a>'
 ---
 
 ## Overview

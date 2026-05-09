@@ -18,11 +18,11 @@ unexpected:
   headline: "The first mover was a development bank, not a climate fund"
   body: "When the World Bank restricted coal financing in 2013, it did so partly on development economics grounds: in many markets, coal was already becoming more expensive to build than renewables. The decision that started a decade-long industry shift was driven as much by the falling cost of clean energy as by climate conviction. The moral and the financial argument had arrived at the same place at the same time. That alignment, more than any single institution&rsquo;s values, is what made the exit cascade possible."
 sources:
-  - "IEEFA, 200 and counting: Global financial institutions are exiting coal, 2023"
-  - "IEEFA, Over 100 Global Financial Institutions Are Exiting Coal, February 2019"
-  - "Climate Change News, World Bank to stop financing coal projects, June 2013"
-  - "AXA, Emergency exit: committing to coal phase-out"
-  - "IEEFA, Norden Is Leading the World on Fossil Fuel Divestment, February 2020"
+  - '<a href="https://ieefa.org/resources/200-and-counting-global-financial-institutions-are-exiting-coal" target="_blank" rel="noopener">IEEFA, 200 and counting: Global financial institutions are exiting coal, 2023</a>'
+  - '<a href="https://ieefa.org/resources/over-100-global-financial-institutions-are-exiting-coal-more-come" target="_blank" rel="noopener">IEEFA, Over 100 Global Financial Institutions Are Exiting Coal, February 2019</a>'
+  - '<a href="https://www.climatechangenews.com/2013/06/27/world-bank-to-stop-financing-coal-projects/" target="_blank" rel="noopener">Climate Change News, World Bank to stop financing coal projects, June 2013</a>'
+  - '<a href="https://www.axa.com/en/news/emergency-exit-committing-to-coal-phase-out" target="_blank" rel="noopener">AXA, Emergency exit: committing to coal phase-out</a>'
+  - '<a href="https://ieefa.org/wp-content/uploads/2020/02/Norden-is-Leading-the-World-on-Fossil-Fuel-Divestment_February-2020.pdf" target="_blank" rel="noopener">IEEFA, Norden Is Leading the World on Fossil Fuel Divestment, February 2020</a>'
 caseStudy:
   body: |
     <p>In June 2013, the World Bank announced it would stop financing coal-fired power plants in most circumstances. The decision was framed in development terms: coal was increasingly uncompetitive against falling renewable energy costs in developing markets, and financing it created long-term lock-in to a carbon-intensive energy system. The World Bank was not a climate campaign; it was the world&rsquo;s largest multilateral development lender. The decision mattered because of who made it, not just what they decided.</p>

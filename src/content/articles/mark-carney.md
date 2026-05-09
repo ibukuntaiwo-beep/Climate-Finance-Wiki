@@ -18,6 +18,10 @@ seeAlso:
 unexpected:
   headline: "Voluntary coalitions are vulnerable in ways that regulations are not"
   body: "GFANZ, the alliance Carney built, faced severe US political backlash, with major banks withdrawing from sub-alliances citing antitrust concerns. The episode exposed a core tension in Carney's project: private-sector climate coalitions can unravel when membership itself becomes a political liability, raising the question of whether voluntary commitments can ever drive systemic change."
+sources:
+  - '<a href="https://www.bankofengland.co.uk/speech/2015/breaking-the-tragedy-of-the-horizon-climate-change-and-financial-stability" target="_blank" rel="noopener">Bank of England, Breaking the Tragedy of the Horizon: Climate Change and Financial Stability (Sep 2015)</a>'
+  - '<a href="https://www.fsb.org/2015/11/fsb-proposes-creation-of-disclosure-task-force-on-climate-related-risks-2/" target="_blank" rel="noopener">FSB, Proposal to Establish a Climate-Related Financial Disclosures Task Force (Nov 2015)</a>'
+  - '<a href="https://press.un.org/en/2019/sga1927.doc.htm" target="_blank" rel="noopener">UN Press, Secretary-General Appoints Mark Carney Special Envoy on Climate Action and Finance (2019)</a>'
 ---
 
 ## Overview

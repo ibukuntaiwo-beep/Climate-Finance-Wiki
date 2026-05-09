@@ -17,6 +17,10 @@ seeAlso:
 unexpected:
   headline: "Ignoring fairness does not just harm workers, it derails climate policy"
   body: "The economic decline of coal regions in the US, UK, Germany, and Poland has been extensively documented. The political consequence, populist backlash and resistance to climate policy, shows that failing to manage transition costs does not just create human suffering; it actively undermines the political viability of climate ambition."
+sources:
+  - '<a href="https://www.ilo.org/publications/guidelines-just-transition-towards-environmentally-sustainable-economies" target="_blank" rel="noopener">ILO, Guidelines for a Just Transition towards Environmentally Sustainable Economies and Societies for All</a>'
+  - '<a href="https://unfccc.int/topics/just-transition-of-the-workforce" target="_blank" rel="noopener">UNFCCC, Just Transition of the Workforce</a>'
+  - '<a href="https://commission.europa.eu/funding-tenders/find-funding/eu-funding-programmes/just-transition-fund_en" target="_blank" rel="noopener">European Commission, Just Transition Fund</a>'
 ---
 
 ## Overview

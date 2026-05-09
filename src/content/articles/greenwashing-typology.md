@@ -16,6 +16,10 @@ seeAlso:
 unexpected:
   headline: "The opposite of greenwashing is also a problem"
   body: "Greenhushing, deliberately hiding genuine sustainability progress to avoid scrutiny, is a rational corporate response to litigation risk, but it starves the market of useful information and can itself be considered misleading disclosure."
+sources:
+  - '<a href="https://planet-tracker.org/wp-content/uploads/2023/01/Greenwashing-Hydra-3.pdf" target="_blank" rel="noopener">Planet Tracker, The Greenwashing Hydra (2023)</a>'
+  - '<a href="https://environment.ec.europa.eu/topics/circular-economy/green-claims_en" target="_blank" rel="noopener">European Commission, Proposal for a Directive on Green Claims</a>'
+  - '<a href="https://www.reprisk.com/news-research" target="_blank" rel="noopener">RepRisk, News and Research</a>'
 ---
 
 ## Overview

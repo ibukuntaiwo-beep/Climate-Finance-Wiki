@@ -17,6 +17,10 @@ seeAlso:
 unexpected:
   headline: "Stranded assets are not just about fossil fuels anymore"
   body: "The conversation has broadened well beyond oil fields and coal mines. High-carbon industrial facilities, energy-inefficient real estate, carbon-intensive vehicle fleets, and certain agricultural operations all carry stranding risk. Any asset whose value depends on a high-carbon world continuing indefinitely is exposed."
+sources:
+  - '<a href="https://carbontracker.org/reports/unburnable-carbon/" target="_blank" rel="noopener">Carbon Tracker, Unburnable Carbon: Are the World&rsquo;s Financial Markets Carrying a Carbon Bubble?</a>'
+  - '<a href="https://carbontracker.org/about/" target="_blank" rel="noopener">Carbon Tracker, About</a>'
+  - '<a href="https://www.nature.com/articles/nature14016" target="_blank" rel="noopener">Nature, The geographical distribution of fossil fuels unused when limiting global warming to 2&deg;C (2015)</a>'
 
 ---
 

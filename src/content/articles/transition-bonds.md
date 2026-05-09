@@ -17,6 +17,10 @@ seeAlso:
 unexpected:
   headline: "A Brazilian meat producer issued a transition bond"
   body: "Notable early issuers include Japan Airlines, Mitsubishi Heavy Industries, Italian gas company Snam, and Brazilian meat producer Marfrig. The diversity of sectors using the label illustrates how contested, and how broad, its definition remains."
+sources:
+  - '<a href="https://www.icmagroup.org/sustainable-finance/the-principles-guidelines-and-handbooks/climate-transition-finance-handbook/" target="_blank" rel="noopener">ICMA, Climate Transition Finance Handbook</a>'
+  - '<a href="https://www.oecd.org/en/topics/sub-issues/transition-finance.html" target="_blank" rel="noopener">OECD, Transition Finance</a>'
+  - '<a href="https://www.adb.org/publications/transition-finance-trends-challenges" target="_blank" rel="noopener">ADB, Transition Finance: Trends, Challenges, and Finance Sector Implications</a>'
 ---
 
 ## Overview

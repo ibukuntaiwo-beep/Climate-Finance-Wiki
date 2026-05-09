@@ -17,10 +17,10 @@ unexpected:
   headline: "The paper trail that made it worse, not better"
   body: "Volkswagen&rsquo;s marketing was technically sophisticated and thoroughly documented, which turned every &ldquo;Clean Diesel&rdquo; ad into evidence for prosecutors. The FTC used VW&rsquo;s own advertising materials to prove consumer deception. Every environmental claim a company makes creates a future accountability surface."
 sources:
-  - "US Department of Justice, VW Plea Agreement (2017)"
-  - "US EPA, Learn About Volkswagen Violations"
-  - "FTC, Charges Volkswagen Deceived Consumers (2016)"
-  - "Volkswagen Emissions Scandal, Wikipedia"
+  - '<a href="https://www.justice.gov/archives/opa/pr/volkswagen-ag-agrees-plead-guilty-and-pay-43-billion-criminal-and-civil-penalties-six" target="_blank" rel="noopener">US Department of Justice, VW Plea Agreement (2017)</a>'
+  - '<a href="https://www.epa.gov/vw/learn-about-volkswagen-violations" target="_blank" rel="noopener">US EPA, Learn About Volkswagen Violations</a>'
+  - '<a href="https://www.ftc.gov/news-events/news/press-releases/2016/03/ftc-charges-volkswagen-deceived-consumers-its-clean-diesel-campaign" target="_blank" rel="noopener">FTC, Charges Volkswagen Deceived Consumers (2016)</a>'
+  - '<a href="https://www.epa.gov/enforcement/volkswagen-clean-air-act-civil-settlement" target="_blank" rel="noopener">US EPA, Volkswagen Clean Air Act Civil Settlement</a>'
 caseStudy:
   body: |
     <p>In September 2015, the US Environmental Protection Agency revealed that Volkswagen had programmed approximately 11 million diesel vehicles worldwide with &ldquo;defeat device&rdquo; software, code that activated emissions controls only during laboratory testing. On the road, those vehicles emitted up to 40 times the legal limit of nitrogen oxides (NOx), a harmful air pollutant linked to respiratory disease.</p>

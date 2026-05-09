@@ -17,6 +17,10 @@ seeAlso:
 unexpected:
   headline: "Companies face reputational risk from both directions at once"
   body: "Organisations are now exposed to reputational damage for over-claiming their green credentials (greenwashing) and for under-disclosing legitimate sustainability progress (greenhushing). The communications challenge is not just getting it right, it is navigating a space where saying too much and saying too little are both punished."
+sources:
+  - '<a href="https://www.fsb-tcfd.org/recommendations/" target="_blank" rel="noopener">FSB-TCFD, Recommendations of the Task Force on Climate-related Financial Disclosures</a>'
+  - '<a href="https://www.bankofengland.co.uk/speech/2015/breaking-the-tragedy-of-the-horizon-climate-change-and-financial-stability" target="_blank" rel="noopener">Bank of England, Breaking the Tragedy of the Horizon (Sep 2015)</a>'
+  - '<a href="https://www.ngfs.net/ngfs-scenarios-portal/" target="_blank" rel="noopener">NGFS, Climate Scenarios Portal</a>'
 ---
 
 ## Overview

@@ -17,6 +17,11 @@ seeAlso:
 unexpected:
   headline: "How you count DFI lending changes the headline number by billions"
   body: "Whether you count a DFI loan at face value, at the concessional element only, or at the private finance it mobilised produces dramatically different totals. This methodological ambiguity is why different reports on the $100 billion climate finance pledge produce different numbers, and why the pledge was declared both 'met' and 'missed' depending on who was counting."
+sources:
+  - '<a href="https://www.worldbank.org/en/about" target="_blank" rel="noopener">World Bank, About the World Bank</a>'
+  - '<a href="https://www.eib.org/en/about/priorities/climate-action/index.htm" target="_blank" rel="noopener">EIB, Climate and Environmental Sustainability</a>'
+  - '<a href="https://www.oecd.org/en/topics/climate-finance-and-the-usd-100-billion-goal.html" target="_blank" rel="noopener">OECD, Climate Finance and the USD 100 Billion Goal</a>'
+  - '<a href="https://www.afdb.org/en/topics-and-sectors/sectors/climate-change" target="_blank" rel="noopener">African Development Bank, Climate Change</a>'
 ---
 
 ## Overview

@@ -18,6 +18,10 @@ seeAlso:
 unexpected:
   headline: "Selling your shares may feel principled, but it hands your leverage to someone who cares less"
   body: "The core logic of Climate Action 100+ is that divesting from a high-emitting company does not reduce its emissions, it just transfers the shares to a less climate-conscious investor. By staying invested, shareholders can vote at AGMs, file resolutions, and access management directly. Divestment sacrifices that leverage, which is why CA100+ chose engagement over exclusion."
+sources:
+  - '<a href="https://www.climateaction100.org/" target="_blank" rel="noopener">Climate Action 100+, Official Website</a>'
+  - '<a href="https://www.climateaction100.org/net-zero-company-benchmark/" target="_blank" rel="noopener">Climate Action 100+, Net Zero Company Benchmark</a>'
+  - '<a href="https://www.climateaction100.org/about/" target="_blank" rel="noopener">Climate Action 100+, About</a>'
 ---
 
 ## Overview

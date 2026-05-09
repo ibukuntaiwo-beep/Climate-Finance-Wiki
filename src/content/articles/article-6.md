@@ -17,6 +17,10 @@ seeAlso:
 unexpected:
   headline: "Article 6 automatically cancels some credits to benefit the planet"
   body: "Under the Article 6.4 mechanism, a share of every credit issued is automatically cancelled to deliver 'overall mitigation in global emissions' (OMGE). This means the system is designed to produce a net climate benefit beyond what the buyer claims, a structural feature the Kyoto Protocol's CDM never had."
+sources:
+  - '<a href="https://unfccc.int/process-and-meetings/the-paris-agreement/article6" target="_blank" rel="noopener">UNFCCC, Article 6 of the Paris Agreement</a>'
+  - '<a href="https://www.c2es.org/2025/02/why-the-cop29-article-6-decision-strengthens-high-integrity-carbon-markets/" target="_blank" rel="noopener">C2ES, Why the COP29 Article 6 decision strengthens high-integrity carbon markets (2025)</a>'
+  - '<a href="https://carbonmarketwatch.org/2024/11/06/faq-fixing-article-6-carbon-markets-at-cop29/" target="_blank" rel="noopener">Carbon Market Watch, FAQ: Fixing Article 6 carbon markets at COP29 (2024)</a>'
 ---
 
 ## Overview

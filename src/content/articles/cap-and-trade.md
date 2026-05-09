@@ -17,6 +17,10 @@ seeAlso:
 unexpected:
   headline: "The EU's carbon market failed for years because it was too generous"
   body: "In its early phases, the EU ETS distributed so many free allowances that the carbon price collapsed, failing to incentivise any real change. It took over a decade of reform, including a Market Stability Reserve that withdraws surplus allowances, before prices reached levels that actually shifted investment decisions."
+sources:
+  - '<a href="https://climate.ec.europa.eu/eu-action/eu-emissions-trading-system-eu-ets_en" target="_blank" rel="noopener">European Commission, EU Emissions Trading System (EU ETS)</a>'
+  - '<a href="https://icapcarbonaction.com/" target="_blank" rel="noopener">ICAP, International Carbon Action Partnership</a>'
+  - '<a href="https://www.c2es.org/content/cap-and-trade-basics/" target="_blank" rel="noopener">C2ES, Cap and Trade Basics</a>'
 ---
 
 ## Overview

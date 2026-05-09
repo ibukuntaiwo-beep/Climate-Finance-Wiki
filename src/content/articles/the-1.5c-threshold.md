@@ -17,6 +17,10 @@ seeAlso:
 unexpected:
   headline: "A single year above 1.5°C is not the same as permanent breach, but the window is closing fast"
   body: "In 2024, average global temperatures exceeded 1.5°C for the first time on an annual basis. Climate scientists are clear this is not yet a permanent breach, the threshold refers to long-term averages. But at current emission rates, the remaining carbon budget for a 50% chance of staying below 1.5°C is exhausted within roughly a decade."
+sources:
+  - '<a href="https://www.ipcc.ch/sr15/" target="_blank" rel="noopener">IPCC, Special Report on Global Warming of 1.5&deg;C (2018)</a>'
+  - '<a href="https://wmo.int/publication-series/wmo-global-annual-decadal-climate-update" target="_blank" rel="noopener">WMO, Global Annual to Decadal Climate Update</a>'
+  - '<a href="https://www.carbonbrief.org/state-of-the-climate-2024-sets-a-new-record-as-the-first-year-above-1-5c/" target="_blank" rel="noopener">Carbon Brief, State of the Climate: 2024 sets a new record as the first year above 1.5C</a>'
 ---
 
 ## Overview

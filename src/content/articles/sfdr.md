@@ -17,6 +17,10 @@ seeAlso:
 unexpected:
   headline: "The 'greenest' category triggered mass downgrades"
   body: "Following regulatory clarification in 2023, a wave of funds downgraded from Article 9 (sustainable investment objective) to Article 8 (promotes characteristics). Full taxonomy alignment turned out to be harder to achieve than fund managers initially claimed, revealing how loosely 'sustainable' had been defined before SFDR forced the question."
+sources:
+  - '<a href="https://eur-lex.europa.eu/eli/reg/2019/2088/oj/eng" target="_blank" rel="noopener">EUR-Lex, Regulation (EU) 2019/2088 (SFDR)</a>'
+  - '<a href="https://finance.ec.europa.eu/sustainable-finance/disclosures/sustainability-related-disclosure-financial-services-sector_en" target="_blank" rel="noopener">European Commission, Sustainability-related Disclosure in the Financial Services Sector</a>'
+  - '<a href="https://finance.ec.europa.eu/regulation-and-supervision/financial-services-legislation/implementing-and-delegated-acts/sustainable-finance-disclosures-regulation_en" target="_blank" rel="noopener">European Commission, SFDR Delegated Acts</a>'
 ---
 
 ## Overview

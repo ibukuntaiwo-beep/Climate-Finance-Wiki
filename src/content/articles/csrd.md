@@ -17,6 +17,10 @@ seeAlso:
 unexpected:
   headline: "CSRD asks who you affect, not just what affects you"
   body: "Double materiality is the key innovation. Traditional financial disclosure asks only how climate change threatens the company. CSRD also requires companies to report on their impact on people and the environment, flipping the lens. This is philosophically distinct from the ISSB approach and means CSRD produces significantly more disclosure."
+sources:
+  - '<a href="https://eur-lex.europa.eu/eli/dir/2022/2464/oj/eng" target="_blank" rel="noopener">EUR-Lex, Directive (EU) 2022/2464 (CSRD)</a>'
+  - '<a href="https://finance.ec.europa.eu/financial-markets/company-reporting-and-auditing/company-reporting/corporate-sustainability-reporting_en" target="_blank" rel="noopener">European Commission, Corporate Sustainability Reporting</a>'
+  - '<a href="https://corpgov.law.harvard.edu/2022/08/23/eu-corporate-sustainability-reporting-directive-what-do-companies-need-to-know/" target="_blank" rel="noopener">Harvard Law School Forum on Corporate Governance, EU Corporate Sustainability Reporting Directive (2022)</a>'
 ---
 
 ## Overview

@@ -17,6 +17,10 @@ seeAlso:
 unexpected:
   headline: "Litigation pressure is making companies go quiet on climate"
   body: "Greenhushing, deliberately suppressing sustainability communications to avoid legal exposure, is a documented corporate response. A company that publicly commits to an aggressive target creates a legal obligation; one that stays quiet has not. The paradox: the same legal pressure that punishes overclaiming also discourages legitimate disclosure."
+sources:
+  - '<a href="https://climate-laws.org/" target="_blank" rel="noopener">Grantham Research Institute (LSE), Climate Change Laws of the World</a>'
+  - '<a href="https://www.unep.org/resources/report/global-climate-litigation-report-2023-status-review" target="_blank" rel="noopener">UNEP, Global Climate Litigation Report: 2023 Status Review</a>'
+  - '<a href="https://climatecasechart.com/" target="_blank" rel="noopener">Sabin Center (Columbia Law), Climate Change Litigation Databases</a>'
 ---
 
 ## Overview

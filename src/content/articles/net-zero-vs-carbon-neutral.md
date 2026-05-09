@@ -17,6 +17,10 @@ seeAlso:
 unexpected:
   headline: "A company can be 'carbon neutral' without reducing a single tonne of emissions"
   body: "Carbon neutrality only requires that emissions are offset, not that they are reduced. A company can increase its emissions year on year and still claim carbon neutrality by purchasing enough offset credits. Net zero, by contrast, demands deep decarbonisation first and permits offsets only for a small hard-to-abate residual. The distinction is the difference between transformation and accounting."
+sources:
+  - '<a href="https://sciencebasedtargets.org/net-zero" target="_blank" rel="noopener">SBTi, Corporate Net Zero Standard</a>'
+  - '<a href="https://www.iso.org/netzero" target="_blank" rel="noopener">ISO, Net Zero Guidelines (IWA 42:2022)</a>'
+  - '<a href="https://www.ipcc.ch/report/ar6/wg3/" target="_blank" rel="noopener">IPCC, Climate Change 2022: Mitigation of Climate Change (AR6 WGIII)</a>'
 ---
 
 ## Overview

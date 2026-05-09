@@ -17,10 +17,10 @@ unexpected:
   headline: "The country that caused almost none of the problem is solving it most creatively"
   body: "The Seychelles contributes a negligible fraction of global emissions, yet it pioneered a financial instrument, the sovereign blue bond, that has since been replicated by Belize, Palau, and Tonga. The country that has done almost nothing to cause climate change is doing some of the most sophisticated things to respond to it."
 sources:
-  - "World Bank, Seychelles Launches World&rsquo;s First Sovereign Blue Bond (2018)"
-  - "World Bank, Sovereign Blue Bond: Frequently Asked Questions"
-  - "Seychelles Blue Bond, Wikipedia"
-  - "GEF, In the Seychelles, financial innovation buoys ocean health"
+  - '<a href="https://www.worldbank.org/en/news/press-release/2018/10/29/seychelles-launches-worlds-first-sovereign-blue-bond" target="_blank" rel="noopener">World Bank, Seychelles Launches World&rsquo;s First Sovereign Blue Bond (2018)</a>'
+  - '<a href="https://www.worldbank.org/en/news/feature/2018/10/29/sovereign-blue-bond-issuance-frequently-asked-questions" target="_blank" rel="noopener">World Bank, Sovereign Blue Bond: Frequently Asked Questions</a>'
+  - '<a href="https://www.worldbank.org/en/news/feature/2018/10/29/seychelles-achieves-world-first-with-sovereign-blue-bond" target="_blank" rel="noopener">World Bank, Seychelles Achieves World First with Sovereign Blue Bond (feature)</a>'
+  - '<a href="https://www.thegef.org/newsroom/feature-stories/seychelles-financial-innovation-buoys-ocean-health" target="_blank" rel="noopener">GEF, In the Seychelles, financial innovation buoys ocean health</a>'
 caseStudy:
   body: |
     <p>On 29 October 2018, the Government of Seychelles launched the world&rsquo;s first sovereign blue bond, raising $15 million from international investors. The bond carried a ten-year maturity and targeted institutional investors in the US market. It was supported by a $5 million partial credit guarantee and a $5 million concessional loan from the World Bank, a blended finance structure designed to lower borrowing costs and make the deal viable for a small island economy with limited fiscal capacity.</p>

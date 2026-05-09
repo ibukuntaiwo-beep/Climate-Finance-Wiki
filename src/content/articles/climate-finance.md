@@ -17,6 +17,10 @@ seeAlso:
 unexpected:
   headline: "Climate finance is more about risk than green investment"
   body: "Most people hear 'climate finance' and think green bonds or renewable energy projects. In practice, the field is driven by two risk categories, physical risks and transition risks, that affect every asset class, credit rating, and insurance decision. Risk repricing, not green labelling, is where the real financial transformation is happening."
+sources:
+  - '<a href="https://unfccc.int/topics/climate-finance" target="_blank" rel="noopener">UNFCCC, Climate Finance</a>'
+  - '<a href="https://www.climatepolicyinitiative.org/publication/global-landscape-of-climate-finance-2023/" target="_blank" rel="noopener">Climate Policy Initiative, Global Landscape of Climate Finance 2023</a>'
+  - '<a href="https://www.worldbank.org/en/topic/climatefinance" target="_blank" rel="noopener">World Bank, Climate Finance</a>'
 ---
 
 ## Overview

@@ -17,6 +17,10 @@ seeAlso:
 unexpected:
   headline: "TCFD succeeded by making itself unnecessary"
   body: "The Task Force formally dissolved in 2024 because its framework had been so thoroughly absorbed into successor standards, particularly ISSB S2, that it no longer needed to exist as a separate body. Its four-pillar structure is now the backbone of virtually every climate disclosure framework operating today."
+sources:
+  - '<a href="https://www.fsb-tcfd.org/" target="_blank" rel="noopener">FSB-TCFD, Official Website</a>'
+  - '<a href="https://www.fsb-tcfd.org/recommendations/" target="_blank" rel="noopener">FSB-TCFD, Recommendations of the Task Force on Climate-related Financial Disclosures (2017)</a>'
+  - '<a href="https://corpgov.law.harvard.edu/2017/10/30/fsb-guidance-on-climate-related-financial-disclosures-regulatory-and-market-responses/" target="_blank" rel="noopener">Harvard Law School Forum on Corporate Governance, FSB Guidance on Climate-Related Financial Disclosures (2017)</a>'
 ---
 
 ## Overview
