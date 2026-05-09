@@ -47,7 +47,7 @@ const seeAlsoWithHrefs = seeAlso.map(a => ({
   ) + '/' + a.slug}/`)
 }));
 ---
-<BaseLayout title={`${title} | Climate Finance Wiki`} footerType="internal">
+<BaseLayout title={`${title} | Climate Finance Wiki`} footerType="internal" schemaType="Article">
   {trail && (
     <ThreadBar
       trailName={trail.trailName}
@@ -67,6 +67,7 @@ const seeAlsoWithHrefs = seeAlso.map(a => ({
     <div class="category-label fade-up fade-up-d1">{categoryDisplay}</div>
     <h1 class="article-title fade-up fade-up-d2">{title}</h1>
     <p class="article-subtitle fade-up fade-up-d3">{subtitle}</p>
+    <p class="article-byline fade-up fade-up-d3">By <a href={url('/author/ibukun-taiwo/')}>Ibukun Taiwo</a></p>
   </header>
 
   <KeyStats stats={stats} />

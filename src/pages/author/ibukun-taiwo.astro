@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { url } from '../../lib/url';
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Ibukun Taiwo",
+  "url": "https://climatefinancewiki.org/author/ibukun-taiwo/",
+  "jobTitle": "Communications Professional",
+  "description": "Creator and editor of the Climate Finance Wiki, a curated reference for communications professionals navigating climate finance.",
+  "sameAs": [
+    "https://www.linkedin.com/in/ibukuntaiwo",
+    "https://github.com/ibukuntaiwo-beep"
+  ],
+  "mainEntityOfPage": {
+    "@type": "WebSite",
+    "name": "Climate Finance Wiki",
+    "url": "https://climatefinancewiki.org"
+  }
+};
+---
+<BaseLayout title="Ibukun Taiwo" description="Ibukun Taiwo is the creator and editor of the Climate Finance Wiki, a curated reference for communications professionals." footerType="internal">
+
+  <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+
+  <div class="breadcrumbs" style="max-width:var(--max-width);margin:0 auto;padding:20px 32px 0;display:flex;align-items:center;gap:8px;">
+    <a href={url('/')}>Home</a>
+    <span class="sep">&rarr;</span>
+    <span>Author</span>
+  </div>
+
+  <div class="author-page">
+    <header class="author-header">
+      <div class="author-label">Author</div>
+      <h1 class="author-name">Ibukun Taiwo</h1>
+      <p class="author-role">Communications professional specialising in climate finance</p>
+    </header>
+
+    <div class="author-content">
+      <section class="author-bio">
+        <h2>About</h2>
+        <p>Ibukun Taiwo is the creator and editor of the Climate Finance Wiki: a curated, editorially maintained reference that makes the language, instruments, institutions, and case studies of climate finance accessible to communications professionals.</p>
+        <p>The wiki currently contains 52 articles across five categories, with over 240 cross-connections and three guided reading trails. Every article is written to the same standard: clear enough for a non-specialist, rigorous enough for a professional.</p>
+        <p>The project draws on coursework from the CFA Institute Climate Finance Certificate, ICMA Green Bond Principles, UNFCCC reports, SEC enforcement filings, EU Taxonomy documentation, IPCC Assessment Reports, and academic and financial press reporting.</p>
+      </section>
+
+      <section class="author-links-section">
+        <h2>Connect</h2>
+        <div class="author-links">
+          <a href="https://www.linkedin.com/in/ibukuntaiwo" target="_blank" rel="noopener" class="author-link-card">
+            <span class="author-link-label">LinkedIn</span>
+            <span class="author-link-url">linkedin.com/in/ibukuntaiwo</span>
+          </a>
+          <a href="https://github.com/ibukuntaiwo-beep" target="_blank" rel="noopener" class="author-link-card">
+            <span class="author-link-label">GitHub</span>
+            <span class="author-link-url">github.com/ibukuntaiwo-beep</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="author-publication">
+        <h2>Publication</h2>
+        <p>The Climate Finance Wiki is a <strong>Red Barrow</strong> publication.</p>
+      </section>
+    </div>
+  </div>
+
+</BaseLayout>

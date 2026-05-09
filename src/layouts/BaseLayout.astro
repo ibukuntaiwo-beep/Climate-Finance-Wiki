@@ -11,6 +11,7 @@ interface Props {
   description?: string;
   footerType?: 'landing' | 'internal';
   activePage?: 'topics' | 'about';
+  schemaType?: 'WebSite' | 'Article';
 }
 
 const {
@@ -18,7 +19,39 @@ const {
   description = 'A curated climate finance reference for communications professionals.',
   footerType = 'internal',
   activePage,
+  schemaType = 'WebSite',
 } = Astro.props;
+
+const jsonLd = schemaType === 'Article' ? {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": title,
+  "description": description,
+  "author": {
+    "@type": "Person",
+    "name": "Ibukun Taiwo",
+    "url": "https://climatefinancewiki.org/author/ibukun-taiwo/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Red Barrow"
+  }
+} : {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Climate Finance Wiki",
+  "url": "https://climatefinancewiki.org",
+  "description": description,
+  "author": {
+    "@type": "Person",
+    "name": "Ibukun Taiwo",
+    "url": "https://climatefinancewiki.org/author/ibukun-taiwo/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Red Barrow"
+  }
+};
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -30,6 +63,10 @@ const {
   <link rel="icon" type="image/svg+xml" href={url('/favicon.svg')} />
   <link rel="icon" href={url('/favicon.ico')} />
   <meta name="generator" content={Astro.generator} />
+  <meta name="author" content="Ibukun Taiwo" />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
