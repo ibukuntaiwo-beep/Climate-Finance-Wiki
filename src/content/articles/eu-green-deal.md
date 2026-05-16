@@ -1,5 +1,6 @@
 ---
 title: "EU Green Deal"
+metaDescription: "The European Green Deal explained: the EU's strategy to reach climate neutrality by 2050, and the legislation and investment reshaping European green finance."
 subtitle: "The European Union's overarching strategy to become the world's first climate-neutral continent by 2050. A sweeping legislative and investment programme that reshaped global green finance."
 category: "frameworks"
 type: "article"

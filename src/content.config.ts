@@ -6,6 +6,8 @@ const articles = defineCollection({
   schema: z.object({
     title: z.string(),
     subtitle: z.string(),
+    metaTitle: z.string().optional(),
+    metaDescription: z.string().optional(),
     category: z.enum(['concepts', 'instruments', 'actors', 'frameworks', 'case-studies']),
     type: z.enum(['article', 'case-study']).default('article'),
     stats: z.array(z.object({ value: z.string(), label: z.string() })),

@@ -1,5 +1,6 @@
 ---
 title: "Inflation Reduction Act"
+metaDescription: "The Inflation Reduction Act explained: the largest US climate investment in history, deploying nearly $400 billion in clean energy incentives."
 subtitle: "The largest climate investment in US history, a 2022 law that deployed nearly $400 billion in federal incentives to accelerate clean energy and reshape the economics of the US energy transition."
 category: "frameworks"
 type: "article"

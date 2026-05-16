@@ -1,5 +1,6 @@
 ---
 title: "Carbon Offsets"
+metaDescription: "What carbon offsets are, how they work, and why their credibility is one of the most contested questions in climate finance."
 subtitle: "Certificates representing one metric tonne of greenhouse gas emissions avoided, reduced, or removed elsewhere, used to compensate for emissions a buyer cannot yet eliminate."
 category: "instruments"
 type: "article"

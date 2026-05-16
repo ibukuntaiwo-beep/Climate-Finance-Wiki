@@ -1,5 +1,6 @@
 ---
 title: "Just Transition"
+metaDescription: "What a just transition means: why the shift to a low-carbon economy must protect workers and communities that bear the heaviest costs."
 subtitle: "The principle that the shift to a low-carbon economy must be fair, protecting workers and communities that bear the heaviest costs, and ensuring the benefits are broadly shared."
 category: "concepts"
 type: "article"

@@ -1,5 +1,6 @@
 ---
 title: "Montreal Protocol"
+metaDescription: "The 1987 treaty that phased out ozone-depleting substances, widely regarded as the most successful environmental agreement in history."
 subtitle: "The 1987 international treaty to phase out ozone-depleting substances, widely regarded as the most successful environmental treaty in history, and an increasingly relevant model for climate action."
 category: "frameworks"
 type: "article"

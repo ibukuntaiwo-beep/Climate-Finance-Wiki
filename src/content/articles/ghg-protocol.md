@@ -1,5 +1,7 @@
 ---
 title: "GHG Protocol"
+metaTitle: "GHG Protocol Explained"
+metaDescription: "What the GHG Protocol is, how its three-scope framework works, and why it underpins nearly every corporate climate target and disclosure requirement."
 subtitle: "The internationally recognised standard for measuring and reporting greenhouse gas emissions. The accounting bedrock that underpins nearly every corporate climate target, disclosure framework, and carbon market in existence."
 category: "frameworks"
 type: "article"

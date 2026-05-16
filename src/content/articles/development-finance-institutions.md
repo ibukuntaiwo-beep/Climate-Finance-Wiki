@@ -1,5 +1,6 @@
 ---
 title: "Development Finance Institutions"
+metaDescription: "What DFIs are, how they channel public money to unlock private climate investment in developing countries, and why they matter for global climate finance."
 subtitle: "DFIs are public finance bodies whose job is to unlock private investment in developing countries, and in the climate context, they are the critical link between rich-country pledges and real-world project funding."
 category: "actors"
 type: "article"

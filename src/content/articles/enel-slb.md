@@ -1,5 +1,6 @@
 ---
 title: "ENEL and the Birth of the SLB Market"
+metaDescription: "How Enel's 2019 sustainability-linked bond created an entirely new debt market, and what happened when the company missed its climate targets."
 subtitle: "One bond deal created an entirely new market category, and then tested what happens when targets are missed."
 category: "case-studies"
 type: "case-study"

@@ -1,5 +1,6 @@
 ---
 title: "Science Based Targets Initiative"
+metaDescription: "What SBTi is and how it validates whether a company's emissions reduction targets are consistent with climate science and Paris Agreement goals."
 subtitle: "SBTi validates whether a company's emissions reduction plan is actually consistent with climate science. It is the closest thing to a gold standard for corporate net-zero claims."
 category: "actors"
 type: "article"

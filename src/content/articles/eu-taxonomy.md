@@ -1,5 +1,7 @@
 ---
 title: "EU Taxonomy"
+metaTitle: "EU Taxonomy Explained"
+metaDescription: "The EU Taxonomy explained: the classification system that defines which economic activities count as environmentally sustainable under European law."
 subtitle: "The European Union's official classification system that defines which economic activities count as environmentally sustainable. It is the legal backbone of green finance in Europe."
 category: "frameworks"
 type: "article"

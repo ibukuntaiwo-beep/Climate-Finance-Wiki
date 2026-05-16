@@ -1,5 +1,6 @@
 ---
 title: "Net Zero vs Carbon Neutral"
+metaDescription: "The difference between net zero and carbon neutral: why these terms are not interchangeable, and what each one actually requires."
 subtitle: "Two terms that sound interchangeable but represent fundamentally different levels of ambition, and the difference matters enormously for credibility, regulation, and climate outcomes."
 category: "concepts"
 type: "article"

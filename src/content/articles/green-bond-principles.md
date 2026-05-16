@@ -1,5 +1,6 @@
 ---
 title: "Green Bond Principles"
+metaDescription: "The ICMA Green Bond Principles explained: the voluntary guidelines that define how a bond qualifies as green and govern the sustainable debt market."
 subtitle: "The voluntary market guidelines published by ICMA that define how a bond qualifies as 'green', the foundational standard governing the world's largest sustainable debt market."
 category: "frameworks"
 type: "article"

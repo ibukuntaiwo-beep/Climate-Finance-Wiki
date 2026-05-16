@@ -1,5 +1,7 @@
 ---
 title: "CSRD"
+metaTitle: "CSRD: EU Sustainability Reporting"
+metaDescription: "The EU Corporate Sustainability Reporting Directive explained: who it covers, what it requires, and how double materiality changes corporate disclosure."
 subtitle: "The EU law that made comprehensive sustainability reporting mandatory for large companies and introduced the principle that companies must account for both how climate affects them and how they affect climate."
 category: "frameworks"
 type: "article"

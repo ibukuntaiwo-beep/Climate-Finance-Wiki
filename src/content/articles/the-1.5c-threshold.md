@@ -1,5 +1,6 @@
 ---
 title: "The 1.5°C Threshold"
+metaDescription: "The Paris Agreement's 1.5°C warming limit explained: what it means, why scientists treat it as a critical boundary, and what crossing it would change."
 subtitle: "The temperature limit central to the Paris Agreement, 1.5°C of warming above pre-industrial levels, that scientists identify as the boundary beyond which climate impacts become significantly more severe and some become irreversible."
 category: "concepts"
 type: "article"

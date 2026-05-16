@@ -1,5 +1,6 @@
 ---
 title: "Stranded Assets"
+metaDescription: "What stranded assets are in climate finance: investments that lose value due to policy shifts, physical climate damage, or the transition to clean energy."
 subtitle: "Assets that lose value earlier or more severely than expected due to climate-related risks, whether from physical damage, policy change, or market shifts, often with no prospect of recovery."
 category: "concepts"
 type: "article"

@@ -1,5 +1,6 @@
 ---
 title: "Adaptation vs Mitigation"
+metaDescription: "Adaptation vs mitigation in climate policy: two distinct strategies, what each one involves, and why both require very different types of finance."
 subtitle: "Two distinct strategies for dealing with climate change. Mitigation cuts the emissions causing it; adaptation prepares for the impacts that are already coming regardless."
 category: "concepts"
 type: "article"

@@ -19,6 +19,8 @@ const tocSections = headings.filter(h => h.depth === 2).map(h => ({ id: h.slug, 
 <ArticleLayout
   title={article.data.title}
   subtitle={article.data.subtitle}
+  metaTitle={article.data.metaTitle}
+  metaDescription={article.data.metaDescription}
   category="Instruments"
   categorySlug="instruments"
   stats={article.data.stats}

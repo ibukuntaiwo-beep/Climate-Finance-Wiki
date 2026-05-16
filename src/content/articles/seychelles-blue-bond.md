@@ -1,5 +1,6 @@
 ---
 title: "Seychelles Blue Bond"
+metaDescription: "The Seychelles blue bond: how a small island nation issued the world's first sovereign blue bond to finance marine conservation and climate resilience."
 subtitle: "The world's smallest economies are pioneering the most innovative climate finance instruments."
 category: "case-studies"
 type: "case-study"

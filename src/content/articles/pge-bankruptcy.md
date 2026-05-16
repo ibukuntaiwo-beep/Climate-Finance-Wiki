@@ -1,5 +1,6 @@
 ---
 title: "PG&E Bankruptcy"
+metaDescription: "How climate-driven wildfires pushed PG&E, California's largest utility, into the first corporate bankruptcy directly caused by climate change."
 subtitle: "Climate-driven wildfires destroyed a utility worth tens of billions: the first climate change bankruptcy."
 category: "case-studies"
 type: "case-study"

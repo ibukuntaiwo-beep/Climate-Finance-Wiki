@@ -1,5 +1,6 @@
 ---
 title: "Transition Bonds"
+metaDescription: "What transition bonds are and how they help high-emitting industries raise capital for decarbonisation, filling a gap green bonds don't address."
 subtitle: "Bonds designed to help high-emitting, hard-to-abate industries raise capital for decarbonisation, filling a gap that green bonds and sustainability-linked bonds don't fully address."
 category: "instruments"
 type: "article"

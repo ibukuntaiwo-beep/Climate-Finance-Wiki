@@ -1,5 +1,7 @@
 ---
 title: "Article 6"
+metaTitle: "Article 6 of the Paris Agreement"
+metaDescription: "Article 6 of the Paris Agreement explained: the rules governing international carbon markets and cross-border emissions trading between countries."
 subtitle: "The section of the Paris Agreement that governs international carbon markets, determining whether countries can use traded emissions reductions to meet their climate targets, and on what terms."
 category: "frameworks"
 type: "article"

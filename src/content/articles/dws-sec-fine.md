@@ -1,5 +1,6 @@
 ---
 title: "DWS SEC Fine"
+metaDescription: "How a whistleblower exposed DWS Group's ESG greenwashing, leading to an SEC fine and the resignation of its CEO in 2022."
 subtitle: "A whistleblower exposed the gap between an asset manager's ESG marketing and its actual investment practice."
 category: "case-studies"
 type: "case-study"

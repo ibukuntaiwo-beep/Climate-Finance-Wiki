@@ -1,5 +1,6 @@
 ---
 title: "Kyoto Protocol"
+metaDescription: "The Kyoto Protocol explained: the first legally binding climate treaty, how it created international carbon markets, and why it only bound wealthy nations."
 subtitle: "The world's first legally binding climate treaty, a landmark that proved carbon markets could work at scale, but showed the limits of a system that asked only wealthy nations to act."
 category: "frameworks"
 type: "article"

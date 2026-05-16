@@ -1,5 +1,6 @@
 ---
 title: "UNFCCC and COP"
+metaDescription: "The UNFCCC and COP explained: the 1992 treaty that created international climate negotiations, and the annual summits where countries negotiate."
 subtitle: "The 1992 treaty that created the international climate negotiation system; COP is the annual gathering where that system does its work, and generates most of its headlines."
 category: "actors"
 type: "article"

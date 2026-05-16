@@ -1,5 +1,6 @@
 ---
 title: "Physical Risks"
+metaDescription: "Physical climate risks explained: how extreme weather, rising seas, and shifting patterns create direct financial losses for businesses and investors."
 subtitle: "The financial and economic damage caused directly by climate change, through extreme weather events, shifting weather patterns, and the gradual transformation of natural systems."
 category: "concepts"
 type: "article"

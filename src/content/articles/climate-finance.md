@@ -1,5 +1,6 @@
 ---
 title: "Climate Finance"
+metaDescription: "What climate finance is: the flow of public, private, and blended money directed at cutting emissions, building resilience, and managing climate risk."
 subtitle: "The flow of money (public, private, and blended) directed at reducing greenhouse gas emissions, building resilience, and managing climate-related risks across the global economy."
 category: "concepts"
 type: "article"

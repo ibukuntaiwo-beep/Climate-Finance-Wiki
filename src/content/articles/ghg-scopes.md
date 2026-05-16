@@ -1,5 +1,7 @@
 ---
 title: "GHG Scopes"
+metaTitle: "GHG Scopes 1, 2 and 3 Explained"
+metaDescription: "Scope 1, 2, and 3 emissions explained: what each scope covers, how companies measure them, and why Scope 3 is the hardest to get right."
 subtitle: "The three-category framework for classifying where a company's greenhouse gas emissions actually come from: what it burns directly, the energy it buys, and the full chain of activity that surrounds its products."
 category: "concepts"
 type: "article"

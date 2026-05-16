@@ -1,5 +1,7 @@
 ---
 title: "IFRS S1 and S2"
+metaTitle: "IFRS S1 & S2: Climate Disclosure"
+metaDescription: "IFRS S1 and S2 explained: the global baseline standards for sustainability and climate disclosure, published by the ISSB to succeed TCFD."
 subtitle: "The global baseline standards for sustainability and climate-related financial disclosure, published in 2023 by the ISSB, the body that inherited and formalised TCFD's legacy."
 category: "frameworks"
 type: "article"

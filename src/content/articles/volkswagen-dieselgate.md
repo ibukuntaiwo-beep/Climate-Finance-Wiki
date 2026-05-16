@@ -1,5 +1,6 @@
 ---
 title: "Volkswagen Dieselgate"
+metaDescription: "The Volkswagen Dieselgate scandal: how VW built emissions fraud into 11 million vehicles while marketing them as clean, and what it cost."
 subtitle: "A company that built fraud into its products while marketing them as clean."
 category: "case-studies"
 type: "case-study"

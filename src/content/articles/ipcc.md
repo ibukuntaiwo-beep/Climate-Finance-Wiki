@@ -1,5 +1,6 @@
 ---
 title: "IPCC"
+metaTitle: "IPCC: UN Climate Science Panel"
 subtitle: "The UN body that synthesises global climate science. It does not run experiments; it referees them."
 category: "actors"
 type: "article"

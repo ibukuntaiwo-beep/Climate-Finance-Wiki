@@ -1,5 +1,6 @@
 ---
 title: "CDP"
+metaTitle: "CDP (Carbon Disclosure Project)"
 subtitle: "Formerly the Carbon Disclosure Project, CDP runs the world's largest environmental disclosure system and assigns letter grades that can move markets."
 category: "actors"
 type: "article"

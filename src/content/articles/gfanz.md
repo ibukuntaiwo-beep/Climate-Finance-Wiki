@@ -1,5 +1,7 @@
 ---
 title: "GFANZ"
+metaTitle: "GFANZ: Net Zero Finance Alliance"
+metaDescription: "GFANZ explained: how the Glasgow Financial Alliance for Net Zero united $130 trillion in assets under a climate pledge, and what happened next."
 subtitle: "The Glasgow Financial Alliance for Net Zero brought together $130 trillion in financial assets under a net-zero umbrella, and then watched parts of it unravel under political pressure."
 category: "actors"
 type: "article"

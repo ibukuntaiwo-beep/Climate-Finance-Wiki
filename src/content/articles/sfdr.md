@@ -1,5 +1,7 @@
 ---
 title: "SFDR"
+metaTitle: "SFDR: EU Fund Disclosure Rules"
+metaDescription: "The EU Sustainable Finance Disclosure Regulation explained: how it classifies investment products and forces asset managers to back up sustainability claims."
 subtitle: "The EU law that requires asset managers and financial product providers to classify and disclose how sustainable their products actually are, designed to cut through greenwashing in investment markets."
 category: "frameworks"
 type: "article"

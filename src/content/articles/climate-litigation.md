@@ -1,5 +1,6 @@
 ---
 title: "Climate Litigation"
+metaDescription: "Climate litigation explained: how lawsuits against governments, corporations, and financial institutions are being used to compel climate action."
 subtitle: "Legal action against governments, corporations, or financial institutions, aimed at compelling climate action, penalising climate inaction, or challenging misleading climate claims."
 category: "concepts"
 type: "article"

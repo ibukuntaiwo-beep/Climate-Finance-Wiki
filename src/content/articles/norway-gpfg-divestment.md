@@ -1,5 +1,6 @@
 ---
 title: "Norway Divests from Oil"
+metaDescription: "Why Norway's $1.7 trillion sovereign wealth fund, built on oil revenues, voted in 2019 to divest from fossil fuel companies on financial grounds."
 subtitle: "The world's largest sovereign wealth fund, built entirely on oil revenues, voted in 2019 to divest from pure-play fossil fuel companies. The rationale was financial, not political. That made it more significant, not less."
 category: "case-studies"
 type: "case-study"

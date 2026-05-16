@@ -1,5 +1,6 @@
 ---
 title: "The Great Coal Exit"
+metaDescription: "How over 200 financial institutions stopped financing coal between 2013 and 2023, the most complete example of stranded asset theory becoming reality."
 subtitle: "Between 2013 and 2023, more than 200 financial institutions stopped financing coal. It is the most complete example in history of stranded asset theory becoming market reality."
 category: "case-studies"
 type: "case-study"

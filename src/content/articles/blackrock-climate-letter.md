@@ -1,5 +1,6 @@
 ---
 title: "BlackRock's Climate Ultimatum"
+metaDescription: "How BlackRock CEO Larry Fink's 2020 letter declared climate risk a core investment concern, reshaping mainstream finance expectations."
 subtitle: "When the world's largest asset manager declared climate risk a core investment concern in January 2020, it triggered a reorientation of mainstream finance. What followed was more complicated."
 category: "case-studies"
 type: "case-study"

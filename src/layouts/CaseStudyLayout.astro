@@ -9,6 +9,8 @@ import Unexpected from '../components/Unexpected.astro';
 interface Props {
   title: string;
   subtitle: string;
+  metaTitle?: string;
+  metaDescription?: string;
   stats: Array<{value: string; label: string}>;
   seeAlso: Array<{title: string; category: string; description: string; slug: string}>;
   unexpected?: {headline: string; body: string};
@@ -30,14 +32,14 @@ interface Props {
   };
 }
 
-const { title, subtitle, stats, seeAlso, unexpected, sources, caseStudy, trail } = Astro.props;
+const { title, subtitle, metaTitle, metaDescription, stats, seeAlso, unexpected, sources, caseStudy, trail } = Astro.props;
 
 const seeAlsoHrefs = seeAlso.map(a => {
   const cat = a.category.toLowerCase() === 'case studies' ? 'case-studies' : a.category.toLowerCase();
   return { ...a, href: url(`/${cat}/${a.slug}/`) };
 });
 ---
-<BaseLayout title={`${title} | Climate Finance Wiki`} footerType="internal" schemaType="Article">
+<BaseLayout title={`${metaTitle || title} | Climate Finance Wiki`} description={metaDescription || subtitle} footerType="internal" schemaType="Article">
   <header class="case-header">
     <div class="case-header-inner">
       <div class="breadcrumbs anim-1">

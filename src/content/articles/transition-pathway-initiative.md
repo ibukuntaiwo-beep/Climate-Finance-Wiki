@@ -1,5 +1,6 @@
 ---
 title: "Transition Pathway Initiative"
+metaDescription: "How TPI assesses whether companies in high-carbon sectors are managing climate risk and cutting emissions in line with Paris Agreement targets."
 subtitle: "TPI assesses whether listed companies in high-carbon sectors are actually managing climate risk and reducing emissions in line with Paris Agreement scenarios, and publishes the results for anyone to see."
 category: "actors"
 type: "article"
