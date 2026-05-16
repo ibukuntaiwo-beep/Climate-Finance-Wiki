@@ -7,6 +7,10 @@ export default defineConfig({
   site: 'https://climatefinancewiki.org',
   output: 'static',
   integrations: [sitemap()],
+  redirects: {
+    '/concepts/the-1.5c-threshold/': '/concepts/the-15c-threshold/',
+    '/concepts/the-1-5-c-threshold/': '/concepts/the-15c-threshold/'
+  },
   build: {
     format: 'directory'
   },
