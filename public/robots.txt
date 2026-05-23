@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://climatefinancewiki.org/sitemap-index.xml

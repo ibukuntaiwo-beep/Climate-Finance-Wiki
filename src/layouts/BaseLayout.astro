@@ -12,15 +12,29 @@ interface Props {
   footerType?: 'landing' | 'internal';
   activePage?: 'topics' | 'about';
   schemaType?: 'WebSite' | 'Article';
+  ogImage?: string;
 }
+
+const siteUrl = 'https://climatefinancewiki.org';
+const siteName = 'Climate Finance Wiki';
+const defaultDescription = 'Climate finance explained for communications professionals. Case studies, key concepts, and the mechanisms behind green bonds, carbon markets, and climate risk.';
 
 const {
   title,
-  description = 'A curated climate finance reference for communications professionals.',
+  description = defaultDescription,
   footerType = 'internal',
   activePage,
   schemaType = 'WebSite',
+  ogImage = '/og-image.png',
 } = Astro.props;
+
+const isHomePage = title === siteName;
+const alreadySuffixed = title.includes(siteName) && !isHomePage;
+const pageTitle = isHomePage
+  ? `${siteName} | Climate Finance for Comms Professionals`
+  : alreadySuffixed ? title : `${title} | ${siteName}`;
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
+const ogImageUrl = new URL(ogImage, siteUrl).href;
 
 const jsonLd = schemaType === 'Article' ? {
   "@context": "https://schema.org",
@@ -62,9 +76,27 @@ const jsonLd = schemaType === 'Article' ? {
   <meta name="description" content={description} />
   <link rel="icon" type="image/svg+xml" href={url('/favicon.svg')} />
   <link rel="icon" href={url('/favicon.ico')} />
+  <link rel="canonical" href={canonicalUrl} />
   <meta name="generator" content={Astro.generator} />
   <meta name="author" content="Ibukun Taiwo" />
   <meta name="google-site-verification" content="Idb08U_QTA36KjYysOYkEPIfPaZYKFEn9mcsRejZ3P4" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content={schemaType === 'Article' ? 'article' : 'website'} />
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:site_name" content={siteName} />
+  <meta property="og:image" content={ogImageUrl} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={pageTitle} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImageUrl} />
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
@@ -74,7 +106,7 @@ const jsonLd = schemaType === 'Article' ? {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-  <title>{title}</title>
+  <title>{pageTitle}</title>
 
   <script is:inline>document.documentElement.classList.add('js');</script>
 
