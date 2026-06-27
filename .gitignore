@@ -1,25 +1,51 @@
 # build output
 dist/
 Climate-Finance-Wiki/
+promo/**/dist/
+promo/**/renders/
+promo/**/output/
+promo/**/*.mp4
+promo/**/*.mov
+promo/**/*.webm
+
 # generated types
 .astro/
 
 # dependencies
 node_modules/
+promo/**/node_modules/
 
 # logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+*.log
 
 
 # environment variables
 .env
 .env.production
 
+# local caches
+.hf-cache/
+.cache/
+
 # macOS-specific files
 .DS_Store
 
 # jetbrains setting folder
 .idea/
+# local agent tool bundles
+promo/**/.agents/
+promo/**/.claude/
+promo/**/skills-lock.json
+
+# generated promo screenshots
+promo/**/assets/*.png
+
+# raw binary source files kept local
+raw/**/*.pdf
+raw/**/*.docx
+raw/**/*.pptx
+raw/**/*.xlsx

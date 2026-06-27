@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glossary (Compact) — Climate Finance Wiki</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --font-display: 'Libre Baskerville', serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --color-primary: #A65D3F;
+  --color-primary-light: #C47A5C;
+  --color-primary-hover: #8F4F33;
+  --color-primary-subtle-bg: rgba(166, 93, 63, 0.07);
+  --color-secondary: #4E6F8E;
+  --color-page-bg: #F7F5F2;
+  --color-alt-surface: #EDEAE5;
+  --color-dark-surface: #2A2520;
+  --color-card-bg: #FFFFFF;
+  --color-text-primary: #2A2520;
+  --color-text-secondary: #544E49;
+  --color-text-muted: #6E6964;
+  --color-text-on-dark: #FAF8F5;
+  --shadow-card: 0 4px 20px rgba(0,0,0,0.08);
+  --shadow-card-hover: 0 8px 32px rgba(0,0,0,0.12);
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-pill: 100px;
+  --max-width: 1200px;
+  --transition-hover: 150ms ease;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); background: var(--color-page-bg); color: var(--color-text-primary); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; border-radius: 2px; }
+
+/* Nav */
+nav { background: var(--color-dark-surface); position: sticky; top: 0; z-index: 900; }
+.nav-inner { max-width: var(--max-width); margin: 0 auto; padding: 0 32px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+.nav-left { display: flex; align-items: center; gap: 12px; }
+.nav-wordmark { font-family: var(--font-body); font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(250,248,245,0.55); }
+.nav-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(250,248,245,0.3); }
+.nav-title { font-family: var(--font-display); font-size: 1.125rem; font-weight: 400; color: var(--color-text-on-dark); }
+.nav-links { display: flex; align-items: center; gap: 28px; }
+.nav-links a { font-family: var(--font-body); font-size: 0.875rem; font-weight: 500; color: rgba(250,248,245,0.8); text-decoration: none; transition: color var(--transition-hover); }
+.nav-links a:hover { color: var(--color-text-on-dark); }
+.nav-search { color: rgba(250,248,245,0.6); text-decoration: none; transition: color var(--transition-hover); display: flex; align-items: center; }
+.nav-search:hover { color: var(--color-text-on-dark); }
+
+/* Breadcrumbs */
+.breadcrumb-strip { background: var(--color-alt-surface); border-bottom: 1px solid rgba(0,0,0,0.06); }
+.breadcrumb-inner { max-width: var(--max-width); margin: 0 auto; padding: 12px 32px; }
+.breadcrumb-inner a, .breadcrumb-inner span { font-family: var(--font-body); font-size: 0.8125rem; color: var(--color-text-muted); text-decoration: none; }
+.breadcrumb-inner a:hover { color: var(--color-primary); }
+.breadcrumb-sep { margin: 0 8px; opacity: 0.5; }
+.breadcrumb-current { color: var(--color-text-primary); font-weight: 500; }
+
+/* Page header */
+.page-header { max-width: var(--max-width); margin: 0 auto; padding: 40px 32px 0; }
+.header-top { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 6px; }
+.page-header h1 { font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: var(--color-text-primary); text-rendering: optimizeLegibility; }
+.density-toggle { display: flex; background: var(--color-alt-surface); border-radius: var(--radius-pill); padding: 3px; gap: 2px; }
+.density-toggle button { font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; padding: 5px 14px; border: none; border-radius: var(--radius-pill); cursor: pointer; transition: all var(--transition-hover); background: transparent; color: var(--color-text-muted); }
+.density-toggle button.active { background: var(--color-card-bg); color: var(--color-text-primary); box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+.page-subtitle { font-family: var(--font-body); font-size: 0.9375rem; color: var(--color-text-secondary); margin-bottom: 20px; }
+.term-count { font-family: var(--font-mono); font-size: 0.8125rem; color: var(--color-text-muted); margin-bottom: 20px; }
+
+/* Search bar */
+.search-container { max-width: var(--max-width); margin: 0 auto; padding: 0 32px; }
+.search-wrapper { position: relative; max-width: 560px; margin-bottom: 28px; }
+.search-icon { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--color-text-muted); pointer-events: none; display: flex; align-items: center; }
+.search-input { width: 100%; padding: 12px 16px 12px 44px; font-family: var(--font-body); font-size: 0.875rem; color: var(--color-text-primary); background: var(--color-card-bg); border: 1px solid rgba(0,0,0,0.1); border-radius: var(--radius-md); transition: border-color var(--transition-hover), box-shadow var(--transition-hover); }
+.search-input::placeholder { color: var(--color-text-muted); }
+.search-input:focus { outline: none; border-color: var(--color-primary); box-shadow: 0 0 0 3px rgba(166,93,63,0.18); }
+
+/* Two-column glossary */
+.glossary-container { max-width: var(--max-width); margin: 0 auto; padding: 0 32px 80px; }
+
+.letter-section { margin-bottom: 0; }
+.letter-header { font-family: var(--font-display); font-size: 1.125rem; font-weight: 700; color: var(--color-primary); padding: 16px 0 8px; border-bottom: 2px solid var(--color-primary); margin-bottom: 0; position: sticky; top: 64px; background: var(--color-page-bg); z-index: 10; text-rendering: optimizeLegibility; }
+
+.terms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 32px; }
+
+.term-entry { padding: 10px 0; border-bottom: 1px solid rgba(0,0,0,0.05); opacity: 0; transform: translateY(8px); transition: opacity 0.4s ease, transform 0.4s ease; }
+.term-entry.revealed { opacity: 1; transform: translateY(0); }
+.term-name { font-family: var(--font-display); font-size: 0.9375rem; font-weight: 700; color: var(--color-text-primary); margin-bottom: 2px; text-rendering: optimizeLegibility; }
+.term-def { font-family: var(--font-body); font-size: 0.8125rem; color: var(--color-text-secondary); line-height: 1.45; margin-bottom: 3px; }
+.term-link { font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; color: var(--color-primary); text-decoration: none; transition: color var(--transition-hover); }
+.term-link:hover { color: var(--color-primary-hover); }
+
+/* Footer — Internal page standard */
+.site-footer {
+  background: var(--color-alt-surface);
+  border-top: 1px solid #D9D4CE;
+  padding: 48px 32px;
+}
+.site-footer-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+}
+.site-footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.site-footer-wordmark {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+.site-footer-tagline {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+.site-footer-publication {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.04em;
+  margin-top: 16px;
+}
+.site-footer-section-title {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 16px;
+}
+.site-footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.site-footer-links a {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+.site-footer-links a:hover {
+  color: var(--color-primary);
+}
+.site-footer-bottom {
+  max-width: var(--max-width);
+  margin: 40px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid #D9D4CE;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.site-footer-copyright {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+.site-footer-legal {
+  display: flex;
+  gap: 24px;
+}
+.site-footer-legal a {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+.site-footer-legal a:hover {
+  color: var(--color-primary);
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  .term-entry { opacity: 1; transform: none; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-inner { padding: 0 20px; }
+  .nav-links a:not(.nav-search) { display: none; }
+  .page-header { padding: 28px 20px 0; }
+  .page-header h1 { font-size: 1.625rem; }
+  .search-container, .glossary-container { padding-left: 20px; padding-right: 20px; }
+  .breadcrumb-inner { padding: 12px 20px; }
+  .terms-grid { grid-template-columns: 1fr; gap: 0; }
+  .site-footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  .site-footer-bottom { flex-direction: column; align-items: flex-start; gap: 12px; }
+}
+
+@media (max-width: 480px) {
+  .page-header h1 { font-size: 1.375rem; }
+  .header-top { flex-direction: column; gap: 8px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-left">
+      <span class="nav-wordmark">Red Barrow</span>
+      <span class="nav-dot"></span>
+      <span class="nav-title">Climate Finance Wiki</span>
+    </div>
+    <div class="nav-links">
+      <a href="#">Topics</a>
+      <a href="#">About</a>
+      <a href="#">Explore</a>
+      <a href="#" class="nav-search" aria-label="Search">
+        <svg width="17" height="17" viewBox="0 0 17 17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="7" cy="7" r="5"/><line x1="10.8" y1="10.8" x2="15.5" y2="15.5"/></svg>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="breadcrumb-strip">
+  <div class="breadcrumb-inner">
+    <a href="#">Home</a>
+    <span class="breadcrumb-sep">→</span>
+    <span class="breadcrumb-current">Glossary</span>
+  </div>
+</div>
+
+<div class="page-header">
+  <div class="header-top">
+    <h1>Glossary</h1>
+    <div class="density-toggle">
+      <button>Standard</button>
+      <button class="active">Compact</button>
+    </div>
+  </div>
+  <p class="page-subtitle">Plain-English definitions for the terms that matter in climate finance</p>
+  <p class="term-count">30 terms</p>
+</div>
+
+<div class="search-container">
+  <div class="search-wrapper">
+    <span class="search-icon">
+      <svg width="16" height="16" viewBox="0 0 17 17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="7" cy="7" r="5"/><line x1="10.8" y1="10.8" x2="15.5" y2="15.5"/></svg>
+    </span>
+    <input type="text" class="search-input" id="searchInput" placeholder="Search terms..." aria-label="Search glossary terms">
+  </div>
+</div>
+
+<div class="glossary-container" id="glossaryList">
+
+  <!-- A -->
+  <div class="letter-section" id="letter-A">
+    <h2 class="letter-header">A</h2>
+    <div class="terms-grid">
+      <div class="term-entry" data-term="adaptation">
+        <div class="term-name">Adaptation</div>
+        <p class="term-def">Actions that reduce vulnerability to the impacts of climate change already locked in.</p>
+        <a href="#" class="term-link">Read full article →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- B -->
+  <div class="letter-section" id="letter-B">
+    <h2 class="letter-header">B</h2>
+    <div class="terms-grid">
+      <div class="term-entry" data-term="blended finance">
+        <div class="term-name">Blended Finance</div>
+        <p class="term-def">The strategic use of public or philanthropic capital to de-risk and mobilise private investment in climate outcomes.</p>
+        <a href="#" class="term-link">Read full article →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- C -->
+  <div class="letter-section" id="letter-C">
+    <h2 class="letter-header">C</h2>
+    <div class="terms-grid">
+      <div class="term-entry" data-term="carbon neutral">
+        <div class="term-name">Carbon Neutral</div>
+        <p class="term-def">Achieving zero net carbon dioxide emissions, typically by offsetting residual emissions.</p>
+        <a href="#" class="term-link">Read full article →</a>
+      </div>
+      <div class="term-entry" data-term="carbon offsets">
+        <div class="term-name">Carbon Offsets</div>
+        <p class="term-def">Credits representing one tonne of CO₂ reduced or removed from the atmosphere.</p>
+        <a href="#" class="term-link">Read full article →</a>
+      </div>
+      <div class="term-entry" data-term="climate action 100+">
+        <div class="term-name">Climate Action 100+</div>
+        <p class="term-def">An investor-led initiative pressing the world's largest corporate emitters to take action.</p>
+        <a href="#" class="term-link">Read full article →</a>
+      </div>
+      <div class="term-entry" data-term="climate finance">
+        <div class="term-name">Climate Finance</div>
+        <p class="term-def">The flow of capital directed at reducing emissions, building resilience, and managing climate-related financial risk.</p>
+        <a href="#" class="term-link">Read full article →</a>
+      </div>
+      <div class="term-entry" data-term="csrd">
+        <div class="term-name">CSRD</div>
+        <p class="term-def">EU regulation requiring large companies to report on sustainability topics under European Sustainability Reporting Standards.</p>
+        <a href="#" class="term-link">Read full article →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- E -->
+  <div class="letter-section" id="letter-E">
+    <h2 class="letter-header">E</h2>
+    <div class="terms-grid">
+      <div class="term-entry" data-term="eu taxonomy">
+        <div class="term-name">EU Taxonomy</div>
+        <p class="term-def">The EU's classification system defining what economic activities qualify as environmentally sustainable.</p>
+        <a href="#" class="term-link">Read full article →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- G -->
+  <div class="letter-section" id="letter-G">
+    <h2 class="letter-header">G</h2>
+    <div class="terms-grid">
+      <div class="term-entry" data-term="gfanz">
+        <div class="term-name">GFANZ</div>
+        <p class="term-def">A coalition of leading financial institutions committed to transitioning portfolios to net zero by 2050.</p>
+        <a href="#" class="term-link">Read full article →</a>
+      </div>
+      <div class="term-entry" data-term="green bond principles">
+        <div class="term-name">Green Bond Principles</div>
+        <p class="term-def">Voluntary guidelines by ICMA setting out best practice for green bond issuance across four pillars.</p>
+        <a href="#" class="term-link">Read full article →</a>
+      </div>
+      <div class="term-entry" data-term="green bonds">
+        <div class="term-name">Green Bonds</div>
+        <p class="term-def">Bonds whose proceeds are ring-fenced exclusively for qualifying environmental projects.</p>
+        <a href="#" class="term-link">Read full article →</a>
+      </div>
+      <div class="term-entry" data-term="greenwashing">
+        <div class="term-name">Greenwashing</div>
+        <p class="term-def">Making misleading or unsubstantiated claims about the environmental credentials of a product, service, or institution.</p>
+        <a href="#" class="term-link">Read full article →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- I -->
+  <div class="letter-section" id="letter-I">
+    <h2 class="letter-header">I</h2>
+    <div class="terms-grid">
+      <div class="term-entry" data-term="ifrs s1 and s2">
+        <div class="term-name">IFRS S1 and S2</div>
+        <p class="term-def">The ISSB's standards for general sustainability (S1) and climate-specific (S2) disclosure.</p>
+        <a href="#" class="term-link">Read full article →</a>
+      </div>
+      <div class="term-entry" data-term="ipcc">
+        <div class="term-name">IPCC</div>
+        <p class="term-def">The UN body that synthesises global climate science and produces Assessment Reports.</p>
+        <a href="#" class="term-link">Read full article →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- M -->
+  <div class="letter-section" id="letter-M">
+    <h2 class="letter-header">M</h2>
+    <div class="terms-grid">
+      <div class="term-entry" data-term="mdbs">
+        <div class="term-name">MDBs</div>
+        <p class="term-def">Institutions like the World Bank that use public capital to mobilise private climate finance.</p>
+        <a href="#" class="term-link">Read full article →</a>
+      </div>
+      <div class="term-entry" data-term="mitigation">
+        <div class="term-name">Mitigation</div>
+        <p class="term-def">Actions that reduce or prevent greenhouse gas emissions.</p>
+        <a href="#" class="term-link">Read full article →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- N -->
+  <div class="letter-section" id="letter-N">
+    <h2 class="letter-header">N</h2>
+    <div class="terms-grid">
+      <div class="term-entry" data-term="net zero">
+        <div class="term-name">Net Zero</div>
+        <p class="term-def">A state in which greenhouse gas emissions entering the atmosphere are balanced by removals.</p>
+        <a href="#" class="term-link">Read full article →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- P -->
+  <div class="letter-section" id="letter-P">
+    <h2 class="letter-header">P</h2>
+    <div class="terms-grid">
+      <div class="term-entry" data-term="paris agreement">
+        <div class="term-name">Paris Agreement</div>
+        <p class="term-def">The 2015 international treaty committing signatories to limit global warming to well below 2°C.</p>
+        <a href="#" class="term-link">Read full article →</a>
+      </div>
+      <div class="term-entry" data-term="physical risks">
+        <div class="term-name">Physical Risks</div>
+        <p class="term-def">Financial risks arising from the direct physical effects of climate change.</p>
+        <a href="#" class="term-link">Read full article →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- S -->
+  <div class="letter-section" id="letter-S">
+    <h2 class="letter-header">S</h2>
+    <div class="terms-grid">
+      <div class="term-entry" data-term="science based targets">
+        <div class="term-name">Science Based Targets</div>
+        <p class="term-def">Emissions reduction targets validated as consistent with limiting warming to 1.5°C or well below 2°C.</p>
+        <a href="#" class="term-link">Read full article →</a>
+      </div>
+      <div class="term-entry" data-term="stranded assets">
+        <div class="term-name">Stranded Assets</div>
+        <p class="term-def">Assets that have lost value or must be retired early due to climate policy, regulation, or market shifts.</p>
+        <a href="#" class="term-link">Read full article →</a>
+      </div>
+      <div class="term-entry" data-term="sustainability-linked bonds">
+        <div class="term-name">Sustainability-Linked Bonds</div>
+        <p class="term-def">Bonds whose financial terms change if the issuer hits or misses pre-agreed sustainability targets.</p>
+        <a href="#" class="term-link">Read full article →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- T -->
+  <div class="letter-section" id="letter-T">
+    <h2 class="letter-header">T</h2>
+    <div class="terms-grid">
+      <div class="term-entry" data-term="tcfd">
+        <div class="term-name">TCFD</div>
+        <p class="term-def">A framework for companies to disclose climate-related risks and opportunities.</p>
+        <a href="#" class="term-link">Read full article →</a>
+      </div>
+      <div class="term-entry" data-term="the 1.5°c threshold">
+        <div class="term-name">The 1.5°C Threshold</div>
+        <p class="term-def">The aspirational warming limit set by the Paris Agreement. Breached on an annual basis in 2024.</p>
+        <a href="#" class="term-link">Read full article →</a>
+      </div>
+      <div class="term-entry" data-term="the greenium">
+        <div class="term-name">The Greenium</div>
+        <p class="term-def">The lower borrowing cost that green bond issuers may achieve compared to conventional bonds.</p>
+        <a href="#" class="term-link">Read full article →</a>
+      </div>
+      <div class="term-entry" data-term="transition bonds">
+        <div class="term-name">Transition Bonds</div>
+        <p class="term-def">Bonds designed to finance the decarbonisation of high-emitting sectors.</p>
+        <a href="#" class="term-link">Read full article →</a>
+      </div>
+      <div class="term-entry" data-term="transition risks">
+        <div class="term-name">Transition Risks</div>
+        <p class="term-def">Financial risks arising from the shift to a low-carbon economy.</p>
+        <a href="#" class="term-link">Read full article →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- U -->
+  <div class="letter-section" id="letter-U">
+    <h2 class="letter-header">U</h2>
+    <div class="terms-grid">
+      <div class="term-entry" data-term="unfccc and cop">
+        <div class="term-name">UNFCCC and COP</div>
+        <p class="term-def">The UN Framework Convention on Climate Change and its annual Conference of the Parties.</p>
+        <a href="#" class="term-link">Read full article →</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-brand">
+      <span class="site-footer-wordmark">Red Barrow</span>
+      <p class="site-footer-tagline">Making climate finance make sense&nbsp;&mdash;<br>for the people who explain it.</p>
+      <span class="site-footer-publication">A Red Barrow publication</span>
+    </div>
+    <div>
+      <h3 class="site-footer-section-title">Categories</h3>
+      <div class="site-footer-links">
+        <a href="#">Concepts</a>
+        <a href="#">Instruments</a>
+        <a href="#">Actors</a>
+        <a href="#">Frameworks</a>
+        <a href="#">Case Studies</a>
+      </div>
+    </div>
+    <div>
+      <h3 class="site-footer-section-title">Wiki</h3>
+      <div class="site-footer-links">
+        <a href="#">About this project</a>
+        <a href="#">How to use the wiki</a>
+        <a href="#">Knowledge Graph</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+  </div>
+  <div class="site-footer-bottom">
+    <span class="site-footer-copyright">&copy; 2026 Red Barrow. All rights reserved.</span>
+    <div class="site-footer-legal">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const searchInput = document.getElementById('searchInput');
+  const entries = document.querySelectorAll('.term-entry');
+  const letterSections = document.querySelectorAll('.letter-section');
+  const termCount = document.querySelector('.term-count');
+
+  searchInput.addEventListener('input', function() {
+    const query = this.value.toLowerCase().trim();
+    let visibleCount = 0;
+
+    entries.forEach(function(entry) {
+      const term = entry.getAttribute('data-term');
+      const def = entry.querySelector('.term-def').textContent.toLowerCase();
+      const match = !query || term.includes(query) || def.includes(query);
+      entry.style.display = match ? '' : 'none';
+      if (match) visibleCount++;
+    });
+
+    letterSections.forEach(function(section) {
+      const visibleEntries = section.querySelectorAll('.term-entry:not([style*="display: none"])');
+      section.style.display = visibleEntries.length > 0 ? '' : 'none';
+    });
+
+    if (query) {
+      termCount.textContent = visibleCount + ' result' + (visibleCount !== 1 ? 's' : '') + " for '" + query + "'";
+    } else {
+      termCount.textContent = '30 terms';
+    }
+  });
+
+  // Scroll-triggered entry reveals
+  const termObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        termObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -20px 0px' });
+
+  document.querySelectorAll('.term-entry').forEach(function(entry) {
+    termObserver.observe(entry);
+  });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Green Bonds — Climate Finance Wiki — M5: Premium Reference</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+  :root {
+    --font-display: 'Libre Baskerville', serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    --color-primary: #A65D3F;
+    --color-primary-light: #C47A5C;
+    --color-primary-subtle-bg: rgba(166, 93, 63, 0.07);
+    --color-secondary: #4E6F8E;
+
+    --color-page-bg: #F7F5F2;
+    --color-alt-surface: #EDEAE5;
+    --color-dark-surface: #2A2520;
+    --color-card-bg: #FFFFFF;
+    --card-shadow: 0 4px 20px rgba(0,0,0,0.08);
+
+    --color-nav-bg: #2A2520;
+    --color-text-on-dark: #FAF8F5;
+
+    --color-text-primary: #2A2520;
+    --color-text-secondary: #544E49;
+    --color-text-muted: #6E6964;
+
+    --color-dark-anchor: #1A1A2E;
+
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+
+    --max-width: 1200px;
+    --transition-hover: 150ms ease;
+    --transition-panel: 300ms ease;
+  }
+
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--color-page-bg);
+    color: var(--color-text-primary);
+    line-height: 1.6;
+  }
+
+  /* ── Direction label ── */
+  .direction-label {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    background: var(--color-primary);
+    color: #FFFFFF;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    z-index: 1000;
+    text-transform: uppercase;
+  }
+
+  /* ── Navigation (Dark) ── */
+  nav {
+    background: var(--color-nav-bg);
+    position: sticky;
+    top: 0;
+    z-index: 900;
+  }
+
+  .nav-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 32px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .nav-wordmark {
+    font-family: var(--font-body);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(250, 248, 245, 0.55);
+  }
+
+  .nav-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(250, 248, 245, 0.3);
+  }
+
+  .nav-title {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 400;
+    color: var(--color-text-on-dark);
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .nav-links a {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: rgba(250, 248, 245, 0.8);
+    text-decoration: none;
+    transition: color var(--transition-hover);
+  }
+
+  .nav-links a:hover {
+    color: var(--color-text-on-dark);
+  }
+
+  /* ── Breadcrumb ── */
+  .breadcrumb-bar {
+    background: var(--color-alt-surface);
+  }
+
+  .breadcrumb {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 16px 32px;
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+  }
+
+  .breadcrumb a {
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color var(--transition-hover);
+  }
+
+  .breadcrumb a:hover {
+    color: var(--color-primary);
+  }
+
+  .breadcrumb .sep {
+    margin: 0 8px;
+  }
+
+  /* ── Article header ── */
+  .article-header-wrap {
+    background: var(--color-alt-surface);
+    padding-bottom: 40px;
+  }
+
+  .article-header {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 16px 32px 0;
+  }
+
+  .article-header .category {
+    font-family: var(--font-body);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: 12px;
+  }
+
+  .article-header h1 {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-text-primary);
+    margin-bottom: 12px;
+  }
+
+  .article-header .subtitle {
+    font-family: var(--font-body);
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    margin-bottom: 12px;
+  }
+
+  .article-header .meta {
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+  }
+
+  /* ── Key stats ── */
+  .key-stats {
+    max-width: var(--max-width);
+    margin: -24px auto 0;
+    padding: 0 32px;
+    position: relative;
+    z-index: 10;
+  }
+
+  .key-stats-inner {
+    background: var(--color-card-bg);
+    border: none;
+    border-radius: var(--radius-md);
+    box-shadow: var(--card-shadow);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .stat {
+    padding: 28px 28px;
+    text-align: center;
+  }
+
+  .stat:not(:last-child) {
+    border-right: 1px solid var(--color-alt-surface);
+  }
+
+  .stat-number {
+    font-family: var(--font-mono);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 4px;
+  }
+
+  .stat-label {
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    color: var(--color-text-secondary);
+  }
+
+  /* ── Article body layout ── */
+  .article-body {
+    max-width: var(--max-width);
+    margin: 40px auto 0;
+    padding: 0 32px 64px;
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 48px;
+    align-items: start;
+  }
+
+  /* ── Main content ── */
+  .main-content {
+    max-width: 680px;
+  }
+
+  .main-content p {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  .main-content h2 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-text-primary);
+    margin-top: 40px;
+    margin-bottom: 16px;
+  }
+
+  /* ── Callout ── */
+  .callout {
+    background: var(--color-primary-subtle-bg);
+    border-left: 3px solid var(--color-primary);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    padding: 28px 32px;
+    margin: 32px 0;
+  }
+
+  .callout-label {
+    font-family: var(--font-body);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: 8px;
+  }
+
+  .callout p {
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    color: var(--color-text-secondary);
+    line-height: 1.65;
+    margin-bottom: 0;
+  }
+
+  /* ── Sidebar ── */
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: sticky;
+    top: 88px;
+  }
+
+  .sidebar-box {
+    background: var(--color-card-bg);
+    border: none;
+    border-radius: var(--radius-md);
+    box-shadow: var(--card-shadow);
+    padding: 28px;
+  }
+
+  .sidebar-box-label {
+    font-family: var(--font-body);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: 16px;
+  }
+
+  .related-term {
+    margin-bottom: 16px;
+  }
+
+  .related-term:last-child {
+    margin-bottom: 0;
+  }
+
+  .related-term a {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color var(--transition-hover);
+  }
+
+  .related-term a:hover {
+    color: var(--color-primary-light);
+  }
+
+  .related-term .desc {
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    margin-top: 2px;
+  }
+
+  .see-also-link {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-secondary);
+    text-decoration: none;
+    padding: 6px 0;
+    transition: color var(--transition-hover);
+  }
+
+  .see-also-link:hover {
+    color: #3D5F7A;
+  }
+
+  /* ── Footer (Dark) ── */
+  footer {
+    background: var(--color-dark-surface);
+    padding: 24px 32px;
+  }
+
+  .footer-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer span {
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    color: rgba(250, 248, 245, 0.5);
+  }
+
+  /* ── Focus states (a11y) ── */
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  nav :focus-visible,
+  footer :focus-visible {
+    outline-color: var(--color-primary-light);
+  }
+
+  /* ── Reduced motion (a11y) ── */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 1024px) {
+    .article-body {
+      grid-template-columns: 1fr 280px;
+      gap: 36px;
+    }
+    .nav-inner {
+      padding: 0 24px;
+    }
+    .article-header {
+      padding: 16px 24px 0;
+    }
+    .breadcrumb {
+      padding: 16px 24px;
+    }
+    .key-stats {
+      padding: 0 24px;
+    }
+    .article-body {
+      padding: 0 24px 64px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .article-body {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .main-content {
+      max-width: 100%;
+    }
+    .sidebar {
+      position: static;
+    }
+    .article-header h1 {
+      font-size: 2rem;
+    }
+    .key-stats-inner {
+      grid-template-columns: 1fr;
+    }
+    .stat:not(:last-child) {
+      border-right: none;
+      border-bottom: 1px solid var(--color-alt-surface);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .article-header h1 {
+      font-size: 1.75rem;
+    }
+    .main-content h2 {
+      font-size: 1.25rem;
+    }
+    .nav-links a:last-child {
+      display: none;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="direction-label">M5: Premium Reference</div>
+
+<!-- Navigation (Dark) -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-left">
+      <span class="nav-wordmark">Red Barrow</span>
+      <span class="nav-dot"></span>
+      <span class="nav-title">Climate Finance Wiki</span>
+    </div>
+    <div class="nav-links">
+      <a href="#">Topics</a>
+      <a href="#">About</a>
+      <a href="#">Explore</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Breadcrumb (on alt surface) -->
+<div class="breadcrumb-bar">
+  <div class="breadcrumb">
+    <a href="m5-premium-reference-landing.html">Home</a><span class="sep">/</span><a href="#">Green Finance Instruments</a><span class="sep">/</span>Green Bonds
+  </div>
+</div>
+
+<!-- Article Header (on alt surface, layered) -->
+<div class="article-header-wrap">
+  <div class="article-header">
+    <div class="category">Green Finance Instruments</div>
+    <h1>Green Bonds</h1>
+    <div class="subtitle">The debt instrument funding the climate transition</div>
+    <div class="meta">Last updated April 2026 &middot; 8 min read</div>
+  </div>
+</div>
+
+<!-- Key Stats (overlapping header/body transition) -->
+<div class="key-stats">
+  <div class="key-stats-inner">
+    <div class="stat">
+      <div class="stat-number">$580B</div>
+      <div class="stat-label">Global green bond issuance (2023)</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">12%</div>
+      <div class="stat-label">Year-over-year growth</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">42</div>
+      <div class="stat-label">Countries with sovereign green bonds</div>
+    </div>
+  </div>
+</div>
+
+<!-- Article Body -->
+<div class="article-body">
+  <div class="main-content">
+    <p>A green bond is a fixed-income instrument &mdash; essentially an IOU &mdash; where the money raised is earmarked exclusively for projects with environmental benefits. The issuer (a government, bank, or corporation) borrows money from investors and promises to pay it back with interest, just like any conventional bond. The difference: the proceeds must fund eligible green projects.</p>
+
+    <h2>How the Market Grew</h2>
+
+    <p>The green bond market has grown from $11 billion in 2013 to over $580 billion in 2023. That growth reflects both genuine climate commitment and market opportunity &mdash; green bonds often price tighter than conventional equivalents (a phenomenon called the &lsquo;greenium&rsquo;), meaning issuers can borrow slightly cheaper by going green.</p>
+
+    <p>The European Investment Bank issued the first green bond in 2007, calling it a &lsquo;Climate Awareness Bond.&rsquo; It raised &euro;600 million. Since then, the market has expanded to include sovereigns (national governments), corporates, municipalities, and development banks. China, the EU, and the United States are the three largest markets by issuance volume.</p>
+
+    <div class="callout">
+      <div class="callout-label">Comms Insight</div>
+      <p>The existence of a greenium matters because it means the market is actively rewarding climate-aligned borrowing. When your organisation issues a green bond, the story isn&rsquo;t just environmental &mdash; it&rsquo;s financial. The market is paying a premium for credible green credentials.</p>
+    </div>
+
+    <h2>The Framework</h2>
+
+    <p>Green bonds follow one of several frameworks, most commonly the ICMA Green Bond Principles. These principles define four core components: use of proceeds, process for project evaluation and selection, management of proceeds, and reporting. Compliance is voluntary but has become a market expectation &mdash; bonds issued without adherence to recognised principles face higher scrutiny and may trade at a discount.</p>
+
+    <p>A Second-Party Opinion (SPO) from an independent reviewer &mdash; such as Sustainalytics, CICERO, or ISS ESG &mdash; has become the standard way issuers demonstrate credibility. The SPO assesses whether the bond&rsquo;s framework aligns with the Green Bond Principles and whether the issuer&rsquo;s environmental claims are credible.</p>
+
+    <h2>What to Watch</h2>
+
+    <p>The EU Green Bond Standard (EU GBS), finalised in 2023, represents the most significant regulatory intervention in the market to date. Unlike the voluntary ICMA principles, the EU GBS creates a formal standard with mandatory external review and post-issuance reporting. While adoption is optional, it signals a broader shift from voluntary self-labelling toward regulated green finance.</p>
+
+    <p>For comms professionals monitoring this space, three developments matter most: the convergence of voluntary and mandatory standards, the expansion of the &lsquo;green&rsquo; label to adjacent categories (blue bonds for ocean conservation, transition bonds for high-emitting sectors), and growing regulatory attention to greenwashing in financial products.</p>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-box">
+      <div class="sidebar-box-label">Related Terms</div>
+      <div class="related-term">
+        <a href="#">Greenium</a>
+        <div class="desc">The price premium investors pay for green bonds</div>
+      </div>
+      <div class="related-term">
+        <a href="#">ICMA Green Bond Principles</a>
+        <div class="desc">The voluntary framework governing green bond issuance</div>
+      </div>
+      <div class="related-term">
+        <a href="#">Use of Proceeds</a>
+        <div class="desc">How bond revenue is allocated to eligible projects</div>
+      </div>
+      <div class="related-term">
+        <a href="#">Second-Party Opinion</a>
+        <div class="desc">Independent assessment of a green bond framework</div>
+      </div>
+      <div class="related-term">
+        <a href="#">Climate Bonds Initiative</a>
+        <div class="desc">The organisation certifying climate-aligned bonds</div>
+      </div>
+    </div>
+    <div class="sidebar-box">
+      <div class="sidebar-box-label">See Also</div>
+      <a href="#" class="see-also-link">Social Bonds &rarr;</a>
+      <a href="#" class="see-also-link">Sustainability-Linked Bonds &rarr;</a>
+      <a href="#" class="see-also-link">Transition Bonds &rarr;</a>
+    </div>
+  </aside>
+</div>
+
+<!-- Footer (Dark) -->
+<footer>
+  <div class="footer-inner">
+    <span>A Red Barrow publication</span>
+    <span>Last updated April 2026</span>
+  </div>
+</footer>
+
+</body>
+</html>

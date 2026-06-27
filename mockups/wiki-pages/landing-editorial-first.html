@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Climate Finance Wiki — Landing Page (Editorial-First)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+  /* ═══════════════════════════════════════════
+     DESIGN TOKENS — from WIKI_DESIGN_TOKENS.md
+     ═══════════════════════════════════════════ */
+
+  :root {
+    /* Brand Colors */
+    --color-primary: #A65D3F;
+    --color-primary-light: #C47A5C;
+    --color-primary-subtle-bg: rgba(166, 93, 63, 0.07);
+    --color-secondary: #4E6F8E;
+
+    /* Surfaces */
+    --color-page-bg: #F7F5F2;
+    --color-alt-surface: #EDEAE5;
+    --color-dark-surface: #2A2520;
+    --color-card-bg: #FFFFFF;
+
+    /* Text */
+    --color-text-primary: #2A2520;
+    --color-text-secondary: #544E49;
+    --color-text-muted: #6E6964;
+    --color-text-on-dark: #FAF8F5;
+
+    /* Typography */
+    --font-display: 'Libre Baskerville', serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    /* Shadows */
+    --shadow-card: 0 4px 20px rgba(0,0,0,0.08);
+    --shadow-card-hover: 0 8px 32px rgba(0,0,0,0.12);
+
+    /* Radius */
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-full: 100px;
+
+    /* Transitions */
+    --transition-hover: 150ms ease;
+    --transition-panel: 300ms ease;
+
+    /* Layout */
+    --max-width: 1200px;
+  }
+
+  /* ═══════════════════════════════
+     RESET & BASE
+     ═══════════════════════════════ */
+
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--color-page-bg);
+    color: var(--color-text-primary);
+    line-height: 1.6;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* ═══════════════════════════════
+     SHARED PATTERNS
+     ═══════════════════════════════ */
+
+  /* Red Barrow uppercase label house style */
+  .label {
+    font-family: var(--font-body);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .label--primary {
+    color: var(--color-primary);
+  }
+
+  .label--light {
+    color: var(--color-primary-light);
+  }
+
+  .label--muted {
+    color: var(--color-text-muted);
+  }
+
+  .label--on-dark {
+    color: rgba(250, 248, 245, 0.5);
+  }
+
+  /* Stat number pattern */
+  .stat-number {
+    font-family: var(--font-mono);
+    font-weight: 700;
+  }
+
+  /* Constrained inner width */
+  .inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  /* ═══════════════════════════════
+     DIRECTION BADGE (dev only)
+     ═══════════════════════════════ */
+
+  .dev-badge {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    background: var(--color-primary);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: var(--radius-sm);
+    z-index: 1000;
+  }
+
+  /* ═══════════════════════════════
+     NAVIGATION — Dark bar
+     ═══════════════════════════════ */
+
+  .nav {
+    background: var(--color-dark-surface);
+    position: sticky;
+    top: 0;
+    z-index: 900;
+    border-bottom: 1px solid rgba(250, 248, 245, 0.08);
+  }
+
+  .nav__inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 32px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav__brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .nav__wordmark {
+    font-family: var(--font-body);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(250, 248, 245, 0.55);
+  }
+
+  .nav__separator {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(250, 248, 245, 0.3);
+    flex-shrink: 0;
+  }
+
+  .nav__title {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 400;
+    color: var(--color-text-on-dark);
+  }
+
+  .nav__links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .nav__link {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: rgba(250, 248, 245, 0.8);
+    transition: color var(--transition-hover);
+  }
+
+  .nav__link:hover {
+    color: var(--color-text-on-dark);
+  }
+
+  .nav__link--accent {
+    color: var(--color-primary-light);
+  }
+
+  .nav__link--accent:hover {
+    color: #d4956f;
+  }
+
+  /* ── Nav search ── */
+
+  .nav__search {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+
+  .nav__search-input {
+    width: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: var(--color-text-on-dark);
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    outline: none;
+    opacity: 0;
+    transition: width var(--transition-panel), opacity 200ms ease, padding var(--transition-panel);
+  }
+
+  .nav__search-input::placeholder {
+    color: rgba(250, 248, 245, 0.4);
+  }
+
+  .nav__search:focus-within .nav__search-input {
+    width: 180px;
+    padding: 6px 12px;
+    opacity: 1;
+    background: rgba(250, 248, 245, 0.08);
+    border-radius: var(--radius-sm);
+  }
+
+  .nav__search-icon {
+    width: 18px;
+    height: 18px;
+    color: rgba(250, 248, 245, 0.55);
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: color var(--transition-hover);
+  }
+
+  .nav__search:hover .nav__search-icon,
+  .nav__search:focus-within .nav__search-icon {
+    color: var(--color-text-on-dark);
+  }
+
+  /* ═══════════════════════════════
+     HERO — Dark surface, compact
+     ═══════════════════════════════ */
+
+  .hero {
+    background: var(--color-dark-surface);
+    padding: 64px 32px 80px;
+  }
+
+  .hero__inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 48px;
+    align-items: end;
+  }
+
+  .hero__text {
+    max-width: 720px;
+  }
+
+  .hero__label {
+    margin-bottom: 20px;
+  }
+
+  .hero__title {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-text-on-dark);
+    margin-bottom: 16px;
+  }
+
+  .hero__subtitle {
+    font-family: var(--font-body);
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: rgba(250, 248, 245, 0.78);
+    line-height: 1.5;
+  }
+
+  .hero__stats {
+    display: flex;
+    gap: 32px;
+    align-items: flex-end;
+    padding-bottom: 6px;
+  }
+
+  .hero__stat {
+    text-align: center;
+  }
+
+  .hero__stat-number {
+    font-family: var(--font-mono);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text-on-dark);
+    line-height: 1.2;
+    display: block;
+  }
+
+  .hero__stat-label {
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    color: rgba(250, 248, 245, 0.5);
+    margin-top: 4px;
+    display: block;
+  }
+
+  /* ═══════════════════════════════
+     FEATURED CONTENT — 60/40 split
+     ═══════════════════════════════ */
+
+  .featured {
+    padding: 56px 0 64px;
+  }
+
+  .featured__grid {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 32px;
+    align-items: start;
+  }
+
+  /* --- Main feature (left) --- */
+
+  .feature-main {
+    background: var(--color-card-bg);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+  }
+
+  .feature-main__image {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    object-position: center 40%;
+  }
+
+  .feature-main__body {
+    padding: 32px;
+  }
+
+  .feature-main__label {
+    margin-bottom: 16px;
+  }
+
+  .feature-main__title {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--color-text-primary);
+    margin-bottom: 20px;
+  }
+
+  .feature-main__pullquote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+    border-left: 3px solid var(--color-primary);
+    padding-left: 20px;
+    margin-bottom: 20px;
+  }
+
+  .feature-main__excerpt {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  .feature-main__cta {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: color var(--transition-hover);
+  }
+
+  .feature-main__cta:hover {
+    color: var(--color-primary-light);
+  }
+
+  .feature-main__cta svg {
+    transition: transform var(--transition-hover);
+  }
+
+  .feature-main__cta:hover svg {
+    transform: translateX(3px);
+  }
+
+  /* --- Sidebar (right) --- */
+
+  .feature-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .sidebar-card {
+    background: var(--color-card-bg);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+    padding: 28px;
+  }
+
+  .sidebar-card__label {
+    margin-bottom: 16px;
+  }
+
+  .sidebar-card__title {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--color-text-primary);
+    margin-bottom: 12px;
+  }
+
+  .sidebar-card__text {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    margin-bottom: 16px;
+  }
+
+  .sidebar-card__meta {
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    margin-bottom: 16px;
+  }
+
+  .sidebar-card__link {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-secondary);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: color var(--transition-hover);
+  }
+
+  .sidebar-card__link:hover {
+    color: #6188aa;
+  }
+
+  .sidebar-card__link svg {
+    transition: transform var(--transition-hover);
+  }
+
+  .sidebar-card__link:hover svg {
+    transform: translateX(3px);
+  }
+
+  .sidebar-card__divider {
+    border: none;
+    border-top: 1px solid var(--color-alt-surface);
+    margin: 0 0 16px;
+  }
+
+  /* ═══════════════════════════════
+     WHERE TO START — Story threads
+     ═══════════════════════════════ */
+
+  .threads {
+    background: var(--color-alt-surface);
+    padding: 56px 0 64px;
+  }
+
+  .threads__label {
+    margin-bottom: 12px;
+  }
+
+  .threads__intro {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 32px;
+    max-width: 560px;
+  }
+
+  .threads__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .thread-card {
+    background: var(--color-card-bg);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    transition: transform var(--transition-hover), box-shadow var(--transition-hover);
+  }
+
+  .thread-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .thread-card__number {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    margin-bottom: 12px;
+  }
+
+  .thread-card__title {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--color-text-primary);
+    margin-bottom: 12px;
+  }
+
+  .thread-card__teaser {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    flex: 1;
+    margin-bottom: 20px;
+  }
+
+  .thread-card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 16px;
+    border-top: 1px solid var(--color-alt-surface);
+  }
+
+  .thread-card__meta {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+  }
+
+  .thread-card__cta {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: color var(--transition-hover);
+  }
+
+  .thread-card__cta:hover {
+    color: var(--color-primary-light);
+  }
+
+  .thread-card__cta svg {
+    transition: transform var(--transition-hover);
+  }
+
+  .thread-card__cta:hover svg {
+    transform: translateX(3px);
+  }
+
+  /* ═══════════════════════════════
+     BROWSE BY CATEGORY — Compact row
+     ═══════════════════════════════ */
+
+  .categories {
+    padding: 56px 0 64px;
+  }
+
+  .categories__label {
+    margin-bottom: 28px;
+  }
+
+  .categories__row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+  }
+
+  .category-pill {
+    background: var(--color-card-bg);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+    padding: 24px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform var(--transition-hover), box-shadow var(--transition-hover);
+  }
+
+  .category-pill:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .category-pill__name {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: 4px;
+  }
+
+  .category-pill__count {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+  }
+
+  .category-pill__desc {
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+    margin-top: 8px;
+  }
+
+  /* ═══════════════════════════════
+     KNOWLEDGE GRAPH TEASER
+     ═══════════════════════════════ */
+
+  .graph-teaser {
+    background: var(--color-dark-surface);
+    padding: 64px 0 72px;
+  }
+
+  .graph-teaser__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .graph-teaser__text {
+    max-width: 480px;
+  }
+
+  .graph-teaser__label {
+    margin-bottom: 20px;
+  }
+
+  .graph-teaser__title {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--color-text-on-dark);
+    margin-bottom: 16px;
+  }
+
+  .graph-teaser__desc {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: rgba(250, 248, 245, 0.65);
+    line-height: 1.7;
+    margin-bottom: 8px;
+  }
+
+  .graph-teaser__stats {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: rgba(250, 248, 245, 0.5);
+    margin-bottom: 28px;
+  }
+
+  .graph-teaser__cta {
+    display: inline-block;
+    background: var(--color-primary);
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    padding: 14px 32px;
+    border-radius: var(--radius-full);
+    transition: background var(--transition-hover), transform var(--transition-hover);
+  }
+
+  .graph-teaser__cta:hover {
+    background: #8F4F33;
+    transform: translateY(-1px);
+  }
+
+  .graph-teaser__visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .graph-teaser__visual svg {
+    width: 100%;
+    max-width: 460px;
+    height: auto;
+  }
+
+  /* ═══════════════════════════════
+     FOOTER — Dark surface
+     ═══════════════════════════════ */
+
+  .footer {
+    background: var(--color-dark-surface);
+    border-top: 1px solid rgba(250, 248, 245, 0.08);
+    padding: 24px 0;
+  }
+
+  .footer__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer__text {
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    color: rgba(250, 248, 245, 0.5);
+  }
+
+  /* ═══════════════════════════════
+     ACCESSIBILITY
+     ═══════════════════════════════ */
+
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  .nav :focus-visible,
+  .hero :focus-visible,
+  .graph-teaser :focus-visible,
+  .footer :focus-visible {
+    outline-color: var(--color-primary-light);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* GPU compositing for animated elements */
+  .thread-card, .category-pill, .graph-teaser__cta, .feature-main {
+    will-change: transform;
+  }
+
+  /* ═══════════════════════════════
+     RESPONSIVE
+     ═══════════════════════════════ */
+
+  @media (max-width: 1024px) {
+    .hero__inner {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .hero__stats {
+      align-items: flex-start;
+    }
+
+    .hero__stat {
+      text-align: left;
+    }
+
+    .featured__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .feature-sidebar {
+      flex-direction: row;
+    }
+
+    .sidebar-card {
+      flex: 1;
+    }
+
+    .threads__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .categories__row {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .graph-teaser__inner {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .graph-teaser__visual {
+      order: -1;
+    }
+
+    .inner {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
+    .hero {
+      padding: 48px 24px 64px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero__title {
+      font-size: 2.5rem;
+    }
+
+    .feature-main__title {
+      font-size: 1.5rem;
+    }
+
+    .feature-main__body {
+      padding: 24px;
+    }
+
+    .feature-sidebar {
+      flex-direction: column;
+    }
+
+    .threads__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .categories__row {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .graph-teaser__title {
+      font-size: 1.5rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero__title {
+      font-size: 2.25rem;
+    }
+
+    .hero__stats {
+      gap: 24px;
+    }
+
+    .hero {
+      padding: 40px 20px 48px;
+    }
+
+    .inner {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .feature-main__image {
+      height: 200px;
+    }
+
+    .categories__row {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .nav__links {
+      gap: 16px;
+    }
+
+    .nav__search:focus-within .nav__search-input {
+      width: 140px;
+    }
+
+    .footer__inner {
+      flex-direction: column;
+      gap: 8px;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero__title {
+      font-size: 2rem;
+    }
+
+    .hero__stats {
+      flex-wrap: wrap;
+    }
+
+    .categories__row {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .nav__link:nth-child(n+4) {
+      display: none;
+    }
+
+    .nav__search {
+      display: none;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="dev-badge">Editorial-First v2</div>
+
+<!-- ════════════════════════════════════════
+     NAVIGATION
+     ════════════════════════════════════════ -->
+<nav class="nav" aria-label="Main navigation">
+  <div class="nav__inner">
+    <div class="nav__brand">
+      <span class="nav__wordmark">Red Barrow</span>
+      <span class="nav__separator" aria-hidden="true"></span>
+      <span class="nav__title">Climate Finance Wiki</span>
+    </div>
+    <div class="nav__links">
+      <a href="#" class="nav__link">Concepts</a>
+      <a href="#" class="nav__link">Instruments</a>
+      <a href="#" class="nav__link">Actors</a>
+      <a href="#" class="nav__link">Frameworks</a>
+      <a href="#" class="nav__link">Case Studies</a>
+      <div class="nav__search">
+        <input type="search" class="nav__search-input" placeholder="Search articles..." aria-label="Search articles">
+        <svg class="nav__search-icon" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="7.5" cy="7.5" r="5.5" stroke="currentColor" stroke-width="1.5"/>
+          <line x1="11.5" y1="11.5" x2="16" y2="16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <a href="#" class="nav__link nav__link--accent">Graph</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ════════════════════════════════════════
+     HERO — Compact identity + stats
+     ════════════════════════════════════════ -->
+<header class="hero">
+  <div class="hero__inner">
+    <div class="hero__text">
+      <div class="label label--light hero__label">A Red Barrow Publication</div>
+      <h1 class="hero__title">Climate Finance Wiki</h1>
+      <p class="hero__subtitle">Plain-English reference for the people who explain climate finance to everyone else.</p>
+    </div>
+    <div class="hero__stats" aria-label="Wiki statistics">
+      <div class="hero__stat">
+        <span class="hero__stat-number">48</span>
+        <span class="hero__stat-label">articles</span>
+      </div>
+      <div class="hero__stat">
+        <span class="hero__stat-number">5</span>
+        <span class="hero__stat-label">categories</span>
+      </div>
+      <div class="hero__stat">
+        <span class="hero__stat-number">240+</span>
+        <span class="hero__stat-label">connections</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ════════════════════════════════════════
+     FEATURED CONTENT — 60/40 asymmetric
+     ════════════════════════════════════════ -->
+<section class="featured" aria-label="Featured content">
+  <div class="inner">
+    <div class="featured__grid">
+
+      <!-- Main feature: Case Study -->
+      <article class="feature-main">
+        <img
+          class="feature-main__image"
+          src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=900&h=400&fit=crop&crop=bottom&q=80&auto=format"
+          alt="Aerial view of London's financial district and the River Thames at dusk"
+          loading="eager"
+        >
+        <div class="feature-main__body">
+          <div class="label label--primary feature-main__label">Featured Case Study</div>
+          <h2 class="feature-main__title">HSBC Greenwashing: When the Ads Said Green But the Portfolio Said Oil</h2>
+          <blockquote class="feature-main__pullquote">
+            "HSBC ran a campaign positioning itself as a leader in climate action — while financing $87 billion in fossil fuels. The ASA ruling that followed became a landmark in advertising accountability."
+          </blockquote>
+          <p class="feature-main__excerpt">
+            A UK bank promoted its net-zero pledge and tree-planting programmes in a national ad campaign. The Advertising Standards Authority banned the ads, ruling they omitted HSBC's continuing fossil fuel investments. This case study traces the gap between climate marketing and climate action — and what it means for every organisation making public commitments.
+          </p>
+          <a href="#" class="feature-main__cta">
+            Read the full case study
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Sidebar: Topic of the Day + In the News -->
+      <aside class="feature-sidebar" aria-label="Highlights">
+
+        <div class="sidebar-card">
+          <div class="label label--primary sidebar-card__label">Topic of the Day</div>
+          <h3 class="sidebar-card__title">Stranded Assets</h3>
+          <p class="sidebar-card__text">Why $1.4 trillion in fossil fuel reserves may never be burned — and what that means for the investors holding them. The concept reshaping how markets price climate risk.</p>
+          <a href="#" class="sidebar-card__link">
+            Explore this topic
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="sidebar-card">
+          <div class="label label--muted sidebar-card__label">In the News</div>
+          <h3 class="sidebar-card__title">EU Carbon Border Tax Takes Effect</h3>
+          <p class="sidebar-card__text">CBAM begins charging importers — a landmark for global carbon pricing that changes the trade calculus for every carbon-intensive industry.</p>
+          <hr class="sidebar-card__divider">
+          <p class="sidebar-card__meta">Carbon Brief · April 2026</p>
+          <a href="#" class="sidebar-card__link">
+            Read &amp; explore linked topics
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     WHERE TO START — Story threads (hybrid)
+     ════════════════════════════════════════ -->
+<section class="threads" aria-label="Guided reading paths">
+  <div class="inner">
+    <div class="label label--primary threads__label">Where to Start</div>
+    <p class="threads__intro">Three expert-curated paths through climate finance. Pick the question that matters most to your work.</p>
+    <div class="threads__grid">
+
+      <a href="#" class="thread-card">
+        <span class="thread-card__number">Trail 01</span>
+        <h3 class="thread-card__title">The Greenwashing Trail</h3>
+        <p class="thread-card__teaser">From misleading claims to criminal charges. How greenwashing works, how regulators respond, and how to spot it before it reaches your desk.</p>
+        <div class="thread-card__footer">
+          <span class="thread-card__meta">6 articles · ~35 min</span>
+          <span class="thread-card__cta">
+            Start
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </div>
+      </a>
+
+      <a href="#" class="thread-card">
+        <span class="thread-card__number">Trail 02</span>
+        <h3 class="thread-card__title">Follow the Money</h3>
+        <p class="thread-card__teaser">How climate finance actually flows. Green bonds, sustainability-linked debt, carbon offsets, and the pricing mechanisms that connect them.</p>
+        <div class="thread-card__footer">
+          <span class="thread-card__meta">6 articles · ~30 min</span>
+          <span class="thread-card__cta">
+            Start
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </div>
+      </a>
+
+      <a href="#" class="thread-card">
+        <span class="thread-card__number">Trail 03</span>
+        <h3 class="thread-card__title">The Architecture of Climate Policy</h3>
+        <p class="thread-card__teaser">Paris Agreement to CSRD. The policy frameworks that define what counts as green, who must report, and what happens when they don't.</p>
+        <div class="thread-card__footer">
+          <span class="thread-card__meta">6 articles · ~35 min</span>
+          <span class="thread-card__cta">
+            Start
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     BROWSE BY CATEGORY — Compact row
+     ════════════════════════════════════════ -->
+<section class="categories" aria-label="Browse by category">
+  <div class="inner">
+    <div class="label label--primary categories__label">Browse by Category</div>
+    <div class="categories__row">
+
+      <a href="#" class="category-pill">
+        <div class="category-pill__name">Concepts</div>
+        <div class="category-pill__count">12 articles</div>
+        <div class="category-pill__desc">The ideas that define climate finance</div>
+      </a>
+
+      <a href="#" class="category-pill">
+        <div class="category-pill__name">Instruments</div>
+        <div class="category-pill__count">6 articles</div>
+        <div class="category-pill__desc">How climate action gets funded</div>
+      </a>
+
+      <a href="#" class="category-pill">
+        <div class="category-pill__name">Actors</div>
+        <div class="category-pill__count">9 articles</div>
+        <div class="category-pill__desc">The institutions shaping the market</div>
+      </a>
+
+      <a href="#" class="category-pill">
+        <div class="category-pill__name">Frameworks</div>
+        <div class="category-pill__count">13 articles</div>
+        <div class="category-pill__desc">Rules, standards, and taxonomies</div>
+      </a>
+
+      <a href="#" class="category-pill">
+        <div class="category-pill__name">Case Studies</div>
+        <div class="category-pill__count">8 articles</div>
+        <div class="category-pill__desc">What happened and why it matters</div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     KNOWLEDGE GRAPH TEASER
+     ════════════════════════════════════════ -->
+<section class="graph-teaser" aria-label="Knowledge graph">
+  <div class="inner">
+    <div class="graph-teaser__inner">
+      <div class="graph-teaser__text">
+        <div class="label label--light graph-teaser__label">The Knowledge Graph</div>
+        <h2 class="graph-teaser__title">See how every concept connects.</h2>
+        <p class="graph-teaser__desc">Climate finance is a web, not a list. Green bonds link to greenwashing. Carbon offsets link to the Paris Agreement. The knowledge graph shows every connection across all 48 articles.</p>
+        <p class="graph-teaser__stats">48 nodes · 240+ edges · 5 categories</p>
+        <a href="#" class="graph-teaser__cta">Explore the Graph &rarr;</a>
+      </div>
+      <div class="graph-teaser__visual" aria-hidden="true">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg">
+          <!-- Edges -->
+          <line x1="120" y1="80" x2="200" y2="140" stroke="rgba(250,248,245,0.12)" stroke-width="1.5"/>
+          <line x1="200" y1="140" x2="300" y2="100" stroke="rgba(250,248,245,0.12)" stroke-width="1.5"/>
+          <line x1="200" y1="140" x2="160" y2="220" stroke="rgba(250,248,245,0.12)" stroke-width="1.5"/>
+          <line x1="200" y1="140" x2="280" y2="200" stroke="rgba(250,248,245,0.12)" stroke-width="1.5"/>
+          <line x1="300" y1="100" x2="380" y2="140" stroke="rgba(250,248,245,0.12)" stroke-width="1.5"/>
+          <line x1="300" y1="100" x2="280" y2="200" stroke="rgba(250,248,245,0.12)" stroke-width="1.5"/>
+          <line x1="280" y1="200" x2="360" y2="240" stroke="rgba(250,248,245,0.12)" stroke-width="1.5"/>
+          <line x1="160" y1="220" x2="240" y2="270" stroke="rgba(250,248,245,0.12)" stroke-width="1.5"/>
+          <line x1="240" y1="270" x2="360" y2="240" stroke="rgba(250,248,245,0.12)" stroke-width="1.5"/>
+          <line x1="80" y1="160" x2="120" y2="80" stroke="rgba(250,248,245,0.12)" stroke-width="1.5"/>
+          <line x1="80" y1="160" x2="160" y2="220" stroke="rgba(250,248,245,0.12)" stroke-width="1.5"/>
+          <line x1="380" y1="140" x2="400" y2="60" stroke="rgba(250,248,245,0.12)" stroke-width="1.5"/>
+          <line x1="120" y1="80" x2="60" y2="60" stroke="rgba(250,248,245,0.12)" stroke-width="1.5"/>
+          <line x1="240" y1="270" x2="280" y2="200" stroke="rgba(250,248,245,0.12)" stroke-width="1.5"/>
+          <line x1="380" y1="140" x2="360" y2="240" stroke="rgba(250,248,245,0.12)" stroke-width="1.5"/>
+
+          <!-- Concept nodes (primary-light) -->
+          <circle cx="200" cy="140" r="10" fill="#C47A5C" opacity="0.9"/>
+          <circle cx="120" cy="80" r="7" fill="#C47A5C" opacity="0.7"/>
+          <circle cx="80" cy="160" r="6" fill="#C47A5C" opacity="0.6"/>
+
+          <!-- Instrument nodes (secondary) -->
+          <circle cx="300" cy="100" r="9" fill="#4E6F8E" opacity="0.9"/>
+          <circle cx="280" cy="200" r="8" fill="#4E6F8E" opacity="0.8"/>
+
+          <!-- Actor nodes (muted warm) -->
+          <circle cx="380" cy="140" r="7" fill="#A65D3F" opacity="0.7"/>
+          <circle cx="400" cy="60" r="5" fill="#A65D3F" opacity="0.5"/>
+
+          <!-- Framework nodes (text-muted) -->
+          <circle cx="160" cy="220" r="7" fill="#6E6964" opacity="0.7"/>
+          <circle cx="60" cy="60" r="5" fill="#6E6964" opacity="0.5"/>
+
+          <!-- Case Study nodes (lighter) -->
+          <circle cx="240" cy="270" r="8" fill="#C47A5C" opacity="0.6"/>
+          <circle cx="360" cy="240" r="7" fill="#4E6F8E" opacity="0.6"/>
+
+          <!-- Labels on key nodes -->
+          <text x="200" y="125" fill="rgba(250,248,245,0.45)" font-family="DM Sans, sans-serif" font-size="9" text-anchor="middle">Green Bonds</text>
+          <text x="300" y="86" fill="rgba(250,248,245,0.45)" font-family="DM Sans, sans-serif" font-size="9" text-anchor="middle">Carbon Offsets</text>
+          <text x="280" y="190" fill="rgba(250,248,245,0.45)" font-family="DM Sans, sans-serif" font-size="9" text-anchor="middle">EU Taxonomy</text>
+          <text x="160" y="238" fill="rgba(250,248,245,0.45)" font-family="DM Sans, sans-serif" font-size="9" text-anchor="middle">Paris Agreement</text>
+          <text x="240" y="288" fill="rgba(250,248,245,0.45)" font-family="DM Sans, sans-serif" font-size="9" text-anchor="middle">Greenwashing</text>
+          <text x="380" y="128" fill="rgba(250,248,245,0.45)" font-family="DM Sans, sans-serif" font-size="9" text-anchor="middle">ICMA</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     FOOTER
+     ════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="inner">
+    <div class="footer__inner">
+      <span class="footer__text">A Red Barrow publication</span>
+      <span class="footer__text">Last updated April 2026</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

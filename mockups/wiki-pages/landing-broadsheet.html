@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Climate Finance Wiki — Broadsheet</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+  :root {
+    --color-primary: #A65D3F;
+    --color-primary-light: #C47A5C;
+    --color-primary-subtle-bg: rgba(166, 93, 63, 0.07);
+    --color-secondary: #4E6F8E;
+    --color-page-bg: #F7F5F2;
+    --color-alt-surface: #EDEAE5;
+    --color-dark-surface: #2A2520;
+    --color-card-bg: #FFFFFF;
+    --color-text-primary: #2A2520;
+    --color-text-secondary: #544E49;
+    --color-text-muted: #6E6964;
+    --color-text-on-dark: #FAF8F5;
+    --font-display: 'Libre Baskerville', serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --shadow-card: 0 4px 20px rgba(0,0,0,0.08);
+    --shadow-card-hover: 0 8px 32px rgba(0,0,0,0.12);
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-full: 100px;
+    --transition-hover: 150ms ease;
+    --transition-panel: 300ms ease;
+    --max-width: 1200px;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { font-size: 16px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  body { font-family: var(--font-body); background: var(--color-page-bg); color: var(--color-text-primary); line-height: 1.6; }
+  img { display: block; max-width: 100%; height: auto; }
+  a { color: inherit; text-decoration: none; }
+
+  .label {
+    font-family: var(--font-body);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .label--primary { color: var(--color-primary); }
+  .label--light { color: var(--color-primary-light); }
+  .label--muted { color: var(--color-text-muted); }
+
+  .inner { max-width: var(--max-width); margin: 0 auto; padding-left: 32px; padding-right: 32px; }
+
+  .dev-badge {
+    position: fixed; top: 16px; right: 16px; background: var(--color-primary); color: #fff;
+    font-family: var(--font-mono); font-size: 0.6875rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 14px;
+    border-radius: var(--radius-sm); z-index: 1000;
+  }
+
+  /* ── Nav ── */
+  .nav { background: var(--color-dark-surface); position: sticky; top: 0; z-index: 900; }
+  .nav__inner { max-width: var(--max-width); margin: 0 auto; padding: 0 32px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+  .nav__brand { display: flex; align-items: center; gap: 12px; }
+  .nav__wordmark { font-family: var(--font-body); font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(250, 248, 245, 0.55); }
+  .nav__separator { width: 4px; height: 4px; border-radius: 50%; background: rgba(250, 248, 245, 0.3); flex-shrink: 0; }
+  .nav__title { font-family: var(--font-display); font-size: 1.125rem; font-weight: 400; color: var(--color-text-on-dark); }
+  .nav__links { display: flex; align-items: center; gap: 24px; }
+  .nav__link { font-family: var(--font-body); font-size: 0.875rem; font-weight: 500; color: rgba(250, 248, 245, 0.8); transition: color var(--transition-hover); }
+  .nav__link:hover { color: var(--color-text-on-dark); }
+  .nav__link--accent { color: var(--color-primary-light); }
+
+  /* ══════════════════════════════════════
+     BROADSHEET — Newspaper-style layout
+     ══════════════════════════════════════ */
+
+  /* ── Masthead ── */
+  .masthead {
+    border-top: 3px solid var(--color-primary);
+    padding: 32px 0 24px;
+  }
+
+  .masthead__inner {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+
+  .masthead__title {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-text-primary);
+  }
+
+  .masthead__meta {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+  }
+
+  .masthead__date {
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+  }
+
+  .masthead__stat {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+  }
+
+  /* ── Horizontal rules ── */
+  .rule { border: none; border-top: 1px solid var(--color-alt-surface); margin: 0; }
+  .rule--heavy { border-top-width: 2px; border-color: var(--color-text-primary); }
+  .rule--section { margin: 48px 0 0; }
+
+  /* ── Editorial grid ── */
+  .editorial { padding: 32px 0 48px; }
+
+  .editorial__grid {
+    display: grid;
+    grid-template-columns: 1fr 1px 380px;
+    gap: 0;
+  }
+
+  .editorial__divider {
+    background: var(--color-alt-surface);
+    width: 1px;
+  }
+
+  /* ── Lead story (left column) ── */
+  .lead { padding-right: 32px; }
+
+  .lead__label { margin-bottom: 12px; }
+
+  .lead__image {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    object-position: center 35%;
+    margin-bottom: 20px;
+  }
+
+  .lead__headline {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--color-text-primary);
+    margin-bottom: 16px;
+  }
+
+  .lead__pullquote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+    border-left: 3px solid var(--color-primary);
+    padding-left: 20px;
+    margin-bottom: 16px;
+  }
+
+  .lead__excerpt {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .lead__cta {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: color var(--transition-hover);
+  }
+  .lead__cta:hover { color: var(--color-primary-light); }
+
+  /* ── Secondary column (right) ── */
+  .secondary { padding-left: 32px; }
+
+  .secondary__story {
+    padding: 24px 0;
+  }
+
+  .secondary__story:first-child {
+    padding-top: 0;
+  }
+
+  .secondary__story + .secondary__story {
+    border-top: 1px solid var(--color-alt-surface);
+  }
+
+  .secondary__label { margin-bottom: 10px; }
+
+  .secondary__headline {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--color-text-primary);
+    margin-bottom: 8px;
+  }
+
+  .secondary__teaser {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+
+  .secondary__link {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-secondary);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: color var(--transition-hover);
+  }
+  .secondary__link:hover { color: #6188aa; }
+
+  .secondary__meta {
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    margin-top: 4px;
+  }
+
+  /* ── Threads ── */
+  .threads { background: var(--color-alt-surface); padding: 48px 0 56px; }
+  .threads__header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 28px; }
+  .threads__title { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; color: var(--color-text-primary); }
+  .threads__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+  .thread-card {
+    background: var(--color-card-bg);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    transition: transform var(--transition-hover), box-shadow var(--transition-hover);
+  }
+  .thread-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-card-hover); }
+  .thread-card__number { font-family: var(--font-mono); font-size: 0.8125rem; font-weight: 600; color: var(--color-text-muted); margin-bottom: 12px; }
+  .thread-card__title { font-family: var(--font-display); font-size: 1.125rem; font-weight: 700; line-height: 1.35; color: var(--color-text-primary); margin-bottom: 12px; }
+  .thread-card__teaser { font-family: var(--font-body); font-size: 0.875rem; color: var(--color-text-secondary); line-height: 1.6; flex: 1; margin-bottom: 20px; }
+  .thread-card__footer { display: flex; align-items: center; justify-content: space-between; padding-top: 16px; border-top: 1px solid var(--color-alt-surface); }
+  .thread-card__meta { font-family: var(--font-mono); font-size: 0.8125rem; color: var(--color-text-muted); }
+  .thread-card__cta { font-family: var(--font-body); font-size: 0.875rem; font-weight: 600; color: var(--color-primary); display: inline-flex; align-items: center; gap: 4px; }
+
+  /* ── Categories ── */
+  .categories { padding: 48px 0 56px; }
+  .categories__label { margin-bottom: 28px; }
+  .categories__row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+  .category-pill { background: var(--color-card-bg); border-radius: var(--radius-md); box-shadow: var(--shadow-card); padding: 24px; text-align: center; cursor: pointer; transition: transform var(--transition-hover), box-shadow var(--transition-hover); }
+  .category-pill:hover { transform: translateY(-2px); box-shadow: var(--shadow-card-hover); }
+  .category-pill__name { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--color-text-primary); margin-bottom: 4px; }
+  .category-pill__count { font-family: var(--font-mono); font-size: 0.8125rem; color: var(--color-text-muted); }
+
+  /* ── Graph teaser ── */
+  .graph-teaser { background: var(--color-dark-surface); padding: 56px 0 64px; }
+  .graph-teaser__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .graph-teaser__text { max-width: 480px; }
+  .graph-teaser__label { margin-bottom: 20px; }
+  .graph-teaser__title { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; line-height: 1.3; color: var(--color-text-on-dark); margin-bottom: 12px; }
+  .graph-teaser__desc { font-family: var(--font-body); font-size: 1rem; color: rgba(250, 248, 245, 0.65); line-height: 1.7; margin-bottom: 8px; }
+  .graph-teaser__stats { font-family: var(--font-mono); font-size: 0.875rem; color: rgba(250, 248, 245, 0.5); margin-bottom: 24px; }
+  .graph-teaser__cta { display: inline-block; background: var(--color-primary); color: #fff; font-family: var(--font-body); font-size: 0.9375rem; font-weight: 600; padding: 14px 32px; border-radius: var(--radius-full); transition: background var(--transition-hover), transform var(--transition-hover); }
+  .graph-teaser__cta:hover { background: #8F4F33; transform: translateY(-1px); }
+  .graph-teaser__visual { display: flex; align-items: center; justify-content: center; }
+  .graph-teaser__visual svg { width: 100%; max-width: 420px; height: auto; }
+
+  /* ── Footer ── */
+  .footer { background: var(--color-dark-surface); border-top: 1px solid rgba(250, 248, 245, 0.08); padding: 24px 0; }
+  .footer__inner { display: flex; justify-content: space-between; align-items: center; }
+  .footer__text { font-family: var(--font-body); font-size: 0.8125rem; color: rgba(250, 248, 245, 0.5); }
+
+  /* ── Accessibility ── */
+  :focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+  .nav :focus-visible, .graph-teaser :focus-visible, .footer :focus-visible { outline-color: var(--color-primary-light); }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
+  .thread-card, .category-pill, .graph-teaser__cta { will-change: transform; }
+
+  /* ── Responsive ── */
+  @media (max-width: 1024px) {
+    .editorial__grid { grid-template-columns: 1fr; }
+    .editorial__divider { display: none; }
+    .lead { padding-right: 0; margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid var(--color-alt-surface); }
+    .secondary { padding-left: 0; }
+    .threads__grid { grid-template-columns: 1fr 1fr; }
+    .categories__row { grid-template-columns: repeat(3, 1fr); }
+    .graph-teaser__inner { grid-template-columns: 1fr; }
+    .graph-teaser__visual { order: -1; }
+    .masthead__inner { flex-direction: column; gap: 8px; }
+    .inner { padding-left: 24px; padding-right: 24px; }
+  }
+  @media (max-width: 768px) {
+    .masthead__title { font-size: 2rem; }
+    .lead__headline { font-size: 1.5rem; }
+    .lead__image { height: 240px; }
+    .threads__grid { grid-template-columns: 1fr; }
+    .categories__row { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .masthead__title { font-size: 1.75rem; }
+    .lead__image { height: 200px; }
+    .inner { padding-left: 20px; padding-right: 20px; }
+    .nav__links { gap: 16px; }
+    .footer__inner { flex-direction: column; gap: 8px; }
+  }
+  @media (max-width: 480px) {
+    .nav__link:nth-child(n+4) { display: none; }
+    .masthead__meta { flex-direction: column; gap: 4px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="dev-badge">Broadsheet</div>
+
+<nav class="nav" aria-label="Main navigation">
+  <div class="nav__inner">
+    <div class="nav__brand">
+      <span class="nav__wordmark">Red Barrow</span>
+      <span class="nav__separator" aria-hidden="true"></span>
+      <span class="nav__title">Climate Finance Wiki</span>
+    </div>
+    <div class="nav__links">
+      <a href="#" class="nav__link">Concepts</a>
+      <a href="#" class="nav__link">Instruments</a>
+      <a href="#" class="nav__link">Actors</a>
+      <a href="#" class="nav__link">Frameworks</a>
+      <a href="#" class="nav__link">Case Studies</a>
+      <a href="#" class="nav__link nav__link--accent">Graph</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Masthead — newspaper nameplate -->
+<header class="masthead">
+  <div class="inner">
+    <div class="masthead__inner">
+      <h1 class="masthead__title">Climate Finance Wiki</h1>
+      <div class="masthead__meta">
+        <span class="masthead__date">April 2026</span>
+        <span class="masthead__stat">48 articles · 240+ connections</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="inner"><hr class="rule rule--heavy"></div>
+
+<!-- Editorial grid — lead story + secondary column -->
+<section class="editorial" aria-label="Featured content">
+  <div class="inner">
+    <div class="editorial__grid">
+
+      <!-- Lead story -->
+      <article class="lead">
+        <div class="label label--primary lead__label">Featured Case Study</div>
+        <img
+          class="lead__image"
+          src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=900&h=500&fit=crop&crop=bottom&q=80&auto=format"
+          alt="Aerial view of London's financial district and the River Thames at dusk"
+          loading="eager"
+        >
+        <h2 class="lead__headline">HSBC Greenwashing: When the Ads Said Green But the Portfolio Said Oil</h2>
+        <blockquote class="lead__pullquote">
+          "HSBC ran a campaign positioning itself as a leader in climate action — while financing $87 billion in fossil fuels. The ASA ruling that followed became a landmark in advertising accountability."
+        </blockquote>
+        <p class="lead__excerpt">
+          A UK bank promoted its net-zero pledge and tree-planting programmes in a national ad campaign. The Advertising Standards Authority banned the ads, ruling they omitted HSBC's continuing fossil fuel investments. This case study traces the gap between climate marketing and climate action.
+        </p>
+        <a href="#" class="lead__cta">
+          Read the full case study →
+        </a>
+      </article>
+
+      <!-- Vertical divider -->
+      <div class="editorial__divider" aria-hidden="true"></div>
+
+      <!-- Secondary stories -->
+      <aside class="secondary">
+
+        <div class="secondary__story">
+          <div class="label label--primary secondary__label">Topic of the Day</div>
+          <h3 class="secondary__headline">Stranded Assets</h3>
+          <p class="secondary__teaser">Why $1.4 trillion in fossil fuel reserves may never be burned — and what that means for the investors holding them. The concept reshaping how markets price climate risk.</p>
+          <a href="#" class="secondary__link">Explore →</a>
+        </div>
+
+        <div class="secondary__story">
+          <div class="label label--primary secondary__label">Instruments</div>
+          <h3 class="secondary__headline">Green Bonds: What They Are and Why They Matter</h3>
+          <p class="secondary__teaser">The fastest-growing segment of sustainable debt. What makes a bond "green," who issues them, and what the greenium tells us about market sentiment.</p>
+          <a href="#" class="secondary__link">Read article →</a>
+        </div>
+
+        <div class="secondary__story">
+          <div class="label label--muted secondary__label">In the News</div>
+          <h3 class="secondary__headline">EU Carbon Border Tax Takes Effect</h3>
+          <p class="secondary__teaser">CBAM begins charging importers — a landmark for global carbon pricing.</p>
+          <p class="secondary__meta">Carbon Brief · April 2026</p>
+          <a href="#" class="secondary__link">Read &amp; explore linked topics →</a>
+        </div>
+
+      </aside>
+    </div>
+  </div>
+</section>
+
+<div class="inner"><hr class="rule"></div>
+
+<!-- Story threads -->
+<section class="threads" aria-label="Guided reading paths">
+  <div class="inner">
+    <div class="threads__header">
+      <h2 class="threads__title">Where to Start</h2>
+      <span class="label label--muted">Curated reading paths</span>
+    </div>
+    <div class="threads__grid">
+      <a href="#" class="thread-card">
+        <span class="thread-card__number">Trail 01</span>
+        <h3 class="thread-card__title">The Greenwashing Trail</h3>
+        <p class="thread-card__teaser">From misleading claims to criminal charges. How greenwashing works, how regulators respond, and how to spot it.</p>
+        <div class="thread-card__footer"><span class="thread-card__meta">6 articles · ~35 min</span><span class="thread-card__cta">Start →</span></div>
+      </a>
+      <a href="#" class="thread-card">
+        <span class="thread-card__number">Trail 02</span>
+        <h3 class="thread-card__title">Follow the Money</h3>
+        <p class="thread-card__teaser">How climate finance flows. Green bonds, sustainability-linked debt, carbon offsets, and the pricing mechanisms connecting them.</p>
+        <div class="thread-card__footer"><span class="thread-card__meta">6 articles · ~30 min</span><span class="thread-card__cta">Start →</span></div>
+      </a>
+      <a href="#" class="thread-card">
+        <span class="thread-card__number">Trail 03</span>
+        <h3 class="thread-card__title">The Architecture of Climate Policy</h3>
+        <p class="thread-card__teaser">Paris Agreement to CSRD. The frameworks that define what counts as green, who must report, and what happens when they don't.</p>
+        <div class="thread-card__footer"><span class="thread-card__meta">6 articles · ~35 min</span><span class="thread-card__cta">Start →</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Categories -->
+<section class="categories" aria-label="Browse by category">
+  <div class="inner">
+    <div class="label label--primary categories__label">Browse by Category</div>
+    <div class="categories__row">
+      <a href="#" class="category-pill"><div class="category-pill__name">Concepts</div><div class="category-pill__count">12 articles</div></a>
+      <a href="#" class="category-pill"><div class="category-pill__name">Instruments</div><div class="category-pill__count">6 articles</div></a>
+      <a href="#" class="category-pill"><div class="category-pill__name">Actors</div><div class="category-pill__count">9 articles</div></a>
+      <a href="#" class="category-pill"><div class="category-pill__name">Frameworks</div><div class="category-pill__count">13 articles</div></a>
+      <a href="#" class="category-pill"><div class="category-pill__name">Case Studies</div><div class="category-pill__count">8 articles</div></a>
+    </div>
+  </div>
+</section>
+
+<!-- Graph teaser -->
+<section class="graph-teaser" aria-label="Knowledge graph">
+  <div class="inner">
+    <div class="graph-teaser__inner">
+      <div class="graph-teaser__text">
+        <div class="label label--light graph-teaser__label">The Knowledge Graph</div>
+        <h2 class="graph-teaser__title">See how every concept connects.</h2>
+        <p class="graph-teaser__desc">Climate finance is a web, not a list. The knowledge graph shows every connection across all 48 articles.</p>
+        <p class="graph-teaser__stats">48 nodes · 240+ edges · 5 categories</p>
+        <a href="#" class="graph-teaser__cta">Explore the Graph →</a>
+      </div>
+      <div class="graph-teaser__visual" aria-hidden="true">
+        <svg viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg">
+          <line x1="110" y1="70" x2="190" y2="130" stroke="rgba(250,248,245,0.12)" stroke-width="1.5"/><line x1="190" y1="130" x2="280" y2="90" stroke="rgba(250,248,245,0.12)" stroke-width="1.5"/><line x1="190" y1="130" x2="150" y2="210" stroke="rgba(250,248,245,0.12)" stroke-width="1.5"/><line x1="190" y1="130" x2="260" y2="190" stroke="rgba(250,248,245,0.12)" stroke-width="1.5"/><line x1="280" y1="90" x2="350" y2="130" stroke="rgba(250,248,245,0.12)" stroke-width="1.5"/><line x1="280" y1="90" x2="260" y2="190" stroke="rgba(250,248,245,0.12)" stroke-width="1.5"/><line x1="260" y1="190" x2="330" y2="230" stroke="rgba(250,248,245,0.12)" stroke-width="1.5"/><line x1="150" y1="210" x2="220" y2="260" stroke="rgba(250,248,245,0.12)" stroke-width="1.5"/><line x1="220" y1="260" x2="330" y2="230" stroke="rgba(250,248,245,0.12)" stroke-width="1.5"/><line x1="70" y1="150" x2="110" y2="70" stroke="rgba(250,248,245,0.12)" stroke-width="1.5"/><line x1="70" y1="150" x2="150" y2="210" stroke="rgba(250,248,245,0.12)" stroke-width="1.5"/>
+          <circle cx="190" cy="130" r="10" fill="#C47A5C" opacity="0.9"/><circle cx="110" cy="70" r="7" fill="#C47A5C" opacity="0.7"/><circle cx="70" cy="150" r="6" fill="#C47A5C" opacity="0.6"/><circle cx="280" cy="90" r="9" fill="#4E6F8E" opacity="0.9"/><circle cx="260" cy="190" r="8" fill="#4E6F8E" opacity="0.8"/><circle cx="350" cy="130" r="7" fill="#A65D3F" opacity="0.7"/><circle cx="150" cy="210" r="7" fill="#6E6964" opacity="0.7"/><circle cx="220" cy="260" r="8" fill="#C47A5C" opacity="0.6"/><circle cx="330" cy="230" r="7" fill="#4E6F8E" opacity="0.6"/>
+          <text x="190" y="116" fill="rgba(250,248,245,0.4)" font-family="DM Sans, sans-serif" font-size="9" text-anchor="middle">Green Bonds</text><text x="280" y="76" fill="rgba(250,248,245,0.4)" font-family="DM Sans, sans-serif" font-size="9" text-anchor="middle">Carbon Offsets</text><text x="150" y="228" fill="rgba(250,248,245,0.4)" font-family="DM Sans, sans-serif" font-size="9" text-anchor="middle">Paris Agreement</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="inner"><div class="footer__inner"><span class="footer__text">A Red Barrow publication</span><span class="footer__text">April 2026</span></div></div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Climate Finance Wiki — M5: Premium Reference</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+  :root {
+    --font-display: 'Libre Baskerville', serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    --color-primary: #A65D3F;
+    --color-primary-light: #C47A5C;
+    --color-primary-subtle-bg: rgba(166, 93, 63, 0.07);
+    --color-secondary: #4E6F8E;
+
+    --color-page-bg: #F7F5F2;
+    --color-alt-surface: #EDEAE5;
+    --color-dark-surface: #2A2520;
+    --color-card-bg: #FFFFFF;
+    --card-shadow: 0 4px 20px rgba(0,0,0,0.08);
+
+    --color-nav-bg: #2A2520;
+    --color-text-on-dark: #FAF8F5;
+
+    --color-text-primary: #2A2520;
+    --color-text-secondary: #544E49;
+    --color-text-muted: #6E6964;
+
+    --color-dark-anchor: #1A1A2E;
+
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+
+    --max-width: 1200px;
+    --transition-hover: 150ms ease;
+    --transition-panel: 300ms ease;
+  }
+
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--color-page-bg);
+    color: var(--color-text-primary);
+    line-height: 1.6;
+  }
+
+  /* ── Direction label ── */
+  .direction-label {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    background: var(--color-primary);
+    color: #FFFFFF;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    z-index: 1000;
+    text-transform: uppercase;
+  }
+
+  /* ── Navigation (Dark) ── */
+  nav {
+    background: var(--color-nav-bg);
+    position: sticky;
+    top: 0;
+    z-index: 900;
+  }
+
+  .nav-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 32px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .nav-wordmark {
+    font-family: var(--font-body);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(250, 248, 245, 0.55);
+  }
+
+  .nav-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(250, 248, 245, 0.3);
+  }
+
+  .nav-title {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 400;
+    color: var(--color-text-on-dark);
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .nav-links a {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: rgba(250, 248, 245, 0.8);
+    text-decoration: none;
+    transition: color var(--transition-hover);
+  }
+
+  .nav-links a:hover {
+    color: var(--color-text-on-dark);
+  }
+
+  /* ── Hero (dark surface) ── */
+  .hero {
+    background: var(--color-dark-surface);
+    padding: 80px 32px 72px;
+    text-align: center;
+  }
+
+  .hero-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+
+  .hero-label {
+    font-family: var(--font-body);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-primary-light);
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-text-on-dark);
+    margin-bottom: 16px;
+  }
+
+  .hero-subtitle {
+    font-family: var(--font-body);
+    font-size: 1.25rem;
+    color: rgba(250, 248, 245, 0.78);
+    margin-bottom: 20px;
+    max-width: 660px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-description {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: rgba(250, 248, 245, 0.65);
+    max-width: 660px;
+    margin: 0 auto 36px;
+    line-height: 1.7;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    background: var(--color-primary);
+    color: #FFFFFF;
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    padding: 14px 32px;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: background var(--transition-hover), transform var(--transition-hover);
+  }
+
+  .hero-cta:hover {
+    background: #8F4F33;
+    transform: translateY(-1px);
+  }
+
+  /* ── Section shared ── */
+  .section {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 56px 32px 64px;
+  }
+
+  .section-label {
+    font-family: var(--font-body);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: 28px;
+  }
+
+  /* ── Alt surface section ── */
+  .section-alt {
+    background: var(--color-alt-surface);
+  }
+
+  .section-alt .section {
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+
+  /* ── Featured articles ── */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .card {
+    background: var(--color-card-bg);
+    border: none;
+    border-radius: var(--radius-md);
+    box-shadow: var(--card-shadow);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    transition: transform var(--transition-hover), box-shadow var(--transition-hover);
+  }
+
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  }
+
+  .card-badge {
+    font-family: var(--font-body);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: 14px;
+  }
+
+  .card h3 {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--color-text-primary);
+    margin-bottom: 12px;
+  }
+
+  .card p {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    flex: 1;
+    margin-bottom: 20px;
+  }
+
+  .card-link {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color var(--transition-hover);
+  }
+
+  .card-link:hover {
+    color: var(--color-primary-light);
+  }
+
+  /* ── Topics (on alt surface) ── */
+  .topics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .topic-tile {
+    background: var(--color-card-bg);
+    border: none;
+    border-radius: var(--radius-md);
+    box-shadow: var(--card-shadow);
+    padding: 24px;
+    cursor: pointer;
+    transition: transform var(--transition-hover), box-shadow var(--transition-hover);
+  }
+
+  .topic-tile:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  }
+
+  .topic-tile h4 {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: 4px;
+  }
+
+  .topic-tile span {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+  }
+
+  /* ── About ── */
+  .about-text {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    max-width: 660px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  /* ── Footer ── */
+  footer {
+    background: var(--color-dark-surface);
+    padding: 24px 32px;
+  }
+
+  .footer-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer span {
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    color: rgba(250, 248, 245, 0.5);
+  }
+
+  /* About section center alignment */
+  .section--about .section-label {
+    text-align: center;
+  }
+
+  /* ── Focus states (a11y) ── */
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  nav :focus-visible,
+  .hero :focus-visible,
+  footer :focus-visible {
+    outline-color: var(--color-primary-light);
+  }
+
+  /* ── Reduced motion (a11y) ── */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* ── GPU compositing for animated elements ── */
+  .card, .topic-tile, .hero-cta {
+    will-change: transform;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 1024px) {
+    .cards-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .topics-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .nav-inner {
+      padding: 0 24px;
+    }
+    .hero {
+      padding: 64px 24px 56px;
+    }
+    .section {
+      padding: 48px 24px 56px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero h1 {
+      font-size: 2.25rem;
+    }
+    .hero-subtitle {
+      font-size: 1.0625rem;
+    }
+    .cards-grid {
+      grid-template-columns: 1fr;
+    }
+    .topics-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .nav-links {
+      gap: 16px;
+    }
+    .card {
+      padding: 24px;
+    }
+    .hero {
+      padding: 48px 20px 40px;
+    }
+    .section {
+      padding: 40px 20px 48px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .topics-grid {
+      grid-template-columns: 1fr;
+    }
+    .nav-links a:last-child {
+      display: none;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="direction-label">M5: Premium Reference</div>
+
+<!-- Navigation (Dark) -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-left">
+      <span class="nav-wordmark">Red Barrow</span>
+      <span class="nav-dot"></span>
+      <span class="nav-title">Climate Finance Wiki</span>
+    </div>
+    <div class="nav-links">
+      <a href="#">Topics</a>
+      <a href="#">About</a>
+      <a href="#">Explore</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero (Dark surface) -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-label">A Red Barrow Publication</div>
+    <h1>Climate Finance Wiki</h1>
+    <p class="hero-subtitle">A reference for communications professionals navigating climate finance</p>
+    <p class="hero-description">Navigate the landscape of climate finance with clarity. 280+ articles on the instruments, institutions, markets, and policies shaping how the world funds its response to climate change.</p>
+    <a href="#" class="hero-cta">Explore Topics &rarr;</a>
+  </div>
+</section>
+
+<!-- Featured Articles (warm grey bg) -->
+<section class="section">
+  <div class="section-label">Featured Articles</div>
+  <div class="cards-grid">
+    <div class="card">
+      <div class="card-badge">Instruments</div>
+      <h3>Green Bonds: What They Are and Why They Matter</h3>
+      <p>A plain-English guide to the fastest-growing segment of sustainable debt markets. What makes a bond &lsquo;green,&rsquo; who issues them, and what the greenium tells us about market sentiment.</p>
+      <a href="m5-premium-reference-article.html" class="card-link">Read article &rarr;</a>
+    </div>
+    <div class="card">
+      <div class="card-badge">Carbon Markets</div>
+      <h3>The Voluntary Carbon Market Explained</h3>
+      <p>How companies buy and sell carbon credits, what &lsquo;offsetting&rsquo; actually means, and why the market faces a credibility crisis that every comms professional needs to understand.</p>
+      <a href="#" class="card-link">Read article &rarr;</a>
+    </div>
+    <div class="card">
+      <div class="card-badge">Accountability</div>
+      <h3>Greenwashing: A Spotter&rsquo;s Guide</h3>
+      <p>The patterns, red flags, and regulatory responses reshaping how organisations communicate their climate commitments. Essential reading for anyone writing or reviewing sustainability claims.</p>
+      <a href="#" class="card-link">Read article &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- Topics (Alt surface for layering) -->
+<div class="section-alt">
+  <section class="section">
+    <div class="section-label">Explore by Topic</div>
+    <div class="topics-grid">
+      <div class="topic-tile">
+        <h4>Carbon Markets</h4>
+        <span>24 articles</span>
+      </div>
+      <div class="topic-tile">
+        <h4>Green Finance Instruments</h4>
+        <span>18 articles</span>
+      </div>
+      <div class="topic-tile">
+        <h4>Climate Policy &amp; Regulation</h4>
+        <span>31 articles</span>
+      </div>
+      <div class="topic-tile">
+        <h4>Corporate Accountability</h4>
+        <span>15 articles</span>
+      </div>
+      <div class="topic-tile">
+        <h4>Key Players &amp; Institutions</h4>
+        <span>22 articles</span>
+      </div>
+      <div class="topic-tile">
+        <h4>Just Transition</h4>
+        <span>12 articles</span>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- About (back to warm grey) -->
+<section class="section section--about">
+  <div class="section-label">About This Wiki</div>
+  <p class="about-text">The Climate Finance Wiki is a curated reference built for communications professionals. It covers the terminology, institutions, instruments, and debates that define climate finance &mdash; explained in plain English, not financial jargon. Every article is written from a comms perspective: what do you need to know to brief your team, write accurate copy, or spot a misleading claim?</p>
+</section>
+
+<!-- Footer (Dark) -->
+<footer>
+  <div class="footer-inner">
+    <span>A Red Barrow publication</span>
+    <span>Last updated April 2026</span>
+  </div>
+</footer>
+
+</body>
+</html>

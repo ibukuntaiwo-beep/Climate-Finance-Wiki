@@ -1,0 +1,449 @@
+Finance Course lessons - Module 1
+
+
+Intro to Climate Science
+Earth's climate has varied over millions of years, with glacial and interglacial periods. The Holocene epoch and recent Ice Age cycles are explored, providing historical context for current climate conditions.
+
+Ice core data reveals a correlation between carbon dioxide concentrations and global temperatures. Current levels, primarily from fossil fuel emissions, are unprecedented and accelerating, nearing 420 parts per million.
+
+More frequent and severe climate impacts, coupled with uncertainties in climate models, necessitate informed decision-making across various societal tiers.
+
+Integrating climate considerations into business strategies ensures resilience and competitiveness in a low-carbon future,
+
+Human activities, such as the burning of fossil fuels and changes in land use, contribute to the increase in greenhouse gases, intensifying the greenhouse effect.
+
+Understand Earth's system
+The atmosphere regulates Earth's temperature by absorbing and reflecting solar and infrared radiation, with air movement redistributing heat.
+
+Earth's climate balance depends on factors like solar radiation absorption and emission of infrared radiation.
+
+Climate components vary in their response times to energy changes, with the atmosphere reacting quickly and oceans and ice sheets taking longer.
+
+Oceans, with vast heat capacity, store and redistribute solar energy, with ocean currents playing a critical role in the climate system.
+
+Nitrogen and Oxygen make up abt 97% of our atmosphere and their structure (equal weight atoms) is different from CO2 and methane
+
+Infrared radiation from the Earth's surface is absorbed by greenhouse gases (water vapour, CO2, methane), leading to a warming effect.
+
+Radiative forcing represents the energy imbalance at the Earth's surface and is expressed in watts per meter squared.
+Variations in solar energy output, Earth's orbit and tilt, and volcanic eruptions affect radiative forcing.
+
+Energy budget - amount of energy coming in via the sun, and amount going back to space.
+
+Feedback in climate science refers to how changes in one component of the climate system can either amplify positive feedback or diminish negative feedback in response to an initial change.
+Positive feedback mechanisms contribute to further warming by amplifying the initial change in the climate system.
+Melting of ice and snow reduces Earth's surface reflectivity (albedo), causing more absorption of solar radiation and further warming.
+Negative feedback mechanisms counteract initial changes, helping to regulate and stabilize the climate system.
+
+Oceans absorb and store carbon dioxide, serving as a buffer against rapid changes. The increasing concentration of carbon dioxide has led to ocean acidification, impacting marine ecosystems.
+
+Human-induced disruptions, especially the burning of fossil fuels and changes in land use, have led to a rapid increase in atmospheric carbon dioxide. This heightened concentration is a major driver of recent climate change, affecting global temperatures and ecosystems.
+
+ Radiative forcing illustrates how human-induced forces, such as the emission of greenhouse gases, have significantly altered Earth's energy balance, resulting in global warming.
+
+Earth's climate has fluctuated between hothouse and icehouse periods.
+Plate tectonics influence volcanic activity, carbon dioxide levels, and weathering rates.
+Variations in Earth's tilt and orbit contribute to climate shifts over thousands of years.
+The tilt of the Earth's axis impacts seasonal contrast.
+
+IPCC Working Groups
+1 - assess physical science of CC, causes and projections
+2 - Impacts, adaptation and vulnerability
+3 - strategies and options for mitigation - economic, tech and policy
+
+The challenge of accurately representing cloud processes in climate models is underscored, given the fundamental role clouds play in regulating the Earth's climate and the ongoing complexity in understanding their formation and interactions.
+
+Predicting changes in precipitation patterns proves to be one of the most challenging aspects of climate modeling, with uncertainties remaining critical for agriculture, water resources, and disaster preparedness.
+
+The two main groups of geoengineering techniques are Solar Radiation Management (SRM) and Carbon Dioxide Removal (CDR).
+SRM aims to influence solar energy entering the atmosphere, while CDR focuses on actively removing carbon dioxide from the atmosphere.
+
+Read the IPCC 2018 Special Report 1.5
+
+
+MODULE 2 - Climate-Related Risks and Opportunities
+Acute risks are sudden climate events - heatwaves, hurricanes etc
+Chronic risks build gradually - sea level rise, drought, heat stress, shorter summers, etc
+
+Physical assets at risk -  facilities, infrastructure, operations, water resources, and supply chains.
+
+Consider the probability of dangerous climate events (hazards), susceptibility to harm (vulnerability), and the presence of assets in at-risk areas (exposure).
+
+physical risks may have financial implications for organizations, such as direct damage to assets and indirect impacts from supply chain disruption. Organizations’ financial performance may also be affected by changes in water availability, sourcing, and quality; food security; and extreme temperature changes affecting organizations’ premises, operations, supply chain, transport needs, and employee safety.
+
+Violent conflict also “increases vulnerability to climate change by harming assets that facilitate adaptation, including infrastructure, institutions, natural resources, social capital, and livelihood opportunities.
+
+Primary IPCC Working Groups
+WG 1 - Science
+WG 2 - Adaptation and Vulnerability
+WG 3 - Mitigation
+
+The  1.5°C threshold was breached in 2024.
+
+Transition Risks
+Transitioning to a net-zero world demands a profound transformation in production, consumption, and transportation.
+
+The energy sector is the source of around three-quarters of greenhouse gas emissions today and holds the key to averting the worst effects of climate change.
+
+As the third-largest greenhouse gas emitting sector, decarbonizing the mobility sector is critical to limiting warming.
+
+Transitioning requires policy and legal, technology, and market changes to address mitigation and adaptation requirements.
+-Policy and legal risks include stricter emissions regulations, carbon pricing, reporting obligations, and litigation—leading to increased compliance costs and potential asset impairment.
+-Technological risks involve the costs of adopting new low-emission technologies, the risk of stranded assets from outdated systems, and failures in R&D or deployment of alternatives.
+-Market risks include shifts in consumer behavior, demand uncertainty, input cost volatility, and re-pricing of assets—especially in carbon-intensive sectors.
+-Reputational risks result from stakeholder pressure, greenwashing accusations, and reduced investor confidence, all of which can impact capital access and workforce retention.
+
+Stranded assets are those that have suffered from unanticipated or premature write-downs, devaluations, or conversion to liabilities.
+
+Transition risk severity is path-dependent: physical risks are driven by temperature rise, while transition risks are driven by the speed and scope of emissions reductions.
+
+Why Climate Risks are Financial Risks
+=====================================
+A significant hike in the associated costs and inflation-adjusted losses from physical risks, especially given that climate change has contributed to a five-fold surge of extreme weather events such as increased wildfire risks and floods in recent decades.
+
+Physical risks are financial risks
+Transition risks are financial risks
+
+A well-managed transition allows the market to anticipate a shift toward a climate-resilient future, reducing the potential negative financial and economic consequences.
+
+One way transition risks often directly affect companies’ financials is through the introduction and implementation of climate policies and regulations -- ambitious decarbonization plans released by governments, often include planned phase-out of fossil fuels, carbon pricing schemes, energy efficiency measures, and emissions standards
+
+ In the private sector, two types of climate litigation cases are most prominent: climate-washing and ‘turning of the taps’ cases. Climate washing ases include instances where marketing claims from financial institutions about their climate actions, transition plans, and environmental impacts have been subjected to regulators’ interventions and litigations.16 This is commonly the case when financial institutions continue to finance emission-intensive sectors or omit “significant information” about contribution to Green House Gas (GHG) emissions. ‘Turning off the taps’ cases are those that challenge the flow of finance to projects and activities that are not aligned with climate action.
+
+Real estate
+Traditional property valuation models typically do not incorporate the capital expenses needed to achieve decarbonization, leaving investors and property operators facing unexpected, substantial financial burdens that were not initially considered in their investment decisions.
+
+Big Pharma
+Studies show that the pharmaceutical industry is one of the major contributors to greenhouse gas emissions. Research shows that the industry is more carbon-intensive than the automotive sector.
+
+Climate stress testing and prudential supervision are increasingly adopted by central banks (e.g., ECB, Bank of England, MAS, APRA) to assess exposure and resilience to climate risks.
+Disclosure frameworks have evolved from TCFD to IFRS S2, which mandates more granular and sector-specific reporting of governance, strategy, risk management, and GHG metrics—especially Scope 3 emissions and financed emissions for financial firms.
+
+In 2017, the Task Force on Climate-related Financial Disclosure (TCFD) released climate-related financial disclosure recommendations designed to help companies provide better information to support market transparency and more informed capital allocation. The task force has produced 11 recommended disclosures that are grouped around four pillars: governance, strategy, risk management, and metrics and targets.
+
+These disclosures are meant to help investors correctly price the climate risks that different assets face, as well as support the efficient allocation of capital.
+
+Climate Opportunities
+=====================
+Opportunities abound in:
+
+- Renewable Energy: solar, wind, hydro lead to investments, job creation,
+- Green Infrastructure:  energy-efficient buildings, sustainable transportation systems, and eco-friendly urban planning,
+- Technological Innovation: energy storage, electric vehicles, carbon capture and utilization, and sustainable agriculture
+- Financial Services: green financial instruments, sustainable investments, and climate-related risk assessments
+- Climate Resilience Solutions: disaster preparedness and climate-resilient infrastructure, helps protect communities and assets, reduce losses
+
+Mitigation Against Asset Stranding
+As climate policies drive this transition, some assets may become “stranded,” failing to recoup their intended investment costs and resulting in investor losses
+
+A major driver of integrating ESG and climate risk management in the real estate sector is due to regulatory changes. For example, under the EU’s Corporate Sustainability Reporting Directive (CSRD), most companies will be required to conduct assessments of physical and transition risks to which their assets or financial products may be exposed.
+
+Ways in which the real estate sector could leverage the climate-related opportunities:
+- Local energy production and storage.
+- Green buildings.
+- Green building materials.
+- Additional on-site services. Firms can introduce new income streams by offering services such as electric vehicle charging, eco-friendly facility management,
+
+==The tech sector can leverage climate opportunities through the development of “green cloud” and "green data centers." Digital technologies account for a significant portion of global electricity consumption, which is expected to rise with increasing digitization and emerging technologies.==
+
+Green finance, focused on environmental financing, and climate finance, which includes financial flows into climate change-related projects such as climate mitigation and adaptation activities.
+
+Climate finance aims to reduce emissions, enhance greenhouse gas sinks, reduce vulnerability, and increase the resilience of human and ecological systems to negative climate change impacts.
+When it comes to the types of projects funded, most financing is dedicated to climate mitigation (>90%) especially energy and transport, followed by adaptation (~5%)
+
+Green bonds are a unique category of bonds directed toward financing environmental projects. They are characterized by specific attributes: they are separately labeled, their proceeds are ring-fenced, and the intended use of the funds is transparently reported to prospective bondholders before issuance and to current bondholders once projects are executed.
+
+In summary, the surge in clean energy investment reflects a powerful convergence of economic feasibility, climate objectives, and strategic industrial pursuits. This momentum
+has been catalyzed by the recovery from the COVID-19 pandemic and the response to the global energy crisis.
+
+Green finance must increase fivefold by 2030 to meet 1.5°C climate goals.
+
+Government policies—subsidies, R&D funding, tax breaks—are essential for scaling climate opportunities.
+
+Just Transition
+===============
+Just Transition Defined: Ensures a fair, inclusive shift to a low-carbon economy, rooted in labor rights and expanded into climate policy.
+
+The just transition framework seeks to maximize the social and economic opportunities of climate action while minimizing and managing challenges such as job displacement, regional economic shifts, and social inequalities.
+
+Elements of a just transition
+- Economic restructuring -accelerating investment in renewable energy, circular economy models, and sustainable agriculture//support diversification in carbon heavy regions to create new opportunities
+- Respect for labor rights -
+- Inclusive dialogue and participation - involve workers and communities in shaping transition frameworks
+
+Why it matters
+A just transition is essential for achieving global climate goals while ensuring economic and social stability. Without a structured, equitable transition, climate action could exacerbate existing inequalities, disproportionately impact marginalized communities, and generate resistance to decarbonization efforts.
+
+- Enabling more ambitious climate action
+- Advancing the Sustainable Development Goals (SDGs)
+- Addressing global climate justice and economic equity
+- Promoting economic and social resilience
+
+
+Actions for Financial Institutions in the Just Transition
+- Assess and mitigate social risks in the transition: FIs should ensure that the costs and benefits of transition finance are allocated fairly
+- Unlock social opportunities in the net-zero transition: funding projects and businesses that generate social co-benefits while advancing decarbonization goals.
+
+Financing strategies include the following:
+• Sustainable bonds and transition finance:
+• Blended finance models:
+• Dedicated just transition funds:
+
+- Ensure meaningful stakeholder engagement and social inclusion
+
+
+MODULE 3: CLIENT OBJECTIVES
+Investment time horizon, tolerance for risk, and appetite for liquidity—are all highly relevant to the client’s approach to climate risks and opportunities.
+
+Type of investment approaches:
+- Risk mitigation: Recognize the risks to future financial returns, including the fiscal risks of the economy's transition to a less carbon-intensive form and the physical risks of climate
+change itself.  This approach often incorporates measures of future risk, such as scenario analysis and stress tests.
+- Managing negative impacts: Focus on understanding the current footprints and seeking to manage those down
+- Seeking positive impacts: At its simplest, this approach might involve shifting passive indexed portfolios to more climate-change-aligned benchmarks.
+- Climate opportunities. Seek financial upsides through direct investment in climate technologies or specific opportunities.
+- Nature-based solutions. Recognize that the “net” in net zero implies that the world economy will continue to produce greenhouse gas emissions, which will need to be offset e.g. carbon sinks etc
+- Stewardship:
+
+Fiduciary duty
+Fiduciary duty is the obligation—often broken into a series of separate duties—that applies whenever one party looks after assets on behalf of another. Essentially, the party responsible for the asset must act in the interests of the asset’s owner and cannot operate as if they were the owner or to the owner's detriment.
+
+Fiduciary duty is clarified by law into a series of separate duties, two most prominent are the duty of loyalty and the duty of care.
+
+The duty of loyalty insists that the interests of the beneficiary come first: Decisions must be taken selflessly in the beneficiary’s interest and not to any personal benefit of
+the fiduciary.
+The duty of care insists that the fiduciary follows due process. Decisions are based on appropriate information (and where appropriate advice) and on sensible decision-making processes.
+The duty of good faith requires the fiduciary to act openly and honestly and not create undue conflicts of interest.
+The duty of confidentiality reminds the fiduciary that information belongs to the beneficiary.
+
+Climate-aware investments involve understanding risks, reducing portfolio footprints, pursuing positive impacts, and exploring climate technology opportunities.
+Fiduciary duty is essential in client-investment manager relationships, requiring consideration of client interests, long-term factors like climate, and sensible risk-taking.
+
+
+MODULE 4 - REGULATORY RESPONSE
+
+A treaty might also be called an agreement, an accord, a convention, or a protocol. A convention is generally a formal, multilateral agreement that has many parties. Conventions are typically negotiated under the sponsorship of an international organization, such as the United Nations.
+
+A protocol is typically an agreement that is less formal and less complex than a treaty or convention.
+
+Conventions are formal multilateral treaties; protocols are supplements or implementation tools.
+
+The UNFCCC calls upon developed nations (called “Annex 1 countries”) to take the lead in reducing GHG emissions.
+
+The Kyoto Protocol created three market-based mechanisms, which effectively established a market for carbon:
+• International emissions trading. Annex B Parties are allocated carbon emissions units and may sell their unused carbon emissions units to countries that have exceeded their limits.
+• Clean development mechanism (CDM). Annex B Parties can earn certified emission reduction (CER) credits by implementing an emissions reduction project in developing countries. Earned CERs can then be sold to meet emissions targets.
+• Joint implementation (JI). Annex B Parties can earn emission reduction units (ERUs) from an emission reduction or removal project in another Annex B Party.
+ERUs can be used to meet emissions targets and can provide benefits in the form of flexibility, cost savings, foreign investment, and technology transfer.
+
+the Paris Agreement calls on Parties to “achieve a balance between anthropogenic emissions by sources and removals by sinks of greenhouse gases in the second half of this century.
+
+The Montreal Protocol (1987) successfully phased out ozone-depleting substances and reduced global warming by up to 1°C.
+The Kigali Amendment (2016) added commitments to reduce HFCs, powerful climate pollutants.
+The UNFCCC (1992) established a framework for climate action and created the COP as a decision-making body.
+The Kyoto Protocol (1997) was the first legally binding climate treaty, targeting developed countries with GHG reduction obligations.
+Kyoto introduced emissions trading, Clean Development Mechanism (CDM), and Joint Implementation (JI) to create carbon markets.
+The Doha Amendment (2012) extended Kyoto’s targets but had limited participation, weakening its global impact.
+The Paris Agreement (2015) applies to all countries, requiring progressively ambitious climate action and aiming for net-zero emissions.
+Paris goals include limiting warming to well below 2°C, boosting resilience, and aligning finance with low-carbon development.
+Key features include Nationally Determined Contributions (NDCs), a five-year Global Stocktake, and an Enhanced Transparency Framework (ETF).
+
+
+Financial Standards
+the TCFD recommendations led to the draft International Financial Reporting Standards (IFRS) S2 Climate-Related Disclosures in July 2022, which provided an accounting framework for climate-related financial reporting.
+
+To summarize the process, the FSB formed the TCFD to define a set of recommendations for the disclosure of climate-related financial data. As these recommendations took hold in the marketplace on a voluntary basis, regulators supported their evolution and adoption. In order for these recommendations to become uniform and global, they had to become part of the global accounting and financial disclosure ecosystem; thus, TCFD work became the responsibility of the newly formed International Sustainability Standards Board (the ISSB is part of the IFRS). The TCFD then concluded its work and was dissolved.
+
+Mark Carney’s 2015 “Tragedy of the Horizon” speech reframed climate change as a systemic financial risk, calling for market-driven solutions.
+Carney, as Chair of the FSB, emphasized the power of financial regulators to influence risk pricing and capital flows.
+The FSB established the Task Force on Climate-related Financial Disclosures (TCFD) in 2015 to promote consistent, transparent climate risk reporting.
+The TCFD’s 2017 voluntary recommendations focused on four thematic areas: governance, strategy, risk management, and metrics & targets.
+TCFD stressed both risks and opportunities of climate change, scenario analysis, and industry-specific disclosures for decision usefulness.
+Adoption of TCFD standards grew rapidly, influencing regulators to integrate climate disclosures into mainstream financial filings.
+TCFD’s work laid the foundation for the IFRS Sustainability Standards (S1 and S2), launched by the International Sustainability Standards Board (ISSB) in 2023.
+In 2024, TCFD was dissolved and its responsibilities formally transferred to the ISSB under IFRS oversight.
+The International Organization of Securities Commissions (IOSCO) endorsed ISSB standards, urging global regulators to adopt them as a disclosure baseline.
+The Network for Greening the Financial System (NGFS) supported central banks with shared climate scenarios for forward-looking risk assessments.
+The Glasgow Financial Alliance for Net Zero (GFANZ) advanced portfolio alignment methods and transitioned into the independent Principals Group in 2025.
+The US SEC issued climate disclosure rules in 2024 aligned with TCFD but stayed enforcement following political shifts and legal challenges in 2025.
+
+
+Main Types of National and Regional Policy Tools
+
+Policy is expressed in numerous forms, including laws, regulations, orders, decrees, statements, principles, plans, and decisions. Rarely is public policy neatly encapsulated in a single place. Gaining an understanding of a government’s policy response to an issue often requires examining a wide variety of sources and materials.
+
+Policy tools address climate goals through authority (command-and-control rules, permitting) and financial incentives (spending, subsidies, and taxation).
+Government spending and subsidies fund climate science, tech development, adaptation, education, and economic support for low-carbon sectors.
+Climate spending is rising significantly, with examples including US green energy investments, Australia’s rebates, and China’s large-scale tree planting.
+Carbon taxes aim to internalize the social cost of emissions; design choices include what to tax, tax level, use of revenues, and trade competitiveness impact.
+The EU’s Carbon Border Adjustment Mechanism is one example of using tariffs to protect domestic producers from emissions-related cost disadvantages.
+Cap-and-trade programs use tradable emission permits to limit total emissions and incentivize reductions via market pricing.
+Ronald Coase’s theory supports using property rights (like permits) to resolve externalities through negotiation, with emissions permits as one application.
+
+Coase’s work provides a key insight for policymakers: price and quantity controls are not the only ways to address externalities. The establishment of property rights provides a mechanism by which parties who are negatively affected by other parties’ activities can be compensated. Permits are an effective and efficient means of simultaneously establishing the underlying property rights and enabling trading among private parties.
+
+Permitting tools influence emissions and adaptation by regulating development, infrastructure, energy, and natural resource projects.
+"Command-and-control" rules impose compulsory requirements (e.g., renewable energy minimums, vehicle emissions standards, building codes).
+
+Many markets have minimum thresholds for the percentage of electricity produced from renewable or low-carbon sources
+
+Sector-specific examples include UK’s carbon price floor eliminating coal, EU and US vehicle CO₂ targets, and NYC’s fossil fuel bans in new buildings.
+Transparent, consistent policy is key for investor confidence and long-term planning toward climate transition goals.
+
+
+Regional Comparisons of APAC, EMEA, and AMER
+
+European Union (EMEA): The European Green Deal aims to make the EU the first climate-neutral continent by 2050, with a sweeping policy overhaul across all economic sectors.
+The Green Deal Industrial Plan promotes net-zero technologies, streamlined regulation, financing access, job reskilling, and fair competition.
+The Net-Zero Industry Act (2024) supports domestic decarbonization industries through scaled manufacturing and permitting reform.
+The Green Deal Investment Plan commits over EUR 1 trillion, with funding from public budgets, ETS revenues, and private investments.
+The European Climate Law (2021) makes 2050 neutrality legally binding and requires all policies to align with this goal.
+The Fit for 55 Package mandates a 55% GHG reduction by 2030 and includes expanded emissions trading (ETS), the Carbon Border Adjustment Mechanism (CBAM), and the Social Climate Fund for vulnerable populations.
+United States (AMER): The Inflation Reduction Act (IRA, 2022) is the largest U.S. climate law, allocating $394B in energy and climate funding, mainly through tax incentives, grants, and loans.
+The IRA sets goals for 100% clean electricity by 2035, a 40% GHG reduction by 2030, and net zero by 2050.
+Emphasizes private capital mobilization and environmental justice via the Justice40 Initiative, which ensures 40% of benefits reach underserved communities.
+Supports U.S. leadership in clean tech and includes place-based economic development incentives for low-income areas.
+China (APAC): China targets peak CO₂ emissions before 2030 and carbon neutrality by 2060, balancing climate goals with energy security and economic growth.
+The 1+N policy system includes a long-term strategic framework and over 30 detailed sectoral action plans.
+The 14th Five-Year Plan emphasizes reduced coal use and expanded non-fossil energy share (target: 25% by 2030; 80% by 2060).
+The Action Plan for Carbon Peaking and Working Guidance promote market-based mechanisms, including emissions trading and public-private financing.
+China’s evolving climate governance increasingly leverages carbon pricing, innovation incentives, and regionally customized pathways.
+
+Nations are responding to the climate crisis with diverse strategies shaped by their unique geopolitical, economic, and environmental contexts.
+The European Union's meticulous legislative frameworks,
+the United States' innovative incentive-based measures,
+and China's ambitious long-term goals
+
+
+Module 5: Carbon Markets
+
+What Are Carbon Emissions and How Are They Measured?
+
+
+Greenhouse gas (GHG) emissions occur across nearly all sectors, requiring standardized approaches for accurate and actionable measurement.
+Emissions accounting follows three scopes: Scope 1 (direct emissions), Scope 2 (indirect emissions from purchased energy), and Scope 3 (value chain emissions).
+Scope 3 often represents the majority of a company’s carbon footprint, especially in manufacturing, but is the hardest to measure and most prone to double counting.
+
+MRV (Monitoring, Reporting, and Verification) is essential for quantifying emissions, assigning cost, managing risk, and participating in carbon markets.
+MRV is important because it represents the only way that companies can accurately quantify the financial exposure their climate impact represents. Putting a price on carbon emissions means that, for the first time, an externality—climate pollution—is becoming part of a business’s costs. The cost of emissions has exactly the same impact on a company’s profitability as energy and raw material prices.
+
+MRV includes third-party verification to ensure accuracy for both voluntary and compliance markets, with formal accreditation for verifiers required in many jurisdictions.
+The GHG Protocol is the most widely used standard for voluntary GHG accounting and also influences compliance frameworks globally.
+GHG measurement involves input/output tracking, flow rate calculations, and sector-specific factors, depending on the process and regulatory requirements.
+Six key greenhouse gases—CO₂, CH₄, N₂O, CFC-12, HFC-23, and SF₆—are tracked and compared using Global Warming Potential (GWP) over a 100-year period.
+
+Each GHG has a specific global warming potential (GWP), which measures the strength of its warming impact on the atmosphere over a specific period of time. Most commonly, we use GWP100, which measures over a period of 100 years, while GWP20 would be over 20 years. These are measured as multiples of CO 2 impact, which is assumed to have a GWP of 1 and an atmospheric lifetime of 100 years.
+
+
+Despite CO₂’s low GWP, it is the primary driver of climate change due to its volume and long atmospheric life.
+Reporting may be voluntary or mandatory depending on jurisdiction, with global momentum growing toward full Scope 1–3 reporting under ESG regulations.
+Recent policies (e.g., California 2023 law and China’s 2024 mandate) now require large companies to disclose full Scope 1, 2, and 3 emissions.
+Compliance markets use thresholds (e.g., 20 MW in the EU ETS) to define which emitters are regulated, while voluntary markets allow full flexibility in scope and scale.
+ISO 14064 offers optional guidance for voluntary emissions measurement when no compliance structure is in place.
+
+Many markets allow for voluntary “opt-in” by smaller installations and, as the market progresses and caps on emissions fall, thresholds may be reduced to “capture” more emissions from smaller installations. In this way, for example, large hospitals with their own emergency power supply may normally be exempt at the start of a compliance market but can be brought under the regulations in later stages.
+
+The parameters of coverage normally extend to individual units within an installation where the bulk of emissions take place, such as the boilers of a thermal power plant where the main combustion takes place, or the blast furnace of a steel mill. In some cases, the percentage coverage of emissions can be marginally reduced to account for time taken to start up or shut down the unit in question. For aviation or maritime transport, the coverage threshold normally takes the form of either the number of hours an aircraft is operating or the tonnage of a vessel.
+
+In voluntary offsetting, no such thresholds exist, and it is up to each corporate entity to decide how much of its operation to include in its carbon footprint measurement. This
+can range from simply measuring Scope 1 emissions to a full product life-cycle assessment.
+
+
+Types of Carbon Instruments
+====
+Carbon markets aim to mitigate climate change by reducing and removing greenhouse gas (GHG) emissions through pricing mechanisms.
+
+Reducing our carbon dioxide emissions and then removing existing CO 2 from the atmosphere are logical steps.
+
+Carbon neutral = offsetting emissions with buying carbon offsets. Sum of greenhouse gas emissions produced are balanced or “offset”—no requirement to reduce absolute emissions
+
+Net zero = reducing direct emissions and doing other offsets.
+
+
+Carbon pricing incentivizes three key actions: emissions avoidance, reduction, and removal.
+Carbon permits (allowances) are used in cap-and-trade systems that impose binding limits on emissions and allow trading of emission rights.
+The cap in these systems declines over time, increasing permit prices and encouraging investment in low-carbon technologies.
+Carbon offsets (credits) are issued for projects that lower or prevent emissions elsewhere and are used to compensate for a company's unavoidable emissions.
+
+Carbon offsets differ from carbon permits in that they do not represent a fixed supply of legal permits to emit but are instead a certificate awarded to an initiative or project that
+reduces carbon emissions compared to a baseline. In accounting terms, a carbon offset represents one metric ton of emissions avoided or reduced, the use, or “retirement,” of which enables one metric ton to be emitted elsewhere with no net addition to the total greenhouse gas concentration in the atmosphere.
+
+Three types of carbon offsets include:
+Emission reductions (e.g., renewable energy, methane capture),
+Emission avoidance (e.g., clean cookstoves, forest protection/REDD+),
+Emission removals (e.g., reforestation, carbon capture technologies).
+Carbon removal credits are gaining importance and are increasingly favored for long-term climate neutrality goals. Examples include afforestation, blue carbon, CCS, and DAC.
+Offset projects must demonstrate environmental and financial additionality to qualify for certification.
+There is a key difference between carbon neutral and net zero:
+Carbon neutral allows use of any offset to balance emissions without requiring reductions,
+Net zero requires deep emission reductions and only allows removal-based offsets for residual emissions.
+Net zero targets align with climate science and are encouraged by initiatives like the Science Based Targets initiative (SBTi).
+Compliance markets aim to reduce absolute emissions to zero, while voluntary markets support corporate climate pledges like carbon neutrality or net zero.
+
+
+Compliance Markets and Pricing Mechanisms
+===
+Compliance (cap-and-trade) markets legally cap emissions and issue permits (allowances), requiring entities to match permits with verified emissions.
+Permits are distributed via free allocation and auctions, with a decreasing cap to incentivize decarbonization over time.
+EU ETS is the largest and most mature market, expanded through multiple phases and reforms (e.g., “Fit for 55,” Market Stability Reserve, CBAM).
+EUA prices fluctuate with energy markets, policy changes, and supply-demand dynamics, creating investment and trading opportunities.
+Power sector emissions have declined significantly; industrial emissions remain more resistant due to technological and cost barriers.
+Financial players trade permits for profit and liquidity, using tools like forward curves, futures, options, and spread analysis (e.g., clean spark/dark spreads).
+California, RGGI, and China operate distinct ETSs with varying scope, trading rules, offset eligibility, and market structures.
+California's system allows limited offset use, employs cost containment reserves, and is linked to Quebec via the Western Climate Initiative.
+China’s national ETS (CN-ETS) uses carbon intensity benchmarks, covers power generation, and is expected to expand sectorally.
+Global aviation is addressed through ICAO’s CORSIA, a multilateral offset-based system targeting net-zero growth from 2020 onward.
+The voluntary carbon market (VCM) enables companies to offset emissions through certified projects, guided by standards like ICVCM and VCMI.
+The UN's Article 6 (6.2 and 6.4) market framework is becoming the new backbone of international carbon trading under the Paris Agreement.
+Carbon taxes exist in 37 jurisdictions, but carbon markets now cover more emissions (17.6%) and offer verifiable, tradable outcomes.
+The EU will launch ETS 2 in 2027, extending carbon pricing to heating and transport fuels, signaling a continued shift toward market-based solutions.
+
+
+Corporate Response to Carbon Pricing
+===
+Compliance rates are high (97–100%) in mandatory carbon markets like the EU ETS and California’s program, driven by financial penalties and reputational risks.
+Cap-and-trade has effectively reduced coal use in the power sector, supported by regulatory measures and increased competitiveness of renewables and gas.
+Industrial responses are mixed; many firms still receive free permits, but some—like Tata and JFE Steel—are shifting to low-emission technologies (e.g., electric arc furnaces).
+Carbon pricing influences stock performance and investment strategies; firms with fewer permit shortfalls tend to see higher stock prices during price spikes.
+Internal carbon pricing is increasingly used to simulate future regulatory impacts and guide capital planning; prices vary widely across sectors.
+Legal risks are rising, including lawsuits over greenwashing, emissions inaction, and insufficient climate disclosures—prompting some companies to “green-hush.”
+Voluntary corporate climate commitments often fall short of science-based targets; few companies set Scope 3 goals aligned with net-zero pathways.
+Carbon leakage remains a concern; the EU’s Carbon Border Adjustment Mechanism (CBAM) aims to equalize cost pressures while phasing out free permits.
+Carbon price arbitrage may drive firms to shift operations to regions with weaker pricing, sparking calls for a harmonized global carbon price.
+Carbon taxes are simpler than cap-and-trade but show limited evidence of effectiveness unless set at high levels; many jurisdictions are pivoting toward ETS models.
+
+
+
+
+
+
+
+
+My personal notes from Module 1
+
+- Adaptation is local, mitigation is global. Every community must find its own ways to cope with changing climate realities, whether that’s flood defenses, drought-resistant crops, or new health systems. But mitigation is a different can of worms. Because greenhouse gases mix in the atmosphere, one country’s emissions affect everyone. The atmosphere is a global commons, and so cutting emissions is only effective when nations act together.
+
+- Adaptation has limits. It helps us manage risks but only within a certain temperature range. Beyond 1.5 or 2 °C of warming, adaptation becomes less viable and, in some cases, impossible. You can’t “adapt” to unlivable heat, submerged coastlines, or ecosystem collapse. This makes mitigation not just complementary, but essential. Mitigation keeps the game within playable limits.
+
+- The barriers to 1.5 °C are more political than technical. We already have most of the tools ie renewable energy, efficiency measures, cleaner transport, better land use. The sticking points are politics, vested interests, and human behavior. If survival and justice aren’t enough to drive action, reframing the challenge in terms of economic returns may help. A strong business case for cutting emissions ie showing the profitability of clean energy, the cost savings of efficiency, the job creation of a green transition, could shift mindsets faster than moral appeals alone. In short, where fear fails, incentives might succeed.
+
+- We leapfrogged telephony, mobile banking, so why cant we do the same with energy transition
+
+
+Personal notes from Module 2
+
+Examples of Transition Risks
+1. a financial institution invested in a company (market risk) or extended loans to a company (credit risk) that is unable to keep pace with political measures or technological developments.
+
+- Changing consumer preferences
+- Delays in technology development & supply chain required to meet decarbonization targets
+- Uncertainty about evolving regulatory frameworks
+
+Because of population and economic growth, energy demands will only increase.
+Conversely, Our energy mix needs to change over the next 25 years (into 2050). Major % comes from fossil fuel, coal, natural gas.
+
+Personal notes from Module 3
+
+
+Module 4
+We've come a long way with these protocols, agreements etc. It was very encouraging to learn CFCs have been phased due to international cooperation.
+But too much politics, social media and misinformation have made such collaboration and progress harder.

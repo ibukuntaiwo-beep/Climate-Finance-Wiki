@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Climate Finance Wiki — Broadsheet</title>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F6F4EE;
+    --surface: #FFFFFF;
+    --surface-warm: #FAF8F4;
+    --text: #1A1A2E;
+    --text-secondary: #4A4A5A;
+    --text-muted: #8A8A96;
+    --coral: #D94F3B;
+    --coral-soft: rgba(217, 79, 59, 0.08);
+    --coral-hover: #C4422F;
+    --blue: #2454A0;
+    --blue-soft: rgba(36, 84, 160, 0.07);
+    --border: #DDD9D0;
+    --border-strong: #C5C0B5;
+    --rule: #1A1A2E;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Sora', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* Subtle paper texture */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='t'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23t)' opacity='0.025'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* --- ANIMATIONS --- */
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-15px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes expandRule {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+
+  .reveal { opacity: 0; animation: fadeUp 0.7s ease-out forwards; }
+  .reveal-d1 { animation-delay: 0.08s; }
+  .reveal-d2 { animation-delay: 0.16s; }
+  .reveal-d3 { animation-delay: 0.24s; }
+  .reveal-d4 { animation-delay: 0.32s; }
+  .reveal-d5 { animation-delay: 0.4s; }
+
+  /* --- NAV --- */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg);
+    border-bottom: 3px solid var(--rule);
+  }
+
+  .nav-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 3rem;
+  }
+
+  .nav-bottom {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    padding: 0.5rem 3rem;
+    border-top: 1px solid var(--border);
+    background: var(--surface-warm);
+  }
+
+  .nav-bottom a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.3rem 0;
+    position: relative;
+    transition: color 0.2s;
+  }
+
+  .nav-bottom a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--coral);
+    transition: width 0.25s ease;
+  }
+
+  .nav-bottom a:hover { color: var(--coral); }
+  .nav-bottom a:hover::after { width: 100%; }
+
+  .logo {
+    font-family: 'Newsreader', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .logo-mark {
+    width: 8px;
+    height: 24px;
+    background: var(--coral);
+    border-radius: 1px;
+  }
+
+  .style-toggle {
+    display: flex;
+    gap: 2px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 3px;
+  }
+
+  .style-toggle button {
+    font-family: 'Sora', sans-serif;
+    padding: 0.35rem 0.7rem;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .style-toggle button.active {
+    background: var(--coral);
+    color: #fff;
+    box-shadow: 0 2px 6px rgba(217, 79, 59, 0.25);
+  }
+
+  /* --- MASTHEAD --- */
+  .masthead {
+    text-align: center;
+    padding: 2.5rem 3rem 1.5rem;
+    position: relative;
+  }
+
+  .masthead-date {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .masthead h1 {
+    font-family: 'Newsreader', serif;
+    font-size: 3.4rem;
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 1.05;
+    color: var(--text);
+  }
+
+  .masthead h1 span {
+    color: var(--coral);
+    font-style: italic;
+  }
+
+  .masthead .tagline {
+    font-family: 'Newsreader', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--text-secondary);
+    margin-top: 0.6rem;
+  }
+
+  /* Decorative rule */
+  .ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem 3rem;
+  }
+
+  .ornament .rule {
+    flex: 1;
+    height: 1px;
+    background: var(--border-strong);
+  }
+
+  .ornament .diamond {
+    width: 8px;
+    height: 8px;
+    background: var(--coral);
+    transform: rotate(45deg);
+  }
+
+  /* Stats bar */
+  .stats-bar {
+    display: flex;
+    justify-content: center;
+    gap: 3.5rem;
+    padding: 0.75rem 3rem 1.5rem;
+  }
+
+  .stats-bar .stat {
+    text-align: center;
+  }
+
+  .stats-bar .stat-val {
+    font-family: 'Newsreader', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--coral);
+    line-height: 1;
+  }
+
+  .stats-bar .stat-name {
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 0.25rem;
+  }
+
+  /* --- HERO SPLIT --- */
+  .hero {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    border-top: 3px solid var(--rule);
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+  }
+
+  .hero-main {
+    padding: 2.5rem 3rem;
+    border-right: 1px solid var(--border);
+  }
+
+  .tag {
+    display: inline-block;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.65rem;
+    margin-bottom: 1rem;
+  }
+
+  .tag-coral {
+    background: var(--coral-soft);
+    color: var(--coral);
+    border-left: 3px solid var(--coral);
+  }
+
+  .tag-blue {
+    background: var(--blue-soft);
+    color: var(--blue);
+    border-left: 3px solid var(--blue);
+  }
+
+  .tag-muted {
+    background: rgba(138, 138, 150, 0.08);
+    color: var(--text-muted);
+    border-left: 3px solid var(--text-muted);
+  }
+
+  .hero-main h2 {
+    font-family: 'Newsreader', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+
+  .hero-main .lede {
+    font-family: 'Newsreader', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    margin-bottom: 0.75rem;
+    border-left: 2px solid var(--coral);
+    padding-left: 1rem;
+  }
+
+  .hero-main p {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .read-link {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--coral);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: all 0.2s;
+    border-bottom: 1px solid transparent;
+  }
+
+  .read-link:hover { border-bottom-color: var(--coral); }
+
+  .hero-side {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero-side-item {
+    padding: 2rem;
+    border-bottom: 1px solid var(--border);
+    flex: 1;
+    cursor: pointer;
+    transition: background 0.2s;
+    position: relative;
+  }
+
+  .hero-side-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    background: var(--coral);
+    transition: width 0.2s;
+  }
+
+  .hero-side-item:hover { background: var(--surface-warm); }
+  .hero-side-item:hover::before { width: 3px; }
+  .hero-side-item:last-child { border-bottom: none; }
+
+  .hero-side-item h3 {
+    font-family: 'Newsreader', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-side-item p {
+    font-size: 0.84rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+
+  /* --- SECTION RULE --- */
+  .section-rule {
+    padding: 0 3rem;
+  }
+
+  .section-rule-inner {
+    border-top: 3px solid var(--rule);
+    padding-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-rule h2 {
+    font-family: 'Newsreader', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .section-rule a {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--coral);
+    text-decoration: none;
+  }
+
+  /* --- NEWSPAPER COLUMNS --- */
+  .columns {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 0 3rem 2.5rem;
+    gap: 0;
+  }
+
+  .col {
+    padding: 1.25rem 1.5rem;
+    border-right: 1px solid var(--border);
+    cursor: pointer;
+    transition: background 0.2s;
+    position: relative;
+  }
+
+  .col:last-child { border-right: none; }
+  .col:hover { background: var(--surface); }
+
+  .col-cat {
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 0.5rem;
+  }
+
+  .col h4 {
+    font-family: 'Newsreader', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.25;
+    margin-bottom: 0.5rem;
+  }
+
+  .col p {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+  }
+
+  .col .col-meta {
+    margin-top: 0.75rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .col .col-meta .dot-chain {
+    display: flex;
+    gap: 3px;
+  }
+
+  .col .col-meta .dot-chain span {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--coral);
+    opacity: 0.25;
+  }
+
+  .col .col-meta .dot-chain span.on { opacity: 0.85; }
+
+  /* --- GRAPH BANNER --- */
+  .graph-banner {
+    margin: 0 3rem 3rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .graph-banner:hover {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+    border-color: var(--border-strong);
+  }
+
+  .graph-banner-text {
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .graph-banner-text h3 {
+    font-family: 'Newsreader', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .graph-banner-text p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+  }
+
+  .graph-preview {
+    background: var(--bg);
+    border-left: 1px solid var(--border);
+    position: relative;
+    min-height: 180px;
+  }
+
+  .graph-preview svg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+  }
+
+  .gp-line { stroke: var(--border-strong); stroke-width: 1; }
+  .gp-node { fill: var(--coral); }
+  .gp-node.alt { fill: var(--blue); }
+
+  /* --- FOOTER --- */
+  footer {
+    border-top: 3px solid var(--rule);
+    padding: 1.5rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer .foot-brand {
+    font-family: 'Newsreader', serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  footer .foot-brand .mark {
+    width: 6px;
+    height: 18px;
+    background: var(--coral);
+  }
+
+  footer p {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .palette-badge {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    background: var(--coral);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.75rem;
+    padding: 0.5rem 1rem;
+    border-radius: 24px;
+    z-index: 200;
+    letter-spacing: 0.08em;
+    box-shadow: 0 4px 16px rgba(217, 79, 59, 0.25);
+  }
+</style>
+</head>
+<body>
+
+<div class="palette-badge">BROADSHEET</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-top">
+    <div class="logo">
+      <span class="logo-mark"></span>
+      The Climate Finance Wiki
+    </div>
+    <div class="style-toggle">
+      <button>Editorial</button>
+      <button class="active">Wikipedia</button>
+      <button>Magazine</button>
+    </div>
+  </div>
+  <div class="nav-bottom">
+    <a href="#">Concepts</a>
+    <a href="#">Instruments</a>
+    <a href="#">Actors</a>
+    <a href="#">Frameworks</a>
+    <a href="#">Case Studies</a>
+    <a href="#">Knowledge Graph</a>
+  </div>
+</nav>
+
+<!-- MASTHEAD -->
+<div class="masthead reveal reveal-d1">
+  <div class="masthead-date">Monday, April 14, 2026</div>
+  <h1>The Climate Finance <span>Wiki</span></h1>
+  <div class="tagline">A knowledge base for communications professionals</div>
+</div>
+
+<div class="ornament">
+  <span class="rule"></span>
+  <span class="diamond"></span>
+  <span class="rule"></span>
+</div>
+
+<div class="stats-bar reveal reveal-d2">
+  <div class="stat"><div class="stat-val">48</div><div class="stat-name">Articles</div></div>
+  <div class="stat"><div class="stat-val">5</div><div class="stat-name">Categories</div></div>
+  <div class="stat"><div class="stat-val">200+</div><div class="stat-name">Cross-links</div></div>
+  <div class="stat"><div class="stat-val">8</div><div class="stat-name">Case Studies</div></div>
+</div>
+
+<!-- HERO -->
+<section class="hero reveal reveal-d2">
+  <div class="hero-main">
+    <span class="tag tag-coral">Featured Case Study</span>
+    <h2>Volkswagen Dieselgate: When Greenwashing Becomes Criminal</h2>
+    <div class="lede">"The emissions scandal that cost $30 billion, destroyed a corporate reputation overnight, and rewrote the rules for environmental claims."</div>
+    <p>What every communications professional should know about the intersection of greenwashing, climate litigation, and corporate accountability. This is the story that proved environmental claims carry legal weight.</p>
+    <a class="read-link" href="#">Read the full case study &rarr;</a>
+  </div>
+  <div class="hero-side">
+    <div class="hero-side-item">
+      <span class="tag tag-blue">Topic of the Day</span>
+      <h3>Stranded Assets</h3>
+      <p>Why $1.4 trillion in fossil fuel reserves may never be burned — and what it means for the companies, banks, and pension funds still betting on them.</p>
+    </div>
+    <div class="hero-side-item">
+      <span class="tag tag-muted">In the News</span>
+      <h3>EU Carbon Border Tax Takes Effect</h3>
+      <p>CBAM begins charging importers. A landmark for global carbon pricing linked to cap-and-trade, the EU taxonomy, and transition risk.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLES -->
+<div class="section-rule">
+  <div class="section-rule-inner">
+    <h2>Latest Articles</h2>
+    <a href="#">View all 48 &rarr;</a>
+  </div>
+</div>
+
+<div class="columns">
+  <div class="col reveal reveal-d1">
+    <div class="col-cat">Concept</div>
+    <h4>Greenwashing</h4>
+    <p>Misleading environmental claims — a growing legal and reputational risk for every organisation making sustainability promises.</p>
+    <div class="col-meta">
+      <div class="dot-chain"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span></div>
+      12 links
+    </div>
+  </div>
+  <div class="col reveal reveal-d2">
+    <div class="col-cat">Instrument</div>
+    <h4>Green Bonds</h4>
+    <p>Fixed-income instruments earmarked for climate projects. The backbone of climate finance — and an increasingly crowded market.</p>
+    <div class="col-meta">
+      <div class="dot-chain"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span><span></span></div>
+      9 links
+    </div>
+  </div>
+  <div class="col reveal reveal-d3">
+    <div class="col-cat">Framework</div>
+    <h4>TCFD</h4>
+    <p>The framework that made climate risk a boardroom issue. Now the global standard for financial disclosure.</p>
+    <div class="col-meta">
+      <div class="dot-chain"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span></div>
+      11 links
+    </div>
+  </div>
+  <div class="col reveal reveal-d4">
+    <div class="col-cat">Actor</div>
+    <h4>Mark Carney &amp; the Tragedy of the Horizon</h4>
+    <p>The central banker who warned that climate risk was being ignored because its effects fall beyond the business cycle.</p>
+    <div class="col-meta">
+      <div class="dot-chain"><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span><span></span><span></span></div>
+      7 links
+    </div>
+  </div>
+</div>
+
+<div class="columns">
+  <div class="col reveal reveal-d1">
+    <div class="col-cat">Concept</div>
+    <h4>Just Transition</h4>
+    <p>Ensuring the shift to a green economy doesn't leave workers behind. Where equity meets climate action.</p>
+    <div class="col-meta">
+      <div class="dot-chain"><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span><span></span><span></span></div>
+      6 links
+    </div>
+  </div>
+  <div class="col reveal reveal-d2">
+    <div class="col-cat">Framework</div>
+    <h4>Paris Agreement</h4>
+    <p>196 countries, 1.5°C. The bedrock of modern climate policy and the reference point for every target set since.</p>
+    <div class="col-meta">
+      <div class="dot-chain"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span></div>
+      14 links
+    </div>
+  </div>
+  <div class="col reveal reveal-d3">
+    <div class="col-cat">Instrument</div>
+    <h4>Carbon Offsets</h4>
+    <p>Tradable credits representing emission reductions elsewhere. Controversial, complex, and under increasing scrutiny.</p>
+    <div class="col-meta">
+      <div class="dot-chain"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span><span></span></div>
+      8 links
+    </div>
+  </div>
+  <div class="col reveal reveal-d4">
+    <div class="col-cat">Case Study</div>
+    <h4>ENEL's Sustainability-Linked Bond</h4>
+    <p>The Italian energy giant that pioneered SLBs — and the questions that followed when targets were scrutinised.</p>
+    <div class="col-meta">
+      <div class="dot-chain"><span class="on"></span><span class="on"></span><span></span><span></span><span></span><span></span><span></span></div>
+      5 links
+    </div>
+  </div>
+</div>
+
+<!-- GRAPH -->
+<div class="graph-banner reveal reveal-d2">
+  <div class="graph-banner-text">
+    <span class="tag tag-coral">Interactive</span>
+    <h3>Explore the Knowledge Graph</h3>
+    <p>See how all 48 articles connect across concepts, instruments, actors, and frameworks. Click any node to start reading.</p>
+    <a class="read-link" href="#">Open the graph &rarr;</a>
+  </div>
+  <div class="graph-preview">
+    <svg viewBox="0 0 350 180">
+      <line class="gp-line" x1="70" y1="80" x2="150" y2="55" />
+      <line class="gp-line" x1="150" y1="55" x2="220" y2="90" />
+      <line class="gp-line" x1="220" y1="90" x2="290" y2="70" />
+      <line class="gp-line" x1="70" y1="80" x2="130" y2="130" />
+      <line class="gp-line" x1="130" y1="130" x2="220" y2="90" />
+      <line class="gp-line" x1="220" y1="90" x2="270" y2="140" />
+      <circle class="gp-node" cx="70" cy="80" r="8" />
+      <circle class="gp-node alt" cx="150" cy="55" r="6" />
+      <circle class="gp-node" cx="220" cy="90" r="9" />
+      <circle class="gp-node alt" cx="290" cy="70" r="5" />
+      <circle class="gp-node alt" cx="130" cy="130" r="6" />
+      <circle class="gp-node" cx="270" cy="140" r="7" />
+    </svg>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-brand"><span class="mark"></span> The Climate Finance Wiki</div>
+  <p>48 articles &middot; Updated April 2026</p>
+  <p>Built for communications professionals</p>
+</footer>
+
+</body>
+</html>

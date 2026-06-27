@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        margin: 0; width: 1080px; height: 1080px;
+        overflow: hidden; background: #2A2520;
+      }
+
+      :root {
+        --bg: #2A2520;
+        --sienna: #A65D3F;
+        --sienna-light: #C47A5C;
+        --text-on-dark: #FAF8F5;
+        --text-muted: rgba(250, 248, 245, 0.55);
+        --font-display: 'Libre Baskerville', serif;
+        --font-body: 'DM Sans', sans-serif;
+        --font-mono: 'JetBrains Mono', monospace;
+      }
+
+      .centered {
+        position: absolute; width: 1080px; height: 1080px;
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: center;
+        text-align: center;
+      }
+      .scene-inner {
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: center;
+        width: 100%; height: 100%;
+        position: relative;
+      }
+
+      /* ── Scene 1: Hook ── */
+      #hook-line1 {
+        font-family: var(--font-display);
+        font-size: 46px; font-weight: 400;
+        color: var(--text-on-dark); line-height: 1.3;
+      }
+      #hook-line2 {
+        font-family: var(--font-display);
+        font-size: 46px; font-weight: 700;
+        color: var(--sienna-light);
+        line-height: 1.3; margin-top: 14px;
+      }
+
+      /* ── Browser frame (shared) ── */
+      .browser-frame {
+        border-radius: 10px; overflow: hidden;
+        box-shadow: 0 16px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06);
+        position: relative;
+      }
+      .browser-bar {
+        background: #1a1a1a; height: 32px;
+        display: flex; align-items: center;
+        padding: 0 12px; gap: 7px;
+      }
+      .browser-dot { width: 10px; height: 10px; border-radius: 50%; }
+      .dot-red { background: #ff5f57; }
+      .dot-yellow { background: #febc2e; }
+      .dot-green { background: #28c840; }
+      .browser-url {
+        margin-left: 12px; font-family: var(--font-mono);
+        font-size: 11px; color: rgba(255,255,255,0.4);
+        background: rgba(255,255,255,0.06);
+        padding: 3px 12px; border-radius: 5px;
+        flex: 1; max-width: 400px;
+      }
+      .browser-viewport {
+        overflow: hidden; position: relative;
+      }
+      .browser-viewport img {
+        display: block; position: absolute; top: 0; left: 0;
+      }
+
+      /* Refresh flash */
+      .refresh-flash {
+        position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+        background: #fff; opacity: 0; pointer-events: none; z-index: 2;
+      }
+
+      /* ── Stacked layout (replaces split-row) ── */
+      .stack {
+        display: flex; flex-direction: column;
+        align-items: center;
+        width: 100%; height: 100%;
+        padding: 0;
+      }
+      .stack-text {
+        flex-shrink: 0;
+        text-align: left;
+        padding: 48px 64px 28px;
+        width: 100%;
+      }
+
+      /* Stacked browser */
+      .stack-browser { width: 940px; flex-shrink: 0; }
+      .stack-browser .browser-viewport { width: 940px; height: 528px; }
+      .stack-browser .browser-viewport img { width: 940px; }
+
+      /* ── Scene 2: Title text ── */
+      .stack-text .label {
+        font-family: var(--font-body); font-size: 13px; font-weight: 600;
+        letter-spacing: 0.08em; text-transform: uppercase;
+        color: var(--sienna-light); margin-bottom: 14px;
+      }
+      .stack-text h1 {
+        font-family: var(--font-display); font-size: 52px; font-weight: 700;
+        color: var(--text-on-dark); line-height: 1.15; margin-bottom: 16px;
+      }
+      .stack-text .tagline {
+        font-family: var(--font-body); font-size: 20px; font-weight: 400;
+        color: rgba(250, 248, 245, 0.7); line-height: 1.5;
+      }
+      .stack-text .accent-line {
+        width: 50px; height: 3px; background: var(--sienna);
+        border-radius: 2px; margin-top: 20px;
+      }
+
+      /* ── Feature text (scenes 3 & 4) ── */
+      .feature-heading {
+        font-family: var(--font-display); font-size: 38px; font-weight: 700;
+        color: var(--text-on-dark); line-height: 1.25; margin-bottom: 14px;
+      }
+      .feature-desc {
+        font-family: var(--font-body); font-size: 19px; font-weight: 400;
+        color: rgba(250, 248, 245, 0.6); line-height: 1.6;
+      }
+      .feature-accent {
+        width: 44px; height: 3px; background: var(--sienna);
+        border-radius: 2px; margin-bottom: 24px;
+      }
+
+      /* ── Series text (scenes 5a & 5b) ── */
+      .series-label {
+        font-family: var(--font-body); font-size: 13px; font-weight: 600;
+        letter-spacing: 0.08em; text-transform: uppercase;
+        color: var(--sienna-light); margin-bottom: 16px;
+      }
+      .series-badge {
+        font-family: var(--font-mono); font-size: 11px; font-weight: 600;
+        letter-spacing: 0.06em; text-transform: uppercase;
+        color: var(--sienna); background: rgba(166,93,63,0.15);
+        padding: 4px 10px; border-radius: 5px;
+        display: inline-block; margin-bottom: 12px;
+      }
+      .series-title {
+        font-family: var(--font-display); font-size: 36px; font-weight: 700;
+        color: var(--text-on-dark); line-height: 1.2; margin-bottom: 10px;
+      }
+      .series-desc {
+        font-family: var(--font-body); font-size: 18px;
+        color: rgba(250,248,245,0.6); line-height: 1.6; margin-bottom: 16px;
+      }
+      .series-progress {
+        font-family: var(--font-mono); font-size: 13px; font-weight: 500;
+        color: var(--sienna-light); letter-spacing: 0.04em;
+      }
+      .next-btn {
+        display: inline-block; margin-top: 18px;
+        font-family: var(--font-body); font-size: 15px; font-weight: 600;
+        color: #fff; background: var(--sienna);
+        padding: 10px 24px; border-radius: 100px;
+        cursor: pointer;
+      }
+
+      /* ── Cursor ── */
+      .cursor {
+        width: 18px; height: 18px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.9);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        position: absolute;
+        z-index: 10;
+        pointer-events: none;
+        opacity: 0;
+      }
+      .cursor-ring {
+        width: 32px; height: 32px;
+        border-radius: 50%;
+        border: 2px solid rgba(255,255,255,0.3);
+        position: absolute;
+        z-index: 10;
+        pointer-events: none;
+        opacity: 0;
+        margin-left: -7px; margin-top: -7px;
+      }
+
+      /* ── Closing card ── */
+      #closing-title {
+        font-family: var(--font-display); font-size: 58px; font-weight: 700;
+        color: var(--text-on-dark); line-height: 1.15;
+      }
+      #closing-sub {
+        font-family: var(--font-body); font-size: 23px; font-weight: 400;
+        color: rgba(250, 248, 245, 0.6); margin-top: 20px;
+      }
+      #closing-line {
+        width: 50px; height: 3px; background: var(--sienna);
+        border-radius: 2px; margin-top: 28px;
+      }
+      #closing-wordmark {
+        font-family: var(--font-body); font-size: 12px; font-weight: 600;
+        letter-spacing: 0.08em; text-transform: uppercase;
+        color: rgba(250,248,245,0.3); position: absolute; bottom: 48px;
+      }
+
+      /* Background glow */
+      .bg-glow {
+        position: absolute; width: 500px; height: 500px; border-radius: 50%;
+        background: radial-gradient(circle, rgba(166,93,63,0.1) 0%, transparent 70%);
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="square"
+      data-start="0"
+      data-duration="35"
+      data-width="1080"
+      data-height="1080"
+    >
+
+      <!-- Background glow -->
+      <div id="glow1" class="bg-glow" style="top: 100px; left: 200px; opacity: 0;"></div>
+      <div id="glow2" class="bg-glow" style="top: 300px; left: 500px; opacity: 0;"></div>
+
+      <!-- SCENE 1: Hook (0-3.5s) -->
+      <div id="scene1" class="clip centered" data-start="0" data-duration="3.5" data-track-index="1">
+        <div id="s1-inner" class="scene-inner">
+          <div id="hook-line1">Climate finance is complicated.</div>
+          <div id="hook-line2">Explaining it shouldn't be.</div>
+        </div>
+      </div>
+
+      <!-- SCENE 2: Title + landing scroll (3-9.5s) -->
+      <div id="scene2" class="clip centered" data-start="3" data-duration="6.5" data-track-index="2">
+        <div id="s2-inner" class="scene-inner">
+          <div class="stack">
+            <div class="stack-text" id="title-text">
+              <div class="label" id="title-label">A Red Barrow Publication</div>
+              <h1 id="title-main">Climate Finance Wiki</h1>
+              <div class="tagline" id="title-tagline">Knowledge for people who explain it to everyone else.</div>
+              <div class="accent-line" id="title-line"></div>
+            </div>
+            <div class="browser-frame stack-browser" id="browser1">
+              <div class="browser-bar">
+                <div class="browser-dot dot-red"></div>
+                <div class="browser-dot dot-yellow"></div>
+                <div class="browser-dot dot-green"></div>
+                <div class="browser-url">climatefinancewiki.com</div>
+              </div>
+              <div class="browser-viewport">
+                <img src="assets/landing-full.png" id="landing-scroll-img" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SCENE 3: Refresh demo (9-16.5s) -->
+      <div id="scene3" class="clip centered" data-start="9" data-duration="7.5" data-track-index="3">
+        <div id="s3-inner" class="scene-inner">
+          <div class="stack">
+            <div class="stack-text" id="refresh-text">
+              <div class="feature-accent" id="refresh-accent"></div>
+              <div class="feature-heading" id="refresh-heading">New featured case study on every refresh</div>
+              <div class="feature-desc" id="refresh-desc">Hit reload and get a different story. Real cases from carbon markets, green bonds and climate policy.</div>
+            </div>
+            <div class="browser-frame stack-browser" id="refresh-browser">
+              <div class="browser-bar">
+                <div class="browser-dot dot-red"></div>
+                <div class="browser-dot dot-yellow"></div>
+                <div class="browser-dot dot-green"></div>
+                <div class="browser-url">climatefinancewiki.com</div>
+              </div>
+              <div class="browser-viewport" id="refresh-viewport">
+                <img src="assets/landing-hero.png" id="refresh-img-a" />
+                <img src="assets/landing-refreshed.png" id="refresh-img-b" style="opacity: 0;" />
+                <div class="refresh-flash" id="refresh-flash"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SCENE 4: Article scroll (16-22.5s) -->
+      <div id="scene4" class="clip centered" data-start="16" data-duration="6.5" data-track-index="4">
+        <div id="s4-inner" class="scene-inner">
+          <div class="stack">
+            <div class="stack-text" id="article-text">
+              <div class="feature-accent" id="article-accent"></div>
+              <div class="feature-heading" id="article-heading">2-3 minute reads. Easy to scan, hard to stop.</div>
+              <div class="feature-desc" id="article-desc">Every article is written for comms people. No jargon, no filler. Just what you need to brief your team.</div>
+            </div>
+            <div class="browser-frame stack-browser" id="article-browser">
+              <div class="browser-bar">
+                <div class="browser-dot dot-red"></div>
+                <div class="browser-dot dot-yellow"></div>
+                <div class="browser-dot dot-green"></div>
+                <div class="browser-url">climatefinancewiki.com/instruments/green-bonds</div>
+              </div>
+              <div class="browser-viewport">
+                <img src="assets/article-full.png" id="article-scroll-img" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SCENE 5a: Follow the Money (22-26.5s) -->
+      <div id="scene5a" class="clip centered" data-start="22" data-duration="5" data-track-index="5">
+        <div id="s5a-inner" class="scene-inner">
+          <div class="stack">
+            <div class="stack-text" id="ftm-text">
+              <div class="series-label" id="ftm-label">Curated Reading Across Themes</div>
+              <div class="series-badge" id="ftm-badge">6-part series</div>
+              <div class="series-title" id="ftm-title">Follow the Money</div>
+              <div class="series-desc" id="ftm-desc">How climate finance flows and where it gets stuck.</div>
+              <div class="series-progress" id="ftm-progress">01 / 06</div>
+              <div class="next-btn" id="ftm-next">Next article &rarr;</div>
+            </div>
+            <div class="browser-frame stack-browser" id="ftm-browser">
+              <div class="browser-bar">
+                <div class="browser-dot dot-red"></div>
+                <div class="browser-dot dot-yellow"></div>
+                <div class="browser-dot dot-green"></div>
+                <div class="browser-url" id="ftm-url">climatefinancewiki.com/concepts/climate-finance</div>
+              </div>
+              <div class="browser-viewport">
+                <img src="assets/ftm-1.png" id="ftm-img-1" />
+                <img src="assets/ftm-2.png" id="ftm-img-2" style="opacity: 0;" />
+                <img src="assets/ftm-3.png" id="ftm-img-3" style="opacity: 0;" />
+                <div class="refresh-flash" id="ftm-flash"></div>
+              </div>
+            </div>
+          </div>
+          <!-- Cursor at scene level -->
+          <div class="cursor" id="ftm-cursor"></div>
+          <div class="cursor-ring" id="ftm-ring"></div>
+        </div>
+      </div>
+
+      <!-- SCENE 5b: The Greenwashing Trail (26.5-31s) -->
+      <div id="scene5b" class="clip centered" data-start="26.5" data-duration="5" data-track-index="6">
+        <div id="s5b-inner" class="scene-inner">
+          <div class="stack">
+            <div class="stack-text" id="gwt-text">
+              <div class="series-label" id="gwt-label">Curated Reading Across Themes</div>
+              <div class="series-badge" id="gwt-badge">Case studies</div>
+              <div class="series-title" id="gwt-title">The Greenwashing Trail</div>
+              <div class="series-desc" id="gwt-desc">The concept, the claims and the global fallout.</div>
+              <div class="series-progress" id="gwt-progress">01 / 06</div>
+              <div class="next-btn" id="gwt-next">Next article &rarr;</div>
+            </div>
+            <div class="browser-frame stack-browser" id="gwt-browser">
+              <div class="browser-bar">
+                <div class="browser-dot dot-red"></div>
+                <div class="browser-dot dot-yellow"></div>
+                <div class="browser-dot dot-green"></div>
+                <div class="browser-url" id="gwt-url">climatefinancewiki.com/concepts/greenwashing</div>
+              </div>
+              <div class="browser-viewport">
+                <img src="assets/gwt-1.png" id="gwt-img-1" />
+                <img src="assets/gwt-2.png" id="gwt-img-2" style="opacity: 0;" />
+                <img src="assets/gwt-3.png" id="gwt-img-3" style="opacity: 0;" />
+                <div class="refresh-flash" id="gwt-flash"></div>
+              </div>
+            </div>
+          </div>
+          <div class="cursor" id="gwt-cursor"></div>
+          <div class="cursor-ring" id="gwt-ring"></div>
+        </div>
+      </div>
+
+      <!-- SCENE 6: Closing card (31-35s) -->
+      <div id="scene6" class="clip centered" data-start="31" data-duration="4" data-track-index="7">
+        <div id="s6-inner" class="scene-inner">
+          <div id="closing-title">Climate Finance Wiki</div>
+          <div id="closing-sub">Technical knowledge for comms people</div>
+          <div id="closing-line"></div>
+          <div id="closing-wordmark">Red Barrow</div>
+        </div>
+      </div>
+
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      /* ── Background glow ── */
+      tl.to("#glow1", { opacity: 1, duration: 2, ease: "power2.inOut" }, 0);
+      tl.to("#glow2", { opacity: 0.6, duration: 3, ease: "power2.inOut" }, 1);
+      tl.to("#glow1", { x: 80, y: -40, duration: 35, ease: "none" }, 0);
+      tl.to("#glow2", { x: -60, y: 50, duration: 35, ease: "none" }, 0);
+
+      /* ── SCENE 1: Hook (0-3.5s) ── */
+      tl.from("#hook-line1", { opacity: 0, y: 30, duration: 0.9, ease: "power2.out" }, 0.3);
+      tl.from("#hook-line2", { opacity: 0, y: 30, duration: 0.9, ease: "power2.out" }, 1.3);
+      tl.to("#s1-inner", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 2.5);
+
+      /* ── SCENE 2: Title + landing scroll (3-9.5s) ── */
+      tl.from("#title-label", { opacity: 0, y: 20, duration: 0.6, ease: "power2.out" }, 3.3);
+      tl.from("#title-main", { opacity: 0, y: 40, duration: 0.9, ease: "power2.out" }, 3.5);
+      tl.from("#title-tagline", { opacity: 0, y: 20, duration: 0.7, ease: "power2.out" }, 4.4);
+      tl.from("#title-line", { scaleX: 0, duration: 0.5, ease: "power2.out" }, 4.9);
+      tl.from("#browser1", { opacity: 0, y: 60, duration: 0.9, ease: "power2.out" }, 3.8);
+      /* Scale scroll distance: 940/1920 ratio applied to original -1100 */
+      tl.to("#landing-scroll-img", { y: -538, duration: 4.5, ease: "power1.inOut" }, 4.2);
+      tl.to("#s2-inner", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 8.5);
+
+      /* ── SCENE 3: Refresh demo (9-16.5s) ── */
+      tl.from("#refresh-accent", { scaleX: 0, duration: 0.4, ease: "power2.out" }, 9.3);
+      tl.from("#refresh-heading", { opacity: 0, y: 30, duration: 0.7, ease: "power2.out" }, 9.5);
+      tl.from("#refresh-desc", { opacity: 0, y: 20, duration: 0.6, ease: "power2.out" }, 10.0);
+      tl.from("#refresh-browser", { opacity: 0, y: 60, duration: 0.9, ease: "power2.out" }, 9.5);
+      tl.to("#refresh-flash", { opacity: 0.85, duration: 0.12, ease: "power2.in" }, 11.5);
+      tl.set("#refresh-img-a", { opacity: 0 }, 11.62);
+      tl.set("#refresh-img-b", { opacity: 1 }, 11.62);
+      tl.to("#refresh-flash", { opacity: 0, duration: 0.3, ease: "power2.out" }, 11.62);
+      tl.to("#refresh-flash", { opacity: 0.85, duration: 0.12, ease: "power2.in" }, 13.5);
+      tl.set("#refresh-img-b", { opacity: 0 }, 13.62);
+      tl.set("#refresh-img-a", { opacity: 1 }, 13.62);
+      tl.to("#refresh-flash", { opacity: 0, duration: 0.3, ease: "power2.out" }, 13.62);
+      tl.to("#s3-inner", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 15.5);
+
+      /* ── SCENE 4: Article scroll (16-22.5s) ── */
+      tl.from("#article-accent", { scaleX: 0, duration: 0.4, ease: "power2.out" }, 16.3);
+      tl.from("#article-heading", { opacity: 0, y: 30, duration: 0.7, ease: "power2.out" }, 16.5);
+      tl.from("#article-desc", { opacity: 0, y: 20, duration: 0.6, ease: "power2.out" }, 17.0);
+      tl.from("#article-browser", { opacity: 0, y: 60, duration: 0.9, ease: "power2.out" }, 16.5);
+      /* Scale scroll distance: 940/1920 ratio applied to original -1500 */
+      tl.to("#article-scroll-img", { y: -734, duration: 4.5, ease: "power1.inOut" }, 17);
+      tl.to("#s4-inner", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 21.5);
+
+      /* ── SCENE 5a: Follow the Money (22-26.5s) ── */
+      // Text enters
+      tl.from("#ftm-label", { opacity: 0, y: 20, duration: 0.5, ease: "power2.out" }, 22.3);
+      tl.from("#ftm-badge", { opacity: 0, y: 15, duration: 0.4, ease: "power2.out" }, 22.5);
+      tl.from("#ftm-title", { opacity: 0, y: 25, duration: 0.6, ease: "power2.out" }, 22.6);
+      tl.from("#ftm-desc", { opacity: 0, y: 15, duration: 0.5, ease: "power2.out" }, 22.9);
+      tl.from("#ftm-progress", { opacity: 0, duration: 0.4, ease: "power2.out" }, 23.1);
+      tl.from("#ftm-next", { opacity: 0, y: 10, duration: 0.4, ease: "power2.out" }, 23.2);
+      tl.from("#ftm-browser", { opacity: 0, y: 60, duration: 0.9, ease: "power2.out" }, 22.5);
+
+      /* Button center measured at x:139 y:268 */
+      tl.set("#ftm-cursor", { left: 110, top: 240 }, 22);
+      tl.set("#ftm-ring", { left: 110, top: 240 }, 22);
+      tl.to("#ftm-cursor", { opacity: 1, duration: 0.3, ease: "power2.out" }, 23.3);
+      tl.to("#ftm-ring", { opacity: 1, duration: 0.3, ease: "power2.out" }, 23.3);
+      tl.to("#ftm-cursor", { left: 139, top: 268, duration: 0.5, ease: "power2.inOut" }, 23.4);
+      tl.to("#ftm-ring", { left: 139, top: 268, duration: 0.5, ease: "power2.inOut" }, 23.4);
+      // Click 1
+      tl.to("#ftm-ring", { scale: 1.5, opacity: 0, duration: 0.25, ease: "power2.out" }, 23.9);
+      tl.set("#ftm-ring", { scale: 1, opacity: 0 }, 24.15);
+      tl.to("#ftm-flash", { opacity: 0.6, duration: 0.1, ease: "power2.in" }, 23.95);
+      tl.set("#ftm-img-1", { opacity: 0 }, 24.05);
+      tl.set("#ftm-img-2", { opacity: 1 }, 24.05);
+      tl.to("#ftm-flash", { opacity: 0, duration: 0.25, ease: "power2.out" }, 24.05);
+      tl.set("#ftm-progress", { textContent: "02 / 06" }, 24.05);
+
+      // Small cursor drift before click 2
+      tl.to("#ftm-ring", { opacity: 1, duration: 0.2 }, 24.3);
+      tl.to("#ftm-cursor", { left: 144, top: 270, duration: 0.3, ease: "power2.inOut" }, 24.3);
+      tl.to("#ftm-ring", { left: 144, top: 270, duration: 0.3, ease: "power2.inOut" }, 24.3);
+      // Click 2
+      tl.to("#ftm-ring", { scale: 1.5, opacity: 0, duration: 0.25, ease: "power2.out" }, 24.8);
+      tl.set("#ftm-ring", { scale: 1, opacity: 0 }, 25.05);
+      tl.to("#ftm-flash", { opacity: 0.6, duration: 0.1, ease: "power2.in" }, 24.85);
+      tl.set("#ftm-img-2", { opacity: 0 }, 24.95);
+      tl.set("#ftm-img-3", { opacity: 1 }, 24.95);
+      tl.to("#ftm-flash", { opacity: 0, duration: 0.25, ease: "power2.out" }, 24.95);
+      tl.set("#ftm-progress", { textContent: "03 / 06" }, 24.95);
+
+      // Fade cursor
+      tl.to("#ftm-cursor", { opacity: 0, duration: 0.3 }, 25.3);
+      // Fade out scene
+      tl.to("#s5a-inner", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 26);
+
+      /* ── SCENE 5b: The Greenwashing Trail (26.5-31s) ── */
+      tl.from("#gwt-label", { opacity: 0, y: 20, duration: 0.5, ease: "power2.out" }, 26.8);
+      tl.from("#gwt-badge", { opacity: 0, y: 15, duration: 0.4, ease: "power2.out" }, 27.0);
+      tl.from("#gwt-title", { opacity: 0, y: 25, duration: 0.6, ease: "power2.out" }, 27.1);
+      tl.from("#gwt-desc", { opacity: 0, y: 15, duration: 0.5, ease: "power2.out" }, 27.4);
+      tl.from("#gwt-progress", { opacity: 0, duration: 0.4, ease: "power2.out" }, 27.6);
+      tl.from("#gwt-next", { opacity: 0, y: 10, duration: 0.4, ease: "power2.out" }, 27.7);
+      tl.from("#gwt-browser", { opacity: 0, y: 60, duration: 0.9, ease: "power2.out" }, 27.0);
+
+      // Cursor — button center at x:139 y:268
+      tl.set("#gwt-cursor", { left: 110, top: 240 }, 26.5);
+      tl.set("#gwt-ring", { left: 110, top: 240 }, 26.5);
+      tl.to("#gwt-cursor", { opacity: 1, duration: 0.3, ease: "power2.out" }, 27.8);
+      tl.to("#gwt-ring", { opacity: 1, duration: 0.3, ease: "power2.out" }, 27.8);
+      tl.to("#gwt-cursor", { left: 139, top: 268, duration: 0.5, ease: "power2.inOut" }, 27.9);
+      tl.to("#gwt-ring", { left: 139, top: 268, duration: 0.5, ease: "power2.inOut" }, 27.9);
+      // Click 1
+      tl.to("#gwt-ring", { scale: 1.5, opacity: 0, duration: 0.25, ease: "power2.out" }, 28.4);
+      tl.set("#gwt-ring", { scale: 1, opacity: 0 }, 28.65);
+      tl.to("#gwt-flash", { opacity: 0.6, duration: 0.1, ease: "power2.in" }, 28.45);
+      tl.set("#gwt-img-1", { opacity: 0 }, 28.55);
+      tl.set("#gwt-img-2", { opacity: 1 }, 28.55);
+      tl.to("#gwt-flash", { opacity: 0, duration: 0.25, ease: "power2.out" }, 28.55);
+      tl.set("#gwt-progress", { textContent: "02 / 06" }, 28.55);
+
+      // Click 2
+      tl.to("#gwt-ring", { opacity: 1, duration: 0.2 }, 28.8);
+      tl.to("#gwt-cursor", { left: 144, top: 270, duration: 0.3, ease: "power2.inOut" }, 28.8);
+      tl.to("#gwt-ring", { left: 144, top: 270, duration: 0.3, ease: "power2.inOut" }, 28.8);
+      tl.to("#gwt-ring", { scale: 1.5, opacity: 0, duration: 0.25, ease: "power2.out" }, 29.3);
+      tl.set("#gwt-ring", { scale: 1, opacity: 0 }, 29.55);
+      tl.to("#gwt-flash", { opacity: 0.6, duration: 0.1, ease: "power2.in" }, 29.35);
+      tl.set("#gwt-img-2", { opacity: 0 }, 29.45);
+      tl.set("#gwt-img-3", { opacity: 1 }, 29.45);
+      tl.to("#gwt-flash", { opacity: 0, duration: 0.25, ease: "power2.out" }, 29.45);
+      tl.set("#gwt-progress", { textContent: "03 / 06" }, 29.45);
+
+      tl.to("#gwt-cursor", { opacity: 0, duration: 0.3 }, 29.8);
+      tl.to("#s5b-inner", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 30.5);
+
+      /* ── SCENE 6: Closing card (31-35s) ── */
+      tl.from("#closing-title", { opacity: 0, y: 30, duration: 1, ease: "power2.out" }, 31.3);
+      tl.from("#closing-sub", { opacity: 0, y: 20, duration: 0.8, ease: "power2.out" }, 32.0);
+      tl.from("#closing-line", { scaleX: 0, duration: 0.5, ease: "power2.out" }, 32.5);
+      tl.from("#closing-wordmark", { opacity: 0, duration: 0.8, ease: "power2.out" }, 32.8);
+      tl.to("#s6-inner", { opacity: 0, duration: 1, ease: "power2.inOut" }, 34);
+
+      window.__timelines["square"] = tl;
+    </script>
+  </body>
+</html>

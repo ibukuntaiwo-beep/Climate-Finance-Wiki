@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        margin: 0; width: 1920px; height: 1080px;
+        overflow: hidden; background: #2A2520;
+      }
+
+      /* ── Palette ── */
+      :root {
+        --bg: #2A2520;
+        --fg: #FAF8F5;
+        --sienna: #A65D3F;
+        --sienna-light: #C47A5C;
+        --muted: rgba(250, 248, 245, 0.5);
+        --dim: rgba(250, 248, 245, 0.25);
+      }
+
+      /* ── Scene base ── */
+      .scene {
+        position: absolute;
+        top: 0; left: 0;
+        width: 1920px; height: 1080px;
+        overflow: hidden;
+        background: #2A2520;
+      }
+      .scene-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%; height: 100%;
+        padding: 100px 160px;
+        gap: 12px;
+        box-sizing: border-box;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* ── Animated elements start hidden ── */
+      .anim-in { opacity: 0; }
+
+      /* ── Background decoratives ── */
+      .bg-glow {
+        position: absolute;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      /* ── Split layout ── */
+      .split-row {
+        display: flex;
+        align-items: center;
+        width: 100%; height: 100%;
+        padding: 0 100px;
+        gap: 60px;
+        box-sizing: border-box;
+        position: relative;
+        z-index: 1;
+      }
+      .split-row--reveal { padding: 0 80px; }
+      .split-text {
+        flex-shrink: 0;
+        width: 600px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+      }
+      .split-text--reveal { width: 520px; }
+
+      /* ── Browser frame ── */
+      .browser-frame {
+        flex: 1;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 24px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06);
+      }
+      .browser-bar {
+        background: #1a1a1a;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        padding: 0 14px;
+        gap: 8px;
+      }
+      .browser-dot { width: 12px; height: 12px; border-radius: 50%; }
+      .dot-red { background: #ff5f57; }
+      .dot-yellow { background: #febc2e; }
+      .dot-green { background: #28c840; }
+      .browser-url {
+        margin-left: 16px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 12px;
+        color: rgba(255,255,255,0.4);
+        background: rgba(255,255,255,0.06);
+        padding: 4px 14px;
+        border-radius: 6px;
+        flex: 1;
+        max-width: 460px;
+      }
+      .browser-viewport {
+        overflow: hidden;
+        position: relative;
+      }
+      .browser-viewport img {
+        display: block;
+        position: absolute;
+        top: 0; left: 0;
+      }
+      .refresh-flash {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: #fff;
+        opacity: 0;
+        pointer-events: none;
+        z-index: 2;
+      }
+
+      /* ── Scene 1: URL Click ── */
+      #scene1 { z-index: 1; opacity: 0; }
+      #s1-pill, #s10-pill {
+        background: #A65D3F;
+        border-radius: 52px;
+        padding: 33px 78px;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 39px;
+        font-weight: 600;
+        color: #FAF8F5;
+        letter-spacing: 0.02em;
+        box-shadow: 0 0 60px rgba(166, 93, 63, 0.3), 0 0 0 1px rgba(166,93,63,0.4);
+        z-index: 2;
+      }
+      #s1-expand { z-index: 1; }
+      #s1-expand .browser-viewport { width: 1400px; height: 788px; }
+      #s1-expand .browser-viewport img { width: 1400px; }
+
+      /* ── Scene 0: Hook ── */
+      #scene0 { z-index: 2; }
+      .hook-grid {
+        position: absolute;
+        top: 0; left: 0;
+        width: 1920px; height: 1080px;
+        display: grid;
+        place-items: center;
+      }
+      .hook-line {
+        grid-row: 1; grid-column: 1;
+        text-align: center;
+        max-width: 1600px;
+        font-family: 'Libre Baskerville', serif;
+        font-size: 90px;
+        font-weight: 400;
+        color: #FAF8F5;
+        line-height: 1.35;
+        letter-spacing: -0.02em;
+      }
+      #s0-group {
+        grid-row: 1; grid-column: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 36px;
+        text-align: center;
+      }
+      #s0-line1 {
+        font-size: 114px;
+        font-weight: 700;
+      }
+      #s0-line2 {
+        font-family: 'DM Sans', sans-serif;
+        font-size: 45px;
+        font-weight: 350;
+        color: rgba(250, 248, 245, 0.55);
+        line-height: 1.5;
+        max-width: 1200px;
+        letter-spacing: 0.01em;
+      }
+      #s0-strike-wrap {
+        grid-row: 1; grid-column: 1;
+        position: relative;
+        display: inline-block;
+      }
+      #s0-line3 {
+        font-family: 'DM Sans', sans-serif;
+        font-size: 102px;
+        font-weight: 700;
+        color: #C47A5C;
+        letter-spacing: -0.01em;
+      }
+      #s0-strike {
+        position: absolute;
+        top: 50%; left: -4%;
+        width: 108%;
+        height: 6px;
+        background: #FAF8F5;
+        border-radius: 3px;
+        transform-origin: left center;
+        transform: scaleX(0);
+      }
+      #s0-line4 {
+        grid-row: 1; grid-column: 1;
+        font-family: 'Libre Baskerville', serif;
+        font-size: 96px;
+        font-weight: 400;
+        font-style: italic;
+        color: #FAF8F5;
+        letter-spacing: -0.01em;
+        text-align: center;
+      }
+
+      /* ── Scene 2: Reveal ── */
+      #scene2 { z-index: 3; opacity: 0; }
+      #s2-title {
+        font-family: 'Libre Baskerville', serif;
+        font-size: 108px; font-weight: 700;
+        color: #FAF8F5;
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+        margin-top: 20px;
+      }
+      #s2-line {
+        width: 90px; height: 4px;
+        background: #A65D3F;
+        border-radius: 2px;
+        margin-top: 32px;
+      }
+      #s2-tagline {
+        font-family: 'DM Sans', sans-serif;
+        font-size: 36px; font-weight: 350;
+        color: rgba(250, 248, 245, 0.6);
+        line-height: 1.5;
+        margin-top: 28px;
+        max-width: 600px;
+        letter-spacing: 0.01em;
+      }
+      #s2-browser .browser-viewport { width: 1180px; height: 664px; }
+      #s2-browser .browser-viewport img { width: 1180px; }
+
+      /* ── Scenes 3-4: Stats ── */
+      #scene3 { z-index: 4; opacity: 0; }
+      #scene4 { z-index: 5; opacity: 0; }
+      .stat-number {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 220px; font-weight: 700;
+        color: #A65D3F;
+        line-height: 1;
+        letter-spacing: -0.03em;
+        font-variant-numeric: tabular-nums;
+      }
+      .stat-label {
+        font-family: 'DM Sans', sans-serif;
+        font-size: 20px; font-weight: 600;
+        letter-spacing: 0.15em; text-transform: uppercase;
+        color: rgba(250, 248, 245, 0.5);
+        margin-top: 4px;
+      }
+      .stat-rule {
+        width: 80px; height: 2px;
+        background: rgba(166, 93, 63, 0.4);
+        border-radius: 1px;
+        margin: 20px 0;
+      }
+      .stat-desc {
+        font-family: 'DM Sans', sans-serif;
+        font-size: 41px; font-weight: 350;
+        color: #FAF8F5;
+        line-height: 1.5;
+        max-width: 520px;
+        letter-spacing: 0.01em;
+      }
+      .stat-browser .browser-viewport { width: 1060px; height: 596px; }
+      .stat-browser .browser-viewport img { width: 1060px; }
+      .card-stack {
+        flex: 1;
+        position: relative;
+        height: 560px;
+      }
+      .case-card {
+        position: absolute;
+        top: 0; left: 0;
+        width: 870px;
+        border-radius: 12px;
+        box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.06);
+        opacity: 0;
+      }
+      /* ── Scene 6: Editor's Rec ── */
+      #scene6 { z-index: 7; opacity: 0; }
+      #s6-question {
+        font-family: 'DM Sans', sans-serif;
+        font-size: 24px; font-weight: 400;
+        color: rgba(250, 248, 245, 0.5);
+        line-height: 1.4;
+      }
+      #s6-title {
+        font-family: 'Libre Baskerville', serif;
+        font-size: 60px; font-weight: 700;
+        color: #FAF8F5;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+        margin-top: 16px;
+        max-width: 560px;
+      }
+      #s6-rule {
+        width: 60px; height: 3px;
+        background: #A65D3F;
+        border-radius: 2px;
+        margin: 28px 0;
+      }
+      #s6-desc {
+        font-family: 'DM Sans', sans-serif;
+        font-size: 41px; font-weight: 350;
+        color: rgba(250, 248, 245, 0.65);
+        line-height: 1.4;
+        max-width: 560px;
+        letter-spacing: 0.01em;
+      }
+      .feat-browser .browser-viewport { width: 1060px; height: 596px; }
+      .feat-browser .browser-viewport img { width: 1060px; }
+
+      /* ── Scene 7: Promise + Sources ── */
+      #scene7 { z-index: 8; opacity: 0; }
+      .promise-line {
+        font-family: 'Libre Baskerville', serif;
+        font-size: 128px; font-weight: 700;
+        color: #FAF8F5;
+        line-height: 1.35;
+        letter-spacing: -0.02em;
+        text-align: center;
+      }
+      .promise-line--accent { color: #C47A5C; }
+      .source-ticker {
+        position: absolute;
+        bottom: 80px; left: 0;
+        width: 1920px;
+        overflow: hidden;
+        opacity: 0;
+      }
+      .source-ticker-track {
+        display: flex;
+        gap: 64px;
+        white-space: nowrap;
+      }
+      .source-name {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 40px; font-weight: 500;
+        color: #FAF8F5;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        flex-shrink: 0;
+      }
+      .source-sep {
+        font-family: 'DM Sans', sans-serif;
+        font-size: 40px;
+        color: rgba(250, 248, 245, 0.25);
+        flex-shrink: 0;
+      }
+
+      /* ── Scene 10: Final CTA ── */
+      #scene10 { z-index: 10; opacity: 0; }
+
+      /* ── Transition overlays ── */
+      #flash-overlay {
+        position: absolute; top: 0; left: 0;
+        width: 1920px; height: 1080px;
+        background: #FAF8F5;
+        opacity: 0; z-index: 100;
+        pointer-events: none;
+      }
+      #dip-overlay {
+        position: absolute; top: 0; left: 0;
+        width: 1920px; height: 1080px;
+        background: #0a0908;
+        opacity: 0; z-index: 90;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="36.5"
+      data-width="1920"
+      data-height="1080"
+    >
+
+      <!-- ═══════════════════════════════════════════════════════
+           SCENE 1: URL CLICK (7.5-13s)
+           Pill button, cursor click, expands into browser
+           ═══════════════════════════════════════════════════════ -->
+      <div id="scene1" class="scene">
+        <div class="bg-glow" style="width: 800px; height: 800px; top: 50%; left: 50%; transform: translate(-50%, -50%); background: radial-gradient(circle, rgba(166,93,63,0.06) 0%, rgba(166,93,63,0) 65%);" data-layout-ignore></div>
+        <div class="hook-grid">
+          <div id="s1-pill" class="anim-in" style="grid-row:1; grid-column:1;"><span id="s1-pill-text"></span></div>
+          <div id="s1-expand" style="grid-row:1; grid-column:1; width: 1400px; opacity: 0;">
+            <div class="browser-frame">
+              <div class="browser-bar">
+                <div class="browser-dot dot-red"></div>
+                <div class="browser-dot dot-yellow"></div>
+                <div class="browser-dot dot-green"></div>
+                <div class="browser-url">climatefinancewiki.org</div>
+              </div>
+              <div class="browser-viewport">
+                <img src="assets/landing-hero.png" crossorigin="anonymous" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="s1-cursor" style="position:absolute; width:20px; height:20px; border-radius:50%; background:rgba(255,255,255,0.9); box-shadow:0 2px 8px rgba(0,0,0,0.3); pointer-events:none; opacity:0; z-index:10;"></div>
+        <div id="s1-ring" style="position:absolute; width:36px; height:36px; border-radius:50%; border:2px solid rgba(255,255,255,0.3); pointer-events:none; opacity:0; z-index:10;"></div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════════════════
+           SCENE 0: HOOK (0-7.5s)
+           ═══════════════════════════════════════════════════════ -->
+      <div id="scene0" class="scene">
+        <div class="bg-glow" style="width: 900px; height: 900px; bottom: -300px; right: 100px; background: radial-gradient(circle, rgba(166,93,63,0.06) 0%, rgba(166,93,63,0) 70%);" data-layout-ignore></div>
+        <div class="hook-grid">
+          <div id="s0-group" class="anim-in">
+            <div id="s0-line1" class="hook-line">Climate finance is complex.</div>
+            <div id="s0-line2" class="anim-in">Dozens of frameworks. Competing claims. Hundreds of players.</div>
+          </div>
+          <div id="s0-strike-wrap" class="anim-in">
+            <div id="s0-line3">Overwhelming.</div>
+            <div id="s0-strike"></div>
+          </div>
+          <div id="s0-line4" class="anim-in">Not anymore.</div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════════════════
+           SCENE 2: THE REVEAL (8.55-13s)
+           Split: title left, landing page scroll right
+           ═══════════════════════════════════════════════════════ -->
+      <div id="scene2" class="scene">
+        <div class="bg-glow" style="width: 800px; height: 800px; top: 50%; left: 20%; transform: translate(-50%, -50%); background: radial-gradient(circle, rgba(166,93,63,0.07) 0%, rgba(166,93,63,0) 65%);" data-layout-ignore></div>
+        <div class="split-row split-row--reveal">
+          <div class="split-text split-text--reveal">
+            <div id="s2-title" class="anim-in">Climate Finance Wiki</div>
+            <div id="s2-line" class="anim-in"></div>
+            <div id="s2-tagline" class="anim-in">Climate finance knowledge for those who explain it to everyone else.</div>
+          </div>
+          <div id="s2-browser" class="browser-frame anim-in">
+            <div class="browser-bar">
+              <div class="browser-dot dot-red"></div>
+              <div class="browser-dot dot-yellow"></div>
+              <div class="browser-dot dot-green"></div>
+              <div class="browser-url">climatefinancewiki.org</div>
+            </div>
+            <div class="browser-viewport">
+              <img id="s2-scroll-img" src="assets/landing-full.png" crossorigin="anonymous" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════════════════
+           SCENE 3: 52 ARTICLES (13-16s)
+           Split: stat left, article index right
+           ═══════════════════════════════════════════════════════ -->
+      <div id="scene3" class="scene">
+        <div class="bg-glow" style="width: 600px; height: 600px; top: 50%; left: 25%; transform: translate(-50%, -50%); background: radial-gradient(circle, rgba(166,93,63,0.05) 0%, rgba(166,93,63,0) 70%);" data-layout-ignore></div>
+        <div class="split-row">
+          <div class="split-text">
+            <div id="s3-number" class="stat-number anim-in">0</div>
+            <div id="s3-label" class="stat-label anim-in">ARTICLES</div>
+            <div id="s3-rule" class="stat-rule anim-in"></div>
+            <div id="s3-desc" class="stat-desc anim-in">Concepts. Instruments. Frameworks. Case studies. Actors.</div>
+          </div>
+          <div id="s3-browser" class="browser-frame stat-browser anim-in">
+            <div class="browser-bar">
+              <div class="browser-dot dot-red"></div>
+              <div class="browser-dot dot-yellow"></div>
+              <div class="browser-dot dot-green"></div>
+              <div class="browser-url">climatefinancewiki.org/frameworks</div>
+            </div>
+            <div class="browser-viewport">
+              <img id="s3-scroll-img" src="assets/frameworks-full.png" crossorigin="anonymous" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════════════════
+           SCENE 4: 12 CASE STUDIES (16-19s)
+           Split: stat left, Dieselgate case study right
+           ═══════════════════════════════════════════════════════ -->
+      <div id="scene4" class="scene">
+        <div class="bg-glow" style="width: 600px; height: 600px; top: 50%; left: 25%; transform: translate(-50%, -50%); background: radial-gradient(circle, rgba(166,93,63,0.05) 0%, rgba(166,93,63,0) 70%);" data-layout-ignore></div>
+        <div class="split-row">
+          <div class="split-text">
+            <div id="s4-number" class="stat-number anim-in">0</div>
+            <div id="s4-label" class="stat-label anim-in">REAL-WORLD CASE STUDIES</div>
+            <div id="s4-rule" class="stat-rule anim-in"></div>
+            <div id="s4-desc" class="stat-desc anim-in">Timelines. Structured debates. What actually happened.</div>
+          </div>
+          <div id="s4-cards" class="card-stack">
+            <img id="s4-card5" class="case-card" src="assets/case-5.png" style="z-index:1;" crossorigin="anonymous" />
+            <img id="s4-card4" class="case-card" src="assets/case-4.png" style="z-index:2;" crossorigin="anonymous" />
+            <img id="s4-card3" class="case-card" src="assets/case-3.png" style="z-index:3;" crossorigin="anonymous" />
+            <img id="s4-card2" class="case-card" src="assets/case-2.png" style="z-index:4;" crossorigin="anonymous" />
+            <img id="s4-card1" class="case-card" src="assets/case-1.png" style="z-index:5;" crossorigin="anonymous" />
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════════════════
+           SCENE 6: EDITOR'S RECOMMENDATION (24-29s)
+           Split: text left, recommendation section right
+           ═══════════════════════════════════════════════════════ -->
+      <div id="scene6" class="scene">
+        <div class="bg-glow" style="width: 700px; height: 700px; top: 50%; left: 25%; transform: translate(-50%, -50%); background: radial-gradient(circle, rgba(166,93,63,0.06) 0%, rgba(166,93,63,0) 70%);" data-layout-ignore></div>
+        <div class="split-row">
+          <div class="split-text">
+            <div id="s6-question" class="anim-in">New to climate finance?</div>
+            <div id="s6-title" class="anim-in">Editor's Recommendation</div>
+            <div id="s6-rule" class="anim-in"></div>
+            <div id="s6-desc" class="anim-in">A starter pack to get you up to speed. Fast.</div>
+          </div>
+          <div id="s6-browser" class="browser-frame feat-browser anim-in">
+            <div class="browser-bar">
+              <div class="browser-dot dot-red"></div>
+              <div class="browser-dot dot-yellow"></div>
+              <div class="browser-dot dot-green"></div>
+              <div class="browser-url">climatefinancewiki.org/start-here</div>
+            </div>
+            <div class="browser-viewport">
+              <img src="assets/start-here.png" crossorigin="anonymous" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════════════════
+           SCENE 7: PROMISE + SOURCES (29-38s)
+           ═══════════════════════════════════════════════════════ -->
+      <div id="scene7" class="scene">
+        <div class="bg-glow" style="width: 600px; height: 600px; top: 50%; left: 50%; transform: translate(-50%, -50%); background: radial-gradient(circle, rgba(166,93,63,0.05) 0%, rgba(166,93,63,0) 70%);" data-layout-ignore></div>
+        <div class="scene-content" style="gap: 20px;">
+          <div id="s7-line1" class="promise-line anim-in">Easy to read articles.</div>
+          <div id="s7-line2" class="promise-line anim-in">3-4 minutes long.</div>
+          <div id="s7-line3" class="promise-line promise-line--accent anim-in">Well researched and sourced.</div>
+        </div>
+        <div id="s7-ticker" class="source-ticker">
+          <div id="s7-ticker-track" class="source-ticker-track">
+            <span class="source-name">ICMA</span><span class="source-sep">|</span>
+            <span class="source-name">UNFCCC</span><span class="source-sep">|</span>
+            <span class="source-name">SEC</span><span class="source-sep">|</span>
+            <span class="source-name">EU Taxonomy</span><span class="source-sep">|</span>
+            <span class="source-name">IPCC</span><span class="source-sep">|</span>
+            <span class="source-name">CFA Institute</span><span class="source-sep">|</span>
+            <span class="source-name">ICMA</span><span class="source-sep">|</span>
+            <span class="source-name">UNFCCC</span><span class="source-sep">|</span>
+            <span class="source-name">SEC</span><span class="source-sep">|</span>
+            <span class="source-name">EU Taxonomy</span><span class="source-sep">|</span>
+            <span class="source-name">IPCC</span><span class="source-sep">|</span>
+            <span class="source-name">CFA Institute</span><span class="source-sep">|</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════════════════
+           SCENE 10: FINAL CTA (56-64s)
+           Pill button + cursor click, no expansion — the last frame
+           ═══════════════════════════════════════════════════════ -->
+      <div id="scene10" class="scene">
+        <div class="bg-glow" style="width: 800px; height: 800px; top: 50%; left: 50%; transform: translate(-50%, -50%); background: radial-gradient(circle, rgba(166,93,63,0.06) 0%, rgba(166,93,63,0) 65%);" data-layout-ignore></div>
+        <div class="hook-grid">
+          <div id="s10-group" style="grid-row:1; grid-column:1; display:flex; flex-direction:column; align-items:center; gap:36px;">
+            <div id="s10-heading" class="anim-in" style="font-family:'Libre Baskerville',serif; font-size:64px; font-weight:400; font-style:italic; color:#FAF8F5; letter-spacing:-0.01em;">Get started</div>
+            <div id="s10-pill" class="anim-in">ClimateFinanceWiki.org</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Transition overlays ── -->
+      <div id="flash-overlay"></div>
+      <div id="dip-overlay"></div>
+
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      var tl = gsap.timeline({ paused: true });
+
+      /* ═══════════════════════════════════════════════════════
+         SCENE 0: HOOK (0-7.5s) — plays first
+         "Climate finance is complex" slides up → subline → "All that is now accessible"
+         ═══════════════════════════════════════════════════════ */
+      tl.fromTo("#s0-group",
+        { opacity: 0, y: 70 },
+        { opacity: 1, y: 38, duration: 0.9, ease: "power3.out" }, 0.3);
+
+      tl.to("#s0-group",
+        { y: 0, duration: 0.6, ease: "power2.inOut" }, 1.1);
+      tl.fromTo("#s0-line2",
+        { opacity: 0 },
+        { opacity: 1, duration: 0.7, ease: "power2.out" }, 1.2);
+
+      tl.to("#s0-group",
+        { opacity: 0, y: -20, duration: 0.3, ease: "power2.in" }, 3.2);
+
+      // "Overwhelming." scales in
+      tl.fromTo("#s0-strike-wrap",
+        { opacity: 0, scale: 0.9 },
+        { opacity: 1, scale: 1, duration: 0.7, ease: "expo.out" }, 3.6);
+
+      // Strikethrough line draws across
+      tl.to("#s0-strike",
+        { scaleX: 1, duration: 0.4, ease: "power2.inOut" }, 4.6);
+
+      // "Overwhelming." + strike fade out
+      tl.to("#s0-strike-wrap",
+        { opacity: 0, duration: 0.4, ease: "power2.in" }, 5.2);
+
+      // "Not anymore." fades in
+      tl.fromTo("#s0-line4",
+        { opacity: 0, y: 15 },
+        { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 5.4);
+
+
+      /* ═══════════════════════════════════════════════════════
+         TRANSITION: Blur Crossfade (Scene 0 → 1) at T=7.5
+         Hook fades, URL click scene appears
+         ═══════════════════════════════════════════════════════ */
+      tl.to("#scene0", { filter: "blur(4px)", scale: 1.02, opacity: 0, duration: 0.3, ease: "power2.inOut" }, 7.5);
+      tl.set("#scene0", { visibility: "hidden" }, 7.81);
+      tl.fromTo("#scene1",
+        { filter: "blur(4px)", scale: 0.98, opacity: 0 },
+        { filter: "blur(0px)", scale: 1, opacity: 1, duration: 0.3, ease: "power2.inOut" }, 7.55);
+
+
+      /* ═══════════════════════════════════════════════════════
+         SCENE 1: URL CLICK (7.5-13s)
+         Typewriter types URL → cursor click → expands into browser
+         ═══════════════════════════════════════════════════════ */
+      // Pill fades in empty
+      tl.fromTo("#s1-pill",
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 8.0);
+
+      // Typewriter: type out URL character by character
+      var s1url = "ClimateFinanceWiki.org";
+      var s1t = 8.5;
+      var s1d = 0.045;
+      for (var i = 1; i <= s1url.length; i++) {
+        tl.set("#s1-pill-text", { textContent: s1url.substring(0, i) + "|" }, s1t + i * s1d);
+      }
+      var s1end = s1t + s1url.length * s1d;
+      // Blink cursor twice then remove
+      tl.set("#s1-pill-text", { textContent: s1url }, s1end + 0.12);
+      tl.set("#s1-pill-text", { textContent: s1url + "|" }, s1end + 0.35);
+      tl.set("#s1-pill-text", { textContent: s1url }, s1end + 0.6);
+
+      // Mouse cursor appears and moves to pill
+      tl.set("#s1-cursor", { left: 820, top: 640 }, 7.5);
+      tl.set("#s1-ring", { left: 812, top: 632 }, 7.5);
+      tl.fromTo("#s1-cursor",
+        { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 10.3);
+      tl.fromTo("#s1-ring",
+        { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 10.3);
+      tl.to("#s1-cursor",
+        { left: 955, top: 535, duration: 0.5, ease: "power2.inOut" }, 10.4);
+      tl.to("#s1-ring",
+        { left: 947, top: 527, duration: 0.5, ease: "power2.inOut" }, 10.4);
+
+      // Click
+      tl.to("#s1-ring",
+        { scale: 1.6, opacity: 0, duration: 0.25, ease: "power2.out" }, 11.0);
+
+      // Pill scales out, cursor fades, browser expands
+      tl.to("#s1-pill",
+        { scale: 1.15, opacity: 0, duration: 0.4, ease: "power2.in" }, 11.1);
+      tl.to("#s1-cursor",
+        { opacity: 0, duration: 0.2, ease: "power2.in" }, 11.1);
+
+      tl.fromTo("#s1-expand",
+        { opacity: 0, scale: 0.15, filter: "blur(10px)" },
+        { opacity: 1, scale: 1, filter: "blur(0px)", duration: 1.0, ease: "power3.out" }, 11.2);
+
+      // Browser slides right and shrinks to match scene 2 split layout
+      tl.to("#s1-expand",
+        { x: 290, scale: 0.84, duration: 0.7, ease: "power2.inOut" }, 12.3);
+
+
+      /* ═══════════════════════════════════════════════════════
+         TRANSITION: Slide Crossfade (Scene 1 → 2) at T=12.9
+         Browser slides right, reveal text enters left
+         ═══════════════════════════════════════════════════════ */
+      tl.set("#s2-browser", { opacity: 1 }, 12.89);
+      tl.to("#scene1", { opacity: 0, duration: 0.2, ease: "power2.inOut" }, 12.9);
+      tl.set("#scene1", { visibility: "hidden" }, 13.11);
+      tl.set("#scene2", { opacity: 1 }, 12.9);
+
+
+      /* ═══════════════════════════════════════════════════════
+         SCENE 2: THE REVEAL (visible from 12.9)
+         ═══════════════════════════════════════════════════════ */
+      tl.fromTo("#s2-title",
+        { opacity: 0, x: -60 },
+        { opacity: 1, x: 0, duration: 0.9, ease: "power3.out" }, 13.3);
+      tl.fromTo("#s2-line",
+        { opacity: 0, scaleX: 0 },
+        { opacity: 1, scaleX: 1, duration: 0.6, ease: "expo.out" }, 13.9);
+      tl.fromTo("#s2-tagline",
+        { opacity: 0, x: -30 },
+        { opacity: 1, x: 0, duration: 0.7, ease: "power2.out" }, 14.2);
+      tl.to("#s2-scroll-img",
+        { y: -800, duration: 3.5, ease: "power1.inOut" }, 14.5);
+
+
+      /* ═══════════════════════════════════════════════════════
+         TRANSITION 2: Blur Crossfade (Scene 2 → 3) at T=18.0
+         ═══════════════════════════════════════════════════════ */
+      tl.to("#scene2", { filter: "blur(4px)", scale: 1.02, opacity: 0, duration: 0.25, ease: "power2.inOut" }, 18.0);
+      tl.set("#scene2", { visibility: "hidden" }, 18.26);
+      tl.fromTo("#scene3",
+        { filter: "blur(4px)", scale: 0.98, opacity: 0 },
+        { filter: "blur(0px)", scale: 1, opacity: 1, duration: 0.25, ease: "power2.inOut" }, 18.05);
+
+
+      /* ═══════════════════════════════════════════════════════
+         SCENE 3: "52" ARTICLES (visible from ~18.1)
+         ═══════════════════════════════════════════════════════ */
+      var c52 = { v: 0 };
+      tl.to(c52, { v: 52, duration: 0.7, ease: "power2.out",
+        onUpdate: function() {
+          document.getElementById("s3-number").textContent = Math.round(c52.v);
+        }
+      }, 18.2);
+      tl.fromTo("#s3-number",
+        { opacity: 0, scale: 0.8 },
+        { opacity: 1, scale: 1, duration: 0.5, ease: "expo.out" }, 18.15);
+      tl.fromTo("#s3-label",
+        { opacity: 0, y: 15 },
+        { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 18.5);
+      tl.fromTo("#s3-rule",
+        { opacity: 0, scaleX: 0 },
+        { opacity: 1, scaleX: 1, duration: 0.35, ease: "power2.out" }, 18.7);
+      tl.fromTo("#s3-desc",
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 18.85);
+      tl.fromTo("#s3-browser",
+        { opacity: 0, x: 60 },
+        { opacity: 1, x: 0, duration: 0.7, ease: "power3.out" }, 18.2);
+      tl.to("#s3-scroll-img",
+        { y: -600, duration: 2.5, ease: "power1.inOut" }, 18.5);
+
+
+      /* ═══════════════════════════════════════════════════════
+         TRANSITION 3: Vertical Push (Scene 3 → 4) at T=21.0
+         ═══════════════════════════════════════════════════════ */
+      tl.to("#scene3", { y: -1080, duration: 0.4, ease: "power3.inOut" }, 21.0);
+      tl.fromTo("#scene4",
+        { y: 1080, opacity: 1 },
+        { y: 0, duration: 0.4, ease: "power3.inOut" }, 21.0);
+      tl.set("#scene3", { visibility: "hidden" }, 21.45);
+
+
+      /* ═══════════════════════════════════════════════════════
+         SCENE 4: "12" CASE STUDIES (visible from 21.0)
+         ═══════════════════════════════════════════════════════ */
+      var c12 = { v: 0 };
+      tl.to(c12, { v: 12, duration: 0.5, ease: "power2.out",
+        onUpdate: function() {
+          document.getElementById("s4-number").textContent = Math.round(c12.v);
+        }
+      }, 21.15);
+      tl.fromTo("#s4-number",
+        { opacity: 0, scale: 0.8 },
+        { opacity: 1, scale: 1, duration: 0.5, ease: "expo.out" }, 21.1);
+      tl.fromTo("#s4-label",
+        { opacity: 0, y: 15 },
+        { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 21.4);
+      tl.fromTo("#s4-rule",
+        { opacity: 0, scaleX: 0 },
+        { opacity: 1, scaleX: 1, duration: 0.35, ease: "power2.out" }, 21.6);
+      tl.fromTo("#s4-desc",
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 21.75);
+      // Cards fan out one by one — card 1 on top, rest slide out behind it
+      tl.fromTo("#s4-card1",
+        { opacity: 0, y: 15 },
+        { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 21.15);
+      tl.fromTo("#s4-card2",
+        { opacity: 0, x: 0, y: 0 },
+        { opacity: 1, x: 55, y: 70, rotation: -2, duration: 0.45, ease: "power3.out" }, 21.4);
+      tl.fromTo("#s4-card3",
+        { opacity: 0, x: 0, y: 0 },
+        { opacity: 1, x: 110, y: 140, rotation: -3.5, duration: 0.45, ease: "power3.out" }, 21.6);
+      tl.fromTo("#s4-card4",
+        { opacity: 0, x: 0, y: 0 },
+        { opacity: 1, x: 165, y: 210, rotation: 2, duration: 0.45, ease: "power3.out" }, 21.8);
+      tl.fromTo("#s4-card5",
+        { opacity: 0, x: 0, y: 0 },
+        { opacity: 1, x: 220, y: 280, rotation: -2.5, duration: 0.45, ease: "power3.out" }, 22.0);
+
+
+      /* ═══════════════════════════════════════════════════════
+         TRANSITION 4: Blur Crossfade (Scene 4 → 6) at T=24.0
+         ═══════════════════════════════════════════════════════ */
+      tl.to("#scene4", { filter: "blur(4px)", scale: 1.02, opacity: 0, duration: 0.3, ease: "power2.inOut" }, 24.0);
+      tl.set("#scene4", { visibility: "hidden" }, 24.35);
+      tl.fromTo("#scene6",
+        { filter: "blur(4px)", scale: 0.98, opacity: 0 },
+        { filter: "blur(0px)", scale: 1, opacity: 1, duration: 0.3, ease: "power2.inOut" }, 24.05);
+
+
+      /* ═══════════════════════════════════════════════════════
+         SCENE 6: EDITOR'S RECOMMENDATION (visible from ~24.1)
+         ═══════════════════════════════════════════════════════ */
+      tl.fromTo("#s6-question",
+        { opacity: 0, x: -20 },
+        { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 24.2);
+      tl.fromTo("#s6-title",
+        { opacity: 0, y: 40 },
+        { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 24.45);
+      tl.fromTo("#s6-rule",
+        { opacity: 0, scaleX: 0 },
+        { opacity: 1, scaleX: 1, duration: 0.5, ease: "expo.out" }, 24.95);
+      tl.fromTo("#s6-desc",
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 25.2);
+      tl.fromTo("#s6-browser",
+        { opacity: 0, x: 60 },
+        { opacity: 1, x: 0, duration: 0.7, ease: "power3.out" }, 24.25);
+
+
+      /* ═══════════════════════════════════════════════════════
+         TRANSITION 5: Push Slide (Scene 6 → 7) at T=29.0
+         ═══════════════════════════════════════════════════════ */
+      tl.to("#scene6", { x: -1920, duration: 0.4, ease: "power3.inOut" }, 29.0);
+      tl.fromTo("#scene7",
+        { x: 1920, opacity: 1 },
+        { x: 0, duration: 0.4, ease: "power3.inOut" }, 29.0);
+      tl.set("#scene6", { opacity: 0, visibility: "hidden" }, 29.41);
+
+
+      /* ═══════════════════════════════════════════════════════
+         SCENE 7: PROMISE + SOURCES (visible from 29.0)
+         ═══════════════════════════════════════════════════════ */
+      // Text staggers in
+      tl.fromTo("#s7-line1",
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 29.2);
+      tl.fromTo("#s7-line2",
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 29.7);
+      tl.fromTo("#s7-line3",
+        { opacity: 0, scale: 0.92 },
+        { opacity: 1, scale: 1, duration: 0.7, ease: "expo.out" }, 30.2);
+
+      // Source ticker fades in and scrolls left
+      tl.to("#s7-ticker",
+        { opacity: 1, duration: 0.8, ease: "power2.out" }, 30.2);
+      tl.fromTo("#s7-ticker-track",
+        { x: 200 },
+        { x: -1200, duration: 4.0, ease: "none" }, 29.5);
+
+
+      /* ═══════════════════════════════════════════════════════
+         TRANSITION 6: Color Dip to Black (Scene 7 → 10) at T=34.0
+         ═══════════════════════════════════════════════════════ */
+      tl.to("#dip-overlay", { opacity: 1, duration: 0.3, ease: "power2.in" }, 34.0);
+      tl.set("#scene7", { opacity: 0, visibility: "hidden" }, 34.3);
+      tl.set("#scene10", { opacity: 1 }, 34.5);
+      tl.to("#dip-overlay", { opacity: 0, duration: 0.6, ease: "power2.out" }, 34.5);
+
+
+      /* ═══════════════════════════════════════════════════════
+         SCENE 10: FINAL CTA (34.5-36.5s)
+         "Get started" + pill button
+         ═══════════════════════════════════════════════════════ */
+      // "Get started" fades in
+      tl.fromTo("#s10-heading",
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 35.0);
+
+      // Pill fades in almost immediately after
+      tl.fromTo("#s10-pill",
+        { opacity: 0, y: 15 },
+        { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 35.4);
+
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

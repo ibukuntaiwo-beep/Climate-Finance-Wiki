@@ -1,0 +1,267 @@
+Climate Finance Course 3 - Climate and Valuation
+
+CL-S2-3: Climate and Valuation: Listed Equity and Debt
+
+MODULE 1: Climate Data, Metrics and Tools
+
+Lesson 1: Impact of Climate Risks on Corporate Performance and Valuation
+
+Climate risks affect company valuation and performance through physical risks (from extreme weather and climate shifts) and transition risks (from moving to a low-carbon economy).
+Physical risks include acute events (e.g., floods, wildfires) and chronic shifts (e.g., sea level rise, water stress), which can damage assets, disrupt operations, raise insurance costs, and affect supply chains.
+Transition risks encompass policy, regulatory, market, technological, reputational, legal, financial, operational, financing, supply chain, and workforce transition risks—each with distinct financial impacts.
+Geographic and sectoral exposure varies: energy, utilities, and industrials face higher risks; asset-heavy sectors are more vulnerable to physical damage.
+Direct and indirect physical risks affect revenue, productivity, and asset valuation. For example, infrastructure failure outside a facility can halt operations even if the asset itself is undamaged.
+
+The consideration of physical and transition risks in investment decisions is influenced by various factors, including time horizon, asset class, and investment strategy.
+
+In general, scenarios that model fewer policy efforts to regulate climate change led to both lower short-term transition risk and higher long-term physical risk. Concurrently, scenarios that model more stringent near-term regulation forecast higher transition risks but a lower long-term physical risk.
+
+Short-Term vs. Long-Term Considerations
+• Short-term (insurance use case). General insurers (excluding life insurance) often have shorter time horizons for their investments due to the need for liquidity to cover potential policy claims. Physical risks, such as those associated with extreme weather events, may have more immediate consequences. Therefore, short-term risk mitigation strategies, such as diversification and short-term liquidity management, become crucial.
+
+Long-term (asset owners). Asset owners, like pension plans, typically have a longer time horizon, as they are designed to meet long-term liabilities. This allows for a more strategic approach to transition risks, considering factors like evolving regulatory landscapes and changing market dynamics.
+
+Asset Class Considerations
+• Equity investments. Equities are more exposed to physical and transition risks tied to specific sectors (e.g., energy, natural resources). Investors will need to assess climate-related risks, resource scarcity, and regulatory changes impacting these sectors.
+• Fixed income. Fixed-income investors, especially bondholders, should focus on credit risk associated with companies’ ability to adapt to transition risks. For example, a company’s creditworthiness could be affected by its response to changing environmental regulations.
+• Alternative investments. Alternative assets, such as real estate or infrastructure, may face direct physical risks (e.g., property damage due to climate events). Investors in these asset classes may need to incorporate risk assessments related to the specific characteristics of the underlying assets.
+
+
+Case studies show real-world responses:
+Delta Airlines uses climate scenario analysis (e.g., IEA’s Net Zero, SDS, STEPS) and integrates risks into enterprise planning to address rising fuel costs, SAF mandates, tech change, and reputational impacts.
+Spirit Airlines diversified operations centers to mitigate hurricane risks in Florida.
+Ontario Teachers’ Pension Plan adjusts investments based on supply chain resilience, food system stress, and real asset exposure.
+Investors integrate physical and transition risks differently based on time horizon (short-term insurers vs. long-term asset owners), asset class (equity, bonds, real assets), and strategy (active vs. passive).
+Case study insights:
+Invesco uses a two-step portfolio optimization: (1) target a Paris-aligned temperature portfolio and (2) integrate factors like momentum, quality, and value while maintaining emissions goals.
+Lombard Odier tilts investments toward “ice cubes” (decarbonizing firms) and away from “burning logs” (high emitters misaligned with net zero), using portfolio alignment metrics for diversification and performance.
+Risk modeling and scenario analysis (e.g., RCP 2.6, 4.5) are critical for forward-looking cash flow and asset valuation analysis.
+
+
+
+Lesson 2- Landscape of Climate Reporting Metrics
+
+Market-led frameworks aim to standardize and improve transparency of climate-related risks and opportunities across businesses and industries.
+These frameworks support comparability, decision relevance, and help integrate ESG factors into business and investment strategies.
+Common reporting metrics fall into three main categories:
+Carbon footprinting (e.g., GHG emissions by scope),
+Climate risk and opportunity metrics,
+Target-setting metrics (e.g., emission reduction goals, capital allocation).
+
+TCFD recommends 7 cross-industry metrics, including GHG emissions (Scopes 1–3), capital deployment, internal carbon pricing, and climate-linked remuneration.
+SASB provides sector-specific metrics; for example, it defines standards for financed emissions and catastrophe exposure in the financial and insurance sectors.
+ISSB (now overseeing TCFD-aligned disclosures) promotes interoperability across standards and offers harmonized metrics via IFRS S1 and S2, covering transition and physical risks, executive compensation, and scenario analysis.
+The Net-Zero Banking Alliance requires its member banks to publish climate targets within 18–36 months and align portfolios with net-zero pathways.
+Regulatory momentum is growing:
+The EU leads with NFRD, SFDR, and Solvency II.
+California mandates corporate Scope 1–3 disclosures by 2026.
+UK, Canada, New Zealand, Australia, Japan, and Singapore are implementing or proposing mandatory reporting.
+Scope 3 emissions reporting is increasingly expected but remains a challenge due to data limitations and complexity.
+
+Investors looking for absolute reduction targets may prefer companies focusing on lowering their overall emissions. Meanwhile, those interested in efficiency gains might favor companies with lower carbon intensity.
+
+Metric choice matters:
+Absolute emissions reflect total climate impact,
+Carbon intensity shows efficiency trends but may mask rising total emissions.
+Forward-looking metrics like Implied Temperature Rise (ITR) and Climate Value-at-Risk (VaR) provide strategic insight but vary based on methodology and assumptions.
+Case studies of Company E and F highlight how different metrics (absolute vs intensity) can lead to contrasting views on climate alignment, impacting perceived transition progress.
+ISSB’s consolidation of frameworks aims to reduce reporting fatigue, increase global consistency, and provide a “common language” for sustainability disclosure.
+
+
+Lesson 3 - Methodologies for Measuring and Assessing Climate Risks
+
+Companies and investors increasingly use scenario analysis and stress testing to assess physical and transition risks under varying climate futures.
+Key methodologies include sensitivity analysis, value chain emissions mapping, and financial impact modeling for carbon pricing, regulation, and policy shifts.
+Climate risk drivers must be identified and investment sensitivity analyzed across scenarios, helping estimate financial consequences and resilience over time.
+Bottom-up (asset-level) and top-down (portfolio-level) modeling approaches are complementary; each provides strengths in granularity and scalability.
+Measuring emissions across the value chain (Scope 1, 2, and 3) is essential for evaluating exposure and setting effective reduction targets.
+Metrics such as:
+Carbon intensity,
+Financed emissions,
+Climate and carbon value at risk (VaR),
+Implied Temperature Rise (ITR),
+and Carbon Budgets
+support performance benchmarking and scenario planning.
+Risk channels include policy, regulation, market dynamics, technology disruption, and supply chain vulnerabilities—each with direct financial implications.
+Leading frameworks like TCFD, NGFS, and UN PRI scenarios help define physical and transition risk pathways (e.g., orderly vs. disorderly transitions).
+Climate stress testing uses scenario and sensitivity analysis, dynamic financial modeling, and integration with standard stress tests to simulate long-term risk exposure.
+Case studies:
+Bank of Canada & OSFI pilot tested 4 climate scenarios across 6 financial institutions; results showed gaps in modeling, governance, and data capacity.
+European Central Bank stress test (2022) involved 104 banks and revealed three core challenges: (1) integrating climate risk into strategy, (2) poor data availability, and (3) weak modeling capabilities.
+ECB findings emphasized:
+Need for dynamic balance sheet modeling,
+Improved counterparty emissions data,
+Better scenario differentiation,
+Reduced use of proxies for Scope 3 emissions.
+Ongoing limitations include long time horizons, data uncertainty, proxy dependence, and lack of climate-specific credit models—leading to underestimated risk and losses.
+Effective stress testing demands collaboration, robust data governance, and methodology innovation to support long-term climate resilience.
+
+
+Lesson 4 - Climate Stress Testing Efforts from Central Banks and Financial Supervisors
+
+
+Climate stress testing is evolving as a key tool to evaluate the resilience of financial institutions and systemic stability in response to physical and transition climate risks.
+Unique challenges include long time horizons (up to 30 years), lack of historical precedent, data uncertainty (especially Scope 3 emissions), and complex nonlinear feedback loops.
+Scenario design often distinguishes between orderly, disorderly, hothouse world, and too little, too late pathways, each with varying transition and physical risk trade-offs.
+NGFS climate scenarios are widely used by central banks; Net Zero 2050, Delayed Transition, and Current Policies are the most commonly applied among institutions.
+
+A pragmatic approach for institutions getting started with accounting for climate risks can be to map their exposures to industries that are the most vulnerable to a disruptive energy transition, and to focus on only transition risks. By explicitly accounting for energy transition risks, a clearer picture of vulnerability to transition risks can be gained, and investment decisions can be made with a more complete picture of holistic risks faced by these high-risk sectors.
+
+Scenario analysis vs. stress testing:
+Scenario analysis explores long-term, qualitative outcomes;
+Stress testing focuses on short- to medium-term financial outcomes, including capital shortfalls and liquidity stress.
+Case studies from ECB, Bank of England, Bank of Canada, and U.S. Federal Reserve show diverse approaches in modeling macroeconomic impacts (e.g., GDP declines, bond devaluation) under various scenarios.
+ECB's 2022 stress test revealed key gaps in banks' modeling capabilities, governance, and data collection—most expect to operationalize climate stress testing in 1–3 years.
+Institutional recommendations include modeling sector-specific risks, bottom-up + top-down assessments, pricing model adjustments, and physical risk mapping (e.g., flood scores at the asset level).
+Insurance companies and pension funds are highly exposed to transition risks due to large allocations in carbon-intensive sectors—ECB stress testing showed they face the highest bond losses across scenarios.
+Sovereign wealth funds are expanding use of scenario analysis and stress testing to manage climate-related risks and seize net-zero opportunities—main drivers include reputation and long-term return enhancement.
+A climate-nature nexus is emerging: nature-related risks (e.g., biodiversity loss, deforestation) now feature in scenario design, with TNFD providing parallel guidance to TCFD.
+Climate stress testing is expanding beyond risk assessment to identify system-level opportunities in the clean energy transition—e.g., job creation, energy efficiency, and air quality improvement.
+The updated NGFS Phase IV scenario set includes new narratives like Low Demand and Fragmented World, reflecting geopolitical shocks, tech cost reductions, and emerging climate policy trends.
+
+
+MODULE 2: Analysis and Valuation for Equity
+
+Lesson 1 - Frameworks for Integrating Climate Analysis into the Investment Process
+
+Climate risks and opportunities affect companies across the value chain, influencing supply chains, customer demand, and ultimately revenue, costs, capital expenditure, and asset valuations.
+Materiality frameworks such as SASB (now part of ISSB) help investors assess sector-specific environmental, social, and governance (ESG) issues most likely to impact enterprise value.
+The TCFD framework guides companies in disclosing climate risks and opportunities through strategic planning and scenario analysis, linked to income statements, cash flows, and balance sheets.
+Transition and physical risks impact financials in diverse ways:
+Increased costs, asset impairments, litigation risk, shifting market demand, carbon pricing, and climate policy pressures.
+Chronic and acute weather risks affect operations, insurance, and capital expenditure planning.
+The CDP, GRI, ISSB, and Taskforce on Nature-related Financial Disclosures (TNFD) further expand environmental reporting by incorporating nature-related dependencies and impacts.
+Investors develop proprietary materiality maps tailored to company-specific factors, supplementing standardized frameworks to identify relevant risks and opportunities.
+Climate-adjusted valuation requires integrating risks into free cash flow to the firm (FCFF) models, adjusting forecasts, WACC, and terminal growth estimates.
+Stock exchanges like Nasdaq and Singapore Exchange (SGX) are embedding ESG requirements into listing standards, referencing SASB, TCFD, and GRI frameworks.
+SGX’s phased roadmap mandates climate reporting across key sectors between 2023 and 2027, moving toward Scope 3 disclosure and IFRS S2 alignment.
+
+
+Lesson 2 - Approaches for Integrating Climate Risks and Opportunities into the Investment Process
+Integrating climate-related risks and opportunities into valuation analysis is crucial for comprehensive financial assessment.
+The Capital Asset Pricing Model (CAPM) approach provides a method for estimating the cost of equity, considering market risk and the risk-free rate.
+The ESG Integration framework is useful in the context of incorporating climate factors at research, security, and portfolio levels.
+Adjustments to discount rates and terminal growth rates are necessary to reflect climate risk impacts on future cash flows.
+Active ownership and engagement influence valuation through improved disclosures and management commitments.
+Various methodologies like scenario analysis, sensitivity analysis, and stress testing help measure and assess climate risk.
+Climate value-at-risk (VaR), implied temperature rise (ITR), and carbon VaR metrics quantify the financial impacts of climate change.
+
+
+Lesson 3 - Impact of Material Climate Considerations on Company Valuation
+
+Case studies such as AIA Group and CDL demonstrate that climate-related physical and transition risks impact equity valuation.
+Factors like extreme weather events, rising temperatures, and disease patterns affect companies like AIA Group, leading to adjustments in valuation models and risk assessment strategies.
+Transition risks from the global shift to a low-carbon economy, such as carbon taxes and regulatory changes, are analyzed, assessing their impact on companies like CDL in real estate.
+It is important to identify opportunities for companies to mitigate climate risks and capitalize on trends like green building practices, renewable energy integration, and sustainable development initiatives.
+Client demand for sustainable properties drives market trends, influencing investment decisions and shaping companies’ sustainability strategies.
+Climate risk analysis is integrated into equity valuation practices for long-term sustainability, enhanced risk management, and informed investment decisions amid the changing climate landscape.
+
+
+Lesson 4 - A Case Study in Valuing Climate Opportunities
+Climate change presents challenges and opportunities for individuals, businesses, and governments.
+Growth opportunities exist in sectors such as renewable energy, energy efficiency, smart grid solutions, electric vehicles, and sustainable agriculture.
+Fluence Energy is a US-listed capital goods company providing grid-level battery storage solutions.
+Grid-level battery storage is crucial for integrating renewable energy sources into the electric grid and ensuring energy security and stability.
+California’s “duck curve” illustrates the challenge of balancing renewable energy generation with peak demand.
+Battery storage plays a vital role in smoothing out fluctuations in renewable energy generation and enhancing grid reliability.
+Fluence Energy is the only listed pure-play grid-level battery storage company globally, with substantial growth potential.
+Investors evaluate key ratios and valuation multiples to assess Fluence’s growth potential and market positioning.
+Analysts consider factors like industry growth rates, market share, and margin projections when valuing high-growth companies.
+Long-term growth expectations are extrapolated from precedents like California’s clean electricity targets.
+Investors must carefully evaluate growth potential and market dynamics when assessing climate opportunities in companies like Fluence Energy.
+
+
+Lesson 5- Assessing Climate Risks and Opportunities as an Asset Manager
+
+Schroders plc, a British multinational asset management firm, serves as a case study for evaluating climate risks and opportunities within asset management.
+Schroders’ commitment to climate and environmental, social, and governance (ESG) efforts is exemplified through its participation in initiatives like the Net Zero Asset Managers Initiative and its adherence to science-based targets.
+Asset managers face a multifaceted climate challenge, including regulatory shifts, reputational risks, and changing client preferences toward ESG investing.
+Key climate risks for asset managers encompass portfolio performance and valuation, regulatory and policy risks, reputational risks, liability risks, and changing client preferences.
+Assessing the impact on portfolio performance and valuation under various climate scenarios is crucial for asset managers, with tools such as Climate Value-at-Risk and Implied Temperature Rise aiding in quantifying financial impacts.
+Schroders’ proprietary Climate Analytics Framework offers insights into climate-related risks and opportunities, guiding the asset manager in making informed investment decisions aligned with global sustainability goals.
+
+
+MODULE 3: Analysis and Valuation for Fixed Income
+
+Lesson 1 - Climate Integration Considerations for Equity and Fixed Income
+ESG and climate integration are more advanced in listed equities than in fixed income, primarily due to voting rights, disclosure mandates, and index development.
+Fixed-income investors lack voting rights, limiting their ability to influence corporate ESG strategies through shareholder engagement or AGMs.
+Climate data availability is more robust for listed companies than for many fixed-income issuers, especially in high-yield, sovereign, and emerging markets.
+ESG and climate reporting frameworks are well-established for equities but still developing for sovereigns and other fixed-income asset classes (e.g., ASCOR for sovereigns).
+There is a shortage of fixed-income climate indices, particularly for sovereign debt, which poses challenges for net-zero-aligned investors relying on benchmarks for asset allocation.
+Fixed-income investors rely more heavily on credit ratings to assess financial risk, but increasingly also incorporate ESG ratings to evaluate climate and sustainability performance.
+ESG ratings differ significantly across providers due to non-standardized methodologies, data sources, and materiality assessments, unlike the more consistent credit ratings.
+Confusion between credit and ESG ratings is common due to similar terminology; ESG ratings are often unsolicited, less transparent, and based on diverse indicators.
+To address these challenges, investors are building internal ESG integration frameworks tailored to their investment philosophies, using ESG scores as one input among many.
+Regulatory initiatives (e.g., UN PRI’s ESG in Credit Ratings) are working to clarify the role of ESG in credit analysis and improve transparency and comparability across ratings providers.
+Overall, while equities lead in climate integration, fixed income is evolving through data expansion, methodological development, and investor-driven engagement frameworks.
+
+Lesson 2 - Impact of Climate Factors on Equity and Debt Valuations
+
+Climate risks can materially affect company valuation, creditworthiness, and capital structure, especially through physical risks (e.g., wildfires, droughts) and resource dependencies (e.g., water access).
+The PG&E case study shows how climate-induced wildfires and legal liabilities triggered bankruptcy, wiping out equity holders and causing a credit default for debt investors.
+Key risks included inverse condemnation laws, operational negligence, and failure to implement mitigation measures like undergrounding power lines.
+PG&E’s future solvency and credit rating depend on mitigation execution, wildfire safety certifications, and access to California’s USD 21 billion wildfire insurance fund.
+Scenario analysis, risk-based valuation adjustments (e.g., EV/EBITDA multiples), and peer benchmarking are critical tools for assessing climate-exposed firms.
+Equity and bond investors can use de-risked multiples, cashflow stress tests, and regulatory precedent (e.g., cost-per-acre wildfire fines) to gauge financial vulnerability.
+PG&E’s wildfire mitigation efforts include EPSS and PSPS systems, but progress on undergrounding remains slow—with less than 1% of its network buried since 2021.
+ESG ratings vary between providers, requiring investors to develop internal models and supplement third-party assessments with sector-specific materiality maps (e.g., SASB).
+The Antofagasta case study highlights how water scarcity in Chile impacted copper production and cashflows, affecting both equity and debt valuations.
+The firm responded with desalination projects and improved water recycling, aiming for 90% non-continental water use at key sites like Los Pelambres.
+Production declines in drought years (e.g., 2015 and 2022) translated into missed guidance and lower investor multiples. Operational leverage exacerbated earnings impacts.
+Despite climate risks, Antofagasta traded at a premium EV/EBITDA multiple vs. peers due to its copper exposure and strategic relevance to the energy transition.
+Debt investors monitor net debt/EBITDA and interest coverage; Antofagasta’s conservative capital structure and investment-grade rating (BBB+) support resilience.
+Climate risks are not fully reflected in traditional credit ratings, which focus on 2–5 year time horizons. Long-term risks may require higher risk premiums or discounts.
+Investor tools include SASB sector frameworks, scenario modeling, production vs guidance comparisons, and capex analysis for transition-related investments (e.g., Centinela expansion).
+
+
+Lesson 3 -  Carbon Transition Journey Via Thematic Bonds
+
+Thematic bonds—like green, transition, and sustainability-linked bonds—are key tools enabling banks, businesses, and governments to finance the transition to a low-carbon economy.
+The “greenium,” a lower yield on green bonds compared to conventional ones, reflects high investor demand and limited supply, especially under EU SFDR Articles 8 and 9 mandates.
+Thematic bonds must comply with frameworks such as the ICMA Green Bond Principles, EU Taxonomy, and Climate Bonds Initiative, and require rigorous project alignment, use-of-proceeds transparency, and third-party verification.
+Case study: A chemical manufacturer pivoted from petrochemicals to advanced materials and EV battery components, financing its strategy through green bonds.
+The company committed to net zero Scope 1 and 2 emissions by 2050 and “carbon-neutral growth” by 2030; it also set renewable energy targets and uses an internal carbon price.
+Despite higher leverage and execution risk from newer businesses, improved debt metrics (e.g., net debt to EBITDA fell from 2.4× in 2019 to 1.2× in 2022) signal growing credit strength.
+Asset managers evaluate green bonds using three sustainability criteria:
+Greenness: Environmental impact of funded projects (e.g., solar, EV batteries, bio-based plastics),
+Integrity: Issuer’s sustainability track record and reporting transparency,
+Ambition: How well bond proceeds align with company-wide decarbonization strategies.
+The company’s green bond use-of-proceeds includes renewable energy inputs, waste-based plastics, and cathode materials—all aligned with EU taxonomy for climate mitigation.
+Gaps in the impact report—such as lack of CO₂ avoided figures—highlight areas for investor engagement and improved disclosure.
+The company has not yet received SBTi validation for its targets, representing another area for improvement.
+From a credit perspective, the issuer remains investment grade with a stable outlook; its new business lines (e.g., battery materials) benefit from strong climate policy support.
+Thematic bonds, if credibly structured, can align financial returns with climate impact, but require due diligence on both sustainability merit and financial fundamentals.
+
+Lesson 4 -  Integration of Climate Risk Within Sovereign Debt
+
+Climate-related risks are increasingly integral to sovereign debt evaluation, driven by more frequent extreme weather events, food inflation, and climate policy shifts.
+Physical risks—like rising sea levels, floods, and droughts—can impact GDP, tax revenues, migration, food security, and infrastructure, raising funding costs and threatening debt sustainability.
+Transition risks affect fossil-fuel-reliant economies like Indonesia, where coal exports represent ~10% of exports and 1.3% of government revenue. Diversification is essential.
+Indonesia's vulnerability to climate change is high due to geography, with major exposure to floods, sea level rise, and food inflation (food = 25–34% of CPI).
+Indonesia is pursuing transition goals through:
+A 2050 coal phase-out,
+Participation in global initiatives (JETP, ADB ETM),
+Climate budget tagging (since 2016),
+Green sukuk issuance,
+And calls for over USD 1 trillion in international support to meet net-zero goals.
+Scenario modeling (NGFS) and IMF/EIRIN macroeconomic models quantify the fiscal and credit implications of transition risks such as Chinese coal demand decline.
+Sovereign engagement is possible despite lack of voting rights. Channels include roundtables, roadshows, country visits, and collaborative frameworks like ASCOR.
+The ASCOR framework evaluates countries using 13 indicators across three pillars:
+Emission Pathways (e.g., trends, 2030/net-zero targets),
+Climate Policies (e.g., legislation, adaptation, fossil fuel use),
+Climate Finance (e.g., transparency, renewables).
+ASCOR assessments now cover 70 countries representing 85% of global GHGs and 90% of global GDP; data supports investor due diligence and sovereign engagement.
+ASCOR findings for Indonesia highlight gaps in climate legislation and partial progress on adaptation and just transition policies.
+Municipal bonds (e.g., in the U.S.) are also exposed to physical risks. Climate events can reduce tax revenue, increase repair costs, and lead to credit downgrades—though defaults remain rare.
+Labeled muni bonds offer opportunities to finance LEED-certified, climate-resilient infrastructure, such as the New York 4 World Trade Center green bonds.
+
+
+Lesson 5 - Antofagasta Case Study
+The Antofagasta PLC Case Study examines the impact of water supply issues on the company’s copper mining output.
+It employs a free cash flow valuation model to assess Antofagasta’s stock valuation as of the end of 2022.
+The base case valuation includes a five-year forecast of free cash flows (2023–2027) and estimates a terminal value.
+Assumptions such as copper production growth rates and long-term growth rates are integral to the valuation model.
+Various scenarios are explored to understand the effects of water supply risks on Antofagasta’s valuation.
+Scenarios range from short-term water supply constraints to long-term implications on copper production growth.
+The case study concludes with reflections on the susceptibility of Antofagasta’s stock value to water supply risks and provides caveats regarding the valuation model’s assumptions.

@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Climate Finance Wiki — Design C: The Hook</title>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Sora:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F6F4EE;
+    --surface: #FFFFFF;
+    --surface-warm: #FAF8F4;
+    --text: #1A1A2E;
+    --text-secondary: #4A4A5A;
+    --text-muted: #8A8A96;
+    --coral: #D94F3B;
+    --coral-soft: rgba(217, 79, 59, 0.08);
+    --coral-hover: #C4422F;
+    --blue: #2454A0;
+    --blue-soft: rgba(36, 84, 160, 0.07);
+    --border: #DDD9D0;
+    --border-strong: #C5C0B5;
+    --rule: #1A1A2E;
+
+    --font-heading: 'Newsreader', serif;
+    --font-body: 'Sora', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    --sp-1: 4px;
+    --sp-2: 8px;
+    --sp-3: 12px;
+    --sp-4: 16px;
+    --sp-5: 20px;
+    --sp-6: 24px;
+    --sp-8: 32px;
+    --sp-10: 40px;
+    --sp-12: 48px;
+    --sp-16: 64px;
+    --sp-20: 80px;
+    --sp-24: 96px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Paper texture overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='t'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23t)' opacity='0.025'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* --- FOCUS STATES --- */
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid var(--coral);
+    outline-offset: 4px;
+  }
+
+  /* --- ANIMATIONS --- */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes expandRule {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .reveal { opacity: 0; animation: fadeUp 0.6s ease-out forwards; }
+  .reveal-d1 { animation-delay: 0.1s; }
+  .reveal-d2 { animation-delay: 0.2s; }
+  .reveal-d3 { animation-delay: 0.3s; }
+  .reveal-d4 { animation-delay: 0.4s; }
+  .reveal-d5 { animation-delay: 0.5s; }
+  .reveal-d6 { animation-delay: 0.6s; }
+
+  /* --- UTILITY --- */
+  .label {
+    font-family: var(--font-body);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .label--coral {
+    color: var(--coral);
+  }
+
+  .mono {
+    font-family: var(--font-mono);
+  }
+
+  /* --- NAV --- */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--sp-4) var(--sp-6);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+
+  .nav-logo:hover {
+    color: var(--coral);
+    transition: color 150ms ease;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-6);
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: color 150ms ease;
+  }
+
+  .nav-links a:hover {
+    color: var(--coral);
+  }
+
+  .nav-count {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    margin-left: 2px;
+  }
+
+  /* --- HERO SECTION --- */
+  .hero {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--sp-16) var(--sp-6) var(--sp-12);
+    min-height: calc(100vh - 56px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .hero-category {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-3);
+    margin-bottom: var(--sp-8);
+  }
+
+  .hero-category-tag {
+    display: inline-block;
+    padding: var(--sp-1) var(--sp-3);
+    border-left: 3px solid var(--coral);
+    font-family: var(--font-body);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--coral);
+    background: var(--coral-soft);
+  }
+
+  .hero-category-dot {
+    width: 4px;
+    height: 4px;
+    background: var(--border-strong);
+    border-radius: 50%;
+  }
+
+  .hero-category-series {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+  }
+
+  .hero-headline {
+    font-family: var(--font-heading);
+    font-size: 3.25rem;
+    font-weight: 700;
+    line-height: 1.12;
+    color: var(--text);
+    letter-spacing: -0.02em;
+    max-width: 820px;
+    margin-bottom: var(--sp-10);
+  }
+
+  .hero-headline em {
+    font-style: italic;
+    color: var(--coral);
+  }
+
+  .hero-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-16);
+    align-items: start;
+  }
+
+  .hero-lede {
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    max-width: 540px;
+  }
+
+  .hero-lede strong {
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .hero-pullquote {
+    position: relative;
+    padding-left: var(--sp-6);
+    border-left: 3px solid var(--coral);
+  }
+
+  .hero-pullquote blockquote {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.55;
+    color: var(--text);
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-6);
+    margin-top: var(--sp-10);
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-2);
+    padding: var(--sp-3) var(--sp-6);
+    background: var(--coral);
+    color: #FFFFFF;
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 200ms ease, transform 150ms ease;
+  }
+
+  .hero-cta:hover {
+    background: var(--coral-hover);
+    transform: translateY(-1px);
+  }
+
+  .hero-cta svg {
+    width: 16px;
+    height: 16px;
+    transition: transform 200ms ease;
+  }
+
+  .hero-cta:hover svg {
+    transform: translateX(3px);
+  }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-4);
+  }
+
+  .hero-meta-item {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .hero-meta-sep {
+    width: 4px;
+    height: 4px;
+    background: var(--border-strong);
+    border-radius: 50%;
+  }
+
+  /* --- DIAMOND DIVIDER --- */
+  .divider {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--sp-6);
+  }
+
+  .divider-inner {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-4);
+  }
+
+  .divider-rule {
+    flex: 1;
+    height: 3px;
+    background: var(--rule);
+  }
+
+  .divider-diamond {
+    width: 8px;
+    height: 8px;
+    background: var(--coral);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+  }
+
+  /* --- THREAD TEASER --- */
+  .thread-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--sp-12) var(--sp-6);
+  }
+
+  .thread-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: var(--sp-8);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sp-8);
+    transition: border-color 200ms ease, box-shadow 200ms ease;
+  }
+
+  .thread-card:hover {
+    border-color: var(--border-strong);
+    box-shadow: 0 2px 12px rgba(26, 26, 46, 0.06);
+  }
+
+  .thread-left {
+    flex: 1;
+  }
+
+  .thread-label {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-3);
+    margin-bottom: var(--sp-3);
+  }
+
+  .thread-icon {
+    width: 20px;
+    height: 20px;
+    color: var(--coral);
+  }
+
+  .thread-title {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: var(--sp-2);
+  }
+
+  .thread-desc {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  .thread-right {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-6);
+    flex-shrink: 0;
+  }
+
+  .thread-stat {
+    text-align: center;
+  }
+
+  .thread-stat-value {
+    font-family: var(--font-mono);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1;
+  }
+
+  .thread-stat-label {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: var(--sp-1);
+  }
+
+  .thread-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-2);
+    padding: var(--sp-2) var(--sp-4);
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--coral);
+    text-decoration: none;
+    border: 1px solid var(--coral);
+    background: transparent;
+    cursor: pointer;
+    transition: background 200ms ease, color 200ms ease;
+  }
+
+  .thread-cta:hover {
+    background: var(--coral);
+    color: #FFFFFF;
+  }
+
+  .thread-cta svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  /* --- CATEGORIES SECTION --- */
+  .categories-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--sp-12) var(--sp-6) var(--sp-16);
+  }
+
+  .categories-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: var(--sp-8);
+  }
+
+  .categories-title {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .categories-total {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+  }
+
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--sp-4);
+  }
+
+  .category-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: var(--sp-6) var(--sp-5);
+    text-decoration: none;
+    transition: border-color 200ms ease, box-shadow 200ms ease, transform 150ms ease;
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+  }
+
+  .category-card:hover {
+    border-color: var(--border-strong);
+    box-shadow: 0 2px 8px rgba(26, 26, 46, 0.05);
+    transform: translateY(-2px);
+  }
+
+  .category-card-tag {
+    display: inline-flex;
+    align-self: flex-start;
+    padding: 2px var(--sp-2);
+    border-left: 3px solid var(--coral);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--coral);
+    background: var(--coral-soft);
+  }
+
+  .category-card-name {
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.3;
+  }
+
+  .category-card-count {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+  }
+
+  .category-card-desc {
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  .category-card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-1);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--blue);
+    margin-top: auto;
+  }
+
+  .category-card-link svg {
+    width: 14px;
+    height: 14px;
+    transition: transform 200ms ease;
+  }
+
+  .category-card:hover .category-card-link svg {
+    transform: translateX(3px);
+  }
+
+  /* --- FOOTER --- */
+  .footer {
+    border-top: 3px solid var(--rule);
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--sp-8) var(--sp-6);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-left {
+    font-family: var(--font-heading);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+  }
+
+  .footer-right {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  /* ================================================
+     RESPONSIVE
+     ================================================ */
+
+  /* 1024px */
+  @media (max-width: 1024px) {
+    .hero-headline {
+      font-size: 2.75rem;
+    }
+
+    .hero-body {
+      gap: var(--sp-10);
+    }
+
+    .categories-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* 768px */
+  @media (max-width: 768px) {
+    .hero {
+      padding: var(--sp-10) var(--sp-6) var(--sp-10);
+      min-height: auto;
+    }
+
+    .hero-headline {
+      font-size: 2.25rem;
+    }
+
+    .hero-body {
+      grid-template-columns: 1fr;
+      gap: var(--sp-8);
+    }
+
+    .hero-pullquote blockquote {
+      font-size: 1.125rem;
+    }
+
+    .thread-card {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .thread-right {
+      width: 100%;
+      justify-content: flex-start;
+      gap: var(--sp-8);
+    }
+
+    .categories-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .nav-links {
+      gap: var(--sp-4);
+    }
+  }
+
+  /* 640px */
+  @media (max-width: 640px) {
+    .hero-headline {
+      font-size: 2rem;
+    }
+
+    .hero-lede {
+      font-size: 1rem;
+    }
+
+    .hero-actions {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--sp-4);
+    }
+
+    .categories-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-inner {
+      flex-direction: column;
+      gap: var(--sp-4);
+      text-align: center;
+    }
+  }
+
+  /* 420px */
+  @media (max-width: 420px) {
+    .hero {
+      padding: var(--sp-8) var(--sp-4) var(--sp-8);
+    }
+
+    .hero-headline {
+      font-size: 1.75rem;
+    }
+
+    .hero-pullquote blockquote {
+      font-size: 1rem;
+    }
+
+    .hero-body {
+      gap: var(--sp-6);
+    }
+
+    .nav-inner {
+      padding: var(--sp-3) var(--sp-4);
+    }
+
+    .nav-links {
+      gap: var(--sp-3);
+    }
+
+    .nav-links a {
+      font-size: 0.75rem;
+    }
+
+    .nav-count {
+      display: none;
+    }
+
+    .categories-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .categories-section {
+      padding: var(--sp-8) var(--sp-4) var(--sp-12);
+    }
+
+    .thread-section {
+      padding: var(--sp-8) var(--sp-4);
+    }
+
+    .thread-card {
+      padding: var(--sp-6);
+    }
+
+    .thread-right {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--sp-4);
+    }
+
+    .divider {
+      padding: 0 var(--sp-4);
+    }
+
+    .footer-inner {
+      padding: var(--sp-6) var(--sp-4);
+    }
+  }
+</style>
+</head>
+<body>
+
+  <!-- NAV: slim, not competing -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">Climate Finance Wiki</a>
+      <ul class="nav-links">
+        <li><a href="#">Concepts <span class="nav-count">12</span></a></li>
+        <li><a href="#">Instruments <span class="nav-count">6</span></a></li>
+        <li><a href="#">Actors <span class="nav-count">9</span></a></li>
+        <li><a href="#">Frameworks <span class="nav-count">13</span></a></li>
+        <li><a href="#">Case Studies <span class="nav-count">8</span></a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO: the entire first viewport -->
+  <main>
+    <section class="hero" aria-label="Featured story">
+
+      <!-- Category + Series label -->
+      <div class="hero-category reveal">
+        <span class="hero-category-tag">Case Study</span>
+        <span class="hero-category-dot"></span>
+        <span class="hero-category-series">Featured</span>
+      </div>
+
+      <!-- THE headline -->
+      <h1 class="hero-headline reveal reveal-d1">
+        Volkswagen Dieselgate: When <em>Green Claims</em> Meet Criminal Charges
+      </h1>
+
+      <!-- Two-column: lede + pullquote -->
+      <div class="hero-body">
+
+        <div class="hero-lede-block reveal reveal-d2">
+          <p class="hero-lede">
+            In 2015, Volkswagen was caught using defeat devices to cheat emissions tests on <strong>11 million diesel vehicles</strong> worldwide. The scandal didn't just destroy a brand&nbsp;&mdash; it forced regulators, investors, and communications professionals to rethink what <strong>'green' actually means</strong>.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#" class="hero-cta" aria-label="Read the full Dieselgate case study">
+              Read the case study
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="8" x2="13" y2="8"/>
+                <polyline points="9,4 13,8 9,12"/>
+              </svg>
+            </a>
+            <div class="hero-meta">
+              <span class="hero-meta-item">12 min read</span>
+              <span class="hero-meta-sep"></span>
+              <span class="hero-meta-item">2015 &ndash; 2020</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-pullquote reveal reveal-d3">
+          <blockquote>
+            &ldquo;Volkswagen didn&rsquo;t just cheat emissions tests. They exposed how an entire system of green certification can fail&nbsp;&mdash; and why the word &lsquo;clean&rsquo; in corporate communications should never go unchallenged.&rdquo;
+          </blockquote>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- DIVIDER -->
+    <div class="divider reveal reveal-d4" aria-hidden="true">
+      <div class="divider-inner">
+        <div class="divider-rule"></div>
+        <div class="divider-diamond"></div>
+        <div class="divider-rule"></div>
+      </div>
+    </div>
+
+    <!-- THREAD TEASER: compact, one line -->
+    <section class="thread-section reveal reveal-d5" aria-label="Story thread">
+      <div class="thread-card">
+        <div class="thread-left">
+          <div class="thread-label">
+            <svg class="thread-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 4h14"/>
+              <path d="M5 4v12l5-3 5 3V4"/>
+            </svg>
+            <span class="label label--coral">Story Thread</span>
+          </div>
+          <h2 class="thread-title">The Greenwashing Trail</h2>
+          <p class="thread-desc">From misleading claims to criminal charges. Follow the thread across the wiki.</p>
+        </div>
+        <div class="thread-right">
+          <div class="thread-stat">
+            <div class="thread-stat-value">6</div>
+            <div class="thread-stat-label">Articles</div>
+          </div>
+          <div class="thread-stat">
+            <div class="thread-stat-value">25</div>
+            <div class="thread-stat-label">Min read</div>
+          </div>
+          <a href="#" class="thread-cta" aria-label="Start the Greenwashing Trail story thread">
+            Start the trail
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="2" y1="7" x2="12" y2="7"/>
+              <polyline points="8,3 12,7 8,11"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORIES: compact, below the fold, secondary -->
+    <section class="categories-section reveal reveal-d6" aria-label="Browse categories">
+      <div class="categories-header">
+        <h2 class="categories-title">Browse the wiki</h2>
+        <span class="categories-total mono">48 articles across 5 categories</span>
+      </div>
+      <div class="categories-grid">
+
+        <a href="#" class="category-card">
+          <span class="category-card-tag">01</span>
+          <span class="category-card-name">Concepts</span>
+          <span class="category-card-count mono">12 articles</span>
+          <span class="category-card-desc">Foundational ideas: carbon pricing, additionality, net zero, and more.</span>
+          <span class="category-card-link">
+            Explore
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="2" y1="7" x2="12" y2="7"/>
+              <polyline points="8,3 12,7 8,11"/>
+            </svg>
+          </span>
+        </a>
+
+        <a href="#" class="category-card">
+          <span class="category-card-tag">02</span>
+          <span class="category-card-name">Instruments</span>
+          <span class="category-card-count mono">6 articles</span>
+          <span class="category-card-desc">Financial tools: green bonds, carbon credits, blended finance mechanisms.</span>
+          <span class="category-card-link">
+            Explore
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="2" y1="7" x2="12" y2="7"/>
+              <polyline points="8,3 12,7 8,11"/>
+            </svg>
+          </span>
+        </a>
+
+        <a href="#" class="category-card">
+          <span class="category-card-tag">03</span>
+          <span class="category-card-name">Actors</span>
+          <span class="category-card-count mono">9 articles</span>
+          <span class="category-card-desc">Key players: multilateral banks, sovereign funds, corporate coalitions.</span>
+          <span class="category-card-link">
+            Explore
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="2" y1="7" x2="12" y2="7"/>
+              <polyline points="8,3 12,7 8,11"/>
+            </svg>
+          </span>
+        </a>
+
+        <a href="#" class="category-card">
+          <span class="category-card-tag">04</span>
+          <span class="category-card-name">Frameworks</span>
+          <span class="category-card-count mono">13 articles</span>
+          <span class="category-card-desc">Standards and regulation: EU taxonomy, TCFD, ISSB disclosure rules.</span>
+          <span class="category-card-link">
+            Explore
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="2" y1="7" x2="12" y2="7"/>
+              <polyline points="8,3 12,7 8,11"/>
+            </svg>
+          </span>
+        </a>
+
+        <a href="#" class="category-card">
+          <span class="category-card-tag">05</span>
+          <span class="category-card-name">Case Studies</span>
+          <span class="category-card-count mono">8 articles</span>
+          <span class="category-card-desc">Real-world stories: what happened, who was involved, what it means.</span>
+          <span class="category-card-link">
+            Explore
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="2" y1="7" x2="12" y2="7"/>
+              <polyline points="8,3 12,7 8,11"/>
+            </svg>
+          </span>
+        </a>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <span class="footer-left">Climate Finance Wiki</span>
+      <span class="footer-right">A reference for communications professionals</span>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,228 @@
+{
+  "last_updated": "2026-05-09",
+  "topics": {
+    "climate-finance": {
+      "wiki_path": "wiki/climate-finance/",
+      "articles": {
+        "concepts": [
+          {
+            "title": "Climate Finance",
+            "file": "concepts/climate-finance.md",
+            "status": "complete"
+          },
+          {
+            "title": "Net Zero vs Carbon Neutral",
+            "file": "concepts/net-zero-vs-carbon-neutral.md",
+            "status": "complete"
+          },
+          {
+            "title": "Physical Risks",
+            "file": "concepts/physical-risks.md",
+            "status": "complete"
+          },
+          {
+            "title": "Transition Risks",
+            "file": "concepts/transition-risks.md",
+            "status": "complete"
+          },
+          {
+            "title": "Stranded Assets",
+            "file": "concepts/stranded-assets.md",
+            "status": "complete"
+          }
+        ],
+        "instruments": [
+          {
+            "title": "Green Bonds",
+            "file": "instruments/green-bonds.md",
+            "status": "complete"
+          },
+          {
+            "title": "Sustainability-Linked Bonds",
+            "file": "instruments/sustainability-linked-bonds.md",
+            "status": "complete"
+          },
+          {
+            "title": "Transition Bonds",
+            "file": "instruments/transition-bonds.md",
+            "status": "complete"
+          }
+        ],
+        "actors": [
+          {
+            "title": "IPCC",
+            "file": "actors/ipcc.md",
+            "status": "complete"
+          },
+          {
+            "title": "UNFCCC and COP",
+            "file": "actors/unfccc-and-cop.md",
+            "status": "complete"
+          }
+        ],
+        "frameworks": [
+          {
+            "title": "Paris Agreement",
+            "file": "frameworks/paris-agreement.md",
+            "status": "complete",
+            "site_article": "site/src/content/articles/paris-agreement.md"
+          },
+          {
+            "title": "TCFD",
+            "file": "frameworks/tcfd.md",
+            "status": "complete",
+            "site_article": "site/src/content/articles/tcfd.md"
+          },
+          {
+            "title": "IFRS S1 and S2",
+            "file": "frameworks/ifrs-s1-s2.md",
+            "status": "complete",
+            "site_article": "site/src/content/articles/ifrs-s1-s2.md"
+          },
+          {
+            "title": "EU Taxonomy",
+            "file": "frameworks/eu-taxonomy.md",
+            "status": "complete",
+            "site_article": "site/src/content/articles/eu-taxonomy.md"
+          },
+          {
+            "title": "CSRD",
+            "file": "frameworks/csrd.md",
+            "status": "complete",
+            "site_article": "site/src/content/articles/csrd.md"
+          },
+          {
+            "title": "SFDR",
+            "file": "frameworks/sfdr.md",
+            "status": "complete",
+            "site_article": "site/src/content/articles/sfdr.md"
+          },
+          {
+            "title": "GHG Protocol",
+            "file": "frameworks/ghg-protocol.md",
+            "status": "complete",
+            "site_article": "site/src/content/articles/ghg-protocol.md"
+          },
+          {
+            "title": "EU Green Deal",
+            "file": "frameworks/eu-green-deal.md",
+            "status": "complete",
+            "site_article": "site/src/content/articles/eu-green-deal.md"
+          },
+          {
+            "title": "Inflation Reduction Act",
+            "file": "frameworks/inflation-reduction-act.md",
+            "status": "complete",
+            "site_article": "site/src/content/articles/inflation-reduction-act.md"
+          },
+          {
+            "title": "Green Bond Principles",
+            "file": "frameworks/green-bond-principles.md",
+            "status": "complete",
+            "site_article": "site/src/content/articles/green-bond-principles.md"
+          },
+          {
+            "title": "Kyoto Protocol",
+            "file": "frameworks/kyoto-protocol.md",
+            "status": "complete",
+            "site_article": "site/src/content/articles/kyoto-protocol.md"
+          },
+          {
+            "title": "Montreal Protocol",
+            "file": "frameworks/montreal-protocol.md",
+            "status": "complete",
+            "site_article": "site/src/content/articles/montreal-protocol.md"
+          },
+          {
+            "title": "Article 6",
+            "file": "frameworks/article-6.md",
+            "status": "complete",
+            "site_article": "site/src/content/articles/article-6.md"
+          }
+        ],
+        "markets": [],
+        "case-studies": [
+          {
+            "title": "PG&E Bankruptcy",
+            "site_article": "site/src/content/articles/pge-bankruptcy.md",
+            "status": "complete"
+          },
+          {
+            "title": "Volkswagen Dieselgate",
+            "site_article": "site/src/content/articles/volkswagen-dieselgate.md",
+            "status": "complete"
+          },
+          {
+            "title": "HSBC Greenwashing",
+            "site_article": "site/src/content/articles/hsbc-greenwashing.md",
+            "status": "complete"
+          },
+          {
+            "title": "DWS SEC Fine",
+            "site_article": "site/src/content/articles/dws-sec-fine.md",
+            "status": "complete"
+          },
+          {
+            "title": "Seychelles Blue Bond",
+            "site_article": "site/src/content/articles/seychelles-blue-bond.md",
+            "status": "complete"
+          },
+          {
+            "title": "ENEL SLB",
+            "site_article": "site/src/content/articles/enel-slb.md",
+            "status": "complete"
+          },
+          {
+            "title": "Marfrig Transition Bond",
+            "site_article": "site/src/content/articles/marfrig-transition-bond.md",
+            "status": "complete"
+          },
+          {
+            "title": "Lombard Odier: Ice Cubes and Burning Logs",
+            "site_article": "site/src/content/articles/lombard-odier-ice-cubes.md",
+            "status": "complete"
+          },
+          {
+            "title": "Engine No. 1 vs ExxonMobil",
+            "site_article": "site/src/content/articles/engine-no-1-exxonmobil.md",
+            "status": "complete",
+            "added": "2026-04-28"
+          },
+          {
+            "title": "BlackRock's Climate Ultimatum",
+            "site_article": "site/src/content/articles/blackrock-climate-letter.md",
+            "status": "complete",
+            "added": "2026-04-28"
+          },
+          {
+            "title": "Norway Divests from Oil",
+            "site_article": "site/src/content/articles/norway-gpfg-divestment.md",
+            "status": "complete",
+            "added": "2026-04-28"
+          },
+          {
+            "title": "The Great Coal Exit",
+            "site_article": "site/src/content/articles/the-great-coal-exit.md",
+            "status": "complete",
+            "added": "2026-04-28"
+          }
+        ]
+      },
+      "referenced_but_missing": [
+        "EU Green Bond Standard",
+        "Blended Finance"
+      ],
+      "seo_sprint": {
+        "status": "complete",
+        "date": "2026-05-09",
+        "description": "Added authoritative outbound source links to all 52 articles (189 URLs total)",
+        "batches": [
+          { "category": "case-studies", "articles": 13, "links": 64 },
+          { "category": "frameworks", "articles": 12, "links": 41 },
+          { "category": "actors", "articles": 9, "links": 30 },
+          { "category": "concepts-instruments", "articles": 18, "links": 54 }
+        ]
+      }
+    }
+  }
+}

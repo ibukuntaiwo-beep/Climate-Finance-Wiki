@@ -1,0 +1,464 @@
+Climate Finance Course 2 - Transition Finance
+
+
+- MODULE 1: Transition Finance, Frameworks and Standards
+
+Lesson 1 - Concept of Transition Planning
+Transition finance can be defined as a financing structure and model that will bring our world to a new “business as usual” state, where emissions are sustainably low enough not to threaten humanity. Key actors in this model are governments, corporations, and investors.
+
+A feedback loop exists whereby if the expected emission targets are not achieved, the updated climate scenario will need to account either for more resources to achieve a net zero goal in a reduced amount of time, or for more frequent and severe climate events.
+
+Understanding Emissions Categories
+The Greenhouse Gas Protocol (GHG Protocol) is a standard to account for a company’s greenhouse gas (GHG) emissions.
+
+The GHG Protocol classifies emissions into three scopes. Scope 1 emissions are the direct emissions from a company’s owned or controlled activities. Scope 2 emissions are indirectly generated from purchased energy consumed by a company. Scope 3 emissions are defined as GHG emissions emitted across a company’s value chain.
+
+Asset owners and asset managers must reduce their own emissions and find ways to enable their clients to achieve emissions reduction goals. A financial institution’s impact is determined by the asset classes it invests in.
+
+Traditional business principles like cost-effectiveness, material availability, and technical expertise remain relevant but are undergoing shifts due to climate crisis implications.
+Climate-related regulations are increasingly influencing business operations and are considered part of a company's cost of doing business.
+Transition finance aims to lead the world to a sustainable state with low emissions, involving governments, corporations, and investors.
+The Paris Agreement sets ambitious goals to limit global temperature rise, driving the need for corporate transition plans aligned with climate objectives.
+Corporations play a crucial role in achieving climate transition objectives by developing credible plans and engaging in emissions reduction efforts.
+Understanding emissions categories, particularly Scope 3 emissions, is essential for corporations and financial institutions to address their climate impact effectively.
+
+
+Lesson 2: Key Drivers of Corporate Transition Plans: Regional and International Frameworks
+Based on the ESG Regulations and Reporting Standards Tracker by Sustainable Fitch, before 2020, 18 ESG-related regulations were in effect globally. Three-quarters of these were targeted at corporations and mainly on disclosures. Regulation types could typically be classified as one of the following:
+1. Sustainable taxonomy
+2. Corporate ESG disclosure
+3. Corporate climate disclosure
+4. ESG fund requirements/disclosure.
+Since 2020, there have been at least 42 new regulations specifically targeting corporations. For financial institutions, there has been an almost eightfold increase to more than 30 investor-targeted regulations
+
+Regulators in countries that have adopted the Paris Agreement tend to favor internationally recognized frameworks and develop regulations accordingly. This allows corporations, particularly those that operate across multiple jurisdictions, to have greater ease and certainty when developing business strategies incorporating emissions reduction targets. In recent years, an increasing onus has also been placed on financial institutions to influence projects and encourage corporations to achieve a collective 2050 net zero target.
+
+Countries struggle to balance the need for economic growth, social equality, and national security with their natural and financial resources.
+
+Climate disclosures depend on data gathering, monitoring, setting targets, and tracking progress by the reporting entity. The responsibility of ensuring transparency of accurate and timely climate data and information and developing transition pathways-aligned targets with the net zero goal now predominantly falls on the corporation.
+
+There are three key criteria for eligibility for an activity within the EU Taxonomy.12
+1. Make substantial contributions to at least one of these six environmental objectives:
+i. Climate change mitigation
+ii. Climate change adaptation
+iii. Sustainable use and protection of water and marine resources
+iv. Transition to a circular economy
+v. Pollution prevention and control
+vi. Protection and restoration of biodiversity and ecosystems
+2. Do no significant harm (DNSH) to any of the objectives.
+3. Comply with Minimum Safeguards (MS)
+
+Sustainable Finance Disclosure Regulation (SFDR)
+The SFDR was introduced alongside the EU Taxonomy in 2019. It came into effect in 2021 and imposed mandatory ESG disclosure requirements on asset managers and other financial market participants (FMPs).15 The objective of the SFDR is to improve the transparency of sustainability claims made by FMPs for their investment products.
+
+Addressing energy transition is critical for ASEAN because the majority of its member states count electricity and heating as their main emission contributors. Over one-third of ASEAN countries rely on coal-fired power plants (CFPP) as their BAU energy generation mode.
+
+The greater the harmonization of reporting frameworks on climate, the easier it will be for investors to evaluate and encourage corporations to report on climate risks and opportunities. Therefore, the evolving ecosystem of simultaneously developing climate-related regulations and frameworks are key drivers of corporate climate transition
+
+Climate-related regulations have surged globally since 2020, especially targeting corporate and financial disclosures to manage rising environmental risks.
+The 2015 Paris Agreement set a global goal to limit warming to 1.5°C, requiring a 45% reduction in emissions by 2030 and net zero by 2050.
+Despite this, national climate plans remain insufficient; no major emitters are fully aligned with 1.5°C goals, and current policies would increase global GHGs by 3% by 2030.
+Major emitters (China, US, India, EU, Russia) have set varying net-zero targets and policies, but all fall short of Paris-aligned ambition.
+Corporate sustainability disclosures are now widely expected, guided by frameworks like GRI, SASB, and increasingly by climate-specific guidance such as TCFD.
+The EU leads globally in ESG regulation with three cornerstone tools:
+EU Taxonomy (defining sustainable economic activities), Corporate Sustainability Reporting Directive (CSRD) (mandating detailed ESG reports), Sustainable Finance Disclosure Regulation (SFDR) (ensuring transparency in financial products).
+The CSRD introduced the European Sustainability Reporting Standards (ESRS), requiring double materiality, value chain analysis, and taxonomy-aligned disclosures.
+The ASEAN Taxonomy provides a transitional model for developing economies, with staged emissions intensity thresholds and tailored coal phase-out timelines.
+International frameworks such as TCFD and ISSB (IFRS S1 & S2) are driving global alignment in sustainability reporting and standardization.
+Regulatory harmonization and cross-border frameworks support corporate climate planning and help investors compare transition strategies globally.
+
+
+Lesson 3: Implementation of Corporate Transition Plans
+A company's transition plan includes offset plans like carbon credits, etc. This is because the goal is net zero and emissions cannot be fully eliminated. The transition is gradual hence the need for offset plans. However, these plans must be disclosed.
+
+Credible transition plans must include short-, medium-, and long-term science-based targets aligned with the Paris Agreement and supported by climate scenario analysis.
+Key credibility elements include: temperature goals, sectoral pathways, technology roadmaps, performance metrics, carbon pricing, just transition principles, and transparency.
+High-emitting sectors and developed economies are expected to decarbonize faster; ambition beyond NDCs can signal leadership.
+Transition plans should identify and disclose operating and capital expenditures tied to mitigation and adaptation technologies, supported by taxonomies.
+Governance must include board and senior management oversight, with clear roles, KPIs, and escalation for off-track progress.
+Scope 1, 2, and 3 emissions should be tracked using internationally recognized frameworks (e.g., GHG Protocol); Scope 3 presents the greatest measurement challenges.
+Plans should clarify use of voluntary carbon credits, internal carbon pricing (e.g., shadow price, internal fees), and only rely on offsets for hard-to-abate sectors.
+Just transition and minimum social safeguards (aligned with OECD, UN, ILO) are essential to protect workers, communities, and uphold human rights.
+Strategies must integrate climate risks into enterprise and financial planning, including stranded asset risk, carbon taxes, and climate value-at-risk (CVaR).
+Climate litigation risk is rising; companies should proactively disclose risks and avoid greenwashing to ensure accountability.
+Transparency and third-party verification enhance trust; credible plans embed disclosures in annual reports and sustainability filings.
+Sector-specific frameworks like SBTi, ISSB, CDP, and TCFD provide benchmarks and pathways for target setting and performance tracking.
+Public-private partnerships and government policies (e.g., IRA in the US, Singapore Green Plan) can accelerate transition implementation through financial and regulatory support.
+Examples from Apple, Procter & Gamble, TDC Net, and others highlight best practices in innovation, employee training, and supply chain engagement.
+
+
+Lesson 4: Financial Market Assessment of Corporate Transition Plans
+
+There are broadly three ways that investors can evaluate a Corporate Transition Plans (CTP). First, they can assess each company’s CTP on a standalone basis, without peer-based benchmarking. Second, they can evaluate CTPs against a proprietary benchmark. Third, they can evaluate CTPs against an investor-led, industry-developed benchmark.
+
+Corporate Transition Plans (CTPs) are essential for identifying climate-related risks and opportunities and for securing financing through sustainable debt and equity instruments.
+Investors assess CTPs via standalone evaluation, proprietary benchmarks, or through investor-led frameworks such as Climate Action 100+’s Net Zero Company Benchmark (NZCB).
+NZCB evaluates disclosure quality (e.g., GHG targets, governance, capital allocation) and alignment of company actions with Paris Agreement goals (e.g., sector decarbonization, audit practices).
+CDP provides graded questionnaires aligned with global standards (e.g., TCFD, SBTi), used by over 680 financial institutions to assess corporate transparency and climate risk exposure.
+The Transition Pathway Initiative (TPI) assesses both governance quality and carbon performance across high-emitting sectors, helping investors benchmark companies against 1.5°C pathways.
+Financial Market Participants (FMPs) themselves are now held accountable for net zero transition plans, supported by groups like the Global Investor Coalition on Climate Change and GFANZ.
+The UN Net Zero Asset Owner Alliance (NZAOA) and its Target Setting Protocol guide asset owners in developing near-term climate targets and sectoral decarbonization plans.
+The Net Zero Investment Framework (NZIF) provides asset-level strategies, engagement criteria, asset class alignment, and policy advocacy guidance for achieving portfolio-wide decarbonization.
+Investor tools like ICAPs Expectations Ladder benchmark institutional progress on investment strategy, engagement, policy advocacy, disclosure, and governance.
+Robeco and CalSTRS offer case studies showing how fund-level emissions targets, sectoral pathways, and engagement strategies can be integrated into investment operations.
+Greenwashing risks (e.g., greenlighting, greenrinsing, greenhushing) are rising in both corporate and investor disclosures, prompting regulatory guidance in the UK, EU, Singapore, and Australia.
+Investors and regulators emphasize transparency, measurable impact, and alignment with science-based frameworks to ensure credibility in climate finance commitments.
+
+
+Climate Action 100+ (CA100+) is an investor-led initiative designed to ensure the world’s largest corporate Greenhouse Gas (GHG) emitters take the necessary action on climate change. It was launched in 2017 and is coordinated by five investor networks:
+1. Asia Investor Group on Climate Change (AIGCC)
+2. Ceres
+3. Investor Group on Climate Change (IGCC)
+4. Institutional Investors Group on Climate Change (IIGCC)
+5. Principles for Responsible Investment (PRI)
+
+CA100+ identified a focus list of companies (approximately 150) that are signatories of the initiative and engage with these focus companies collectively.
+
+International Framework and Benchmark: CDP
+CDP is a non-government agency (NGO) established in 2000 to encourage companies to disclose their climate impacts. Investors can request that CDP send questionnaires to companies, and companies can also request that CDP send questionnaires to other companies within their supply chain. CDP has expanded the scope of questionnaire requests from environmental impact disclosure requests to forests, water, cities, and countries.
+In 2022, more than 680 financial institutions requested that companies disclose environmental data through CDP.
+
+
+International Framework and Benchmark: Transition Pathway Initiative (TPI)
+The TPI is a global initiative led by asset owners to develop a tool for assessing the progress of companies’ transition to a low-carbon economy. This publicly available tool, is comprised of two components—Management Quality and Carbon Performance.
+
+Management Quality. TPI evaluates and tracks the quality of companies’ governance and management of their GHG emissions, as well as risks and opportunities related to
+the low-carbon transition.
+Carbon Performance. TPI evaluates companies’ carbon emissions against different climate scenarios consistent with the Paris Agreement. It does this by comparing companies in high-emitting sectors against each other and against sector-specific benchmarks, which establish the performance of an average company aligned with the goals of the Paris Agreement.
+To date, the TPI covers almost 400 publicly listed companies across 16 high-carbon sectors, including coal mining, oil and gas, electric utilities, automotive, aviation, shipping, steel, cement, paper, aluminum, and chemicals.
+
+Greenwashing can materialize in several ways, and investors should look out for the following:
+● Greencrowding. The belief that you can hide in a crowd to avoid discovery
+● Greenlighting. When company communications (including advertisements) spotlight a particularly green feature of its operations or products, however small, in order to draw attention away from environmentally damaging activities being conducted elsewhere
+● Greenshifting. When companies imply that the consumer is at fault and shift the blame onto them
+● Greenlabeling. Where marketers describe a product or service as green or sustainable, but closer examination reveals that the wording used is misleading
+● Greenrinsing. When a company regularly changes its ESG targets before they are achieved
+● Greenhushing. When corporate management teams underreport or hide their sustainability activities in order to evade investor scrutiny
+
+
+
+MODULE 2 - Financing Decisions
+
+Lesson 1 - Sustainable and Green Financial Products and Instruments
+The advantage of “general corporate purpose” bonds or loans is that they offer more flexibility than “use of proceeds” instruments, thus allowing issuers to be more flexible with how the capital is allocated and to focus instead on the outcome they deliver to the investors. They are typically more suitable for entities looking to transition to low-carbon activities.
+
+There are four pillars that constitute the “Core Foundations of the Principles—Green, Social, and Sustainability Bonds.”
+
+The first pillar is the concept of the “use of proceeds” as eligible green, social, or sustainability project categories, which restrict the types of spending an issuer can do with these instruments.
+
+The second pillar addresses the process for the evaluation of projects that will be financed by the green, social, or sustainability bond.
+
+The third pillar seeks to ensure that the capital raised is solely used for eligible projects and activities.
+
+The fourth pillar addresses the reporting requirements to ensure that issuers commit to a high level of disclosure on green, social, and sustainability projects.
+
+Thematic bonds—including green, social, sustainability, transition, and sustainability-linked bonds (SLBs)—have grown rapidly, with over USD 5.4 trillion issued by Q3 2024 due to strong investor demand.
+Green bonds finance environmentally beneficial projects; social bonds address social needs (e.g., affordable housing, health); and sustainability linked bonds (SLBs) combine both.
+Transition bonds support decarbonization in high-emitting sectors; SLBs allow flexible capital use but tie bond terms to ESG performance targets.
+“Use of proceeds” bonds allocate funds to pre-defined green/social projects; “general corporate purpose” bonds like SLBs focus on sustainability outcomes.
+Investor demand has led to lower yields for thematic bonds—known as the “greenium”—due to perceived long-term climate risk hedging and ESG alignment.
+Notable bond programs include:
+Fannie Mae’s green MBS program,
+UK green gilts,
+Thailand’s clean transport bonds,
+Malaysia’s Shariah-compliant sustainability sukuk,
+Seychelles’ blue bond, and
+ENEL’s and NYK’s transition/SLB issuances.
+The Green Bond Principles (GBP) and Social Bond Principles (SBP) by ICMA define standards for use of proceeds, evaluation, management of proceeds, and reporting.
+SLBs are governed by five pillars: KPI selection, target calibration, financial structure (e.g., coupon step-ups), reporting, and third-party verification.
+The Climate Bonds Standard (CBS 4.0) enables certification of not just bonds but also entities and sustainability-linked instruments, aligned with Paris and SDG goals.
+Certification involves third-party verification, both pre- and post-issuance, valid for five years for entities and full term for instruments.
+Thematic bonds increasingly rely on taxonomies to define eligible green or social activities—e.g., EU, ASEAN, China, Indonesia, and Colombia have adopted detailed systems.
+Taxonomies support alignment with climate goals, offer screening criteria (e.g., green, amber, red tiers), and promote standardization for investor trust and capital flows.
+
+
+
+Lesson 2 - Emergence of Transition Bonds
+
+In the field of transition finance, given that no established taxonomy has been accepted, it is relatively easy to be flexible or selective in the disclosure of information pertaining to the efforts made by the organizations toward a lower carbon future.
+
+The early years of the green, social, and sustainability bonds and loans markets saw the emergence of new forms of financing, led by multilateral agencies, for projects that were targeting the protection of environmental resources. With the creation of new voluntary markets standards, such as the Green and Social Bond Principles by ICMA, market
+practitioners have embraced these new types of securities, and the growth of the market has been strong. These instruments are characterized by a clear indication of how the
+funds raised are allocated to projects that can be considered green, social, or both.
+But the use of such prescriptive instruments, where the use of funds can be very restrictive and must be implemented within two years of issuance, cannot be used in all
+sectors. While the financing of capital expenditures for renewable energy projects (e.g.,
+solar cells, inverters, and cables) may be easy to define, the funds collected to support the transformation of a manufacturing process will be more complex to decide at the
+onset. Rather, a more flexible use of the capital is necessary, in particular, in the “hard-to-abate” sectors that are high carbon emitters. As such, the market has now moved to
+create another class of instruments, which, rather than focusing on how the money is spent, focus on long-term outcomes with clear sustainability objectives that are relevant
+to the business, ambitious, measurable, and comparable to existing benchmarks. These new types of instruments are defined as “general corporate purpose” instruments:
+sustainability-linked bonds and loans, where the coupon on the debt varies with the outcomes on the selected targets.
+All these securities are governed by Principles, initially published by the ICMA. These are voluntary principles that, for “use of proceeds” bonds, set the process for selecting the projects, managing the choice of expenditures, reserving the cash solely for the financing of these expenditures, and reporting on a regular basis how capital is spent.
+For “general corporate purpose” bonds, they define the key performance indicators, the sustainability performance targets, and the bond or loan characteristics (interest rate up or down) and require regular reporting on targets.
+In addition to the Principles, which are the foundation of this market, additional definitions have emerged to further define what constitutes “green.” Among these definitions, we find different types of applications. At the domestic level, several nations, through one of their local authorities (e.g., central bank, ministry) have drafted a domestic green taxonomy. At the regional level, a group of nations has defined broad objectives and sectorial definitions (e.g., EU Taxonomy, ASEAN Taxonomy). At the global level, the Climate Bond Standard has defined a science-based taxonomy that can be used by international investors across the world.
+These efforts have mostly been successful in fostering a strong increase in the financing of sectors with clear environmental benefits (e.g., solar, wind, clean transportation). But many more sectors, some of which are heavy polluters, need to be engaged in a similar fashion, and capital must flow toward those businesses that actively reduce their carbon emissions. This is why it has become necessary to create a new segment to allow capital to be allocated toward the transition to a low-carbon economy. This “transition finance,” however, is ill defined. There are only a few examples of a clear set of
+definitions for what constitutes a “transition,” and even these examples are sometimes criticized for not doing enough. Through examples, we have shown where issuers have come to the bond markets with transactions seeking to achieve some form of transition.
+However, some risks remain. Accusations of misrepresenting the level of ambition or hiding bad behavior behind certain positive activities that are not representative of the overall business, have taken a new name: “greenwashing.” Organizations can make false statements or hide behind anecdotal examples of their true commitments. This is a risk that will lead to litigation and regulatory clampdown, as securities regulators seek to ensure that the investing public is not sold products that falsely represent environmental and social benefits. Issuers and bankers will be increasingly careful to stick to accepted definitions and taxonomies, proving their invaluable advantage in setting clear guidelines and policies for economic activities.
+
+Only a limited number of sectors currently qualify as “green,” necessitating the emergence of transition finance to support high-emitting sectors on a path to decarbonization.
+Transition finance helps allocate capital toward activities evolving toward net-zero emissions, enabling investments in “brown” sectors with measurable, science-based emissions reduction pathways.
+Transition bonds are a subset of sustainable finance, funding hard-to-abate sectors as long as credible transition strategies and targets are in place.
+Key issuers of transition bonds include Marfrig, Japan Airlines, Mitsubishi Heavy Industries, Bank of China, and Snam S.p.A, each using proceeds for sector-specific decarbonization efforts.
+Definitions of transition finance vary across jurisdictions:
+ICMA emphasizes Paris-aligned, science-based strategies;
+People’s Bank of China supports gradual decarbonization of high-carbon sectors;
+Japan METI links transition to detailed roadmaps;
+EU and US Treasury include financing of credible, benchmark-aligned emission-reducing investments;
+UK stresses support for nature-positive and decarbonization pathways.
+The Climate Bonds Initiative’s Five Hallmarks of a Credible Transition include net-zero targets, strategic vision, action plans, financing strategies, and governance oversight.
+Transition finance carries greenwashing risk due to the lack of unified taxonomies, selective disclosure, or vague emission claims.
+High-profile examples of potential greenwashing include:
+Volkswagen’s 2015 diesel scandal (software manipulation and misleading advertising),
+TotalEnergies, whose green claims contrast with plans to increase fossil fuel production,
+Sembcorp’s reclassification of coal emissions from Scope 1/2 to Scope 3 while financing the same assets.
+Misrepresentation risks span product labeling, financed emissions, and selective Scope reporting—especially problematic in loosely defined transition finance.
+Regulators globally are enhancing disclosure requirements and legal safeguards to combat greenwashing and restore trust in sustainable finance markets.
+Thematic bonds must now navigate greater scrutiny and higher expectations for alignment with standards like ICMA’s Principles, domestic taxonomies, and emerging transition criteria.
+Ultimately, clear definitions, transparency, and verification are critical to ensuring the credibility of both transition finance instruments and the broader sustainable finance market.
+
+
+
+
+MODULE 3 - INVESTING DECISIONS
+
+Lesson 1 - Introduction and Definition of Green Energy Technology Investments
+Definition of Green Investments
+The starting point for the definition of green energy and green technology investments is the term “green.” This term typically refers to environmentally sustainable and
+specifically climate-focused investments. Climate-oriented investments target two types of climate action:
+• Climate mitigation: Activities aimed at avoiding further warming of the planet, particularly by avoiding, limiting, and reversing the emission of greenhouse gases (e.g., through burning less fossil fuel or by increasing energy efficiency of industrial and/or commercial projects and installations).
+• Climate adaptation: Activities aimed at adjusting human, plant, and animal life to reduce the risks and impact of unavoidable climate change. This can be done ex-post as a reaction to or anticipation of climate change. Climate adaptation often entails switching and adaptation costs, but also creates opportunities. Examples
+include developing heat-resistant crops or preserving and effectively managing mangrove ecosystems to mitigate the risk of flooding from sea-level change.
+
+Definition of Green Energy Investments
+Green energy investments are a key element of climate-oriented investments, transitioning to a globally sustainable business model, and are central to successful climate mitigation.
+Projects to generate electricity from renewable energy sources are relevant green energy investments. Green energy investments are primarily focused on infrastructure-type investments
+
+Green energy and technology investments are essential for achieving carbon neutrality and combating climate change.
+These investments focus on climate mitigation and adaptation, aiming to reduce greenhouse gas emissions and address the impacts of climate change.
+Green energy investments involve large-scale infrastructure projects, primarily focused on electricity generation from renewable sources.
+These projects require significant capital investment and often involve regulated environments with stable demand.
+Large Green Energy projects require substantial upfront capital and regulatory approval before construction can commence.
+Green energy projects typically involve a mix of equity and debt financing, with debt comprising a significant portion of the funding.
+Returns on these projects vary depending on factors such as technology, region, and risk profile, with debt helping to leverage equity returns.
+Green energy projects have long operational lifespans, contributing to sustainability efforts over decades.
+Environmental and social sustainability considerations are integral to these projects, ensuring they adhere to the principles of “Do No Significant Harm.”
+Green technology investments support the development and efficiency of green energy projects, driving down costs and improving performance.
+Innovations in green technology, such as advancements in battery storage, have led to significant cost reductions and market transformations.
+Green technology investments are characterized by innovation and uncertainty, with a focus on breakthrough advancements.
+These investments are typically financed by equity due to their high risk nature and potential for value creation or destruction.
+
+
+
+Lesson 2 - General Opportunities and Challenges of Green Investments
+Environmental benefits
+Green investments, whether energy or technology-focused, enable humankind to face, mitigate, and adapt to climate change. This is the inherent purpose of green investments.
+
+Relying on renewable energy sources creates the opportunity to use limited resources such as coal, lignite, oil, and gas for industrial processes other than electricity production.
+Addressing climate change involves shifting from fossil to renewable energy resources.
+Environmental benefits, including reduced air pollution and greenhouse gas emissions, accompany this transition.
+The abundance of renewable resources leads to decreased dependence on limited fossil fuels.
+There is less reliance on fossil fuel imports, which improves energy independence.
+Decreased exposure to fluctuating fossil fuel prices reduces financial risks.
+There is employment potential within the green energy sector.
+Decreased disaster risk results from smaller and more modular green energy plants.
+The intermittency of renewable energy sources can lead to mismatches in generation and consumption.
+Dependence on regulation and potential instability are caused by changes in regulatory environments.
+Resistance from entrenched interests, such as fossil fuel producers, and existing preference for fossil fuel competition exist.
+Opposition from incumbents in the energy sector arises due to changes in business models and grid management.
+
+
+Lesson 3 - Specific Opportunities and Challenges of Green Energy Investments and Green Technology Investments
+Green energy investments and green technology investments have distinct characteristics: the former involves infrastructure investments, while the latter focuses on technology and innovation.
+Financing timelines and weighting of financial instruments differ between green energy and green technology investments, leading to specific challenges for each.
+Green technology investments encompass a wide range of applications, from improving efficiency in various sectors to reducing adverse environmental impacts.
+Revolutionary and evolutionary developments characterize green technology, such as the adoption of electric vehicles and advances in solar photovoltaic (PV) cell efficiency.
+Tesla exemplifies innovation in green technology, particularly in electric vehicles and battery energy storage systems.
+Challenges in green technology investments include technology uncertainty, funding uncertainty, market adoption, economic model viability, and policy uncertainty.
+Examples like Pelamis Wave Power and Viessmann highlight the challenges of technical issues, financing, and policy uncertainty in green technology investments.
+Green energy projects require significant capital investment due to their infrastructure nature and economies of scale, with examples like India’s solar PV installations demonstrating the substantial financial requirements.
+Dependence on grid build-out poses a challenge for green energy projects, as seen in countries like Chile and Germany, where insufficient transmission capacity hampers the utilization of renewable energy sources, leading to curtailment.
+Development and construction of green energy projects entail various challenges, including securing financing, obtaining permits, managing supply chain disruptions (e.g., during the COVID-19 pandemic), and addressing environmental and social impacts, exemplified by the Santa Rita hydro project in Guatemala.
+
+
+
+MODULE 4 Disclosures and Reporting
+
+Lesson 1 Landscape of Climate Disclosures
+Climate risk disclosures inform stakeholders of the extent to which an organization’s operations influence and are influenced by climate change.
+
+Furthermore, climate disclosures provide a clearer understanding of the potential risks associated with partnering or investing in specific institutions. For example, a company with significant greenhouse gas (GHG) emissions could face challenges if evolving climate policies necessitate alterations to its business practices.
+
+Double materiality, whereby both financial materiality, how sustainability factors impact a company’s financials, and impact materiality, how a company’s activities affect the environment, are assessed.
+
+Climate disclosures are increasingly critical due to the escalating physical, transition, and systemic risks of climate change, requiring forward-looking sustainability strategies.
+Financial markets need transparent, standardized information on climate risks and opportunities to effectively allocate capital and support the low-carbon transition.
+The Task Force on Climate-related Financial Disclosures (TCFD), established by the FSB, developed a widely adopted framework structured around four pillars:
+Governance, Strategy, Risk Management, and Metrics & Targets, with 11 supporting disclosures.
+TCFD guidelines helped mainstream climate risk reporting across industries, influencing regulators, corporations, and investors worldwide.
+Following TCFD’s 2023 disbandment, its recommendations were integrated into IFRS S1 and S2 standards, overseen by the International Sustainability Standards Board (ISSB).
+IFRS S1 covers general sustainability-related disclosures; IFRS S2 focuses on climate-related disclosures, both continuing TCFD’s four-pillar structure.
+The ISSB builds upon SASB, TCFD, CDSB, and other initiatives to create a global baseline of sustainability disclosure standards, endorsed by the G20, IOSCO, and others.
+Other voluntary frameworks—such as GRI, SASB, CDP, and PCAF—complement ISSB standards by offering topic- and sector-specific guidance or emissions accounting methodologies.
+These frameworks are interoperable with ISSB and each other, increasingly used in combination for credible, decision-useful climate reporting.
+Mandatory climate disclosure regulations aligned with IFRS S2/TCFD are being implemented globally—including in the UK, EU (CSRD/ESRS), US, Canada, Singapore, Japan, China, and Australia.
+The European Sustainability Reporting Standards (ESRS) under CSRD require double materiality, addressing both financial and environmental impacts across 12 ESG disclosure pillars.
+China's 2024 sustainability disclosure framework emphasizes phased mandatory ESG reporting and includes double materiality aligned with ISSB goals.
+While harmonization is progressing, reporting complexity and data gaps remain key challenges, particularly for small and non-listed companies.
+
+
+Lesson 2 Effectiveness of Key Frameworks
+
+Adoption of TCFD-aligned disclosures has grown steadily since 2017; as of 2022, 58% of companies disclosed against at least five of the 11 TCFD recommendations, but only 4% disclosed all.
+The most reported areas include climate risks, board oversight, and targets; scenario analysis remains the least disclosed (only 11%) despite its value in strategic planning.
+More than 80% of large asset managers and 50% of asset owners disclose at least some TCFD-aligned information, showing deepening financial market engagement.
+Despite improved uptake, the quality and usefulness of disclosures remains a concern—only 49% of reports from a 2023 sample included decision-useful information.
+TCFD usefulness studies show Scope 1/2 emissions, capital deployment, and opportunities are seen as most helpful; resilience and transition risk metrics were often rated lower in perceived utility.
+To improve usefulness, TCFD emphasized four actions: disclose financial impacts, use standard scenarios, report targets consistently, and increase participation.
+In 2023, the TCFD formally transferred its mandate to the ISSB, whose IFRS S1 and S2 standards fully incorporate the TCFD framework and extend its scope.
+The shift toward mandatory climate disclosure is now underway in many jurisdictions (e.g., CSRD in the EU, SEC in the US, FCA in the UK, CSA in Canada), aiming to enhance transparency, comparability, and risk management.
+Mandatory disclosure enhances:
+Full market participation,
+Consistency and comparability,
+Quality of disclosed data,
+Public accountability,
+Financial system resilience.
+Case studies from NatWest, Standard Bank Group, and DBS Group illustrate how firms improve governance, strategy alignment, and stakeholder engagement through structured climate reporting under TCFD/IFRS S2.
+NatWest and DBS use climate disclosures to embed transition planning, scenario testing, and risk analysis into decision-making and performance tracking frameworks.
+Framework effectiveness now depends not just on adoption—but also on disclosure depth, standardization, and institutional capacity to act on climate data.
+
+
+Lesson 3 Key Drivers and Elements of Climate-Related Disclosure
+Investors are increasingly integrating climate-related disclosures into their decision-making processes, recognizing the significant impact of environmental factors on financial outcomes. Climate disclosure data, rich in details about a company’s climate-related stance and practices, offers a multitude of applications for investors.
+
+Investors increasingly integrate climate-related disclosures into decision-making, using them for stock selection, fund rating, carbon footprinting, ESG research, risk management, policy development, and investment product design
+The Carbon Disclosure Project (CDP) supports climate transparency by offering tools like Climetrics, the first climate rating for funds.
+Scenario analysis is a required component in several major disclosure frameworks (ISSB, ESRS, SEC, FCA), but challenges include difficulty translating scenarios into economic impacts, identifying risk-sensitive sectors, and the lack of consistent, granular data
+Scope 3 emissions disclosure faces obstacles such as complex value chains, low data availability, multiple calculation methodologies, limited control over emissions, evolving regulatory frameworks, and resource intensity
+Only 36% of companies in North America disclose all three emission scopes per the GHG Protocol
+The European Sustainability Reporting Standards (ESRS) require disclosure across 12 standards covering environmental, social, and governance topics, using a "double materiality" approach—reporting on both financial and impact materiality
+Approximately 50,000 EU companies will be subject to ESRS, with reporting by non-EU companies required starting in 2028.
+The Sustainable Finance Disclosure Regulation (SFDR) mandates ESG-related disclosures by financial market participants, including:
+A Sustainability Risk Policy,
+A Principal Adverse Impact (PAI) statement,
+A policy on how sustainability risks are integrated into remuneration
+BNP Paribas and J.P. Morgan have implemented robust ESG integration strategies:
+BNP Paribas developed a proprietary ESG scoring framework and heatmapping tools for materiality assessment
+J.P. Morgan, in partnership with Datamaran, launched an ESG Discovery platform based on double materiality using AI to evaluate material ESG themes at the sector and company level.
+
+
+Lesson 4 Understanding Materiality; Greenwashing and Regulations to Combat It
+Materiality is crucial in sustainability reporting; it influences what information should be disclosed and how it should be reported, encompassing both financial and non-financial dimensions.
+
+Understanding Materiality
+Materiality is a key aspect of sustainability reporting. It refers to the significance of information in influencing the decisions of investors and other stakeholders. When it
+comes to climate-related issues, materiality assessment helps determine what information should be disclosed and how it should be reported. There are two dimensions of materiality: financial materiality and non-financial materiality, which is sometimes also referred to as “impact materiality” or “environmental and social materiality”.
+
+Financial materiality assesses information impacting a company’s financial performance and financial statements, including risks and opportunities related to sustainability matters.
+The International Sustainability Standards Board (ISSB) emphasizes disclosing material information on sustainability-related risks and opportunities influencing a company’s prospects, focusing relatively more on financial materiality.
+Double materiality, proposed by the European Union, considers both financial and impact materiality, requiring reporting on companies’ impacts on people and the environment alongside financial risks and opportunities.
+Divergent perspectives exist regarding materiality definitions, with ISSB and the Securities and Exchange Commission (SEC) emphasizing financial materiality, while the European Financial Reporting Advisory Group (EFRAG) promotes a double materiality approach.
+
+Controversy arises from different interpretations of double materiality, with debates on whether environmental impacts are material due to financial consequences or broader societal and environmental importance.
+What Is the Controversy Between Different Definitions of Materiality?
+The precise meaning of double materiality remains a topic of debate. The core issue lies in why information on environmental impacts can be considered material. Two
+interpretations exist:
+1. Weak conception of double materiality. Environmental impacts are material when they translate into financial risks, like legal liabilities or damage to a company’s reputation.
+2. Strong conception of double materiality. Environmental impacts are material because they are considered important for reasons beyond direct financial consequences.
+The interpretation depends on who the “reasonable person” is and what their interests are; that determines what qualifies as material or significant to them.
+
+EFRAG has introduced a four-step double materiality assessment process that includes stakeholder engagement and identification of risks, impacts, and opportunities to determine what is material for ESG disclosures.
+
+The lesson distinguishes between weak and strong views of double materiality: the weak view ties materiality only to financial impact, while the strong view argues for reporting on all material environmental and social impacts regardless of financial effect.
+Despite differences, common ground exists in assessing materiality from an investor perspective and considering both short-term financial impacts and broader societal consequences.
+Originally coined in 1986, “greenwashing” refers to deceptive marketing practices wherein companies exaggerate or misrepresent their environmental efforts, often to appear more sustainable than they are.
+Decoupling involves making superficial claims without implementing substantial changes, while attention-deflection entails concealing unsustainable practices through selective disclosure and misleading information.
+
+Recent developments include the emergence of “climate washing,” where companies exaggerate emissions savings from climate solutions, posing integrity risks and diverting investments from genuine progress.
+A study by the Grantham Research Institute on Climate Change and the Environment and DLA Piper introduces the concept of “climate washing,” which refers to exaggerating emissions savings from climate solutions and carbon offset projects. It contributes to corruption and integrity risks in climate solutions
+
+
+What Is Greenwashing?
+The term “greenwashing” was coined in 1986 by environmentalist Jay Westervelt, originally focused on the hospitality industry’s practices of promoting towel reuse. Greenwashing is generally defined as superficial changes to operations that are promoted or claimed to be more impactful than they actually are. Greenwashing is a complex term and encompasses willful exaggeration and misleading claims as well as well-intentioned and poorly informed statements.
+
+According to Siano et al., there are two main types of greenwashing:
+1. Decoupling. Occurs when organizations profess commitment to sustainability without implementing real changes. It encompasses actions like joining internationally recognized or non-governmental organization (NGO)-led sustainability initiatives for credibility, promoting unfeasible green claims and policies, and even making false statements.
+2. Attention deflection. Involves concealing unsustainable practices, providing selective and inaccurate disclosures, making incomplete product/service comparisons, using vague and irrelevant statements, and resorting to misleading content—even falsifications for gaining accreditations or benefits in extreme cases.
+
+Real-world cases of greenwashing enforcement include actions against Deutsche Bank’s DWS (SEC fines), HSBC (ASA ruling), Royal Bank of Canada (NGO complaints), and Australian superfunds (ASIC investigations), reflecting increasing regulatory scrutiny.
+Initiatives like the EU Taxonomy and Sustainable Finance Disclosure Regulation (SFDR) aim to standardize claims regarding sustainability, classify funds based on their environmental impact, and prevent misleading marketing.
+
+Essentially, under the SFDR, funds can be classified into the following categories:
+• Article 6 Funds: Funds that do not incorporate any form of sustainability into their investment procedures—they may encompass assets currently omitted by ESG funds, like tobacco firms or thermal coal manufacturers. While such funds can still be marketed in the European Union (as long as they are distinctly identified as non-sustainable) they might encounter significant challenges in promoting themselves compared to more sustainable investment options.
+• Article 8 Funds: Funds that promote environmental or social characteristics, or a combination of both, and require companies to follow good governance practices.
+These can be referred to as “light green” funds.
+• Article 9 Funds: Funds that have an explicit sustainable investment objective, such as reducing carbon emissions. These are known as “impact funds” or “dark green funds.”
+It is important to note that, as the regulation is evolving with changing definitions of what constitutes “sustainable” investment, there have been significant market movements,
+including what is described by many as “the great reclassification” of funds, where numerous Article 9 funds were “downgraded” into Article 8 funds by asset managers.
+
+The “great reclassification” under SFDR led to many funds being downgraded from Article 9 (impact) to Article 8 (promotion of environmental or social characteristics) amid evolving criteria for sustainable investments.
+Civil society and AI tools like the Natural Language Processing for Sustainable Finance Program (NLP4SF), developed by the World Wide Fund for Nature (WWF), the University of Oxford, and the University of Zurich, help detect greenwashing by evaluating the credibility of companies’ sustainability claims through language processing and verification.
+The WWF also offers a four-part test for consumers to evaluate green marketing claims based on the presence of buzzwords, evidence, verification, and whether sustainability is addressed holistically.
+
+
+
+
+Q and A
+1. As per the Net Zero Asset Owner Alliance’s Target-Setting Protocol (TSP), setting an intermediate target requires:
+✅ Engaging companies responsible for the most significant part of owned emissions in a portfolio.
+Feedback: Correct — intermediate targets involve engaging the 20 companies with the highest owned emissions or those responsible for a combined 65% of portfolio emissions.
+
+2. Which initiative aims to increase engagement and support member firms’ acceleration of transition alignment journeys?
+✅ GFANZ (Glasgow Financial Alliance for Net Zero)
+Feedback: Correct — GFANZ brings together sector-specific alliances to raise ambition and support members’ acceleration toward net-zero alignment.
+
+3. Which statement about corporate transition plan implementation is most accurate?
+✅ A credible transition plan should identify potential stranded assets.
+Feedback: Correct — identifying stranded assets helps assess how the transition may affect business strategy and cash flows.
+
+4. Which are two crucial components of the 2019 EU Green Deal?
+✅ Corporate Sustainability Reporting Directive (CSRD) and Sustainable Finance Disclosure Regulation (SFDR)
+Feedback: Correct — alongside the EU Taxonomy, CSRD and SFDR form key pillars of the EU Green Deal.
+
+5. Financed emissions are considered a financing company’s:
+✅ Scope 3 emissions.
+Feedback: Correct — financed emissions arise from investment and lending activities and are classified as Scope 3.
+
+6. Which internal carbon price mechanism refers to a hypothetical price per unit of carbon emissions with no tangible payments?
+✅ Shadow price.
+Feedback: Correct — a shadow price is a hypothetical internal carbon price used for planning and scenario analysis.
+
+7. A challenge in using transition pathways from recognized frameworks is that:
+✅ They can vary significantly between frameworks.
+Feedback: Correct — different frameworks yield varying forecasts and ambition levels, complicating consistency in planning.
+
+8. When marketers call something sustainable but the claim is misleading, this is called:
+✅ Greenlabeling.
+Feedback: Correct — greenlabeling refers to misleading sustainability claims.
+
+9. About the Climate Action 100+ Climate Policy Engagement Alignment Assessments:
+✅ They provide detailed analyses of the quality and accuracy of company disclosures on climate policy engagement activities.
+Feedback: Correct — the assessments evaluate both the alignment of actions and the quality of related disclosures.
+
+10. Greenwashing examples — match the terms:
+
+Belief that you can hide to avoid discovery → Greencrowding
+
+Blaming the consumer → Greenshifting
+
+Regularly changing ESG targets before achievement → Greenrinsing
+Feedback: Correct — these represent common patterns of corporate greenwashing.
+
+11. Under the ASEAN Taxonomy for Sustainable Finance, power generation activities with emissions:
+✅ Between 100g and 425g CO₂e/kWh must be sunset by 2045.
+Feedback: Correct — activities between 425–510g CO₂e/kWh may be eligible until 2030, and 100–425g CO₂e/kWh must be sunset by 2045.
+
+12. True or False: Evaluating a company’s climate transition plan without any benchmark may be the easiest starting point for new investors.
+✅ True.
+Feedback: Correct — while limited in merit, it can help beginners start before adopting formal benchmarks.
+
+13. The primary goal of transition planning is to:
+✅ Hold the increase in global average temperature below 2 °C above pre-industrial levels.
+Feedback: Correct — in line with the Paris Agreement, the aim is to limit temperature rise and develop national transition plans.
+
+14. Which statement about CDP (Carbon Disclosure Project) is correct?
+✅ Investors can use CDP’s scores as an indicator of the credibility of a company’s transition plan.
+Feedback: Correct — CDP scores are aligned with frameworks like TCFD and SBTi and indicate the robustness of corporate transition plans.

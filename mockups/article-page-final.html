@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paris Agreement — Climate Finance Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --font-display: 'Libre Baskerville', serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --color-primary: #A65D3F;
+  --color-primary-light: #C47A5C;
+  --color-primary-hover: #8F4F33;
+  --color-primary-subtle-bg: rgba(166, 93, 63, 0.07);
+  --color-secondary: #4E6F8E;
+  --color-page-bg: #F7F5F2;
+  --color-alt-surface: #EDEAE5;
+  --color-dark-surface: #2A2520;
+  --color-card-bg: #FFFFFF;
+  --color-text-primary: #2A2520;
+  --color-text-secondary: #544E49;
+  --color-text-muted: #6E6964;
+  --color-text-on-dark: #FAF8F5;
+  --shadow-card: 0 4px 20px rgba(0,0,0,0.08);
+  --shadow-card-hover: 0 8px 32px rgba(0,0,0,0.12);
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-pill: 100px;
+  --max-width: 1200px;
+  --transition-hover: 150ms ease;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); background: var(--color-page-bg); color: var(--color-text-primary); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
+
+:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; border-radius: 2px; }
+
+/* ── Nav ── */
+nav { background: var(--color-dark-surface); position: sticky; top: 0; z-index: 100; transition: box-shadow 300ms ease; }
+nav.nav--scrolled { box-shadow: 0 2px 12px rgba(0,0,0,0.2); }
+.nav-inner { max-width: var(--max-width); margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.nav-left { display: flex; align-items: center; gap: 10px; }
+.nav-wordmark { font-family: var(--font-body); font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(250,248,245,0.55); }
+.nav-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(250,248,245,0.3); }
+.nav-title { font-family: var(--font-display); font-size: 1.125rem; font-weight: 400; color: var(--color-text-on-dark); }
+.nav-links { display: flex; align-items: center; gap: 24px; }
+.nav-links a { font-family: var(--font-body); font-size: 0.875rem; font-weight: 500; color: rgba(250,248,245,0.8); text-decoration: none; transition: color var(--transition-hover); }
+.nav-links a:hover { color: var(--color-text-on-dark); }
+.nav-search { display: flex; align-items: center; color: rgba(250,248,245,0.6); }
+.nav-search:hover { color: var(--color-text-on-dark); }
+nav :focus-visible { outline-color: var(--color-primary-light); }
+
+/* ── Thread Bar ── */
+.thread-bar { background: var(--color-alt-surface); border-bottom: 1px solid rgba(0,0,0,0.06); }
+.thread-bar-inner { max-width: var(--max-width); margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.thread-info { display: flex; align-items: center; gap: 12px; }
+.thread-label { font-family: var(--font-body); font-size: 0.8125rem; color: var(--color-text-muted); }
+.thread-name { font-family: var(--font-body); font-size: 0.8125rem; font-weight: 600; color: var(--color-text-primary); }
+.thread-dots { display: flex; align-items: center; gap: 6px; }
+.thread-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--color-alt-surface); }
+.thread-dot.filled { background: var(--color-primary); }
+.thread-dot.current { background: var(--color-primary); width: 10px; height: 10px; box-shadow: 0 0 0 3px rgba(166,93,63,0.15); }
+.thread-nav-links { display: flex; gap: 16px; }
+.thread-nav-links a { font-family: var(--font-body); font-size: 0.8125rem; color: var(--color-primary); text-decoration: none; font-weight: 500; }
+.thread-nav-links a:hover { text-decoration: underline; }
+.thread-nav-links a.disabled { color: var(--color-text-muted); pointer-events: none; }
+
+/* ── Article Header ── */
+.article-header { padding: 40px 32px 0; max-width: var(--max-width); margin: 0 auto; }
+.breadcrumbs { font-family: var(--font-body); font-size: 0.8125rem; color: var(--color-text-muted); margin-bottom: 16px; }
+.breadcrumbs a { color: var(--color-text-muted); text-decoration: none; }
+.breadcrumbs a:hover { color: var(--color-primary); }
+.breadcrumbs span { margin: 0 6px; }
+.category-label { font-family: var(--font-body); font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-primary); margin-bottom: 12px; display: inline-block; }
+.article-title { font-family: var(--font-display); font-size: 2.5rem; font-weight: 700; color: var(--color-text-primary); line-height: 1.15; margin-bottom: 12px; text-rendering: optimizeLegibility; }
+.article-subtitle { font-family: var(--font-body); font-size: 1.1875rem; color: var(--color-text-secondary); line-height: 1.5; margin-bottom: 0; max-width: 680px; }
+
+/* ── Key Stats ── */
+.key-stats { max-width: var(--max-width); margin: -24px auto 0; padding: 0 32px; position: relative; z-index: 10; }
+.key-stats-inner { background: var(--color-card-bg); border-radius: var(--radius-md); box-shadow: var(--shadow-card); padding: 24px 32px; display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 40px; }
+.stat-item { flex: 1; text-align: center; }
+.stat-item + .stat-item { border-left: 1px solid var(--color-alt-surface); }
+.stat-number { font-family: var(--font-mono); font-size: 1.5rem; font-weight: 700; color: var(--color-text-primary); line-height: 1.2; }
+.stat-label { font-family: var(--font-body); font-size: 0.8125rem; color: var(--color-text-muted); margin-top: 4px; }
+
+/* ── Article Layout ── */
+.article-layout { max-width: var(--max-width); margin: 48px auto 0; padding: 0 32px; display: grid; grid-template-columns: 1fr 340px; gap: 48px; }
+.article-main { max-width: 680px; }
+.article-sidebar { position: sticky; top: 88px; align-self: start; }
+
+/* ── Sidebar TOC ── */
+.toc-card { background: var(--color-card-bg); border-radius: var(--radius-md); box-shadow: var(--shadow-card); padding: 24px; }
+.toc-label { font-family: var(--font-body); font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-text-muted); margin-bottom: 16px; }
+.toc-list { list-style: none; }
+.toc-list li { margin-bottom: 0; }
+.toc-list a { display: block; padding: 8px 12px 8px 16px; font-family: var(--font-body); font-size: 0.9rem; color: var(--color-text-secondary); text-decoration: none; border-left: 3px solid transparent; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; transition: all var(--transition-hover); }
+.toc-list a:hover { color: var(--color-primary); background: var(--color-primary-subtle-bg); }
+.toc-list a.active { color: var(--color-primary); border-left-color: var(--color-primary); background: var(--color-primary-subtle-bg); font-weight: 600; }
+
+/* ── Body ── */
+.article-body h2 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--color-text-primary); margin-top: 40px; margin-bottom: 16px; line-height: 1.2; text-rendering: optimizeLegibility; }
+.article-body h2:first-child { margin-top: 0; }
+.article-body p { font-family: var(--font-body); font-size: 1rem; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 24px; }
+.article-body a.wikilink { color: var(--color-primary); text-decoration: none; }
+.article-body a.wikilink:hover { text-decoration: underline; }
+
+/* ── Callout ── */
+.callout { border-left: 4px solid var(--color-primary); background: var(--color-primary-subtle-bg); padding: 20px 24px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 24px 0; }
+.callout-label { font-family: var(--font-body); font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-primary); margin-bottom: 8px; }
+.callout-text { font-family: var(--font-body); font-size: 1.0625rem; color: var(--color-text-secondary); line-height: 1.65; }
+
+/* ── You Might Not Expect ── */
+.unexpected-block { background: var(--color-primary-subtle-bg); border-left: 4px solid var(--color-primary); border-radius: 0 var(--radius-md) var(--radius-md) 0; padding: 28px 32px; margin: 48px 0 32px; }
+.unexpected-label { font-family: var(--font-body); font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-primary); margin-bottom: 10px; }
+.unexpected-headline { font-family: var(--font-display); font-size: 1.125rem; font-weight: 700; color: var(--color-text-primary); margin-bottom: 10px; line-height: 1.3; text-rendering: optimizeLegibility; }
+.unexpected-text { font-family: var(--font-body); font-size: 1rem; color: var(--color-text-secondary); line-height: 1.7; }
+
+/* ── Sources ── */
+.sources-section { margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--color-alt-surface); }
+.sources-section h2 { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; color: var(--color-text-primary); margin-bottom: 16px; }
+.sources-list { list-style: none; }
+.sources-list li { font-family: var(--font-body); font-size: 0.9375rem; color: var(--color-text-secondary); padding: 8px 0; border-bottom: 1px solid var(--color-alt-surface); }
+.sources-list li:last-child { border-bottom: none; }
+.source-type { font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-secondary); background: rgba(78,111,142,0.08); padding: 2px 8px; border-radius: var(--radius-pill); margin-right: 8px; font-weight: 500; }
+
+/* ── See Also ── */
+.see-also { margin: 48px 0; }
+.see-also h2 { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; color: var(--color-text-primary); margin-bottom: 20px; }
+.see-also-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; }
+.see-also-card { background: var(--color-card-bg); border-radius: var(--radius-md); box-shadow: var(--shadow-card); padding: 20px; text-decoration: none; transition: transform var(--transition-hover), box-shadow var(--transition-hover); display: block; will-change: transform; }
+.see-also-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-card-hover); }
+.see-also-badge { font-family: var(--font-body); font-size: 0.625rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-primary); margin-bottom: 8px; display: block; }
+.see-also-title { font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; color: var(--color-text-primary); margin-bottom: 6px; line-height: 1.3; text-rendering: optimizeLegibility; }
+.see-also-desc { font-family: var(--font-body); font-size: 0.8125rem; color: var(--color-text-muted); line-height: 1.5; }
+
+/* ── Thread Bottom ── */
+.thread-bottom { max-width: var(--max-width); margin: 0 auto; padding: 0 32px 48px; }
+.thread-bottom-inner { background: var(--color-card-bg); border-radius: var(--radius-md); box-shadow: var(--shadow-card); padding: 24px 32px; display: flex; align-items: center; justify-content: space-between; }
+.thread-bottom-info { display: flex; align-items: center; gap: 16px; }
+.thread-bottom-text { font-family: var(--font-body); font-size: 0.9375rem; color: var(--color-text-secondary); }
+.thread-bottom-text strong { color: var(--color-text-primary); }
+.thread-cta { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-body); font-size: 0.9375rem; font-weight: 600; color: var(--color-card-bg); background: var(--color-primary); padding: 10px 20px; border-radius: var(--radius-pill); text-decoration: none; transition: background var(--transition-hover); }
+.thread-cta:hover { background: var(--color-primary-hover); }
+.thread-prev { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-body); font-size: 0.9375rem; font-weight: 500; color: var(--color-primary); text-decoration: none; transition: color var(--transition-hover); }
+.thread-prev:hover { color: var(--color-primary-hover); }
+
+/* ── Footer — Internal page standard ── */
+.site-footer {
+  background: var(--color-alt-surface);
+  border-top: 1px solid #D9D4CE;
+  padding: 48px 32px;
+  margin-top: 64px;
+}
+.site-footer-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+}
+.site-footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.site-footer-wordmark {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+.site-footer-tagline {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+.site-footer-publication {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.04em;
+  margin-top: 16px;
+}
+.site-footer-section-title {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 16px;
+}
+.site-footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.site-footer-links a {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+.site-footer-links a:hover {
+  color: var(--color-primary);
+}
+.site-footer-bottom {
+  max-width: var(--max-width);
+  margin: 40px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid #D9D4CE;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.site-footer-copyright {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+.site-footer-legal {
+  display: flex;
+  gap: 24px;
+}
+.site-footer-legal a {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+.site-footer-legal a:hover {
+  color: var(--color-primary);
+}
+
+/* ── Animations ── */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+.fade-up { animation: fadeUp 0.5s ease both; }
+.fade-up-d1 { animation-delay: 0.1s; }
+.fade-up-d2 { animation-delay: 0.2s; }
+.fade-up-d3 { animation-delay: 0.3s; }
+.fade-up-d4 { animation-delay: 0.4s; }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .article-layout { grid-template-columns: 1fr; gap: 0; }
+  .article-sidebar { position: static; order: -1; margin-bottom: 32px; }
+  .article-main { max-width: 100%; }
+  .key-stats-inner { flex-wrap: wrap; gap: 16px; }
+  .stat-item + .stat-item { border-left: none; border-top: 1px solid var(--color-alt-surface); padding-top: 12px; }
+  .stat-item { flex: 1 1 45%; }
+  .article-title { font-size: 2rem; }
+  .see-also-grid { grid-template-columns: 1fr 1fr; }
+  .thread-bottom-inner { flex-direction: column; gap: 16px; text-align: center; }
+}
+@media (max-width: 600px) {
+  .article-header { padding: 24px 16px 0; }
+  .key-stats { padding: 0 16px; }
+  .article-layout { padding: 0 16px; }
+  .thread-bar-inner { padding: 12px 16px; }
+  .article-title { font-size: 1.75rem; }
+  .see-also-grid { grid-template-columns: 1fr; }
+  .stat-item { flex: 1 1 100%; }
+  .thread-bottom { padding: 0 16px 32px; }
+  .site-footer { padding: 40px 16px; }
+  .site-footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  .site-footer-bottom { flex-direction: column; align-items: flex-start; gap: 12px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-left">
+      <span class="nav-wordmark">Red Barrow</span>
+      <span class="nav-dot"></span>
+      <span class="nav-title">Climate Finance Wiki</span>
+    </div>
+    <div class="nav-links">
+      <a href="#">Topics</a>
+      <a href="#">About</a>
+      <a href="#">Explore</a>
+      <a href="#" class="nav-search" aria-label="Search">
+        <svg width="17" height="17" viewBox="0 0 17 17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="7" cy="7" r="5"/><line x1="10.8" y1="10.8" x2="15.5" y2="15.5"/></svg>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- Thread bar -->
+<div class="thread-bar">
+  <div class="thread-bar-inner">
+    <div class="thread-info">
+      <span class="thread-label">Thread:</span>
+      <span class="thread-name">Architecture of Climate Policy</span>
+      <div class="thread-dots">
+        <div class="thread-dot current"></div>
+        <div class="thread-dot"></div>
+        <div class="thread-dot"></div>
+        <div class="thread-dot"></div>
+        <div class="thread-dot"></div>
+        <div class="thread-dot"></div>
+      </div>
+      <span class="thread-label">Article 1 of 6</span>
+    </div>
+    <div class="thread-nav-links">
+      <a href="#" class="disabled">&larr; Previous</a>
+      <a href="#">Next &rarr;</a>
+    </div>
+  </div>
+</div>
+
+<!-- Article header -->
+<header class="article-header">
+  <div class="breadcrumbs fade-up">
+    <a href="#">Home</a><span>&rarr;</span><a href="#">Frameworks</a><span>&rarr;</span>Paris Agreement
+  </div>
+  <div class="category-label fade-up fade-up-d1">Frameworks</div>
+  <h1 class="article-title fade-up fade-up-d2">Paris Agreement</h1>
+  <p class="article-subtitle fade-up fade-up-d3">The treaty that made climate a financial obligation, not just an environmental aspiration.</p>
+</header>
+
+<!-- Key stats -->
+<div class="key-stats fade-up fade-up-d4">
+  <div class="key-stats-inner">
+    <div class="stat-item">
+      <div class="stat-number">Dec 2015</div>
+      <div class="stat-label">Adopted</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">195</div>
+      <div class="stat-label">Parties</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">1.5&deg;C</div>
+      <div class="stat-label">Temperature target</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">$100B/yr</div>
+      <div class="stat-label">Finance goal</div>
+    </div>
+  </div>
+</div>
+
+<!-- Main layout -->
+<div class="article-layout">
+
+  <!-- Main content -->
+  <main class="article-main">
+    <article class="article-body">
+
+      <section id="overview">
+        <h2>Overview</h2>
+        <p>Adopted 12 December 2015 at COP21 in Paris, entered into force November 2016. Replaced the <a href="#" class="wikilink">Kyoto Protocol</a> &mdash; fixed its biggest flaw by requiring participation from all countries, not just wealthy ones. 195 parties ratified.</p>
+        <p>Three headline goals: limit warming to well below 2&deg;C while pursuing 1.5&deg;C; strengthen adaptation; align financial flows with low-carbon development. That last goal makes it a climate finance document as much as a climate one.</p>
+        <p>The Agreement calls for a balance between emissions and removals in the second half of the century &mdash; the legal formulation of <a href="#" class="wikilink">net zero</a>.</p>
+      </section>
+
+      <section id="ndcs-ratchet">
+        <h2>How It Works: NDCs and the Ratchet</h2>
+        <p>The core mechanism is the Nationally Determined Contribution. Each country sets its own target and submits to the <a href="#" class="wikilink">UNFCCC</a>. No penalty for missing an NDC, but a legally binding obligation to have one and update it.</p>
+        <p>The ratchet mechanism requires progressively more ambitious NDCs every five years. A Global Stocktake every five years assesses collective progress &mdash; the first, at COP28 (2023), concluded the world was off track.</p>
+      </section>
+
+      <section id="finance">
+        <h2>Finance and the $100 Billion Goal</h2>
+        <p>Article 2.1(c) calls for &ldquo;making finance flows consistent with a pathway towards low greenhouse gas emissions.&rdquo; Developed countries pledged $100B/year for developing nations by 2020 &mdash; technically met, though disputed.</p>
+        <p>A new goal (NCQG) is being negotiated in the trillions. The <a href="#" class="wikilink">Just Transition</a> dimension &mdash; who pays, who benefits &mdash; remains deeply contested.</p>
+
+        <div class="callout">
+          <div class="callout-label">Comms Insight</div>
+          <div class="callout-text">When a company or fund says it is &ldquo;Paris-aligned,&rdquo; it is claiming consistency with the 1.5&deg;C or well-below-2&deg;C goal. That is a specific, testable claim &mdash; not a vague aspiration. Ask what methodology they are using to verify it.</div>
+        </div>
+      </section>
+
+      <section id="carbon-markets">
+        <h2>Carbon Markets Under the Agreement</h2>
+        <p><a href="#" class="wikilink">Article 6</a> creates the framework for international carbon markets. Rules for Internationally Transferred Mitigation Outcomes (ITMOs) were only finalised at COP29 in 2024.</p>
+      </section>
+
+      <!-- You might not expect -->
+      <div class="unexpected-block">
+        <div class="unexpected-label">You Might Not Expect</div>
+        <div class="unexpected-headline">The Paris Agreement is as much about money as about temperature</div>
+        <div class="unexpected-text">Article 2.1(c) &mdash; the finance flows clause &mdash; is the legal basis for everything from <a href="#" class="wikilink">GFANZ</a> to the <a href="#" class="wikilink">EU Taxonomy</a> to central bank climate stress tests. The temperature targets get the headlines, but the finance clause is doing more work.</div>
+      </div>
+
+      <!-- Sources -->
+      <div class="sources-section">
+        <h2>Sources</h2>
+        <ul class="sources-list">
+          <li><span class="source-type">course</span>CFA Institute Climate Finance Certificate course materials</li>
+          <li><span class="source-type">treaty</span>UNFCCC Paris Agreement text (2015)</li>
+        </ul>
+      </div>
+
+    </article>
+
+    <!-- See Also -->
+    <div class="see-also">
+      <h2>See Also</h2>
+      <div class="see-also-grid">
+        <a href="#" class="see-also-card">
+          <span class="see-also-badge">Frameworks</span>
+          <div class="see-also-title">Kyoto Protocol</div>
+          <div class="see-also-desc">The predecessor treaty and why it fell short.</div>
+        </a>
+        <a href="#" class="see-also-card">
+          <span class="see-also-badge">Frameworks</span>
+          <div class="see-also-title">UNFCCC and COP</div>
+          <div class="see-also-desc">The international architecture that houses the Paris Agreement.</div>
+        </a>
+        <a href="#" class="see-also-card">
+          <span class="see-also-badge">Frameworks</span>
+          <div class="see-also-title">Article 6</div>
+          <div class="see-also-desc">The framework for international carbon markets under Paris.</div>
+        </a>
+        <a href="#" class="see-also-card">
+          <span class="see-also-badge">Concepts</span>
+          <div class="see-also-title">Net Zero vs Carbon Neutral</div>
+          <div class="see-also-desc">A critical distinction with legal and reputational implications.</div>
+        </a>
+        <a href="#" class="see-also-card">
+          <span class="see-also-badge">Actors</span>
+          <div class="see-also-title">GFANZ</div>
+          <div class="see-also-desc">The financial sector alliance built on Paris-alignment commitments.</div>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Sidebar -->
+  <aside class="article-sidebar">
+    <div class="toc-card">
+      <div class="toc-label">In This Article</div>
+      <ul class="toc-list">
+        <li><a href="#overview" class="active" data-section="overview">Overview</a></li>
+        <li><a href="#ndcs-ratchet" data-section="ndcs-ratchet">How It Works: NDCs and the Ratchet</a></li>
+        <li><a href="#finance" data-section="finance">Finance and the $100 Billion Goal</a></li>
+        <li><a href="#carbon-markets" data-section="carbon-markets">Carbon Markets Under the Agreement</a></li>
+      </ul>
+    </div>
+  </aside>
+</div>
+
+<!-- Thread bottom -->
+<div class="thread-bottom" style="margin-top: 48px;">
+  <div class="thread-bottom-inner">
+    <div class="thread-bottom-info">
+      <div class="thread-dots">
+        <div class="thread-dot current"></div>
+        <div class="thread-dot"></div>
+        <div class="thread-dot"></div>
+        <div class="thread-dot"></div>
+        <div class="thread-dot"></div>
+        <div class="thread-dot"></div>
+      </div>
+      <div class="thread-bottom-text">Article 1 of 6 in <strong>Architecture of Climate Policy</strong></div>
+    </div>
+    <a href="#" class="thread-cta">Next in thread &rarr;</a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-brand">
+      <span class="site-footer-wordmark">Red Barrow</span>
+      <p class="site-footer-tagline">Making climate finance make sense&nbsp;&mdash;<br>for the people who explain it.</p>
+      <span class="site-footer-publication">A Red Barrow publication</span>
+    </div>
+    <div>
+      <h3 class="site-footer-section-title">Categories</h3>
+      <div class="site-footer-links">
+        <a href="#">Concepts</a>
+        <a href="#">Instruments</a>
+        <a href="#">Actors</a>
+        <a href="#">Frameworks</a>
+        <a href="#">Case Studies</a>
+      </div>
+    </div>
+    <div>
+      <h3 class="site-footer-section-title">Wiki</h3>
+      <div class="site-footer-links">
+        <a href="#">About this project</a>
+        <a href="#">How to use the wiki</a>
+        <a href="#">Knowledge Graph</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+  </div>
+  <div class="site-footer-bottom">
+    <span class="site-footer-copyright">&copy; 2026 Red Barrow. All rights reserved.</span>
+    <div class="site-footer-legal">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  const sections = document.querySelectorAll('.article-body section[id]');
+  const tocLinks = document.querySelectorAll('.toc-list a[data-section]');
+
+  if (!sections.length || !tocLinks.length) return;
+
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        tocLinks.forEach(function(link) { link.classList.remove('active'); });
+        const activeLink = document.querySelector('.toc-list a[data-section="' + entry.target.id + '"]');
+        if (activeLink) activeLink.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-80px 0px -60% 0px', threshold: 0 });
+
+  sections.forEach(function(section) { observer.observe(section); });
+
+  tocLinks.forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      var target = document.getElementById(this.getAttribute('data-section'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        history.pushState(null, '', '#' + this.getAttribute('data-section'));
+      }
+    });
+  });
+})();
+
+// Nav scroll shadow
+var navEl = document.querySelector('nav');
+var navTicking = false;
+window.addEventListener('scroll', function() {
+  if (!navTicking) {
+    requestAnimationFrame(function() {
+      navEl.classList.toggle('nav--scrolled', window.scrollY > 80);
+      navTicking = false;
+    });
+    navTicking = true;
+  }
+}, { passive: true });
+</script>
+
+</body>
+</html>

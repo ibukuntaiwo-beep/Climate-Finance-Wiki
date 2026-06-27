@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Climate Finance Wiki</title>
+<script>document.documentElement.classList.add('js')</script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+  :root {
+    --font-display: 'Libre Baskerville', serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --color-primary: #A65D3F;
+    --color-primary-light: #C47A5C;
+    --color-primary-hover: #8F4F33;
+    --color-secondary: #4E6F8E;
+    --color-page-bg: #F7F5F2;
+    --color-alt-surface: #EDEAE5;
+    --color-dark-surface: #2A2520;
+    --color-card-bg: #FFFFFF;
+    --color-text-primary: #2A2520;
+    --color-text-secondary: #544E49;
+    --color-text-muted: #6E6964;
+    --color-text-on-dark: #FAF8F5;
+    --shadow-card: 0 4px 20px rgba(0,0,0,0.08);
+    --shadow-card-hover: 0 8px 32px rgba(0,0,0,0.12);
+    --shadow-elevated: 0 12px 48px rgba(0,0,0,0.14);
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-pill: 100px;
+    --max-width: 1200px;
+    --transition-hover: 150ms ease;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { font-size: 16px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  body { font-family: var(--font-body); background: var(--color-page-bg); color: var(--color-text-primary); line-height: 1.6; }
+
+  /* ════════════════════════════════════════════
+     PROPOSAL 1: ENTRANCE CHOREOGRAPHY
+     ════════════════════════════════════════════ */
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-case-label  { animation: fadeUp 500ms ease-out 100ms both; }
+  .hero-text h1     { animation: fadeUp 500ms ease-out 220ms both; }
+  .hero-pullquote   { animation: fadeUp 500ms ease-out 380ms both; }
+  .hero-meta        { animation: fadeUp 500ms ease-out 480ms both; }
+  .hero-cta         { animation: fadeUp 500ms ease-out 540ms both; }
+  .floating-cards   { animation: fadeUp 600ms ease-out 700ms both; }
+
+  /* Scroll-triggered reveals (requires JS) */
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 600ms ease-out, transform 600ms ease-out;
+  }
+  .js .reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  /* No-JS fallback: everything visible */
+  .reveal { /* base: visible by default for non-js */ }
+
+  /* ── Nav ── */
+  nav {
+    background: var(--color-dark-surface);
+    position: sticky; top: 0; z-index: 900;
+    transition: box-shadow 300ms ease;
+  }
+  nav.nav--scrolled {
+    box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+  }
+  .nav-inner { max-width: var(--max-width); margin: 0 auto; padding: 0 32px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-left { display: flex; align-items: center; gap: 12px; }
+  .nav-wordmark { font-family: var(--font-body); font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(250,248,245,0.55); }
+  .nav-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(250,248,245,0.3); }
+  .nav-title { font-family: var(--font-display); font-size: 1.125rem; font-weight: 400; color: var(--color-text-on-dark); }
+  .nav-links { display: flex; align-items: center; gap: 28px; }
+  .nav-links a { font-family: var(--font-body); font-size: 0.875rem; font-weight: 500; color: rgba(250,248,245,0.8); text-decoration: none; transition: color var(--transition-hover); }
+  .nav-links a:hover { color: var(--color-text-on-dark); }
+  .nav-search {
+    color: rgba(250,248,245,0.6); text-decoration: none;
+    transition: color var(--transition-hover);
+    display: flex; align-items: center;
+  }
+  .nav-search:hover { color: var(--color-text-on-dark); }
+
+  /* ════════════════════════════════════════════
+     PROPOSAL 2: SECTION LABELS WITH RULES
+     ════════════════════════════════════════════ */
+
+  .section-label {
+    font-family: var(--font-body); font-size: 0.6875rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-primary);
+    display: flex; align-items: center; gap: 20px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--color-alt-surface);
+  }
+
+  /* ════════════════════════════════════════════
+     HERO D: FLOATING CARDS
+     ════════════════════════════════════════════ */
+
+  .hero-split {
+    display: grid;
+    grid-template-columns: 55fr 45fr;
+    min-height: 480px;
+  }
+
+  .hero-photo { position: relative; overflow: hidden; }
+  .hero-photo img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.8) brightness(0.9); display: block; }
+  .hero-photo-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to right, transparent 60%, rgba(42,37,32,0.35) 100%);
+  }
+
+  .hero-text {
+    background: var(--color-dark-surface);
+    padding: 56px 48px 80px;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .hero-case-label {
+    font-family: var(--font-body); font-size: 0.6875rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--color-primary-light); margin-bottom: 16px;
+  }
+  .hero-text h1 {
+    font-family: var(--font-display); font-size: 2.25rem; font-weight: 700;
+    line-height: 1.2; color: var(--color-text-on-dark); margin-bottom: 24px;
+    text-rendering: optimizeLegibility;
+  }
+  .hero-pullquote { border-left: 4px solid var(--color-primary); padding-left: 24px; margin-bottom: 28px; }
+  .hero-pullquote p {
+    font-family: var(--font-display); font-size: 1rem; font-style: italic;
+    font-weight: 400; line-height: 1.65; color: rgba(250,248,245,0.72);
+  }
+  .hero-meta { font-family: var(--font-mono); font-size: 0.8125rem; color: rgba(250,248,245,0.35); margin-bottom: 28px; }
+  .hero-cta {
+    display: inline-block; align-self: flex-start;
+    background: var(--color-primary); color: #fff;
+    font-family: var(--font-body); font-size: 0.9375rem; font-weight: 600;
+    padding: 14px 32px; border-radius: var(--radius-pill); text-decoration: none;
+    transition: background var(--transition-hover), transform var(--transition-hover);
+    will-change: transform;
+  }
+  .hero-cta:hover { background: var(--color-primary-hover); transform: translateY(-1px); }
+
+  /* ── Floating Cards ── */
+  .floating-cards {
+    max-width: var(--max-width); margin: 0 auto;
+    padding: 0 32px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+    margin-top: -40px;
+    position: relative; z-index: 10; isolation: isolate;
+  }
+  .floating-card {
+    background: var(--color-card-bg); border-radius: var(--radius-md);
+    box-shadow: var(--shadow-elevated); padding: 28px 32px;
+    transition: transform var(--transition-hover), box-shadow var(--transition-hover);
+    will-change: transform;
+  }
+  .floating-card:hover { transform: translateY(-2px); box-shadow: 0 16px 56px rgba(0,0,0,0.16); }
+
+  .floating-card--topic { border-top: 3px solid var(--color-primary); }
+  .floating-card--news { border-top: 3px solid var(--color-secondary); }
+
+  .floating-card-label {
+    font-family: var(--font-body); font-size: 0.6875rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--color-primary); margin-bottom: 14px;
+  }
+  .floating-card--news .floating-card-label { color: var(--color-secondary); }
+
+  .floating-card h3 {
+    font-family: var(--font-display); font-size: 1.0625rem; font-weight: 700;
+    color: var(--color-text-primary); line-height: 1.35; margin-bottom: 8px;
+  }
+  .floating-card p {
+    font-family: var(--font-body); font-size: 0.875rem;
+    color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 14px;
+  }
+  .floating-card-source {
+    font-family: var(--font-mono); font-size: 0.75rem;
+    color: var(--color-text-muted); margin-bottom: 14px;
+  }
+  .floating-card a {
+    font-family: var(--font-body); font-size: 0.8125rem; font-weight: 600;
+    color: var(--color-primary); text-decoration: none;
+    transition: color var(--transition-hover);
+  }
+  .floating-card a:hover { color: var(--color-primary-hover); }
+  .floating-card--news a { color: var(--color-secondary); }
+
+  /* ════════════════════════════════════════════
+     PROPOSAL 3: STATS STRIP
+     ════════════════════════════════════════════ */
+
+  .stats-strip {
+    max-width: var(--max-width); margin: 0 auto;
+    padding: 28px 32px;
+    border-bottom: 1px solid var(--color-alt-surface);
+  }
+  .stats-strip-inner {
+    display: flex; justify-content: center; align-items: baseline;
+    gap: 8px;
+  }
+  .strip-stat {
+    font-family: var(--font-mono); font-size: 0.8125rem; font-weight: 600;
+    color: var(--color-text-primary); letter-spacing: 0.01em;
+  }
+  .strip-sep {
+    font-family: var(--font-mono); font-size: 0.8125rem;
+    color: var(--color-text-muted); user-select: none;
+  }
+
+  /* ════════════════════════════════════════════
+     THREAD CARDS
+     ════════════════════════════════════════════ */
+
+  .trails-section {
+    max-width: var(--max-width); margin: 0 auto;
+    padding: 56px 32px 64px;
+  }
+  .trails-section .section-label { margin-bottom: 12px; }
+  .trails-subtitle {
+    font-family: var(--font-display); font-size: 1rem; font-style: italic;
+    color: var(--color-text-muted); margin-bottom: 32px;
+  }
+  .trails-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+
+  .trail-card {
+    background: var(--color-card-bg); border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card); overflow: hidden;
+    transition: transform var(--transition-hover), box-shadow var(--transition-hover);
+    will-change: transform;
+  }
+  .trail-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-card-hover); }
+
+  .trail-card-photo { height: 180px; overflow: hidden; position: relative; }
+  .trail-card-photo img {
+    width: 100%; height: 100%; object-fit: cover; filter: saturate(0.8);
+    transition: transform 400ms ease;
+  }
+  .trail-card:hover .trail-card-photo img { transform: scale(1.04); }
+  .trail-card-photo-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(42,37,32,0.5) 0%, transparent 50%);
+  }
+  .trail-card-photo-label {
+    position: absolute; bottom: 14px; left: 20px;
+    font-family: var(--font-mono); font-size: 0.6875rem; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase; color: rgba(250,248,245,0.7);
+  }
+
+  .trail-card-body { padding: 24px 28px 28px; }
+  .trail-card h3 {
+    font-family: var(--font-display); font-size: 1.1875rem; font-weight: 700;
+    color: var(--color-text-primary); line-height: 1.3; margin-bottom: 8px;
+  }
+  .trail-card-tagline {
+    font-family: var(--font-body); font-size: 0.9375rem; font-style: italic;
+    color: var(--color-text-secondary); line-height: 1.5; margin-bottom: 20px;
+  }
+  .trail-card-list {
+    list-style: none; margin-bottom: 24px;
+    border-top: 1px solid var(--color-alt-surface); padding-top: 16px;
+  }
+  .trail-card-list li { display: flex; align-items: baseline; gap: 10px; padding: 6px 0; }
+  .trail-num { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 600; color: var(--color-primary); min-width: 18px; }
+
+  /* Proposal 2: hoverable article names */
+  .trail-article {
+    font-family: var(--font-body); font-size: 0.8125rem; color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: color var(--transition-hover);
+  }
+  .trail-article:hover {
+    color: var(--color-primary);
+  }
+
+  .trail-card-cta {
+    display: inline-block;
+    font-family: var(--font-body); font-size: 0.875rem; font-weight: 600;
+    color: var(--color-primary); text-decoration: none;
+    transition: color var(--transition-hover);
+  }
+  .trail-card-cta:hover { color: var(--color-primary-hover); }
+
+  /* ════════════════════════════════════════════
+     PHOTO DIVIDER
+     ════════════════════════════════════════════ */
+
+  .photo-divider { position: relative; height: 240px; overflow: hidden; }
+  .photo-divider img {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: saturate(0.7) brightness(0.85); display: block;
+  }
+  .photo-divider-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(247,245,242,0.3) 0%, rgba(42,37,32,0.2) 100%);
+  }
+  .photo-divider-text {
+    position: absolute; bottom: 28px; left: 0; right: 0; text-align: center;
+    font-family: var(--font-display); font-size: 1.125rem; font-style: italic;
+    color: rgba(250,248,245,0.85);
+  }
+
+  /* ════════════════════════════════════════════
+     CATEGORIES WITH DEPTH
+     ════════════════════════════════════════════ */
+
+  .categories-section {
+    max-width: var(--max-width); margin: 0 auto;
+    padding: 56px 32px 64px;
+  }
+  .categories-section .section-label { margin-bottom: 28px; }
+
+  .categories-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+  .category-card {
+    background: var(--color-card-bg); border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card); padding: 28px;
+    transition: transform var(--transition-hover), box-shadow var(--transition-hover);
+    will-change: transform;
+  }
+  .category-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-card-hover); }
+
+  .category-card-header {
+    display: flex; align-items: baseline; justify-content: space-between;
+    margin-bottom: 16px; padding-bottom: 16px;
+    border-bottom: 1px solid var(--color-alt-surface);
+  }
+  .category-card h3 {
+    font-family: var(--font-display); font-size: 1.0625rem; font-weight: 700;
+    color: var(--color-text-primary);
+  }
+  .category-card-counts { text-align: right; }
+  .category-card-count {
+    font-family: var(--font-mono); font-size: 0.8125rem; font-weight: 600;
+    color: var(--color-text-primary); display: block;
+  }
+  .category-card-count-label { font-family: var(--font-mono); font-size: 0.6875rem; color: var(--color-text-muted); }
+
+  /* Proposal 3: depth bar */
+  .category-depth-bar {
+    width: 48px; height: 3px;
+    background: var(--color-alt-surface);
+    border-radius: 2px; margin-top: 6px;
+  }
+  .category-depth-bar-fill {
+    height: 100%;
+    background: var(--color-primary);
+    border-radius: 2px;
+    transition: width 600ms ease-out;
+  }
+
+  .category-card-top-label {
+    font-family: var(--font-body); font-size: 0.6875rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--color-text-muted); margin-bottom: 10px;
+  }
+  .category-card-articles { list-style: none; }
+
+  /* Proposal 2: hoverable category article names */
+  .category-card-articles li {
+    font-family: var(--font-body); font-size: 0.8125rem;
+    color: var(--color-text-secondary); padding: 4px 0;
+    cursor: pointer;
+    transition: color var(--transition-hover);
+  }
+  .category-card-articles li:hover { color: var(--color-primary); }
+
+  .category-card-link {
+    display: inline-block; margin-top: 14px;
+    font-family: var(--font-body); font-size: 0.8125rem; font-weight: 600;
+    color: var(--color-primary); text-decoration: none;
+    transition: color var(--transition-hover);
+  }
+  .category-card-link:hover { color: var(--color-primary-hover); }
+
+  .categories-grid-bottom {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 24px; margin-top: 24px;
+    max-width: calc((100% - 24px) * 2 / 3 + 24px);
+    margin-left: auto; margin-right: auto;
+  }
+
+  /* ════════════════════════════════════════════
+     PROPOSAL 3: STRUCTURED SOURCES BAR
+     ════════════════════════════════════════════ */
+
+  .sources-bar { background: var(--color-alt-surface); padding: 28px 32px; }
+  .sources-bar-inner {
+    max-width: var(--max-width); margin: 0 auto;
+    display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+  }
+  .sources-bar-label {
+    font-family: var(--font-body); font-size: 0.6875rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--color-primary); white-space: nowrap;
+  }
+  .sources-bar-text {
+    font-family: var(--font-body); font-size: 0.8125rem;
+    color: var(--color-text-muted); line-height: 1.6;
+  }
+
+  /* ════════════════════════════════════════════
+     PROPOSAL 2: ENHANCED FOOTER
+     ════════════════════════════════════════════ */
+
+  footer { background: var(--color-dark-surface); padding: 32px 32px 28px; }
+  .footer-inner {
+    max-width: var(--max-width); margin: 0 auto;
+  }
+  .footer-top {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding-bottom: 20px; margin-bottom: 20px;
+    border-bottom: 1px solid rgba(250,248,245,0.08);
+  }
+  .footer-brand {
+    font-family: var(--font-body); font-size: 0.8125rem; color: rgba(250,248,245,0.5);
+  }
+  .footer-date {
+    font-family: var(--font-body); font-size: 0.8125rem; color: rgba(250,248,245,0.5);
+  }
+  .footer-nav {
+    display: flex; gap: 24px; flex-wrap: wrap;
+  }
+  .footer-nav a {
+    font-family: var(--font-body); font-size: 0.8125rem; font-weight: 500;
+    color: rgba(250,248,245,0.45); text-decoration: none;
+    transition: color var(--transition-hover);
+  }
+  .footer-nav a:hover { color: rgba(250,248,245,0.8); }
+
+  /* ── A11y ── */
+  :focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+  nav :focus-visible, .hero-text :focus-visible, footer :focus-visible { outline-color: var(--color-primary-light); }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-delay: 0ms !important;
+      transition-duration: 0.01ms !important;
+    }
+    .js .reveal { opacity: 1; transform: none; }
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 1024px) {
+    .hero-split { grid-template-columns: 1fr; min-height: auto; }
+    .hero-photo { height: 340px; }
+    .hero-photo-overlay { background: linear-gradient(to top, rgba(42,37,32,0.4), transparent); }
+    .hero-text { padding: 48px 32px 72px; }
+    .trails-grid { grid-template-columns: 1fr 1fr; }
+    .trails-grid .trail-card:nth-child(3) { grid-column: 1 / -1; max-width: 480px; justify-self: center; }
+    .categories-grid { grid-template-columns: repeat(2, 1fr); }
+    .categories-grid-bottom { max-width: none; }
+  }
+  @media (max-width: 768px) {
+    .hero-photo { height: 280px; }
+    .hero-text h1 { font-size: 1.75rem; }
+    .hero-text { padding: 40px 24px 64px; }
+    .floating-cards { grid-template-columns: 1fr; margin-top: -32px; }
+    .trails-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+    .trails-grid .trail-card:nth-child(3) { max-width: none; }
+    .categories-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+    .categories-grid-bottom { grid-template-columns: 1fr; max-width: 480px; }
+    .photo-divider { height: 180px; }
+    .sources-bar-inner { flex-direction: column; gap: 8px; }
+    .footer-top { flex-direction: column; gap: 8px; }
+    .footer-nav { gap: 16px; }
+    .stats-strip-inner { flex-wrap: wrap; justify-content: center; }
+  }
+  @media (max-width: 640px) {
+    .hero-text { padding: 36px 20px 56px; }
+    .floating-cards { padding: 0 20px; }
+    .floating-card { padding: 24px; }
+    .trails-section { padding: 48px 20px 56px; }
+    .categories-section { padding: 48px 20px 56px; }
+    .stats-strip { padding: 24px 20px; }
+    .nav-links { gap: 16px; }
+  }
+  @media (max-width: 480px) {
+    .hero-text h1 { font-size: 1.5rem; }
+    .nav-links a:last-child { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-left">
+      <span class="nav-wordmark">Red Barrow</span>
+      <span class="nav-dot"></span>
+      <span class="nav-title">Climate Finance Wiki</span>
+    </div>
+    <div class="nav-links">
+      <a href="#">Topics</a>
+      <a href="#">About</a>
+      <a href="#">Explore</a>
+      <a href="#" class="nav-search" aria-label="Search">
+        <svg width="17" height="17" viewBox="0 0 17 17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="7" cy="7" r="5"/><line x1="10.8" y1="10.8" x2="15.5" y2="15.5"/></svg>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero-split">
+  <div class="hero-photo">
+    <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1200&q=80" alt="London financial district at dusk">
+    <div class="hero-photo-overlay"></div>
+  </div>
+  <div class="hero-text">
+    <div class="hero-case-label">Featured Case Study</div>
+    <h1>HSBC Promised Net&nbsp;Zero. The Numbers Said Otherwise.</h1>
+    <blockquote class="hero-pullquote">
+      <p>Three years after pledging to align with Paris, HSBC remained Europe&rsquo;s largest financier of fossil fuel expansion.</p>
+    </blockquote>
+    <div class="hero-meta">Case Studies &middot; 4 connected articles</div>
+    <a href="#" class="hero-cta">Read the case study &rarr;</a>
+  </div>
+</section>
+
+<!-- ═══ FLOATING CARDS ═══ -->
+<div class="floating-cards">
+  <div class="floating-card floating-card--topic">
+    <div class="floating-card-label">Topic of the Day</div>
+    <h3>Stranded Assets</h3>
+    <p>Why $1.4 trillion in fossil fuel reserves may never be burned &mdash; and what that means for every portfolio still holding them.</p>
+    <a href="#">Read &rarr;</a>
+  </div>
+  <div class="floating-card floating-card--news">
+    <div class="floating-card-label">In the News</div>
+    <h3>EU Carbon Border Tax Takes Effect</h3>
+    <p>CBAM begins charging importers &mdash; a landmark for global carbon pricing.</p>
+    <div class="floating-card-source">Carbon Brief &middot; Apr 14, 2026</div>
+    <a href="#">Read &amp; explore linked topics &rarr;</a>
+  </div>
+</div>
+
+<!-- ═══ STATS STRIP ═══ -->
+<div class="stats-strip reveal">
+  <div class="stats-strip-inner">
+    <span class="strip-stat">48 articles</span>
+    <span class="strip-sep">&middot;</span>
+    <span class="strip-stat">240+ connections</span>
+    <span class="strip-sep">&middot;</span>
+    <span class="strip-stat">5 categories</span>
+    <span class="strip-sep">&middot;</span>
+    <span class="strip-stat">3 guided trails</span>
+  </div>
+</div>
+
+<!-- ═══ THREAD CARDS ═══ -->
+<section class="trails-section reveal">
+  <div class="section-label">Choose Your Path</div>
+  <p class="trails-subtitle">Three expert-curated paths through the material. Pick the one that matches your need.</p>
+  <div class="trails-grid">
+    <div class="trail-card">
+      <div class="trail-card-photo">
+        <img src="https://images.unsplash.com/photo-1532601224476-15c79f2f7a51?auto=format&fit=crop&w=800&q=80" alt="Industrial power plant">
+        <div class="trail-card-photo-overlay"></div>
+        <span class="trail-card-photo-label">6 articles &middot; ~35 min</span>
+      </div>
+      <div class="trail-card-body">
+        <h3>The Greenwashing Trail</h3>
+        <p class="trail-card-tagline">From misleading claims to criminal charges.</p>
+        <ol class="trail-card-list">
+          <li><span class="trail-num">01</span><span class="trail-article">Greenwashing</span></li>
+          <li><span class="trail-num">02</span><span class="trail-article">Greenwashing Typology</span></li>
+          <li><span class="trail-num">03</span><span class="trail-article">VW Dieselgate</span></li>
+          <li><span class="trail-num">04</span><span class="trail-article">HSBC Greenwashing</span></li>
+          <li><span class="trail-num">05</span><span class="trail-article">DWS SEC Fine</span></li>
+          <li><span class="trail-num">06</span><span class="trail-article">Climate Litigation</span></li>
+        </ol>
+        <a href="#" class="trail-card-cta">Start this trail &rarr;</a>
+      </div>
+    </div>
+    <div class="trail-card">
+      <div class="trail-card-photo">
+        <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=800&q=80" alt="Solar panels at sunset">
+        <div class="trail-card-photo-overlay"></div>
+        <span class="trail-card-photo-label">6 articles &middot; ~35 min</span>
+      </div>
+      <div class="trail-card-body">
+        <h3>Follow the Money</h3>
+        <p class="trail-card-tagline">How climate finance actually flows &mdash; and where it gets stuck.</p>
+        <ol class="trail-card-list">
+          <li><span class="trail-num">01</span><span class="trail-article">Climate Finance</span></li>
+          <li><span class="trail-num">02</span><span class="trail-article">Green Bonds</span></li>
+          <li><span class="trail-num">03</span><span class="trail-article">The Greenium</span></li>
+          <li><span class="trail-num">04</span><span class="trail-article">Sustainability-Linked Bonds</span></li>
+          <li><span class="trail-num">05</span><span class="trail-article">ENEL&rsquo;s SLB</span></li>
+          <li><span class="trail-num">06</span><span class="trail-article">Carbon Offsets</span></li>
+        </ol>
+        <a href="#" class="trail-card-cta">Start this trail &rarr;</a>
+      </div>
+    </div>
+    <div class="trail-card">
+      <div class="trail-card-photo">
+        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" alt="Glass skyscrapers">
+        <div class="trail-card-photo-overlay"></div>
+        <span class="trail-card-photo-label">6 articles &middot; ~35 min</span>
+      </div>
+      <div class="trail-card-body">
+        <h3>Architecture of Climate&nbsp;Policy</h3>
+        <p class="trail-card-tagline">The agreements, taxonomies, and standards that set the rules.</p>
+        <ol class="trail-card-list">
+          <li><span class="trail-num">01</span><span class="trail-article">Paris Agreement</span></li>
+          <li><span class="trail-num">02</span><span class="trail-article">UNFCCC and COP</span></li>
+          <li><span class="trail-num">03</span><span class="trail-article">EU Taxonomy</span></li>
+          <li><span class="trail-num">04</span><span class="trail-article">TCFD</span></li>
+          <li><span class="trail-num">05</span><span class="trail-article">IFRS S1 and S2</span></li>
+          <li><span class="trail-num">06</span><span class="trail-article">CSRD</span></li>
+        </ol>
+        <a href="#" class="trail-card-cta">Start this trail &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PHOTO DIVIDER ═══ -->
+<div class="photo-divider">
+  <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1400&q=80" alt="Wind turbines on green hillside at sunset">
+  <div class="photo-divider-overlay"></div>
+  <p class="photo-divider-text">How the world funds its response to climate change.</p>
+</div>
+
+<!-- ═══ CATEGORIES WITH DEPTH ═══ -->
+<section class="categories-section reveal">
+  <div class="section-label">Browse by Category</div>
+  <div class="categories-grid">
+    <div class="category-card">
+      <div class="category-card-header">
+        <h3>Concepts</h3>
+        <div class="category-card-counts">
+          <span class="category-card-count">12 articles</span>
+          <span class="category-card-count-label">47 connections</span>
+          <div class="category-depth-bar"><div class="category-depth-bar-fill" style="width:92%"></div></div>
+        </div>
+      </div>
+      <div class="category-card-top-label">Top Articles</div>
+      <ul class="category-card-articles">
+        <li>Green Finance</li>
+        <li>Stranded Assets</li>
+        <li>The Greenium</li>
+      </ul>
+      <a href="#" class="category-card-link">Browse Concepts &rarr;</a>
+    </div>
+    <div class="category-card">
+      <div class="category-card-header">
+        <h3>Instruments</h3>
+        <div class="category-card-counts">
+          <span class="category-card-count">6 articles</span>
+          <span class="category-card-count-label">31 connections</span>
+          <div class="category-depth-bar"><div class="category-depth-bar-fill" style="width:46%"></div></div>
+        </div>
+      </div>
+      <div class="category-card-top-label">Top Articles</div>
+      <ul class="category-card-articles">
+        <li>Green Bonds</li>
+        <li>Sustainability-Linked Bonds</li>
+        <li>Carbon Offsets</li>
+      </ul>
+      <a href="#" class="category-card-link">Browse Instruments &rarr;</a>
+    </div>
+    <div class="category-card">
+      <div class="category-card-header">
+        <h3>Actors</h3>
+        <div class="category-card-counts">
+          <span class="category-card-count">9 articles</span>
+          <span class="category-card-count-label">38 connections</span>
+          <div class="category-depth-bar"><div class="category-depth-bar-fill" style="width:69%"></div></div>
+        </div>
+      </div>
+      <div class="category-card-top-label">Top Articles</div>
+      <ul class="category-card-articles">
+        <li>UNFCCC</li>
+        <li>World Bank</li>
+        <li>ICMA</li>
+      </ul>
+      <a href="#" class="category-card-link">Browse Actors &rarr;</a>
+    </div>
+  </div>
+  <div class="categories-grid-bottom">
+    <div class="category-card">
+      <div class="category-card-header">
+        <h3>Frameworks</h3>
+        <div class="category-card-counts">
+          <span class="category-card-count">13 articles</span>
+          <span class="category-card-count-label">52 connections</span>
+          <div class="category-depth-bar"><div class="category-depth-bar-fill" style="width:100%"></div></div>
+        </div>
+      </div>
+      <div class="category-card-top-label">Top Articles</div>
+      <ul class="category-card-articles">
+        <li>Paris Agreement</li>
+        <li>EU Taxonomy</li>
+        <li>TCFD</li>
+      </ul>
+      <a href="#" class="category-card-link">Browse Frameworks &rarr;</a>
+    </div>
+    <div class="category-card">
+      <div class="category-card-header">
+        <h3>Case Studies</h3>
+        <div class="category-card-counts">
+          <span class="category-card-count">8 articles</span>
+          <span class="category-card-count-label">36 connections</span>
+          <div class="category-depth-bar"><div class="category-depth-bar-fill" style="width:62%"></div></div>
+        </div>
+      </div>
+      <div class="category-card-top-label">Top Articles</div>
+      <ul class="category-card-articles">
+        <li>VW Dieselgate</li>
+        <li>HSBC Greenwashing</li>
+        <li>DWS SEC Fine</li>
+      </ul>
+      <a href="#" class="category-card-link">Browse Case Studies &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SOURCES BAR ═══ -->
+<div class="sources-bar reveal">
+  <div class="sources-bar-inner">
+    <span class="sources-bar-label">Built From</span>
+    <span class="sources-bar-text">My CFA Climate Finance course notes, ICMA Green Bond Principles, UNFCCC official reports, SEC enforcement filings, EU Taxonomy Regulation, IPCC Assessment Reports</span>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <span class="footer-brand">A Red Barrow publication</span>
+      <span class="footer-date">Last updated April 2026</span>
+    </div>
+    <nav class="footer-nav">
+      <a href="#">Concepts</a>
+      <a href="#">Instruments</a>
+      <a href="#">Actors</a>
+      <a href="#">Frameworks</a>
+      <a href="#">Case Studies</a>
+      <a href="#">Knowledge Graph</a>
+    </nav>
+  </div>
+</footer>
+
+<!-- ═══ SCRIPTS ═══ -->
+<script>
+  // Nav scroll shadow
+  const nav = document.querySelector('nav');
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        nav.classList.toggle('nav--scrolled', window.scrollY > 80);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  // Scroll-triggered reveals
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

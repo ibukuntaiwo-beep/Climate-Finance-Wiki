@@ -1,0 +1,229 @@
+Climate Finance Course 5 - Portfolio Management and Stewardship for Climate Risk
+
+MODULE 1: Integrating Climate Consideration in Portfolio Management
+
+
+Lesson 1: Approaches for Integrating Climate Risks and Opportunities
+
+Investors can integrate climate risks and opportunities using macro, factor, sector-level, and bottom-up fundamental approaches.
+
+Climate solutions can be characterized in three different manners.3
+• Low carbon. Activities with close to zero emissions that already make a substantial contribution to achieving net zero (e.g., the leasing of passenger vehicles with zero tailpipe CO 2 emissions).
+• Transitional. Activities that make a substantial contribution to the transition to net zero by reducing their own emissions, even if they are not yet low carbon (e.g., the manufacture of cement with CO 2 emissions intensity below a specific threshold), and the leasing of vessels with a large percentage of energy from zero-carbon fuels.
+• Enabling. Activities that are enabling emissions reductions in the wider economy (e.g., the manufacture of energy-efficient equipment for buildings) and infrastructure for low-carbon road transport such as electric vehicle (EV) charging points.
+
+Macro-driven models assess systemic climate impacts on GDP, inflation, and asset prices across the economy using scenario tools like NGFS and IPR.
+Factor models aim to isolate “climate beta” or climate risk premia, but challenges include short climate data history and overlap with traditional risk factors.
+Climate beta measures portfolio sensitivity to climate risks; some green ETFs have high carbon footprints but low (even negative) climate betas due to resilience to transition risks.
+Sector-level/thematic strategies focus on areas like clean energy or circular economy, but may miss macro spillover effects from other sectors.
+Fundamental (bottom-up) approaches assess issuer-specific risks (e.g., physical or transition risk) and allow deeper analysis of asset- or company-level exposures.
+Strategic asset allocation models vary in how well they capture climate risks:
+Black-Litterman is favored for accommodating pricing uncertainty.
+Factor risk allocation and total portfolio approaches allow integration of climate-specific risk factors.
+Liability-driven investing (LDI) and mean-variance optimization (MVO) are less climate-sensitive due to their dependence on baseline assumptions.
+Regime-switching models may be useful for capturing abrupt climate-related shifts but are not yet widely used.
+Climate risk is both systemic and localized—affecting global financial systems and specific assets—requiring a multifaceted integration strategy in portfolio construction.
+
+
+Lesson 2: Frameworks for Portfolio Decarbonization
+
+The Net Zero Investment Framework (NZIF 2.0) guides investors aligning portfolios with 1.5°C climate goals, emphasizing governance, strategic asset allocation, engagement, and policy advocacy.
+NZIF 2.0 introduces four core decarbonization targets:
+Asset alignment: Long-term real-world decarbonization via asset selection and engagement.
+Engagement threshold: Requires that 70% of financed emissions are either aligned or being actively engaged.
+Portfolio decarbonization reference: Optional intensity or absolute reduction target over 10 years.
+Allocation to climate solutions: Measurable investment in climate-positive assets.
+GFANZ and IIGCC recommend various portfolio alignment metrics:
+Binary Target Metric (BTM) – % of companies with validated targets.
+Maturity Scale Alignment (MSA) – Qualitative/quantitative scale from “aligned” to “not aligned.”
+Benchmark Divergence (BMD) – Compares company emissions to a 1.5°C pathway.
+Implied Temperature Rise (ITR) – Translates alignment into a temperature outcome, but is controversial due to data/model limitations.
+Academic findings show ESG and clean energy funds tend to avoid high-emission sectors, possibly hampering the financing of their transition efforts.
+Carbon-constrained portfolio optimization can overweight or underweight assets based on emission intensity while preserving risk-return characteristics.
+Only ~7% of companies in MSCI ACWI are aligned with 1.5°C; most are >2°C, highlighting the difficulty of building climate-aligned portfolios without tracking error.
+Integrated Assessment Models (IAMs), like the DICE model, are increasingly explored to guide long-term climate-aligned investment strategies, though they face criticisms for oversimplification and idealized assumptions.
+IAMs incorporate Representative Concentration Pathways (RCPs) and Shared Socioeconomic Pathways (SSPs) to simulate climate futures and investment scenarios.
+Institutions like the Columbia Center on Sustainable Investment are designing investment frameworks using IAMs to allocate capital proportionally across sectors and regions for net-zero alignment.
+
+Lesson 3: Role of Climate-Related Data and Metrics in Portfolio Decision Making
+Climate constraints can be integrated into equity portfolio optimization with minimal impact on risk or performance.
+Carbon intensity data is highly skewed, with 40% of emissions concentrated in 100 firms, enabling strategic targeting of high emitters.
+Optimization can follow a “trim many” or “sell few” approach to reduce emissions while maintaining risk balance.
+Tightening carbon constraints reduces signal exposure and portfolio overlap but remains manageable up to ~40% below benchmark.
+Sector composition can stay within ±5% of benchmark weight under moderate carbon budgets, avoiding significant sector tilt.
+Quantitative models show up to 20% carbon reduction achieves 97% overlap and 99.8% return correlation with unconstrained portfolios.
+Energy and materials sectors have high carbon intensity but low portfolio weights, making them key leverage points in decarbonization.
+Alpha exposure (idiosyncratic signal strength) remains stable even with carbon constraints, supporting efficient climate-aligned optimization.
+Green firms tend to outperform “brown” peers over time—a phenomenon known as the equity greenium.
+Style factors like value, quality, and volatility remain stable across carbon-reduced simulations, indicating no meaningful style drift.
+
+Lesson 4: Risk Return Dynamics of Portfolio Optimization in Equities
+
+Climate constraints can be integrated into equity portfolio optimization with minimal impact on risk or performance.
+Carbon intensity data is highly skewed, with 40% of emissions concentrated in 100 firms, enabling strategic targeting of high emitters.
+Optimization can follow a “trim many” or “sell few” approach to reduce emissions while maintaining risk balance.
+Tightening carbon constraints reduces signal exposure and portfolio overlap but remains manageable up to ~40% below benchmark.
+Sector composition can stay within ±5% of benchmark weight under moderate carbon budgets, avoiding significant sector tilt.
+Quantitative models show up to 20% carbon reduction achieves 97% overlap and 99.8% return correlation with unconstrained portfolios.
+Energy and materials sectors have high carbon intensity but low portfolio weights, making them key leverage points in decarbonization.
+Alpha exposure (idiosyncratic signal strength) remains stable even with carbon constraints, supporting efficient climate-aligned optimization.
+Green firms tend to outperform “brown” peers over time—a phenomenon known as the equity greenium.
+Style factors like value, quality, and volatility remain stable across carbon-reduced simulations, indicating no meaningful style drift.
+
+
+Lesson 5: Risk Return Dynamics of Portfolio Optimization in Fixed Income
+
+Green bond issuance reached USD 575 billion in 2023, driven by strong demand and issuer preference for debt over equity.
+The “greenium” reflects the premium investors pay for green bonds due to limited supply and use-of-proceeds conditions that reduce greenwashing risk.
+Climate risk exposure varies by maturity—longer-term bonds are more vulnerable to interest rate and climate risks, while short-term bonds are less exposed but still affected by sector-specific shocks.
+Investment-grade (IG) portfolios are more exposed to climate shocks than high-yield (HY) portfolios, due to higher fossil fuel exposure and longer duration.
+Utilities and energy sectors show the highest climate-implied spread changes, even for bonds with short maturities.
+Divergent net-zero scenarios show the most severe valuation losses across fixed income sectors, with IG portfolios seeing greater climate spread shifts than HY.
+Climate stress tests reveal regional differences—climate impacts are more significant in U.S. credit markets than in Europe.
+IG’s higher exposure to fossil sub-sectors and longer durations leads to greater vulnerability despite better credit quality.
+Portfolio alignment with Paris goals can improve valuations in climate-sensitive sectors, but sector and maturity mix remains a key determinant of risk.
+Credit investors must consider tenor, spread sensitivity, and sectoral allocation when integrating climate risks into fixed income strategies.
+
+
+Lesson 6: Climate Benchmarks and Approaches to Managing Passive Portfolios
+The EU introduced two official climate benchmarks: the Climate Transition Benchmark (CTB) and the Paris-Aligned Benchmark (PAB) to promote decarbonization and reduce greenwashing.
+PABs exclude fossil fuel-heavy companies, while CTBs take a sector-neutral approach, allowing for transition participation across all industries.
+Both benchmarks align with the IPCC’s 1.5°C scenario and target a minimum 7% annual decarbonization rate, covering Scope 1, 2, and 3 emissions.
+Minimum standards include exclusions (e.g., coal, oil, and controversial weapons), green/brown revenue thresholds, and disqualification for non-alignment with decarbonization pathways.
+The HSBC MSCI Climate Paris-Aligned ETF demonstrates how passive products apply PAB standards using climate VaR, green–brown ratios, and low carbon transition scores.
+Passive investing is growing rapidly, with passive ESG fund flows surpassing active flows as of 2023, especially in PAB- and CTB-linked funds.
+Passive strategies offer low cost and diversification benefits but face challenges such as reliance on backward-looking data, transition risk exposure, and limited adaptability during volatility.
+Climate-aligned passive portfolios may experience tracking error volatility, especially during global disruptions (e.g., energy crises), with PABs more exposed due to their strict exclusions.
+Academic studies project persistently higher tracking errors in climate-aligned portfolios through 2050, particularly in emerging markets with fewer resources for adaptation.
+Passive investors must balance cost efficiency and net-zero alignment, understanding that rigid benchmarks may sacrifice short-term return optimization for long-term climate goals.
+
+Lesson 7: Discretionary and Quantitative Approaches to Managing Portfolios
+
+Climate-focused funds dominate new sustainable fund launches in Europe, especially ETFs classified under SFDR Article 8 and 9.
+Discretionary strategies are actively managed and include thematic, transition, stewardship, green bond, multi-asset, and carbon trading strategies.
+Thematic strategies concentrate on sectors or solutions like clean energy, offering high-impact but higher volatility exposure.
+Transition strategies target firms actively decarbonizing; stewardship strategies aim to influence high emitters via shareholder engagement.
+Green bond strategies invest in use-of-proceeds-labeled bonds supporting climate projects; multi-asset strategies diversify across public and private markets.
+Carbon trading strategies invest in regulated carbon markets (e.g., EU ETS), excluding voluntary carbon markets.
+Quantitative strategies use rules-based models, constraints, and optimizations to manage portfolios based on climate data and carbon exposure.
+Quant strategies benefit from objective, historical climate data (e.g., GHG emissions) but face limits due to shorter data history compared to financial data.
+"Quantamental" methods blend quantitative filtering (e.g., CDP data, exclusion screens) with forward-looking ESG analysis to build thematic baskets.
+Case studies include:
+Nordea Global Climate (discretionary equity, Article 9) prioritizing green solution providers across three themes: energy, efficiency, and protection.
+Ninety One Emerging Markets Transition Debt (discretionary credit) financing high-emitting EM companies committed to decarbonization.
+Man Climate Impact Bond Fund (discretionary fixed income) uses IAMs to target underfunded transition sectors with measurable carbon impact.
+Lombard Odier Electrification Fund (discretionary equity) identifies "green alpha" via electrification tipping points and TAMs.
+Osmosis Resource Efficient Fund (quantitative equity) targets superior returns by optimizing for carbon, water, and waste efficiency.
+Man Target Climate Fund (systematic multi-asset) combines cross-asset class alignment, SDG goals, and a proprietary risk overlay.
+
+
+MODULE 2 - Managing Climate Risks, Emissions Attribution Methodologies
+
+Lesson 1 - Techniques for Managing Climate Risks within Investment Portfolios
+
+Carbon constraints help align portfolios with climate goals by excluding or underweighting high emitters; investors can use sector or issuer-specific exclusions or adopt Paris-Aligned Benchmark (PAB) rules.
+Quantitative strategies can leverage the skewed distribution of emissions data to build balanced portfolios with limited tracking error while targeting lower-carbon exposure.
+Hedging approaches include divesting from stranded assets, investing in climate mitigation or adaptation technologies, and reallocating toward companies better prepared for the transition.
+Hedge funds and long-short strategies mitigate transition risk by going long on companies actively decarbonizing and short on laggards, enabling market-neutral climate exposure.
+Strategies using climate news sentiment (e.g., via natural language processing) can identify long-short alpha signals, showing green firms tend to outperform brown ones during high climate attention periods.
+Climate Value-at-Risk (VaR) models assess portfolio exposure to climate scenarios, estimating potential losses based on physical and transition risks under IPCC and NGFS scenarios.
+Climate VaR enables capital allocation decisions, risk limit setting, and compliance with regulatory frameworks like EU SFDR and TCFD recommendations.
+Scenario analysis tools such as climate-adjusted valuation (CAV) estimate P&L impacts under various climate pathways, supporting comparisons against benchmarks.
+What-if modeling enables portfolio reallocation testing—e.g., shifting from higher-risk assets to more resilient ones—to improve physical and transition climate-adjusted outcomes.
+Portfolio changes can be stress-tested across asset classes and rating segments, as illustrated in Exhibits 9–11 (pages 19–21), which show reduced climate loss impact with reallocation.
+
+Lesson 2- Emissions Attribution Methodologies
+Emissions attribution analysis identifies the drivers behind a portfolio’s carbon footprint and helps distinguish real decarbonization from portfolio rebalancing effects.
+It provides a backward-looking tool to assess the effectiveness of climate transition plans and protect against greenwashing by promoting real-economy emissions reductions.
+The approach is conceptually similar to traditional performance attribution (e.g., Brinson model), using categories like divested positions, reweighting, or company-level emissions changes.
+Direct factors include real emissions changes from portfolio companies; indirect factors include ownership share shifts or portfolio restructuring.
+Attribution is not yet effective for sovereign or real asset portfolios and is currently best applied to listed equity and corporate credit.
+The method supports net-zero portfolio alignment by identifying which positions are contributing to carbon reductions and which are not.
+The "theory of change" and double materiality frameworks highlight both financial materiality (impacts on the portfolio) and environmental/social materiality (portfolio’s impacts on the planet).
+Hedge funds present unique attribution challenges due to short-selling and leverage; netting of long and short emissions may obscure true climate impact.
+The IIGCC guidance recommends separating financial risk exposure from real-world climate impact and discourages emissions netting across long/short positions.
+Portfolio leverage amplifies emissions exposure; strategies that rescale emissions data without full transparency may risk greenwashing.
+Regulatory frameworks like the EU SFDR now provide guidance on short-selling and netting practices for emissions disclosure in hedge funds.
+
+
+MODULE 3 - Engagement and Stewardship
+
+Lesson 1  An Asset Owner’s Perspective on Climate Integration in Manager Selection
+
+Long-term asset owners are increasingly integrating climate criteria into manager selection to fulfill both fiduciary duty and sustainability goals.
+Asset owners now emphasize climate risk analysis as part of manager due diligence, including scrutiny of transition and physical risks, climate scenario modeling, and decarbonization strategies.
+Climate considerations are included in Investment Policy Statements and tied to board accountability in jurisdictions like the UK; global uptake varies.
+The Net Zero Investment Framework guides asset owners to decarbonize portfolios and allocate capital to climate solutions while assessing managers across asset classes.
+The manager evaluation process includes four key steps:
+Due diligence (e.g., climate scenario analysis, engagement policies),
+Engagement (dialogue and legal agreements),
+Annual review (tracking emissions, climate actions),
+Benchmarking and reporting (comparing performance across peers and regions).
+Climate-specific reviews assess carbon footprinting (Scopes 1–3), transition and physical risk, net-zero alignment, and impact metrics such as Scope 4 avoided emission.
+Engagement expectations vary by asset class:
+Public equity: Proxy voting and engagement;
+Fixed income: Most effective via green bonds;
+Private equity: Highly customizable via side letters;
+Infrastructure/real estate: Naturally aligned with climate metrics;
+Hedge funds: Minimal engagement possible.
+Benchmarking helps identify climate leaders and laggards within multi-asset portfolios and promotes alignment on climate KPIs, especially in SFDR Article 9 and SDG-aligned funds.
+CalPERS is highlighted as a leading case study—committed to net-zero, climate scenario integration, manager accountability, and a $100B climate solutions capital deployment plan
+
+
+MODULE 4 - Module 4: Engagement and Stewardship
+
+Lesson 1: Purpose and Benefits of Investor Engagement and Stewardship
+Stewardship is “preserving and enhancing the value of assets with which one has been entrusted.”
+
+Engagement is “purposeful dialogue with a specific and targeted objective to achieve change.”
+
+Stewardship applies across all asset classes—not just equities—and involves purposeful dialogue aimed at preserving and enhancing long-term value.
+Effective engagement requires clear objectives, direct access to decision-makers, persistence, and tracking progress against milestones.
+Investors engage companies using a range of methods including private meetings, collaborative initiatives, formal letters, and coalitions.
+Escalation strategies move from dialogue to more assertive actions like public campaigns, shareholder resolutions, and divestment.
+Fixed income investors influence issuers by engaging during bond issuance and including ESG clauses in loan documentation.
+Sovereign engagement is expanding, supported by tools that help assess and influence national climate policies.
+Private equity, real estate, and infrastructure provide opportunities for direct ESG impact through board influence and asset-level strategies.
+Success measurement is difficult; many investors use milestone-based models to track progress from issue identification to outcome.
+There is a growing emphasis on engagement quality over quantity, as inflated interaction counts may not reflect actual impact.
+Initiatives like Climate Action 100+ face criticism for limited short-term progress but are improving long-term governance and disclosure goals.
+Political backlash, especially in the U.S., has led some managers to withdraw from climate coalitions, highlighting tensions in ESG engagement despite its strategic importance.
+
+
+Lesson 2: Main Principles and Requirements of Stewardship Codes
+Stewardship codes guide investor behavior through best practice or regulatory standards across over 20 global jurisdictions.
+Most codes are modeled on the original 2010 UK Stewardship Code, featuring seven core principles: governance, conflict management, informed decision-making, monitoring, voting, collaboration, and transparency.
+Codes often follow a "comply or explain" approach and differ in enforcement strength, especially between regulatory and investor-led codes.
+Stewardship codes promote integration of ESG factors—including climate change—within investment and engagement policies, even if not always explicitly mentioned.
+Conflicts of interest management is emphasized more in regulatory codes than investor-group codes, which sometimes downplay these obligations.
+Monitoring includes tracking ESG risks alongside financial performance, treating issues like emissions and biodiversity loss as early indicators of value risk.
+Engagement is expected when monitoring reveals concern, with codes promoting a range of escalation actions (e.g., dialogue, voting, divestment).
+Voting should be informed and independent—codes discourage blind reliance on proxy advisers and stress responsibility in share recall and vote abstention practices.
+Collective action is encouraged to improve influence and legitimacy but must respect legal boundaries on acting in concert.
+Transparency is vital; investors must disclose their stewardship policies and report publicly on engagement activity and voting behavior.
+Emerging themes in newer codes include:
+Consideration of other stakeholders beyond shareholders,
+Adequate skills and resources for stewardship delivery,
+Delegation of stewardship while retaining accountability, and
+Public policy engagement, particularly around systemic issues like climate change.
+The UK Stewardship Code (2020) expanded from 7 to 12 principles for asset owners/managers and introduced 6 for service providers. It places strong emphasis on outcomes and integration of climate and ESG considerations.
+
+
+Lesson 3: Strategies for Effective Shareholder Engagement and Active Ownership
+Engagement progresses through various stages, often starting with direct dialogue between investors and companies. This private approach allows for trust-building and candid discussions away from public scrutiny.
+Effective engagement involves meeting with key decision-makers, including board members, who have the authority to enact changes.
+Recognizing cultural nuances is essential for successful engagement. Different regions and companies may require tailored approaches to communication and strategy alignment.
+Engagement may escalate to more public actions such as voting at annual shareholder meetings and proposing resolutions.
+Increasingly, investors focus on climate-related engagements, including “say-on-climate” resolutions and shareholder proposals.
+Successful engagement requires persistence and consistency over time.
+
+
+Lesson 4: Hypothetical Case Study: Following a Process for Engagement
+Following a systematic process may result in effective engagement despite resource limitations.
+Use of metrics like carbon footprint and industry benchmarks (e.g., Climate Action 100+) to prioritize engagement candidates aids in identification of targets.
+It is important for investors to analyze reports and stakeholder feedback to identify risks and opportunities.
+Collaborating within platforms like Climate Action 100+ to align objectives and enhance influence is essential to explore existing initiative.
+To set clear objectives, it is essential that investors define measurable goals to drive company responsiveness and shareholder value.
+Open discussions with decision-makers help to understand company dynamics and promote sustainability.
+Investors should consider escalation carefully based on dialogue outcomes and stakeholder alignment.
+Effective stewardship requires a disciplined approach balancing strategic objectives with ongoing company dialogue and action.

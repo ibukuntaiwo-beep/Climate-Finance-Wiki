@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Second Brain — Architecture Map</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#1a1714;color:#F5F0E8;font-family:system-ui,-apple-system,sans-serif;height:100vh;overflow:hidden}
+.app{display:flex;height:calc(100vh - 90px)}
+
+/* Sidebar */
+.sidebar{width:256px;min-width:256px;background:#221f1b;border-right:1px solid #3a352f;padding:16px;overflow-y:auto;display:flex;flex-direction:column;gap:18px}
+.sidebar h1{font-size:13px;font-weight:700;color:#A65D3F;letter-spacing:.5px;text-transform:uppercase}
+.sidebar .subtitle{font-size:10px;color:#a09888;margin-top:-10px;line-height:1.4}
+.sidebar h2{font-size:10px;font-weight:700;color:#706858;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:6px}
+.ctrl{display:flex;flex-direction:column;gap:5px}
+.btn{background:#2a2520;border:1px solid #3a352f;color:#c8c0b4;padding:7px 11px;border-radius:6px;cursor:pointer;font-size:11px;transition:all .2s;text-align:left}
+.btn:hover{background:#352f28;border-color:#5a5348}
+.btn.on{background:rgba(166,93,63,.18);border-color:#A65D3F;color:#d4956e}
+.row{display:flex;gap:5px}
+.row .btn{flex:1;text-align:center}
+.tog{display:flex;align-items:center;gap:8px;cursor:pointer;font-size:11px;color:#a09888;user-select:none}
+.tog input{accent-color:#A65D3F;cursor:pointer}
+.legend{display:flex;flex-direction:column;gap:3px}
+.leg{display:flex;align-items:center;gap:7px;font-size:10px;color:#807868}
+.dot{width:9px;height:9px;border-radius:3px;border:1.5px solid;flex-shrink:0}
+#notes-sec{display:none}
+.note-item{font-size:11px;color:#a09888;padding:6px 0;border-bottom:1px solid #2a2520;display:flex;justify-content:space-between;align-items:flex-start;gap:6px}
+.note-item span{flex:1}
+.note-del{background:none;border:none;color:#706858;cursor:pointer;font-size:14px;line-height:1}
+
+/* Canvas */
+.canvas-wrap{flex:1;position:relative;overflow:hidden;background:#1a1714}
+#diagram{width:100%;height:100%;display:block}
+.node-g{cursor:pointer}
+.node-g:hover .n-rect{filter:brightness(1.35)}
+.n-rect{transition:filter .15s}
+.n-label{fill:#F5F0E8;font-size:12.5px;font-weight:600;font-family:system-ui,sans-serif;pointer-events:none}
+.n-sub{fill:#908878;font-size:9px;font-family:'Courier New',monospace;pointer-events:none}
+.c-path{fill:none;stroke-width:1.4;transition:opacity .3s,stroke-width .25s}
+.c-label{font-size:8.5px;font-family:system-ui,sans-serif;pointer-events:none}
+.band{pointer-events:none}
+.band-label{fill:#585048;font-size:9.5px;font-weight:700;font-family:system-ui,sans-serif;letter-spacing:1.5px;pointer-events:none}
+
+/* Detail panel */
+.detail{width:290px;background:#221f1b;border-left:1px solid #3a352f;padding:20px;transform:translateX(100%);transition:transform .25s ease;overflow-y:auto;position:absolute;right:0;top:0;bottom:0;z-index:10}
+.detail.open{transform:translateX(0)}
+.det-close{position:absolute;top:10px;right:12px;background:none;border:none;color:#706858;cursor:pointer;font-size:20px}
+.det-close:hover{color:#F5F0E8}
+.det-title{font-size:17px;font-weight:700;margin-bottom:3px}
+.det-sub{font-size:11px;color:#908878;font-family:monospace;margin-bottom:10px}
+.det-badge{display:inline-block;padding:2px 10px;border-radius:99px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:14px}
+.det-desc{font-size:12px;line-height:1.65;margin-bottom:14px;color:#c8c0b4}
+.det-h{font-size:10px;font-weight:700;color:#706858;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.det-files{list-style:none;margin-bottom:14px}
+.det-files li{font-size:11px;font-family:monospace;color:#b8b0a0;padding:2px 0;border-bottom:1px solid #2a2520}
+.det-metric{font-size:22px;font-weight:700;color:#A65D3F}
+.det-metric-label{font-size:10px;color:#706858;margin-top:2px}
+.note-input{margin-top:14px}
+.note-input textarea{width:100%;background:#2a2520;border:1px solid #3a352f;color:#F5F0E8;padding:8px;border-radius:6px;font-size:11px;font-family:system-ui,sans-serif;resize:vertical;min-height:50px}
+.note-input textarea:focus{outline:none;border-color:#A65D3F}
+.note-input button{margin-top:5px;background:#A65D3F;color:#F5F0E8;border:none;padding:5px 14px;border-radius:6px;cursor:pointer;font-size:11px;font-weight:600}
+.note-input button:hover{background:#bf714f}
+
+/* Zoom */
+.zoom-bar{position:absolute;bottom:10px;right:10px;display:flex;gap:3px;z-index:5}
+.z-btn{width:30px;height:30px;background:#221f1b;border:1px solid #3a352f;color:#c8c0b4;border-radius:6px;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:background .15s}
+.z-btn:hover{background:#352f28}
+
+/* Prompt bar */
+.prompt-bar{height:90px;background:#221f1b;border-top:1px solid #3a352f;display:flex;align-items:flex-start;padding:12px 16px;gap:12px}
+.prompt-txt{flex:1;font-size:11px;color:#a09888;line-height:1.6;overflow-y:auto;max-height:66px;font-family:system-ui,sans-serif}
+.copy-btn{background:#A65D3F;color:#F5F0E8;border:none;padding:7px 18px;border-radius:6px;cursor:pointer;font-size:11px;font-weight:700;white-space:nowrap;transition:background .15s;align-self:flex-start;margin-top:2px}
+.copy-btn:hover{background:#bf714f}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <h1>Architecture Map</h1>
+    <p class="subtitle">Second Brain / Climate Finance Wiki</p>
+
+    <div class="ctrl">
+      <h2>View</h2>
+      <div class="row">
+        <button class="btn on" data-v="full" onclick="setView('full')">Full</button>
+        <button class="btn" data-v="simplified" onclick="setView('simplified')">Simplified</button>
+      </div>
+    </div>
+
+    <div class="ctrl">
+      <h2>Highlight Flow</h2>
+      <button class="btn on" data-f="none" onclick="setFlow('none')">All Flows</button>
+      <button class="btn" data-f="article" onclick="setFlow('article')">Article Pipeline</button>
+      <button class="btn" data-f="deploy" onclick="setFlow('deploy')">Deployment</button>
+      <button class="btn" data-f="video" onclick="setFlow('video')">Video Production</button>
+      <button class="btn" data-f="validation" onclick="setFlow('validation')">Content Validation</button>
+    </div>
+
+    <div class="ctrl">
+      <h2>Display</h2>
+      <label class="tog"><input type="checkbox" checked onchange="toggleLabels(this.checked)"> Connection labels</label>
+    </div>
+
+    <div class="ctrl">
+      <h2>Legend</h2>
+      <div class="legend" id="legend"></div>
+    </div>
+
+    <div class="ctrl" id="notes-sec">
+      <h2>Notes</h2>
+      <div id="notes-list"></div>
+    </div>
+  </aside>
+
+  <main class="canvas-wrap">
+    <svg id="diagram" xmlns="http://www.w3.org/2000/svg"></svg>
+    <div class="zoom-bar">
+      <button class="z-btn" onclick="doZoom(1)">+</button>
+      <button class="z-btn" onclick="doZoom(-1)">&#8722;</button>
+      <button class="z-btn" onclick="doZoom(0)" style="font-size:10px">1:1</button>
+    </div>
+  </main>
+
+  <div class="detail" id="det">
+    <button class="det-close" onclick="closeDet()">&times;</button>
+    <div id="det-body"></div>
+  </div>
+</div>
+
+<div class="prompt-bar">
+  <div class="prompt-txt" id="prompt">Click a module to explore. Highlight a flow to trace data through the system.</div>
+  <button class="copy-btn" id="copy-btn" onclick="copyPrompt()">Copy</button>
+</div>
+
+<script>
+/* ============================================================
+   DATA
+   ============================================================ */
+const BAND_H = 106, NODE_W = 168, NODE_H = 50;
+const X0 = 100, X1 = 1140, VID_X = 1295;
+const VB_W = 1500, VB_H = 960;
+
+const LM = {
+  source:       {i:0, name:'Source Material',       short:'1  SOURCE',  y:18,  c:{band:'rgba(166,93,63,.08)',  stroke:'#5a3d2c', node:'#2d2018', ns:'#A65D3F'}},
+  curation:     {i:1, name:'Curation',              short:'2  CURATION',y:140, c:{band:'rgba(78,111,142,.07)', stroke:'#34495e', node:'#1c242d', ns:'#4E6F8E'}},
+  wiki:         {i:2, name:'Wiki (Obsidian)',        short:'3  WIKI',    y:262, c:{band:'rgba(107,143,78,.07)',stroke:'#3d5a2c', node:'#1f2618', ns:'#6b8f4e'}},
+  build:        {i:3, name:'Site Build (Astro 6.1)', short:'4  BUILD',   y:384, c:{band:'rgba(142,78,127,.07)',stroke:'#5a2c50', node:'#2a1c27', ns:'#8e4e7f'}},
+  presentation: {i:4, name:'Presentation',           short:'5  PRESENT', y:506, c:{band:'rgba(123,94,167,.07)',stroke:'#3d2c5a', node:'#241c30', ns:'#7b5ea7'}},
+  pages:        {i:5, name:'Pages',                  short:'6  PAGES',   y:628, c:{band:'rgba(78,142,111,.07)',stroke:'#2c5a3d', node:'#1c2a22', ns:'#4e8e6f'}},
+  deployment:   {i:6, name:'Deployment',             short:'7  DEPLOY',  y:750, c:{band:'rgba(142,127,78,.07)',stroke:'#5a502c', node:'#2a2618', ns:'#8e7f4e'}},
+  video:        {i:7, name:'Video',                  short:'VIDEO',      y:262, c:{band:'rgba(78,142,142,.06)',stroke:'#2c5a5a', node:'#1c2a2a', ns:'#4e8e8e'}, par:true, bh:350},
+};
+
+const NODES = [
+  // Source
+  {id:'raw',       label:'Raw Material',       sub:'raw/climate-finance/',       L:'source',      vm:'both', desc:'Source documents dropped by the owner: articles, CFA course material, external reports.', files:['articles/','cfa-course/','reports/'], cnt:'3 sub-folders'},
+  {id:'capsha',    label:'CapSha Archive',      sub:'CapSha/',                    L:'source',      vm:'both', desc:'Organizational docs, meeting materials, budgets. Separate from the wiki pipeline.', files:['Admin/','AoW1 Innovation Lab/','AoW2 Marketplace/','AoW3 SSTC/','Communications/','Events/','General/'], cnt:'7 areas'},
+  // Curation
+  {id:'rules',     label:'Agent Rules',         sub:'docs/agent-rules/',          L:'curation',    vm:'both', desc:'Governs agent behavior: writing standards, curation workflow, logging, context control, instruction maintenance.', files:['writing-standards.md','curation-workflow.md','logging.md','context-control.md','instruction-maintenance.md'], cnt:'5 docs'},
+  {id:'gate',      label:'Curation Gate',       sub:'CLAUDE.md',                  L:'curation',    vm:'both', desc:'Agent-enforced filter. Raw material must pass the comms-relevance test before entering the wiki.', files:['CLAUDE.md','AGENTS.md'], cnt:'Core gate'},
+  {id:'glossary',  label:'Glossary',            sub:'UBIQUITOUS_LANGUAGE.md',     L:'curation',    vm:'both', desc:'Canonical vocabulary: 60+ climate finance terms with synonyms and definitions.', files:['UBIQUITOUS_LANGUAGE.md'], cnt:'60+ terms'},
+  {id:'wstatus',   label:'Wiki Status',         sub:'wiki-status.json',           L:'curation',    vm:'both', desc:'Article inventory tracker: title, file path, status, site article mapping per category.', files:['wiki-status.json'], cnt:'Full inventory'},
+  // Wiki
+  {id:'wart',      label:'Wiki Articles',       sub:'wiki/climate-finance/',      L:'wiki',        vm:'both', desc:'Obsidian-friendly markdown articles in 5 categories. Source of truth for wiki content.', files:['concepts/ (12)','instruments/ (6)','actors/ (9)','frameworks/ (13)','markets/ (0)'], cnt:'40 articles'},
+  {id:'widx',      label:'_index.md',           sub:'wiki/.../_index.md',         L:'wiki',        vm:'both', desc:'Topic homepage. Canonical list of all articles, grouped by category.', files:['_index.md'], cnt:'Master index'},
+  {id:'wlinks',    label:'Wikilinks',           sub:'[[internal links]]',         L:'wiki',        vm:'both', desc:'Obsidian-style [[internal links]] forming a semantic knowledge graph across articles.', files:[], cnt:'Semantic graph'},
+  // Build
+  {id:'ccol',      label:'Content Collections', sub:'src/content/articles/',      L:'build',       vm:'full', desc:'52 enriched markdown files with stats, seeAlso, unexpected insights, and case study data.', files:['site/src/content/articles/*.md'], cnt:'52 articles'},
+  {id:'cschema',   label:'Content Schema',      sub:'content.config.ts',          L:'build',       vm:'full', desc:'Zod schema enforcing title, subtitle, category, stats, seeAlso, optional caseStudy.', files:['site/src/content.config.ts'], cnt:'Type safety'},
+  {id:'rplugin',   label:'Remark Plugin',       sub:'remark-wikilinks.mjs',       L:'build',       vm:'full', desc:'Astro remark plugin that transforms [[wikilinks]] to HTML anchor tags during build.', files:['site/src/lib/remark-wikilinks.mjs'], cnt:'MD transform'},
+  {id:'wmap',      label:'Wikilink Map',        sub:'wikilinks.ts',               L:'build',       vm:'full', desc:'150+ canonical terms and synonyms mapped to {category, slug} for URL resolution.', files:['site/src/lib/wikilinks.ts'], cnt:'150+ entries'},
+  // Presentation
+  {id:'layouts',   label:'Layouts',             sub:'src/layouts/',               L:'presentation',vm:'full', desc:'Page templates: BaseLayout (wrapper), ArticleLayout, CaseStudyLayout, SimpleLayout.', files:['BaseLayout.astro','ArticleLayout.astro','CaseStudyLayout.astro','SimpleLayout.astro'], cnt:'4 layouts'},
+  {id:'comps',     label:'Components',          sub:'src/components/',            L:'presentation',vm:'full', desc:'Reusable Astro components: Nav, SearchOverlay, KeyStats, SeeAlso, ThreadBar, Timeline, etc.', files:['Nav.astro','SearchOverlay.astro','KeyStats.astro','SeeAlso.astro','Unexpected.astro','ThreadBar.astro','Breadcrumbs.astro','Timeline.astro','BeforeAfter.astro'], cnt:'13 components'},
+  {id:'datalyr',   label:'Data Layer',          sub:'src/data/',                  L:'presentation',vm:'full', desc:'Static exports: 5 category definitions (slug, name, photo, top articles), 3 curated trails.', files:['categories.ts','trails.ts'], cnt:'5 cats, 3 trails'},
+  {id:'dsys',      label:'Design System',       sub:'global.css',                 L:'presentation',vm:'full', desc:'CSS custom properties: sienna/blue palette, 8px spacing scale, Libre Baskerville + DM Sans + JetBrains Mono.', files:['site/src/styles/global.css'], cnt:'69KB tokens'},
+  // Pages
+  {id:'home',      label:'Homepage',            sub:'index.astro',                L:'pages',       vm:'both', desc:'Landing page: hero carousel, curated trails, category cards, sources bar.', files:['site/src/pages/index.astro'], cnt:'1 page'},
+  {id:'catpg',     label:'Category Index',      sub:'concepts/index.astro',       L:'pages',       vm:'both', desc:'Listing pages for concepts, instruments, actors, frameworks, case-studies.', files:['concepts/index.astro','instruments/index.astro','actors/index.astro','frameworks/index.astro','case-studies/index.astro'], cnt:'5 indexes'},
+  {id:'artpg',     label:'Article Pages',       sub:'[slug].astro',               L:'pages',       vm:'both', desc:'Dynamic routes via getStaticPaths(). One page per article across all categories.', files:['[slug].astro (x5 category dirs)'], cnt:'52 routes'},
+  {id:'specpg',    label:'Special Pages',       sub:'glossary, about...',         L:'pages',       vm:'both', desc:'Non-article pages: glossary (30 terms), about, start-here (11-step path), privacy, terms.', files:['glossary.astro','about.astro','start-here.astro','privacy.astro','terms.astro'], cnt:'5 pages'},
+  // Deployment
+  {id:'ghact',     label:'GitHub Actions',      sub:'deploy.yml',                 L:'deployment',  vm:'both', desc:'CI/CD: checkout, Node 22 setup, npm ci, npm run build, deploy to GitHub Pages.', files:['site/.github/workflows/deploy.yml'], cnt:'1 workflow'},
+  {id:'dist',      label:'dist/',               sub:'site/dist/',                 L:'deployment',  vm:'both', desc:'Static HTML build output from Astro. Uploaded as a GitHub Pages artifact.', files:['site/dist/'], cnt:'Build output'},
+  {id:'ghpages',   label:'GitHub Pages',        sub:'climatefinancewiki.org',     L:'deployment',  vm:'both', desc:'Production hosting. Static files served at climatefinancewiki.org.', files:[], cnt:'Live site'},
+  // Video
+  {id:'vid1',      label:'Launch Video',        sub:'wiki-launch-video/',         L:'video',       vm:'both', desc:'64-second HyperFrames composition with GSAP animations, Playwright capture, 11 scenes.', files:['index.html (4.3MB)','capture.mjs','assets/','renders/'], cnt:'64s, 11 scenes'},
+  {id:'vid2',      label:'Wiki Trailer',        sub:'wiki-trailer/',              L:'video',       vm:'both', desc:'Short promotional video. Same HyperFrames + GSAP + Playwright stack.', files:['index.html','screenshot.mjs','assets/','renders/'], cnt:'Short promo'},
+  {id:'vid3',      label:'Trailer Square',      sub:'wiki-trailer-square/',       L:'video',       vm:'both', desc:'Square-format variant for social media (Instagram, LinkedIn).', files:['index.html','assets/','renders/'], cnt:'Social format'},
+  // Simplified aggregate
+  {id:'astrobuild',label:'Astro Build Pipeline', sub:'site/src/ (Astro 6.1.8)',   L:'build',       vm:'simplified', desc:'Complete Astro build: content collections, schema validation, wikilink resolution, layouts, components, data layer, and design system.', files:['site/src/content/','site/src/layouts/','site/src/components/','site/src/data/','site/src/lib/','site/src/styles/'], cnt:'52 articles in, pages out', agg:true},
+];
+
+const CONNS = [
+  // Source -> Curation
+  {f:'raw',     t:'gate',     lbl:'intake',         fl:'article',    vm:'both'},
+  // Curation internals
+  {f:'rules',   t:'gate',     lbl:'governs',        fl:'article',    vm:'both'},
+  {f:'glossary',t:'gate',     lbl:'terms',          fl:'article',    vm:'both'},
+  {f:'wstatus', t:'gate',     lbl:'tracks',         fl:'article',    vm:'both'},
+  // Curation -> Wiki
+  {f:'gate',    t:'wart',     lbl:'approved',       fl:'article',    vm:'both'},
+  // Wiki internals
+  {f:'wart',    t:'widx',     lbl:'listed in',      fl:'article',    vm:'both'},
+  {f:'wart',    t:'wlinks',   lbl:'linked via',     fl:'article',    vm:'both'},
+  // Wiki -> Build (full)
+  {f:'wart',    t:'ccol',     lbl:'derive + enrich',fl:'article',    vm:'full'},
+  // Build internals (full)
+  {f:'ccol',    t:'cschema',  lbl:'validates',      fl:'validation', vm:'full'},
+  {f:'ccol',    t:'rplugin',  lbl:'transforms',     fl:'validation', vm:'full'},
+  {f:'rplugin', t:'wmap',     lbl:'resolves',       fl:'validation', vm:'full'},
+  // Build -> Presentation (full)
+  {f:'ccol',    t:'layouts',  lbl:'feeds',          fl:'article',    vm:'full'},
+  // Presentation internals (full)
+  {f:'layouts', t:'comps',    lbl:'composes',       fl:'article',    vm:'full'},
+  {f:'dsys',    t:'layouts',  lbl:'styles',         fl:'design',     vm:'full'},
+  {f:'dsys',    t:'comps',    lbl:'styles',         fl:'design',     vm:'full'},
+  // Presentation -> Pages (full)
+  {f:'datalyr', t:'home',     lbl:'categories',     fl:'article',    vm:'full'},
+  {f:'datalyr', t:'catpg',    lbl:'metadata',       fl:'article',    vm:'full'},
+  {f:'datalyr', t:'artpg',    lbl:'trails',         fl:'article',    vm:'full'},
+  {f:'layouts', t:'home',     lbl:'',               fl:'article',    vm:'full'},
+  {f:'layouts', t:'catpg',    lbl:'',               fl:'article',    vm:'full'},
+  {f:'layouts', t:'artpg',    lbl:'',               fl:'article',    vm:'full'},
+  {f:'layouts', t:'specpg',   lbl:'',               fl:'article',    vm:'full'},
+  // Pages -> Deploy
+  {f:'home',    t:'dist',     lbl:'',               fl:'deploy',     vm:'both'},
+  {f:'catpg',   t:'dist',     lbl:'',               fl:'deploy',     vm:'both'},
+  {f:'artpg',   t:'dist',     lbl:'',               fl:'deploy',     vm:'both'},
+  {f:'specpg',  t:'dist',     lbl:'',               fl:'deploy',     vm:'both'},
+  {f:'dist',    t:'ghact',    lbl:'artifact',       fl:'deploy',     vm:'both'},
+  {f:'ghact',   t:'ghpages',  lbl:'deploys',        fl:'deploy',     vm:'both'},
+  // Video
+  {f:'vid1',    t:'vid2',     lbl:'derives',        fl:'video',      vm:'both'},
+  {f:'vid2',    t:'vid3',     lbl:'reformats',      fl:'video',      vm:'both'},
+  // Simplified
+  {f:'wart',    t:'astrobuild',lbl:'feeds',         fl:'article',    vm:'simplified'},
+  {f:'astrobuild',t:'home',   lbl:'',               fl:'article',    vm:'simplified'},
+  {f:'astrobuild',t:'catpg',  lbl:'',               fl:'article',    vm:'simplified'},
+  {f:'astrobuild',t:'artpg',  lbl:'',               fl:'article',    vm:'simplified'},
+  {f:'astrobuild',t:'specpg', lbl:'',               fl:'article',    vm:'simplified'},
+];
+
+const FLOW_NODES = {
+  article:    ['raw','rules','gate','glossary','wstatus','wart','widx','wlinks','ccol','cschema','rplugin','wmap','layouts','comps','datalyr','home','catpg','artpg','dist','ghact','ghpages','astrobuild'],
+  deploy:     ['home','catpg','artpg','specpg','dist','ghact','ghpages'],
+  video:      ['vid1','vid2','vid3'],
+  validation: ['ccol','cschema','rplugin','wmap'],
+};
+
+const FLOW_DESC = {
+  none: 'Showing all modules and connections across the full system.',
+  article: 'Article Pipeline: raw material enters through the Curation Gate (governed by Agent Rules, Glossary, and Wiki Status), becomes Wiki Articles in Obsidian, gets enriched into Content Collections, flows through schema validation and wikilink resolution, then through Layouts and Components into published Pages deployed to GitHub Pages.',
+  deploy: 'Deployment flow: all page types (Homepage, Category Index, Article Pages, Special Pages) build into dist/, which GitHub Actions uploads as an artifact and deploys to climatefinancewiki.org.',
+  video: 'Video Production: the 64-second Launch Video composition (HyperFrames + GSAP) derives a shorter Wiki Trailer, which reformats into a square social media variant.',
+  validation: 'Content Validation: Content Collections are validated against the Content Schema (Zod types) and transformed by the Remark Wikilinks Plugin, which resolves [[links]] using the Wikilink Map (150+ term mappings).',
+};
+
+/* ============================================================
+   STATE
+   ============================================================ */
+const S = {view:'full', flow:'none', labels:true, zoom:1, sel:null, notes:{}};
+const nmap = {};
+NODES.forEach(n => nmap[n.id] = n);
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+function layout() {
+  const groups = {};
+  NODES.forEach(n => {
+    if (!visible(n)) return;
+    const k = n.L;
+    if (!groups[k]) groups[k] = [];
+    groups[k].push(n);
+  });
+
+  Object.entries(groups).forEach(([lid, nodes]) => {
+    const lm = LM[lid];
+    if (lm.par) {
+      // Video: stack vertically
+      const startY = lm.y + 30;
+      nodes.forEach((n, i) => {
+        n.x = VID_X;
+        n.y = startY + i * (NODE_H + 28);
+        n.w = NODE_W;
+        n.h = NODE_H;
+      });
+    } else {
+      const aw = X1 - X0;
+      const cnt = nodes.length;
+      const sp = aw / (cnt + 1);
+      const nodeY = lm.y + (BAND_H - NODE_H) / 2;
+
+      // For simplified aggregate node, use wider dims
+      nodes.forEach((n, i) => {
+        if (n.agg) {
+          const midY = (LM.build.y + LM.presentation.y + BAND_H) / 2;
+          n.w = 240;
+          n.h = 64;
+          n.x = (X0 + X1) / 2 - n.w / 2;
+          n.y = midY - n.h / 2;
+        } else {
+          n.w = NODE_W;
+          n.h = NODE_H;
+          n.x = X0 + sp * (i + 1) - NODE_W / 2;
+          n.y = nodeY;
+        }
+      });
+    }
+    nodes.forEach(n => { n.cx = n.x + n.w / 2; n.cy = n.y + n.h / 2; });
+  });
+}
+
+function visible(n) {
+  if (n.vm === 'both') return true;
+  return n.vm === S.view;
+}
+
+function connVisible(c) {
+  if (c.vm === 'both') return true;
+  return c.vm === S.view;
+}
+
+/* ============================================================
+   SVG RENDERING
+   ============================================================ */
+function path(c) {
+  const a = nmap[c.f], b = nmap[c.t];
+  if (!a || !b || a.x == null || b.x == null) return '';
+  const sameLvl = Math.abs(a.cy - b.cy) < 20;
+  if (sameLvl) {
+    const lr = a.cx < b.cx;
+    const sx = lr ? a.x + a.w : a.x;
+    const ex = lr ? b.x : b.x + b.w;
+    const sy = a.cy, ey = b.cy;
+    const off = Math.min(Math.abs(ex - sx) * .25, 25);
+    const dir = lr ? 1 : -1;
+    return `M${sx} ${sy} C${sx + dir * off} ${sy - 22},${ex - dir * off} ${ey - 22},${ex} ${ey}`;
+  }
+  const sx = a.cx, sy = a.y + a.h;
+  const ex = b.cx, ey = b.y;
+  const my = (sy + ey) / 2;
+  return `M${sx} ${sy} C${sx} ${my},${ex} ${my},${ex} ${ey}`;
+}
+
+function flowColor(fl) {
+  return {article:'#A65D3F',deploy:'#8e7f4e',video:'#4e8e8e',validation:'#8e4e7f',design:'#7b5ea7'}[fl] || '#4a4438';
+}
+
+function render() {
+  layout();
+  const svg = document.getElementById('diagram');
+  svg.setAttribute('viewBox', `0 0 ${VB_W} ${VB_H}`);
+  let h = '';
+
+  // Defs
+  h += '<defs>';
+  ['#4a4438','#A65D3F','#8e7f4e','#4e8e8e','#8e4e7f','#7b5ea7'].forEach((c, i) => {
+    h += `<marker id="arr${i}" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="${c}" opacity=".7"/></marker>`;
+  });
+  h += `<filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>`;
+  h += '</defs>';
+
+  // Layer bands
+  Object.entries(LM).forEach(([lid, lm]) => {
+    if (S.view === 'simplified' && (lid === 'build' || lid === 'presentation')) return; // merged
+    if (lm.par) {
+      h += `<rect class="band" x="${VID_X - 20}" y="${lm.y}" width="${NODE_W + 40}" height="${lm.bh}" rx="8" fill="${lm.c.band}" stroke="${lm.c.stroke}" stroke-width=".5" stroke-dasharray="4 3"/>`;
+      h += `<text class="band-label" x="${VID_X - 10}" y="${lm.y - 6}">${lm.short}</text>`;
+    } else {
+      h += `<rect class="band" x="${X0 - 20}" y="${lm.y}" width="${X1 - X0 + 40}" height="${BAND_H}" rx="8" fill="${lm.c.band}" stroke="${lm.c.stroke}" stroke-width=".5"/>`;
+      h += `<text class="band-label" x="${X0 - 14}" y="${lm.y - 6}">${lm.short}</text>`;
+    }
+  });
+  // Merged band for simplified
+  if (S.view === 'simplified') {
+    const by = LM.build.y, bh = LM.presentation.y + BAND_H - by;
+    h += `<rect class="band" x="${X0 - 20}" y="${by}" width="${X1 - X0 + 40}" height="${bh}" rx="8" fill="${LM.build.c.band}" stroke="${LM.build.c.stroke}" stroke-width=".5"/>`;
+    h += `<text class="band-label" x="${X0 - 14}" y="${by - 6}">4-5  BUILD</text>`;
+  }
+
+  // Connections
+  const activeFlow = S.flow !== 'none';
+  const flowNodes = activeFlow ? new Set(FLOW_NODES[S.flow]) : null;
+
+  CONNS.forEach((c, ci) => {
+    if (!connVisible(c)) return;
+    const a = nmap[c.f], b = nmap[c.t];
+    if (!visible(a) || !visible(b)) return;
+    const d = path(c);
+    if (!d) return;
+
+    const inFlow = !activeFlow || (flowNodes.has(c.f) && flowNodes.has(c.t));
+    const fc = flowColor(c.fl);
+    const arrIdx = ['#4a4438','#A65D3F','#8e7f4e','#4e8e8e','#8e4e7f','#7b5ea7'].indexOf(fc);
+    const opacity = activeFlow ? (inFlow ? .85 : .08) : .4;
+    const sw = activeFlow && inFlow ? 2.2 : 1.4;
+    const flt = activeFlow && inFlow ? ' filter="url(#glow)"' : '';
+
+    h += `<path class="c-path" d="${d}" stroke="${fc}" stroke-width="${sw}" opacity="${opacity}" marker-end="url(#arr${arrIdx > -1 ? arrIdx : 0})"${flt}/>`;
+
+    if (S.labels && c.lbl) {
+      // Label at midpoint
+      const mx = (a.cx + b.cx) / 2, my2 = (a.cy + b.cy) / 2 - 6;
+      const lo = activeFlow ? (inFlow ? .8 : .06) : .55;
+      h += `<text class="c-label" x="${mx}" y="${my2}" text-anchor="middle" fill="${fc}" opacity="${lo}">${c.lbl}</text>`;
+    }
+  });
+
+  // Nodes
+  NODES.forEach(n => {
+    if (!visible(n) || n.x == null) return;
+    const lm = LM[n.L];
+    const inFlow = !activeFlow || (flowNodes && flowNodes.has(n.id));
+    const opacity = activeFlow ? (inFlow ? 1 : .12) : 1;
+    const flt = activeFlow && inFlow ? ' filter="url(#glow)"' : '';
+    const sel = S.sel === n.id;
+    const strokeW = sel ? 2.2 : 1.2;
+    const strokeC = sel ? '#F5F0E8' : lm.c.ns;
+    const hasNote = S.notes[n.id];
+
+    h += `<g class="node-g" data-id="${n.id}" opacity="${opacity}"${flt}>`;
+    h += `<rect class="n-rect" x="${n.x}" y="${n.y}" width="${n.w}" height="${n.h}" rx="8" fill="${lm.c.node}" stroke="${strokeC}" stroke-width="${strokeW}"/>`;
+    if (hasNote) {
+      h += `<circle cx="${n.x + n.w - 6}" cy="${n.y + 6}" r="4" fill="#A65D3F"/>`;
+    }
+    h += `<text class="n-label" x="${n.cx}" y="${n.cy - 4}" text-anchor="middle">${n.label}</text>`;
+    h += `<text class="n-sub" x="${n.cx}" y="${n.cy + 12}" text-anchor="middle">${n.sub}</text>`;
+    h += '</g>';
+  });
+
+  svg.innerHTML = h;
+
+  // Click handlers via delegation
+  svg.onclick = e => {
+    const g = e.target.closest('[data-id]');
+    if (g) showDet(g.dataset.id);
+    else closeDet();
+  };
+
+  updatePrompt();
+}
+
+/* ============================================================
+   DETAIL PANEL
+   ============================================================ */
+function showDet(id) {
+  S.sel = id;
+  const n = nmap[id];
+  if (!n) return;
+  const lm = LM[n.L];
+  const p = document.getElementById('det');
+  const b = document.getElementById('det-body');
+
+  let fhtml = '';
+  if (n.files && n.files.length) {
+    fhtml = `<div class="det-h">Key Files</div><ul class="det-files">${n.files.map(f => `<li>${f}</li>`).join('')}</ul>`;
+  }
+
+  const noteVal = S.notes[id] || '';
+
+  b.innerHTML = `
+    <div class="det-title">${n.label}</div>
+    <div class="det-sub">${n.sub}</div>
+    <div class="det-badge" style="background:${lm.c.node};border:1px solid ${lm.c.ns};color:${lm.c.ns}">${lm.name}</div>
+    <div class="det-desc">${n.desc}</div>
+    ${fhtml}
+    <div class="det-metric">${n.cnt}</div>
+    <div class="det-metric-label">metric</div>
+    <div class="note-input">
+      <div class="det-h" style="margin-top:10px">Add Note</div>
+      <textarea id="note-ta" placeholder="Note about this module...">${noteVal}</textarea>
+      <button onclick="saveNote('${id}')">Save Note</button>
+    </div>
+  `;
+  p.classList.add('open');
+  render(); // re-render to highlight selected
+}
+
+function closeDet() {
+  S.sel = null;
+  document.getElementById('det').classList.remove('open');
+  render();
+}
+
+function saveNote(id) {
+  const ta = document.getElementById('note-ta');
+  const val = ta.value.trim();
+  if (val) S.notes[id] = val;
+  else delete S.notes[id];
+  renderNotes();
+  render();
+}
+
+function renderNotes() {
+  const keys = Object.keys(S.notes);
+  const sec = document.getElementById('notes-sec');
+  const list = document.getElementById('notes-list');
+  if (!keys.length) { sec.style.display = 'none'; return; }
+  sec.style.display = '';
+  list.innerHTML = keys.map(id => {
+    const n = nmap[id];
+    return `<div class="note-item"><span><strong>${n.label}:</strong> ${S.notes[id]}</span><button class="note-del" onclick="delNote('${id}')">&times;</button></div>`;
+  }).join('');
+}
+
+function delNote(id) {
+  delete S.notes[id];
+  renderNotes();
+  render();
+}
+
+/* ============================================================
+   CONTROLS
+   ============================================================ */
+function setView(v) {
+  S.view = v;
+  document.querySelectorAll('[data-v]').forEach(b => b.classList.toggle('on', b.dataset.v === v));
+  closeDet();
+}
+
+function setFlow(f) {
+  S.flow = f;
+  document.querySelectorAll('[data-f]').forEach(b => b.classList.toggle('on', b.dataset.f === f));
+  render();
+}
+
+function toggleLabels(on) {
+  S.labels = on;
+  render();
+}
+
+function doZoom(dir) {
+  if (dir === 0) S.zoom = 1;
+  else if (dir > 0) S.zoom = Math.min(S.zoom + .15, 2.5);
+  else S.zoom = Math.max(S.zoom - .15, .4);
+  applyZoom();
+}
+
+function applyZoom() {
+  const svg = document.getElementById('diagram');
+  const w = VB_W / S.zoom, h2 = VB_H / S.zoom;
+  const cx = VB_W / 2, cy = VB_H / 2;
+  svg.setAttribute('viewBox', `${cx - w / 2} ${cy - h2 / 2} ${w} ${h2}`);
+}
+
+// Mouse wheel zoom
+document.querySelector('.canvas-wrap').addEventListener('wheel', e => {
+  e.preventDefault();
+  doZoom(e.deltaY < 0 ? 1 : -1);
+}, {passive: false});
+
+/* ============================================================
+   PROMPT
+   ============================================================ */
+function updatePrompt() {
+  const parts = [];
+  const viewLabel = S.view === 'full' ? 'full' : 'simplified (build + presentation collapsed)';
+  parts.push(`Architecture view: ${viewLabel}.`);
+
+  if (S.flow !== 'none') {
+    parts.push(FLOW_DESC[S.flow]);
+  } else {
+    parts.push(FLOW_DESC.none);
+  }
+
+  if (S.sel) {
+    const n = nmap[S.sel];
+    parts.push(`Selected: ${n.label} (${n.sub}) - ${n.desc}`);
+  }
+
+  const noteKeys = Object.keys(S.notes);
+  if (noteKeys.length) {
+    parts.push('Notes:');
+    noteKeys.forEach(id => {
+      const n = nmap[id];
+      parts.push(`  ${n.label} (${n.sub}): ${S.notes[id]}`);
+    });
+  }
+
+  document.getElementById('prompt').textContent = parts.join(' ');
+}
+
+function copyPrompt() {
+  const txt = document.getElementById('prompt').textContent;
+  navigator.clipboard.writeText(txt).then(() => {
+    const btn = document.getElementById('copy-btn');
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = 'Copy', 1800);
+  });
+}
+
+/* ============================================================
+   LEGEND
+   ============================================================ */
+function buildLegend() {
+  const el = document.getElementById('legend');
+  const items = [
+    {name:'Source Material', c: LM.source.c.ns},
+    {name:'Curation', c: LM.curation.c.ns},
+    {name:'Wiki (Obsidian)', c: LM.wiki.c.ns},
+    {name:'Site Build', c: LM.build.c.ns},
+    {name:'Presentation', c: LM.presentation.c.ns},
+    {name:'Pages', c: LM.pages.c.ns},
+    {name:'Deployment', c: LM.deployment.c.ns},
+    {name:'Video', c: LM.video.c.ns},
+  ];
+  el.innerHTML = items.map(it => `<div class="leg"><div class="dot" style="background:${it.c}22;border-color:${it.c}"></div>${it.name}</div>`).join('');
+}
+
+/* ============================================================
+   INIT
+   ============================================================ */
+buildLegend();
+render();
+</script>
+</body>
+</html>
