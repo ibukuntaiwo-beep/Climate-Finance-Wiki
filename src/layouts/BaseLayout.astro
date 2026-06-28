@@ -10,9 +10,10 @@ interface Props {
   title: string;
   description?: string;
   footerType?: 'landing' | 'internal';
-  activePage?: 'topics' | 'about';
+  activePage?: 'topics' | 'news' | 'about';
   schemaType?: 'WebSite' | 'Article';
   ogImage?: string;
+  publishDate?: string;
 }
 
 const siteUrl = 'https://climatefinancewiki.org';
@@ -26,6 +27,7 @@ const {
   activePage,
   schemaType = 'WebSite',
   ogImage = '/og-image.png',
+  publishDate,
 } = Astro.props;
 
 const isHomePage = title === siteName;
@@ -41,6 +43,7 @@ const jsonLd = schemaType === 'Article' ? {
   "@type": "Article",
   "headline": title,
   "description": description,
+  ...(publishDate ? { "datePublished": publishDate, "dateModified": publishDate } : {}),
   "author": {
     "@type": "Person",
     "name": "Ibukun Taiwo",
@@ -77,6 +80,7 @@ const jsonLd = schemaType === 'Article' ? {
   <link rel="icon" type="image/svg+xml" href={url('/favicon.svg')} />
   <link rel="icon" href={url('/favicon.ico')} />
   <link rel="canonical" href={canonicalUrl} />
+  <link rel="alternate" type="application/rss+xml" title="Climate Finance Wiki — News" href={url('/rss.xml')} />
   <meta name="generator" content={Astro.generator} />
   <meta name="author" content="Ibukun Taiwo" />
   <meta name="google-site-verification" content="Idb08U_QTA36KjYysOYkEPIfPaZYKFEn9mcsRejZ3P4" />

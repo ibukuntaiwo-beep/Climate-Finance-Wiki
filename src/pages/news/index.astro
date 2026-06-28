@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { url } from '../../lib/url';
+import { getCollection } from 'astro:content';
+import { categories } from '../../data/categories';
+
+const items = (await getCollection('news')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+const fmt = (d: Date) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+<BaseLayout
+  title="Climate Finance News"
+  description="Curated climate-finance news, explained in plain English and linked to the wiki. Regulation, markets, greenwashing, carbon markets and net-zero finance, for the people who explain it."
+  footerType="internal"
+  activePage="news"
+>
+  <div class="breadcrumb" aria-label="Breadcrumb">
+    <ol class="breadcrumb__list">
+      <li><a href={url('/')} class="breadcrumb__link">Home</a></li>
+      <li class="breadcrumb__separator" aria-hidden="true">&rarr;</li>
+      <li class="breadcrumb__current" aria-current="page">News</li>
+    </ol>
+  </div>
+  <header class="category-header">
+    <div class="category-header__label">News</div>
+    <h1 class="category-header__title">Climate Finance News</h1>
+    <p class="category-header__description">Short, curated dispatches on the climate-finance news that matters &mdash; what happened, why it matters, and where to read more. Each one links out to the original source and into the wiki concepts behind the story.</p>
+    <div class="category-header__meta"><span>{items.length}</span>&nbsp;dispatches&ensp;&middot;&ensp;<a href={url('/rss.xml')} style="color:var(--color-primary)">RSS feed</a></div>
+  </header>
+  <div class="content-area">
+    <main class="main-column" id="articles">
+      {items.map((item) => (
+        <article class="article-card news-card">
+          <a href={url(`/news/${item.id}/`)} class="article-card__link">
+            <div class="article-card__top-row">
+              <span class="news-tag">{item.data.tag}</span>
+              <span class="news-date">{fmt(item.data.date)}</span>
+            </div>
+            <h2 class="article-card__title">{item.data.title}</h2>
+            <p class="article-card__subtitle">{item.data.summary}</p>
+            <div class="article-card__footer">
+              <span class="article-card__stats">Source:&nbsp;<span>{item.data.source.name}</span></span>
+              <span class="article-card__read-cta">Read&ensp;&rarr;</span>
+            </div>
+          </a>
+        </article>
+      ))}
+    </main>
+    <aside class="sidebar" aria-label="News context">
+      <div class="sidebar-box news-subscribe-box">
+        <h2 class="sidebar-box__heading">Stay updated</h2>
+        <p class="news-subscribe__text">New climate-finance dispatches and explainers, in plain English. No spam.</p>
+        <!-- TODO: point `action` at your newsletter provider to go live. -->
+        <form class="news-subscribe" action="#" method="post">
+          <input type="email" name="email" required placeholder="you@example.com" aria-label="Email address" class="news-subscribe__input" />
+          <button type="submit" class="news-subscribe__btn">Subscribe</button>
+        </form>
+        <a href={url('/rss.xml')} class="news-rss-link">Or subscribe via RSS&ensp;&rarr;</a>
+      </div>
+      <div class="sidebar-box">
+        <h2 class="sidebar-box__heading">Browse the Wiki</h2>
+        {categories.map((cat) => (
+          <a href={url(`/${cat.slug}/`)} class="related-cat">
+            <span class="related-cat__name">{cat.name}</span>
+            <span class="related-cat__count">{cat.articleCount} articles</span>
+          </a>
+        ))}
+      </div>
+    </aside>
+  </div>
+  <script>
+    (function(){var p=window.matchMedia('(prefers-reduced-motion: reduce)').matches;var c=document.querySelectorAll('.article-card');if(p){c.forEach(function(d){d.classList.add('is-visible')});return}if('IntersectionObserver' in window){var o=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting){en.target.classList.add('is-visible');o.unobserve(en.target)}})},{threshold:0.15,rootMargin:'0px 0px -40px 0px'});c.forEach(function(d){o.observe(d)})}else{c.forEach(function(d){d.classList.add('is-visible')})}})();
+  </script>
+</BaseLayout>

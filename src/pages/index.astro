@@ -3,6 +3,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { url } from '../lib/url';
 import { trails } from '../data/trails';
 import { categories } from '../data/categories';
+import { getCollection } from 'astro:content';
+
+const latestNews = (await getCollection('news'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+const fmtNews = (d: Date) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
 ---
 <BaseLayout title="Climate Finance Wiki" footerType="landing">
 
@@ -81,6 +87,32 @@ import { categories } from '../data/categories';
     <a href={url('/start-here/')}>Start the thread &rarr;</a>
   </div>
 </div>
+
+<!-- LATEST NEWS -->
+{latestNews.length > 0 && (
+<section class="latest-news-section reveal">
+  <div class="latest-news-head">
+    <div>
+      <div class="section-label">Latest News</div>
+      <p class="trails-subtitle">Curated climate-finance news, explained plainly &mdash; with links out to the source and into the wiki.</p>
+    </div>
+    <a href={url('/news/')} class="latest-news-all">All news&ensp;&rarr;</a>
+  </div>
+  <div class="latest-news-grid">
+    {latestNews.map((item) => (
+      <a href={url(`/news/${item.id}/`)} class="latest-news-card">
+        <div class="latest-news-card__meta">
+          <span class="news-tag">{item.data.tag}</span>
+          <span class="news-date">{fmtNews(item.data.date)}</span>
+        </div>
+        <h3 class="latest-news-card__title">{item.data.title}</h3>
+        <p class="latest-news-card__summary">{item.data.summary}</p>
+        <span class="latest-news-card__cta">Read&ensp;&rarr;</span>
+      </a>
+    ))}
+  </div>
+</section>
+)}
 
 <!-- STATS STRIP -->
 <div class="stats-strip reveal">

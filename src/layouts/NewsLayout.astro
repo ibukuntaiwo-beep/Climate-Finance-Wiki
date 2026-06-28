@@ -1,0 +1,108 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { url } from '../lib/url';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+interface Props {
+  title: string;
+  summary: string;
+  date: Date;
+  tag: string;
+  metaTitle?: string;
+  metaDescription?: string;
+  source: { name: string; url: string };
+  related?: Array<{ title: string; category: string; slug: string; description?: string }>;
+}
+
+const { title, summary, date, tag, metaTitle, metaDescription, source, related = [] } = Astro.props;
+
+const formattedDate = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+// Map a display category ("Frameworks", "Case Studies", ...) to its URL segment.
+const categorySegment = (c: string) => {
+  const k = c.toLowerCase();
+  if (k === 'case studies' || k === 'case-studies') return 'case-studies';
+  return k; // concepts | instruments | actors | frameworks
+};
+
+const relatedWithHrefs = related.map(a => ({
+  title: a.title,
+  category: a.category,
+  description: a.description || `Read the ${a.title} explainer.`,
+  href: url(`/${categorySegment(a.category)}/${a.slug}/`)
+}));
+---
+<BaseLayout
+  title={`${metaTitle || title} | Climate Finance Wiki`}
+  description={metaDescription || summary}
+  footerType="internal"
+  activePage="news"
+  schemaType="Article"
+  publishDate={date.toISOString()}
+>
+  <header class="article-header">
+    <Breadcrumbs items={[
+      { label: 'Home', href: url('/') },
+      { label: 'News', href: url('/news/') },
+      { label: title }
+    ]} />
+    <div class="category-label fade-up fade-up-d1">{tag}&ensp;&middot;&ensp;{formattedDate}</div>
+    <h1 class="article-title fade-up fade-up-d2">{title}</h1>
+    <p class="article-subtitle fade-up fade-up-d3">{summary}</p>
+    <p class="article-byline fade-up fade-up-d3">By <a href={url('/author/ibukun-taiwo/')}>Ibukun Taiwo</a></p>
+  </header>
+
+  <div class="article-layout">
+    <main class="article-main">
+      <article class="article-body">
+        <slot />
+
+        <aside class="news-source-box">
+          <span class="news-source-box__label">Original source &mdash; full credit to the reporting outlet</span>
+          <a href={source.url} target="_blank" rel="noopener nofollow" class="news-source-box__link">
+            Read the full story at {source.name}&ensp;&rarr;
+          </a>
+        </aside>
+      </article>
+
+      {relatedWithHrefs.length > 0 && (
+        <div class="see-also news-related">
+          <h2>Related on the Wiki</h2>
+          <div class="see-also-grid">
+            {relatedWithHrefs.map((a) => (
+              <a href={a.href} class="see-also-card">
+                <span class="see-also-badge">{a.category}</span>
+                <div class="see-also-title">{a.title}</div>
+                <div class="see-also-desc">{a.description}</div>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <p class="news-updated">Curated {formattedDate} &middot; Climate Finance Wiki</p>
+    </main>
+
+    <aside class="article-sidebar">
+      <div class="sidebar-box news-subscribe-box">
+        <h2 class="sidebar-box__heading">Stay updated</h2>
+        <p class="news-subscribe__text">New climate-finance dispatches and explainers, in plain English. No spam.</p>
+        <!-- TODO: point `action` at your newsletter provider (Buttondown / ConvertKit / Mailchimp) to go live. -->
+        <form class="news-subscribe" action="#" method="post">
+          <input type="email" name="email" required placeholder="you@example.com" aria-label="Email address" class="news-subscribe__input" />
+          <button type="submit" class="news-subscribe__btn">Subscribe</button>
+        </form>
+        <a href={url('/rss.xml')} class="news-rss-link">Or subscribe via RSS&ensp;&rarr;</a>
+      </div>
+      <div class="sidebar-box">
+        <h2 class="sidebar-box__heading">Browse the Wiki</h2>
+        <a href={url('/concepts/')} class="related-cat"><span class="related-cat__name">Concepts</span></a>
+        <a href={url('/instruments/')} class="related-cat"><span class="related-cat__name">Instruments</span></a>
+        <a href={url('/actors/')} class="related-cat"><span class="related-cat__name">Actors</span></a>
+        <a href={url('/frameworks/')} class="related-cat"><span class="related-cat__name">Frameworks</span></a>
+        <a href={url('/case-studies/')} class="related-cat"><span class="related-cat__name">Case Studies</span></a>
+      </div>
+      <a href={url('/news/')} class="news-back-link">&larr; All news</a>
+    </aside>
+  </div>
+</BaseLayout>

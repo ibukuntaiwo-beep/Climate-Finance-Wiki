@@ -1,7 +1,7 @@
 ---
 import { url } from '../lib/url';
 interface Props {
-  activePage?: 'topics' | 'about';
+  activePage?: 'topics' | 'news' | 'about';
 }
 const { activePage } = Astro.props;
 ---
@@ -14,6 +14,7 @@ const { activePage } = Astro.props;
     </div>
     <div class="nav-links">
       <a href={url('/#categories')} class={activePage === 'topics' ? 'nav-active' : ''}>Topics</a>
+      <a href={url('/news/')} class={activePage === 'news' ? 'nav-active' : ''}>News</a>
       <a href={url('/about/')} class={activePage === 'about' ? 'nav-active' : ''}>About</a>
       <a href="#" class="nav-search" aria-label="Search" id="searchToggle">
         <svg width="17" height="17" viewBox="0 0 17 17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="7" cy="7" r="5"/><line x1="10.8" y1="10.8" x2="15.5" y2="15.5"/></svg>
