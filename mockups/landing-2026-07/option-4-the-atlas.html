@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Climate Finance Wiki — The Atlas of Climate Capital</title>
+<meta name="description" content="Climate finance explained for communications professionals. Case studies, key concepts, and the mechanisms behind green bonds, carbon markets, and climate risk.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F4F6F5;
+    --paper-raise: #FBFCFC;
+    --ink: #122A2B;
+    --ink-60: rgba(18, 42, 43, 0.62);
+    --ink-40: rgba(18, 42, 43, 0.42);
+    --hairline: rgba(18, 42, 43, 0.14);
+    --hairline-soft: rgba(18, 42, 43, 0.08);
+    --accent: #2E7D6B;
+    --accent-deep: #1F5A4D;
+    --accent-wash: rgba(46, 125, 107, 0.08);
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --font-ui: 'Geist', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-ui);
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection { background: rgba(46, 125, 107, 0.22); }
+
+  a { color: inherit; text-decoration: none; }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+  .mono {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* Underline-draw link */
+  .u {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.3s var(--ease-out);
+    padding-bottom: 2px;
+  }
+  .u:hover, .u:focus-visible { background-size: 100% 1px; }
+
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* ============ NAV ============ */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(244, 246, 245, 0.86);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--hairline-soft);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+  .wordmark {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    font-size: 1rem;
+  }
+  .wordmark-glyph {
+    width: 10px;
+    height: 10px;
+    background: var(--accent);
+    border-radius: 2px;
+    flex: none;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--ink-60);
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-search {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border: 1px solid var(--hairline);
+    border-radius: 8px;
+    color: var(--ink-60);
+    transition: border-color 0.2s var(--ease-out), color 0.2s var(--ease-out), transform 0.15s var(--ease-out);
+  }
+  .nav-search:hover { border-color: var(--ink-40); color: var(--ink); }
+  .nav-search:active { transform: scale(0.94); }
+
+  /* ============ HERO ============ */
+  .hero {
+    position: relative;
+    min-height: min(78vh, 700px);
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--hairline-soft);
+    overflow: hidden;
+  }
+  #flow {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(244, 246, 245, 0.92) 0%, rgba(244, 246, 245, 0.55) 42%, rgba(244, 246, 245, 0) 72%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    position: relative;
+    width: 100%;
+    padding: 96px 24px 110px;
+  }
+  .hero-kicker {
+    color: var(--accent-deep);
+    margin-bottom: 22px;
+  }
+  h1 {
+    font-size: clamp(2.1rem, 4.6vw, 3.5rem);
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 1.08;
+    max-width: 14ch;
+  }
+  .hero-sub {
+    margin-top: 22px;
+    font-size: 1.05rem;
+    color: var(--ink-60);
+    max-width: 44ch;
+  }
+  .hero-ctas {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin-top: 38px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 13px 24px;
+    border-radius: 10px;
+    background: var(--ink);
+    color: var(--paper);
+    transition: transform 0.15s var(--ease-out), background 0.2s var(--ease-out);
+  }
+  .btn:hover { background: #1D3E3F; }
+  .btn:active { transform: scale(0.98); }
+  .btn .arr { transition: transform 0.25s var(--ease-out); }
+  .btn:hover .arr { transform: translateX(3px); }
+  .link-quiet {
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--ink-60);
+  }
+  .link-quiet:hover { color: var(--ink); }
+
+  /* ============ STAT BAND ============ */
+  .stats {
+    border-bottom: 1px solid var(--hairline-soft);
+    background: var(--paper-raise);
+  }
+  .stats-inner {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .stat {
+    padding: 34px 24px;
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+  }
+  .stat + .stat { border-left: 1px solid var(--hairline-soft); }
+  .stat-num {
+    font-family: var(--font-mono);
+    font-size: 2rem;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+    min-width: 2ch;
+  }
+  .stat-label { color: var(--ink-60); font-size: 0.9rem; }
+
+  /* ============ SECTIONS ============ */
+  section { padding: 96px 0; }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+  .section-kicker { color: var(--accent-deep); }
+  h2 {
+    font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    margin-top: 10px;
+  }
+  .section-more {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--ink-60);
+    white-space: nowrap;
+  }
+  .section-more:hover { color: var(--ink); }
+
+  /* ============ INDEX / CATEGORY ROUTES ============ */
+  .routes { border-top: 1px solid var(--hairline); }
+  .route {
+    display: grid;
+    grid-template-columns: 3.2rem 15rem 1fr 5.5rem 2rem;
+    align-items: center;
+    gap: 18px;
+    padding: 26px 4px;
+    border-bottom: 1px solid var(--hairline);
+    transition: background 0.25s var(--ease-out);
+  }
+  .route:hover { background: var(--accent-wash); }
+  .route-num {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--ink-40);
+  }
+  .route-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .route-line { width: 100%; height: 14px; overflow: visible; }
+  .route-line .base {
+    stroke: var(--hairline);
+    stroke-width: 1;
+    fill: none;
+  }
+  .route-line .draw {
+    stroke: var(--accent);
+    stroke-width: 1.5;
+    fill: none;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    transition: stroke-dashoffset 0.45s var(--ease-out);
+  }
+  .route:hover .draw { stroke-dashoffset: 0; }
+  .route-count {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--ink-60);
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+  .route-arr {
+    text-align: right;
+    color: var(--ink-40);
+    transition: transform 0.25s var(--ease-out), color 0.25s var(--ease-out);
+  }
+  .route:hover .route-arr { transform: translateX(4px); color: var(--accent-deep); }
+
+  /* ============ FEATURED SPLIT ============ */
+  .featured { background: var(--paper-raise); border-top: 1px solid var(--hairline-soft); border-bottom: 1px solid var(--hairline-soft); }
+  .featured-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .featured-quote {
+    margin-top: 26px;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    font-weight: 400;
+    max-width: 34ch;
+    border-left: 2px solid var(--accent);
+    padding-left: 22px;
+  }
+  .featured-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 30px;
+    font-weight: 500;
+    color: var(--accent-deep);
+  }
+  .featured-link .arr { transition: transform 0.25s var(--ease-out); }
+  .featured-link:hover .arr { transform: translateX(3px); }
+  .figure { position: relative; }
+  .figure-frame {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--hairline);
+    aspect-ratio: 4 / 3;
+    background: var(--accent-wash);
+  }
+  .figure-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .figure-cap {
+    margin-top: 12px;
+    color: var(--ink-40);
+    letter-spacing: 0.06em;
+  }
+
+  /* ============ TRAILS ============ */
+  .trail {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 48px;
+    align-items: center;
+    padding: 40px 4px;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .trails-wrap { border-top: 1px solid var(--hairline); }
+  .trail-num {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent-deep);
+    letter-spacing: 0.08em;
+  }
+  .trail-name {
+    font-size: 1.35rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-top: 8px;
+  }
+  .trail-tag { color: var(--ink-60); margin-top: 6px; max-width: 44ch; }
+  .trail-meta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 16px;
+  }
+  .trail-meta .mono { color: var(--ink-40); text-transform: none; letter-spacing: 0.02em; }
+  .trail-start {
+    font-weight: 500;
+    font-size: 0.92rem;
+    color: var(--accent-deep);
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .trail-start .arr { transition: transform 0.25s var(--ease-out); }
+  .trail:hover .trail-start .arr { transform: translateX(3px); }
+  .waypoints { width: 100%; height: 56px; overflow: visible; }
+  .waypoints .wp-base { stroke: var(--hairline); stroke-width: 1; fill: none; }
+  .waypoints .wp-draw {
+    stroke: var(--accent);
+    stroke-width: 1.5;
+    fill: none;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    transition: stroke-dashoffset 0.6s var(--ease-out);
+  }
+  .trail:hover .wp-draw { stroke-dashoffset: 0; }
+  .waypoints circle {
+    fill: var(--paper);
+    stroke: var(--ink-40);
+    stroke-width: 1.2;
+    transition: fill 0.25s var(--ease-out), stroke 0.25s var(--ease-out), transform 0.25s var(--ease-out);
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  .trail:hover .waypoints circle { fill: var(--accent); stroke: var(--accent-deep); transform: scale(1.25); }
+  .trail:hover .waypoints circle:nth-of-type(2) { transition-delay: 0.06s; }
+  .trail:hover .waypoints circle:nth-of-type(3) { transition-delay: 0.12s; }
+  .trail:hover .waypoints circle:nth-of-type(4) { transition-delay: 0.18s; }
+  .trail:hover .waypoints circle:nth-of-type(5) { transition-delay: 0.24s; }
+  .trail:hover .waypoints circle:nth-of-type(6) { transition-delay: 0.3s; }
+
+  /* ============ NEWS ============ */
+  .news-list { border-top: 1px solid var(--hairline); }
+  .news-item {
+    display: grid;
+    grid-template-columns: 10rem 1fr 2rem;
+    gap: 18px;
+    align-items: baseline;
+    padding: 24px 4px;
+    border-bottom: 1px solid var(--hairline);
+    transition: background 0.25s var(--ease-out);
+  }
+  .news-item:hover { background: var(--accent-wash); }
+  .news-date {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--ink-40);
+    font-variant-numeric: tabular-nums;
+  }
+  .news-title {
+    font-size: 1.05rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .news-arr {
+    text-align: right;
+    color: var(--ink-40);
+    transition: transform 0.25s var(--ease-out), color 0.25s var(--ease-out);
+  }
+  .news-item:hover .news-arr { transform: translateX(4px); color: var(--accent-deep); }
+
+  /* ============ PROVENANCE ============ */
+  .provenance {
+    padding: 64px 0;
+    border-top: 1px solid var(--hairline-soft);
+    background: var(--paper-raise);
+  }
+  .prov-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+  .prov-block .mono { color: var(--accent-deep); margin-bottom: 14px; display: block; }
+  .prov-block p { color: var(--ink-60); font-size: 0.95rem; max-width: 52ch; }
+  .prov-block a { color: var(--ink); font-weight: 500; }
+
+  /* ============ FOOTER ============ */
+  footer {
+    border-top: 1px solid var(--hairline);
+    padding: 56px 0 48px;
+  }
+  .footer-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+  .footer-brand p {
+    color: var(--ink-60);
+    font-size: 0.9rem;
+    margin-top: 12px;
+    max-width: 36ch;
+  }
+  .footer-links {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 12px 40px;
+    font-size: 0.9rem;
+    color: var(--ink-60);
+  }
+  .footer-links a:hover { color: var(--ink); }
+  .footer-legal {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--hairline-soft);
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+    color: var(--ink-40);
+    font-size: 0.8rem;
+  }
+
+  /* ============ REVEALS ============ */
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.55s var(--ease-out), transform 0.55s var(--ease-out);
+    transition-delay: calc(var(--i, 0) * 70ms);
+  }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 900px) {
+    .route { grid-template-columns: 2.4rem 1fr 4rem 1.5rem; }
+    .route-line { display: none; }
+    .featured-grid { grid-template-columns: 1fr; gap: 40px; }
+    .trail { grid-template-columns: 1fr; gap: 24px; }
+    .prov-inner { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 768px) {
+    section { padding: 64px 0; }
+    .hero-inner { padding: 72px 24px 84px; }
+    .stats-inner { grid-template-columns: 1fr; }
+    .stat + .stat { border-left: none; border-top: 1px solid var(--hairline-soft); }
+    .stat { padding: 22px 24px; }
+    .nav-links { gap: 20px; }
+    .nav-links .nav-topics { display: none; }
+    .news-item { grid-template-columns: 1fr 1.5rem; }
+    .news-date { order: -1; grid-column: 1 / -1; }
+    .section-head { flex-direction: column; gap: 8px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="https://climatefinancewiki.org/" class="wordmark">
+      <span class="wordmark-glyph" aria-hidden="true"></span>
+      Climate Finance Wiki
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#index" class="nav-topics">Topics</a>
+      <a href="https://climatefinancewiki.org/news/">News</a>
+      <a href="https://climatefinancewiki.org/about/">About</a>
+      <a href="https://climatefinancewiki.org/" class="nav-search" aria-label="Search">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+          <circle cx="6.5" cy="6.5" r="4.75" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M10.5 10.5L13.5 13.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" style="padding:0">
+  <canvas id="flow" aria-hidden="true"></canvas>
+  <div class="container hero-inner">
+    <p class="mono hero-kicker">The Atlas of Climate Capital</p>
+    <h1>How the world funds its response to climate change.</h1>
+    <p class="hero-sub">Making climate finance make sense — for the people who explain it.</p>
+    <div class="hero-ctas">
+      <a class="btn" href="https://climatefinancewiki.org/start-here/">Start here <span class="arr" aria-hidden="true">&rarr;</span></a>
+      <a class="link-quiet u" href="#index">Browse the index</a>
+    </div>
+  </div>
+</section>
+
+<!-- STAT BAND -->
+<div class="stats">
+  <div class="container stats-inner">
+    <div class="stat reveal" style="--i:0">
+      <span class="stat-num" data-count="52">0</span>
+      <span class="stat-label">plain-English articles</span>
+    </div>
+    <div class="stat reveal" style="--i:1">
+      <span class="stat-num" data-count="5">0</span>
+      <span class="stat-label">categories</span>
+    </div>
+    <div class="stat reveal" style="--i:2">
+      <span class="stat-num" data-count="3">0</span>
+      <span class="stat-label">curated reading trails</span>
+    </div>
+  </div>
+</div>
+
+<!-- INDEX / CATEGORIES -->
+<section id="index">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <p class="mono section-kicker">The Index</p>
+        <h2>Five routes through the territory</h2>
+      </div>
+    </div>
+    <div class="routes">
+      <a class="route reveal" style="--i:0" href="https://climatefinancewiki.org/concepts/">
+        <span class="route-num">01</span>
+        <span class="route-name">Concepts</span>
+        <svg class="route-line" viewBox="0 0 400 14" preserveAspectRatio="none" aria-hidden="true">
+          <path class="base" d="M0,7 C100,2 200,12 400,7" />
+          <path class="draw" pathLength="1" d="M0,7 C100,2 200,12 400,7" />
+        </svg>
+        <span class="route-count">12</span>
+        <span class="route-arr" aria-hidden="true">&rarr;</span>
+      </a>
+      <a class="route reveal" style="--i:1" href="https://climatefinancewiki.org/frameworks/">
+        <span class="route-num">02</span>
+        <span class="route-name">Frameworks</span>
+        <svg class="route-line" viewBox="0 0 400 14" preserveAspectRatio="none" aria-hidden="true">
+          <path class="base" d="M0,7 C120,13 260,2 400,7" />
+          <path class="draw" pathLength="1" d="M0,7 C120,13 260,2 400,7" />
+        </svg>
+        <span class="route-count">13</span>
+        <span class="route-arr" aria-hidden="true">&rarr;</span>
+      </a>
+      <a class="route reveal" style="--i:2" href="https://climatefinancewiki.org/case-studies/">
+        <span class="route-num">03</span>
+        <span class="route-name">Case Studies</span>
+        <svg class="route-line" viewBox="0 0 400 14" preserveAspectRatio="none" aria-hidden="true">
+          <path class="base" d="M0,7 C90,11 300,3 400,7" />
+          <path class="draw" pathLength="1" d="M0,7 C90,11 300,3 400,7" />
+        </svg>
+        <span class="route-count">12</span>
+        <span class="route-arr" aria-hidden="true">&rarr;</span>
+      </a>
+      <a class="route reveal" style="--i:3" href="https://climatefinancewiki.org/actors/">
+        <span class="route-num">04</span>
+        <span class="route-name">Actors</span>
+        <svg class="route-line" viewBox="0 0 400 14" preserveAspectRatio="none" aria-hidden="true">
+          <path class="base" d="M0,7 C140,3 240,12 400,7" />
+          <path class="draw" pathLength="1" d="M0,7 C140,3 240,12 400,7" />
+        </svg>
+        <span class="route-count">9</span>
+        <span class="route-arr" aria-hidden="true">&rarr;</span>
+      </a>
+      <a class="route reveal" style="--i:4" href="https://climatefinancewiki.org/instruments/">
+        <span class="route-num">05</span>
+        <span class="route-name">Instruments</span>
+        <svg class="route-line" viewBox="0 0 400 14" preserveAspectRatio="none" aria-hidden="true">
+          <path class="base" d="M0,7 C110,12 280,2 400,7" />
+          <path class="draw" pathLength="1" d="M0,7 C110,12 280,2 400,7" />
+        </svg>
+        <span class="route-count">6</span>
+        <span class="route-arr" aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED CASE STUDY -->
+<section class="featured">
+  <div class="container featured-grid">
+    <div class="reveal">
+      <p class="mono section-kicker">Featured Case Study</p>
+      <h2>The First Climate Change Bankruptcy</h2>
+      <blockquote class="featured-quote">
+        $30 billion in wildfire liabilities destroyed California&rsquo;s largest utility, proving physical climate risk isn&rsquo;t theoretical.
+      </blockquote>
+      <a class="featured-link" href="https://climatefinancewiki.org/case-studies/pge-bankruptcy/">
+        Read the case study <span class="arr" aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
+    <figure class="figure reveal" style="--i:1">
+      <div class="figure-frame">
+        <img src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&w=1600&q=80"
+             alt="Aerial view of utility-scale solar array rows" loading="lazy">
+      </div>
+      <figcaption class="figure-cap mono">Fig. 01 — Utility-scale solar, aerial survey</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- TRAILS -->
+<section>
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <p class="mono section-kicker">Reading Trails</p>
+        <h2>Three charted paths through the material</h2>
+      </div>
+    </div>
+    <div class="trails-wrap">
+
+      <a class="trail reveal" style="--i:0" href="https://climatefinancewiki.org/concepts/greenwashing/">
+        <div>
+          <span class="trail-num">Trail 01</span>
+          <h3 class="trail-name">The Greenwashing Trail</h3>
+          <p class="trail-tag">From misleading claims to criminal charges.</p>
+          <div class="trail-meta">
+            <span class="mono">6 articles &middot; ~35 min</span>
+            <span class="trail-start">Start this trail <span class="arr" aria-hidden="true">&rarr;</span></span>
+          </div>
+        </div>
+        <svg class="waypoints" viewBox="0 0 400 56" preserveAspectRatio="none" aria-hidden="true">
+          <path class="wp-base" d="M8,34 C80,14 150,46 220,26 S340,18 392,30" />
+          <path class="wp-draw" pathLength="1" d="M8,34 C80,14 150,46 220,26 S340,18 392,30" />
+          <circle cx="8" cy="34" r="4"/>
+          <circle cx="85" cy="24" r="4"/>
+          <circle cx="160" cy="38" r="4"/>
+          <circle cx="235" cy="25" r="4"/>
+          <circle cx="315" cy="22" r="4"/>
+          <circle cx="392" cy="30" r="4"/>
+        </svg>
+      </a>
+
+      <a class="trail reveal" style="--i:1" href="https://climatefinancewiki.org/concepts/climate-finance/">
+        <div>
+          <span class="trail-num">Trail 02</span>
+          <h3 class="trail-name">Follow the Money</h3>
+          <p class="trail-tag">How climate finance actually flows, and where it gets stuck.</p>
+          <div class="trail-meta">
+            <span class="mono">6 articles &middot; ~35 min</span>
+            <span class="trail-start">Start this trail <span class="arr" aria-hidden="true">&rarr;</span></span>
+          </div>
+        </div>
+        <svg class="waypoints" viewBox="0 0 400 56" preserveAspectRatio="none" aria-hidden="true">
+          <path class="wp-base" d="M8,24 C90,42 170,16 250,34 S350,40 392,26" />
+          <path class="wp-draw" pathLength="1" d="M8,24 C90,42 170,16 250,34 S350,40 392,26" />
+          <circle cx="8" cy="24" r="4"/>
+          <circle cx="90" cy="34" r="4"/>
+          <circle cx="170" cy="26" r="4"/>
+          <circle cx="250" cy="34" r="4"/>
+          <circle cx="330" cy="36" r="4"/>
+          <circle cx="392" cy="26" r="4"/>
+        </svg>
+      </a>
+
+      <a class="trail reveal" style="--i:2" href="https://climatefinancewiki.org/frameworks/paris-agreement/">
+        <div>
+          <span class="trail-num">Trail 03</span>
+          <h3 class="trail-name">Architecture of Climate Policy</h3>
+          <p class="trail-tag">The agreements, taxonomies, and standards that set the rules.</p>
+          <div class="trail-meta">
+            <span class="mono">6 articles &middot; ~35 min</span>
+            <span class="trail-start">Start this trail <span class="arr" aria-hidden="true">&rarr;</span></span>
+          </div>
+        </div>
+        <svg class="waypoints" viewBox="0 0 400 56" preserveAspectRatio="none" aria-hidden="true">
+          <path class="wp-base" d="M8,30 C70,44 160,12 240,30 S330,44 392,22" />
+          <path class="wp-draw" pathLength="1" d="M8,30 C70,44 160,12 240,30 S330,44 392,22" />
+          <circle cx="8" cy="30" r="4"/>
+          <circle cx="80" cy="38" r="4"/>
+          <circle cx="160" cy="22" r="4"/>
+          <circle cx="240" cy="30" r="4"/>
+          <circle cx="320" cy="38" r="4"/>
+          <circle cx="392" cy="22" r="4"/>
+        </svg>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section style="padding-top:0">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <p class="mono section-kicker">Dispatches</p>
+        <h2>Latest news, explained plainly</h2>
+      </div>
+      <a class="section-more u" href="https://climatefinancewiki.org/news/">All news &rarr;</a>
+    </div>
+    <div class="news-list">
+      <a class="news-item reveal" style="--i:0" href="https://climatefinancewiki.org/news/">
+        <span class="news-date">Jun 24, 2026 &middot; Regulation</span>
+        <span class="news-title">EU Council backs simpler SFDR with three clear fund labels</span>
+        <span class="news-arr" aria-hidden="true">&rarr;</span>
+      </a>
+      <a class="news-item reveal" style="--i:1" href="https://climatefinancewiki.org/news/">
+        <span class="news-date">Jun 23, 2026</span>
+        <span class="news-title">GFANZ drops its Paris-alignment requirement; ShareAction pushes back</span>
+        <span class="news-arr" aria-hidden="true">&rarr;</span>
+      </a>
+      <a class="news-item reveal" style="--i:2" href="https://climatefinancewiki.org/news/">
+        <span class="news-date">Jun 15, 2026</span>
+        <span class="news-title">Vietnam issues detailed rules for its carbon market</span>
+        <span class="news-arr" aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PROVENANCE -->
+<div class="provenance">
+  <div class="container prov-inner">
+    <div class="prov-block reveal">
+      <span class="mono">Primary Sources</span>
+      <p>Built from ICMA Green Bond Principles, UNFCCC reports, SEC enforcement filings, the EU Taxonomy, and IPCC Assessment Reports.</p>
+    </div>
+    <div class="prov-block reveal" style="--i:1">
+      <span class="mono">Curation</span>
+      <p>Curated by <a class="u" href="https://climatefinancewiki.org/author/ibukun-taiwo/">Ibukun Taiwo</a> — communications professional specialising in climate finance.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="https://climatefinancewiki.org/" class="wordmark">
+          <span class="wordmark-glyph" aria-hidden="true"></span>
+          Climate Finance Wiki
+        </a>
+        <p>Making climate finance make sense — for the people who explain it.</p>
+      </div>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="https://climatefinancewiki.org/concepts/">Concepts</a>
+        <a href="https://climatefinancewiki.org/instruments/">Instruments</a>
+        <a href="https://climatefinancewiki.org/actors/">Actors</a>
+        <a href="https://climatefinancewiki.org/frameworks/">Frameworks</a>
+        <a href="https://climatefinancewiki.org/case-studies/">Case Studies</a>
+        <a href="https://climatefinancewiki.org/news/">News</a>
+      </nav>
+    </div>
+    <div class="footer-legal">
+      <span>&copy; 2026 Red Barrow. All rights reserved.</span>
+      <span>climatefinancewiki.org</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- Flow-field canvas ---------- */
+  var canvas = document.getElementById("flow");
+  var ctx = canvas.getContext("2d");
+  var W = 0, H = 0, lines = [], t = 0, running = false, rafId = 0;
+  var mouse = { x: -1e4, y: -1e4, tx: -1e4, ty: -1e4 };
+  var TONES = [
+    "rgba(46,125,107,0.28)",
+    "rgba(46,125,107,0.16)",
+    "rgba(18,42,43,0.10)"
+  ];
+
+  function srand(n) {
+    var x = Math.sin(n * 127.1 + 311.7) * 43758.5453;
+    return x - Math.floor(x);
+  }
+
+  function build() {
+    var count = W < 768 ? 14 : 32;
+    lines = [];
+    for (var i = 0; i < count; i++) {
+      var p = count > 1 ? i / (count - 1) : 0.5;
+      lines.push({
+        base: H * 0.10 + p * H * 0.80,
+        a1: 12 + 24 * srand(i),
+        k1: 0.0032 + 0.0028 * srand(i + 7),
+        s1: 0.10 + 0.18 * srand(i + 13),
+        a2: 5 + 9 * srand(i + 3),
+        k2: 0.007 + 0.005 * srand(i + 11),
+        s2: 0.22 + 0.28 * srand(i + 17),
+        tone: i % 3,
+        off: srand(i + 23) * Math.PI * 2
+      });
+    }
+  }
+
+  function resize() {
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = canvas.offsetWidth;
+    H = canvas.offsetHeight;
+    canvas.width = Math.round(W * dpr);
+    canvas.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    build();
+    if (reduced) draw();
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    mouse.x += (mouse.tx - mouse.x) * 0.08;
+    mouse.y += (mouse.ty - mouse.y) * 0.08;
+    var step = Math.max(14, W / 90);
+    for (var j = 0; j < lines.length; j++) {
+      var ln = lines[j];
+      ctx.beginPath();
+      ctx.strokeStyle = TONES[ln.tone];
+      ctx.lineWidth = 1;
+      var first = true;
+      for (var x = -20; x <= W + 20; x += step) {
+        var y = ln.base +
+          ln.a1 * Math.sin(x * ln.k1 + ln.off + t * ln.s1) +
+          ln.a2 * Math.sin(x * ln.k2 - t * ln.s2);
+        var dx = x - mouse.x;
+        var dy = mouse.y - y;
+        var influence = Math.exp(-(dx * dx) / 42000) * Math.exp(-(dy * dy) / 60000);
+        var shift = dy * 0.3 * influence;
+        if (shift > 14) shift = 14;
+        if (shift < -14) shift = -14;
+        y += shift;
+        if (first) { ctx.moveTo(x, y); first = false; }
+        else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+    }
+    t += 0.016;
+  }
+
+  function loop() {
+    if (!running) return;
+    draw();
+    rafId = window.requestAnimationFrame(loop);
+  }
+
+  function start() {
+    if (running || reduced) return;
+    running = true;
+    rafId = window.requestAnimationFrame(loop);
+  }
+
+  function stop() {
+    running = false;
+    if (rafId) window.cancelAnimationFrame(rafId);
+  }
+
+  resize();
+  window.addEventListener("resize", resize);
+
+  if (!reduced) {
+    var hero = canvas.parentElement;
+    hero.addEventListener("pointermove", function (e) {
+      var r = canvas.getBoundingClientRect();
+      mouse.tx = e.clientX - r.left;
+      mouse.ty = e.clientY - r.top;
+    });
+    hero.addEventListener("pointerleave", function () {
+      mouse.tx = -1e4;
+      mouse.ty = -1e4;
+    });
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) stop();
+      else start();
+    });
+    start();
+  }
+
+  /* ---------- Scroll reveals ---------- */
+  var revealEls = document.querySelectorAll(".reveal");
+  if (reduced || !("IntersectionObserver" in window)) {
+    revealEls.forEach(function (el) { el.classList.add("in"); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in");
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+    revealEls.forEach(function (el) { io.observe(el); });
+  }
+
+  /* ---------- Count-up stats ---------- */
+  var nums = document.querySelectorAll(".stat-num");
+  function countUp(el) {
+    var target = parseInt(el.getAttribute("data-count"), 10);
+    if (reduced) { el.textContent = String(target); return; }
+    var startT = null;
+    var dur = 900;
+    function tick(ts) {
+      if (!startT) startT = ts;
+      var p = Math.min((ts - startT) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = String(Math.round(target * eased));
+      if (p < 1) window.requestAnimationFrame(tick);
+    }
+    window.requestAnimationFrame(tick);
+  }
+  if ("IntersectionObserver" in window && !reduced) {
+    var nio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          countUp(entry.target);
+          nio.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.6 });
+    nums.forEach(function (el) { nio.observe(el); });
+  } else {
+    nums.forEach(function (el) {
+      el.textContent = el.getAttribute("data-count");
+    });
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Climate Finance Wiki — The Index</title>
+<meta name="description" content="Climate finance explained for communications professionals. Case studies, key concepts, and the mechanisms behind green bonds, carbon markets, and climate risk.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6F5F1;
+  --ink:#161616;
+  --ink-2:rgba(22,22,22,.64);
+  --ink-3:rgba(22,22,22,.42);
+  --line:#DBD8CE;
+  --green:#1E4D3A;
+  --green-tint:rgba(30,77,58,.04);
+  --green-tint-2:rgba(30,77,58,.08);
+  --sans:'Space Grotesk',system-ui,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+::selection{background:var(--green);color:var(--bg)}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+img{max-width:100%;display:block}
+
+/* ---------- frame ---------- */
+.frame{
+  max-width:1360px;
+  margin-inline:auto;
+  border-left:1px solid var(--line);
+  border-right:1px solid var(--line);
+  min-height:100dvh;
+}
+@media (max-width:1400px){.frame{border-left:0;border-right:0}}
+.pad{padding-inline:clamp(20px,4vw,64px)}
+
+/* ---------- labels ---------- */
+.tag{
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink-2);
+}
+.tag .num{color:var(--green)}
+
+/* ---------- header ---------- */
+header{
+  position:sticky;top:0;z-index:20;
+  background:rgba(246,245,241,.92);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.nav{
+  display:flex;align-items:center;justify-content:space-between;
+  height:64px;
+}
+.wordmark{
+  font-weight:600;font-size:15px;letter-spacing:-.01em;
+  display:flex;align-items:baseline;gap:10px;
+}
+.wordmark .mono-mark{
+  font-family:var(--mono);font-size:10px;font-weight:500;
+  color:var(--green);letter-spacing:.12em;
+}
+.nav-links{display:flex;gap:clamp(16px,3vw,36px);align-items:center}
+.nav-links a{
+  font-size:13.5px;font-weight:500;letter-spacing:.01em;
+  position:relative;padding:4px 0;
+}
+.nav-links a::after{
+  content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;
+  background:var(--ink);transform:scaleX(0);transform-origin:left;
+  transition:transform .22s var(--ease);
+}
+.nav-links a:hover::after,.nav-links a:focus-visible::after{transform:scaleX(1)}
+.nav-search{
+  font-family:var(--mono);font-size:11px;letter-spacing:.1em;
+  border:1px solid var(--line);padding:7px 14px;
+  color:var(--ink-2);
+  transition:border-color .22s var(--ease),color .22s var(--ease),transform .1s var(--ease);
+}
+.nav-search:hover{border-color:var(--ink);color:var(--ink)}
+.nav-search:active{transform:scale(.98)}
+
+/* ---------- hero ---------- */
+.hero{
+  border-bottom:1px solid var(--line);
+  padding-top:clamp(56px,9vh,110px);
+  padding-bottom:clamp(48px,7vh,88px);
+  display:grid;
+  grid-template-columns:minmax(0,7.5fr) minmax(0,3.5fr);
+  gap:clamp(32px,5vw,88px);
+  align-items:end;
+}
+.hero h1{
+  font-size:clamp(2.5rem,5.6vw,4.9rem);
+  font-weight:500;
+  line-height:1.02;
+  letter-spacing:-.035em;
+  max-width:15ch;
+  margin-top:22px;
+}
+.hero h1 em{font-style:normal;color:var(--green)}
+.hero-sub{
+  margin-top:28px;
+  font-size:15.5px;
+  color:var(--ink-2);
+  max-width:38ch;
+}
+.hero-stats{
+  margin-top:clamp(30px,5vh,52px);
+  font-family:var(--mono);
+  font-size:12.5px;
+  font-weight:500;
+  letter-spacing:.1em;
+  display:flex;flex-wrap:wrap;gap:0 8px;
+  color:var(--ink);
+}
+.hero-stats .sep{color:var(--ink-3);margin-inline:8px}
+.hero-stats .val{color:var(--green)}
+.plate{max-width:340px;justify-self:end;width:100%}
+.plate .plate-img{
+  border:1px solid var(--line);
+  padding:8px;
+  background:#fff;
+}
+.plate img{aspect-ratio:4/3;object-fit:cover;filter:saturate(.82) contrast(1.02)}
+.plate figcaption{
+  margin-top:10px;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;
+  color:var(--ink-2);text-transform:uppercase;
+}
+@media (max-width:900px){
+  .hero{grid-template-columns:minmax(0,1fr);align-items:start}
+  .plate{justify-self:start;max-width:300px}
+}
+
+/* ---------- section head ---------- */
+.sec-head{
+  display:flex;align-items:baseline;justify-content:space-between;gap:16px;
+  padding-top:clamp(40px,6vh,64px);
+  padding-bottom:clamp(24px,4vh,40px);
+}
+.sec-head .more{
+  font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-2);white-space:nowrap;
+  transition:color .22s var(--ease);
+}
+.sec-head .more:hover{color:var(--green)}
+
+/* ---------- index (signature) ---------- */
+.index-sec{border-bottom:1px solid var(--line)}
+.index-grid{
+  display:grid;
+  grid-template-columns:minmax(0,7fr) minmax(0,5fr);
+  gap:clamp(28px,4vw,72px);
+  padding-bottom:clamp(48px,7vh,80px);
+}
+.idx-list{list-style:none}
+.idx-item{border-top:1px solid var(--line);position:relative}
+.idx-item:last-child{border-bottom:1px solid var(--line)}
+.idx-row{
+  display:grid;
+  grid-template-columns:64px minmax(0,1fr) auto;
+  align-items:baseline;
+  gap:16px;
+  padding:clamp(18px,2.6vh,26px) 8px;
+  transition:background-color .22s var(--ease);
+}
+.idx-row .idx-num{
+  font-family:var(--mono);font-size:12px;font-weight:500;
+  color:var(--green);
+  transition:transform .22s var(--ease);
+}
+.idx-row .idx-name{
+  font-size:clamp(1.45rem,2.8vw,2.15rem);
+  font-weight:500;letter-spacing:-.02em;line-height:1.1;
+}
+.idx-row .idx-count{
+  font-family:var(--mono);font-size:12px;color:var(--ink-2);
+  letter-spacing:.06em;white-space:nowrap;
+}
+.idx-item:hover .idx-row,
+.idx-item.is-active .idx-row{background:var(--green-tint)}
+.idx-item:hover .idx-num,
+.idx-item.is-active .idx-num{transform:translateX(4px)}
+.idx-item.is-active .idx-name{color:var(--green)}
+.idx-row:active{transform:scale(.995)}
+
+/* toggle: mobile only */
+.idx-toggle{
+  display:none;
+  position:absolute;top:0;right:0;
+  width:56px;height:68px;
+  font-family:var(--mono);font-size:16px;font-weight:400;
+  color:var(--ink-2);
+}
+.idx-toggle::before{content:"+";display:inline-block;transition:transform .22s var(--ease)}
+.idx-toggle[aria-expanded="true"]::before{transform:rotate(45deg)}
+.idx-inline{display:none}
+
+/* preview pane (desktop) */
+.idx-pane{
+  border-left:1px solid var(--line);
+  padding-left:clamp(24px,3vw,48px);
+  align-self:stretch;
+}
+.idx-pane-sticky{position:sticky;top:104px}
+.idx-pane .pane-label{margin-bottom:22px}
+.pane-body{transition:opacity .18s var(--ease),transform .18s var(--ease)}
+.pane-body.is-swapping{opacity:0;transform:translateY(5px)}
+.pane-list{list-style:none;margin-top:6px}
+.pane-list li{
+  display:flex;gap:14px;align-items:baseline;
+  padding:11px 0;
+  border-bottom:1px solid var(--line);
+}
+.pane-list li:first-child{border-top:1px solid var(--line)}
+.pane-list .n{font-family:var(--mono);font-size:11px;color:var(--green);font-weight:500}
+.pane-list a{
+  font-size:15px;font-weight:500;letter-spacing:-.005em;
+  transition:color .18s var(--ease);
+}
+.pane-list a:hover{color:var(--green)}
+.pane-browse{
+  display:inline-flex;align-items:center;gap:8px;
+  margin-top:22px;
+  font-family:var(--mono);font-size:11px;font-weight:500;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink);
+  transition:color .22s var(--ease);
+}
+.pane-browse .arr{transition:transform .22s var(--ease)}
+.pane-browse:hover{color:var(--green)}
+.pane-browse:hover .arr{transform:translateX(4px)}
+
+@media (max-width:900px){
+  .index-grid{grid-template-columns:minmax(0,1fr)}
+  .idx-pane{display:none}
+  .idx-toggle{display:block}
+  .idx-row{grid-template-columns:44px minmax(0,1fr) auto;padding-right:56px}
+  .idx-inline{
+    display:none;
+    padding:4px 8px 22px 60px;
+  }
+  .idx-inline.open{display:block;animation:inlineIn .18s var(--ease)}
+  .idx-inline .pane-list li:first-child{border-top:0}
+  @keyframes inlineIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+}
+
+/* ---------- case study ---------- */
+.case-sec{border-bottom:1px solid var(--line)}
+.case-inner{
+  padding-bottom:clamp(48px,7vh,80px);
+  display:grid;
+  grid-template-columns:minmax(0,2fr) minmax(0,1fr);
+  gap:clamp(28px,4vw,72px);
+}
+.case-inner h2{
+  font-size:clamp(1.9rem,4vw,3.2rem);
+  font-weight:500;letter-spacing:-.03em;line-height:1.05;
+  max-width:18ch;
+}
+.case-quote{
+  margin-top:24px;
+  font-size:16.5px;color:var(--ink-2);
+  max-width:52ch;line-height:1.6;
+}
+.case-cta{
+  display:inline-flex;align-items:center;gap:10px;
+  margin-top:32px;
+  padding:13px 22px;
+  border:1px solid var(--ink);
+  font-size:13.5px;font-weight:500;letter-spacing:.02em;
+  transition:background-color .22s var(--ease),color .22s var(--ease),transform .1s var(--ease);
+}
+.case-cta .arr{transition:transform .22s var(--ease)}
+.case-cta:hover{background:var(--ink);color:var(--bg)}
+.case-cta:hover .arr{transform:translateX(4px)}
+.case-cta:active{transform:scale(.98)}
+.case-side{
+  border-left:1px solid var(--line);
+  padding-left:clamp(24px,3vw,48px);
+  font-family:var(--mono);font-size:12px;line-height:2.1;
+  color:var(--ink-2);letter-spacing:.04em;
+  align-self:end;
+}
+.case-side .k{color:var(--ink-3)}
+.case-side .v{color:var(--ink)}
+.case-side .v.g{color:var(--green)}
+@media (max-width:900px){
+  .case-inner{grid-template-columns:minmax(0,1fr)}
+  .case-side{border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:20px}
+}
+
+/* ---------- trails ---------- */
+.trails-sec{border-bottom:1px solid var(--line)}
+.trail-list{list-style:none;padding-bottom:clamp(48px,7vh,80px)}
+.trail{
+  border-top:1px solid var(--line);
+  display:grid;
+  grid-template-columns:64px minmax(0,5fr) minmax(0,4fr) auto;
+  gap:16px;align-items:baseline;
+  padding:clamp(18px,2.6vh,26px) 8px;
+  transition:background-color .22s var(--ease);
+}
+.trail:last-child{border-bottom:1px solid var(--line)}
+.trail:hover{background:var(--green-tint)}
+.trail .t-num{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--green);transition:transform .22s var(--ease)}
+.trail:hover .t-num{transform:translateX(4px)}
+.trail .t-name{font-size:clamp(1.2rem,2.2vw,1.6rem);font-weight:500;letter-spacing:-.015em}
+.trail .t-tag{font-size:14px;color:var(--ink-2)}
+.trail .t-meta{
+  font-family:var(--mono);font-size:11px;color:var(--ink-2);
+  letter-spacing:.06em;white-space:nowrap;
+  display:flex;align-items:center;gap:14px;
+}
+.trail .t-meta .arr{color:var(--ink);transition:transform .22s var(--ease)}
+.trail:hover .t-meta .arr{transform:translateX(4px);color:var(--green)}
+@media (max-width:900px){
+  .trail{grid-template-columns:44px minmax(0,1fr);grid-template-rows:auto auto auto;row-gap:6px}
+  .trail .t-num{grid-row:1}
+  .trail .t-name{grid-column:2}
+  .trail .t-tag{grid-column:2}
+  .trail .t-meta{grid-column:2}
+}
+
+/* ---------- news ---------- */
+.news-sec{border-bottom:1px solid var(--line)}
+.news-list{list-style:none;padding-bottom:clamp(48px,7vh,80px)}
+.news-item{border-top:1px solid var(--line)}
+.news-item:last-child{border-bottom:1px solid var(--line)}
+.news-link{
+  display:grid;
+  grid-template-columns:150px minmax(0,1fr) auto;
+  gap:16px;align-items:baseline;
+  padding:clamp(16px,2.2vh,22px) 8px;
+  transition:background-color .22s var(--ease);
+}
+.news-link:hover{background:var(--green-tint)}
+.news-date{font-family:var(--mono);font-size:11.5px;color:var(--ink-2);letter-spacing:.06em}
+.news-title{font-size:16px;font-weight:500;letter-spacing:-.005em;line-height:1.35}
+.news-cat{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--green);white-space:nowrap;
+}
+@media (max-width:900px){
+  .news-link{grid-template-columns:minmax(0,1fr) auto;row-gap:4px}
+  .news-date{grid-row:2;grid-column:1}
+}
+
+/* ---------- colophon ---------- */
+.colophon{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:clamp(28px,4vw,72px);
+  padding-block:clamp(40px,6vh,64px);
+  border-bottom:1px solid var(--line);
+}
+.colophon p{font-size:14px;color:var(--ink-2);max-width:46ch;line-height:1.7}
+.colophon .who{font-weight:500;color:var(--ink)}
+.colophon .who a{border-bottom:1px solid var(--line);transition:border-color .22s var(--ease),color .22s var(--ease)}
+.colophon .who a:hover{color:var(--green);border-color:var(--green)}
+@media (max-width:900px){.colophon{grid-template-columns:minmax(0,1fr)}}
+
+/* ---------- footer ---------- */
+footer .foot{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;
+  padding-block:26px;
+}
+footer .foot-links{display:flex;flex-wrap:wrap;gap:8px 22px}
+footer a,footer span{
+  font-family:var(--mono);font-size:11px;letter-spacing:.08em;
+  color:var(--ink-2);text-transform:uppercase;
+}
+footer a{transition:color .22s var(--ease)}
+footer a:hover{color:var(--green)}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .4s var(--ease),transform .4s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+  }
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+<noscript><style>.reveal{opacity:1;transform:none}.idx-toggle{display:none!important}</style></noscript>
+</head>
+<body>
+<div class="frame">
+
+<header>
+  <nav class="nav pad" aria-label="Primary">
+    <a class="wordmark" href="https://climatefinancewiki.org/">
+      Climate Finance Wiki
+      <span class="mono-mark">EST. 2026</span>
+    </a>
+    <div class="nav-links">
+      <a href="https://climatefinancewiki.org/#categories">Topics</a>
+      <a href="https://climatefinancewiki.org/news/">News</a>
+      <a href="https://climatefinancewiki.org/about/">About</a>
+      <button class="nav-search" type="button" aria-label="Search the wiki">SEARCH</button>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+<!-- 01 · HERO -->
+<section class="hero pad" aria-labelledby="hero-h">
+  <div>
+    <p class="tag"><span class="num">01</span>&ensp;/&ensp;The Reference</p>
+    <h1 id="hero-h">How the world <em>funds</em> its response to climate change.</h1>
+    <p class="hero-sub">Making climate finance make sense — for the people who explain it.</p>
+    <p class="hero-stats" aria-label="52 articles, 5 categories, 3 trails">
+      <span><span class="val" data-count="52">52</span>&nbsp;ARTICLES</span><span class="sep">/</span>
+      <span><span class="val" data-count="5">5</span>&nbsp;CATEGORIES</span><span class="sep">/</span>
+      <span><span class="val" data-count="3">3</span>&nbsp;TRAILS</span>
+    </p>
+  </div>
+  <figure class="plate reveal">
+    <div class="plate-img">
+      <img src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&w=1600&q=80" alt="Aerial view of utility-scale solar farm rows on a green field" width="1600" height="1000">
+    </div>
+    <figcaption>Fig. 01 — Aerial view, utility-scale solar</figcaption>
+  </figure>
+</section>
+
+<!-- 02 · THE INDEX -->
+<section class="index-sec" aria-labelledby="idx-h">
+  <div class="pad">
+    <div class="sec-head">
+      <p class="tag" id="idx-h"><span class="num">02</span>&ensp;/&ensp;The Index</p>
+    </div>
+    <div class="index-grid">
+      <ul class="idx-list">
+        <li class="idx-item" data-cat="concepts">
+          <a class="idx-row" href="https://climatefinancewiki.org/concepts/">
+            <span class="idx-num">01</span>
+            <span class="idx-name">Concepts</span>
+            <span class="idx-count">12&nbsp;ENTRIES</span>
+          </a>
+          <button class="idx-toggle" type="button" aria-expanded="false" aria-controls="inline-concepts" aria-label="Preview Concepts articles"></button>
+          <div class="idx-inline" id="inline-concepts"></div>
+        </li>
+        <li class="idx-item" data-cat="frameworks">
+          <a class="idx-row" href="https://climatefinancewiki.org/frameworks/">
+            <span class="idx-num">02</span>
+            <span class="idx-name">Frameworks</span>
+            <span class="idx-count">13&nbsp;ENTRIES</span>
+          </a>
+          <button class="idx-toggle" type="button" aria-expanded="false" aria-controls="inline-frameworks" aria-label="Preview Frameworks articles"></button>
+          <div class="idx-inline" id="inline-frameworks"></div>
+        </li>
+        <li class="idx-item" data-cat="case-studies">
+          <a class="idx-row" href="https://climatefinancewiki.org/case-studies/">
+            <span class="idx-num">03</span>
+            <span class="idx-name">Case Studies</span>
+            <span class="idx-count">12&nbsp;ENTRIES</span>
+          </a>
+          <button class="idx-toggle" type="button" aria-expanded="false" aria-controls="inline-case-studies" aria-label="Preview Case Studies articles"></button>
+          <div class="idx-inline" id="inline-case-studies"></div>
+        </li>
+        <li class="idx-item" data-cat="actors">
+          <a class="idx-row" href="https://climatefinancewiki.org/actors/">
+            <span class="idx-num">04</span>
+            <span class="idx-name">Actors</span>
+            <span class="idx-count">9&nbsp;ENTRIES</span>
+          </a>
+          <button class="idx-toggle" type="button" aria-expanded="false" aria-controls="inline-actors" aria-label="Preview Actors articles"></button>
+          <div class="idx-inline" id="inline-actors"></div>
+        </li>
+        <li class="idx-item" data-cat="instruments">
+          <a class="idx-row" href="https://climatefinancewiki.org/instruments/">
+            <span class="idx-num">05</span>
+            <span class="idx-name">Instruments</span>
+            <span class="idx-count">6&nbsp;ENTRIES</span>
+          </a>
+          <button class="idx-toggle" type="button" aria-expanded="false" aria-controls="inline-instruments" aria-label="Preview Instruments articles"></button>
+          <div class="idx-inline" id="inline-instruments"></div>
+        </li>
+      </ul>
+      <aside class="idx-pane" aria-live="polite">
+        <div class="idx-pane-sticky">
+          <p class="tag pane-label">Selected&nbsp;/&nbsp;<span class="num" id="pane-cat-label">Concepts</span></p>
+          <div class="pane-body" id="pane-body"></div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- 03 · FEATURED CASE STUDY -->
+<section class="case-sec" aria-labelledby="case-h">
+  <div class="pad">
+    <div class="sec-head">
+      <p class="tag" id="case-h"><span class="num">03</span>&ensp;/&ensp;Featured Case Study</p>
+      <a class="more" href="https://climatefinancewiki.org/case-studies/">All case studies</a>
+    </div>
+    <div class="case-inner">
+      <div class="reveal">
+        <h2>The First Climate Change Bankruptcy</h2>
+        <p class="case-quote">$30 billion in wildfire liabilities destroyed California&rsquo;s largest utility, proving physical climate risk isn&rsquo;t theoretical.</p>
+        <a class="case-cta" href="https://climatefinancewiki.org/case-studies/pge-bankruptcy/">Read the case study <span class="arr">&rarr;</span></a>
+      </div>
+      <div class="case-side reveal">
+        <div><span class="k">SUBJECT&ensp;</span><span class="v">PG&amp;E Corporation</span></div>
+        <div><span class="k">LIABILITY&ensp;</span><span class="v g">$30,000,000,000</span></div>
+        <div><span class="k">FILED&ensp;</span><span class="v">Chapter 11, 2019</span></div>
+        <div><span class="k">RISK TYPE&ensp;</span><span class="v">Physical</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 · TRAILS -->
+<section class="trails-sec" aria-labelledby="trails-h">
+  <div class="pad">
+    <div class="sec-head">
+      <p class="tag" id="trails-h"><span class="num">04</span>&ensp;/&ensp;Reading Trails</p>
+      <a class="more" href="https://climatefinancewiki.org/start-here/">Start here</a>
+    </div>
+    <ul class="trail-list">
+      <li>
+        <a class="trail reveal" href="https://climatefinancewiki.org/concepts/greenwashing/">
+          <span class="t-num">01</span>
+          <span class="t-name">The Greenwashing Trail</span>
+          <span class="t-tag">From misleading claims to criminal charges.</span>
+          <span class="t-meta">6 ARTICLES&nbsp;&middot;&nbsp;~35 MIN <span class="arr">&rarr;</span></span>
+        </a>
+      </li>
+      <li>
+        <a class="trail reveal" href="https://climatefinancewiki.org/concepts/climate-finance/">
+          <span class="t-num">02</span>
+          <span class="t-name">Follow the Money</span>
+          <span class="t-tag">How climate finance actually flows, and where it gets stuck.</span>
+          <span class="t-meta">6 ARTICLES&nbsp;&middot;&nbsp;~35 MIN <span class="arr">&rarr;</span></span>
+        </a>
+      </li>
+      <li>
+        <a class="trail reveal" href="https://climatefinancewiki.org/frameworks/paris-agreement/">
+          <span class="t-num">03</span>
+          <span class="t-name">Architecture of Climate Policy</span>
+          <span class="t-tag">The agreements, taxonomies, and standards that set the rules.</span>
+          <span class="t-meta">6 ARTICLES&nbsp;&middot;&nbsp;~35 MIN <span class="arr">&rarr;</span></span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- 05 · DISPATCHES -->
+<section class="news-sec" aria-labelledby="news-h">
+  <div class="pad">
+    <div class="sec-head">
+      <p class="tag" id="news-h"><span class="num">05</span>&ensp;/&ensp;Dispatches</p>
+      <a class="more" href="https://climatefinancewiki.org/news/">All news</a>
+    </div>
+    <ul class="news-list">
+      <li class="news-item reveal">
+        <a class="news-link" href="https://climatefinancewiki.org/news/">
+          <span class="news-date">JUN 24, 2026</span>
+          <span class="news-title">EU Council backs simpler SFDR with three clear fund labels</span>
+          <span class="news-cat">Regulation</span>
+        </a>
+      </li>
+      <li class="news-item reveal">
+        <a class="news-link" href="https://climatefinancewiki.org/news/">
+          <span class="news-date">JUN 23, 2026</span>
+          <span class="news-title">GFANZ drops its Paris-alignment requirement; ShareAction pushes back</span>
+          <span class="news-cat">Policy</span>
+        </a>
+      </li>
+      <li class="news-item reveal">
+        <a class="news-link" href="https://climatefinancewiki.org/news/">
+          <span class="news-date">JUN 15, 2026</span>
+          <span class="news-title">Vietnam issues detailed rules for its carbon market</span>
+          <span class="news-cat">Markets</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- COLOPHON -->
+<div class="colophon pad">
+  <p class="reveal">Built from ICMA Green Bond Principles, UNFCCC reports, SEC enforcement filings, the EU Taxonomy, and IPCC Assessment Reports.</p>
+  <p class="who reveal">Curated by <a href="https://climatefinancewiki.org/author/ibukun-taiwo/">Ibukun Taiwo</a><br><span style="font-weight:400;color:var(--ink-2)">Communications professional specialising in climate finance.</span></p>
+</div>
+
+</main>
+
+<footer>
+  <div class="foot pad">
+    <div class="foot-links">
+      <a href="https://climatefinancewiki.org/concepts/">Concepts</a>
+      <a href="https://climatefinancewiki.org/instruments/">Instruments</a>
+      <a href="https://climatefinancewiki.org/actors/">Actors</a>
+      <a href="https://climatefinancewiki.org/frameworks/">Frameworks</a>
+      <a href="https://climatefinancewiki.org/case-studies/">Case Studies</a>
+      <a href="https://climatefinancewiki.org/news/">News</a>
+    </div>
+    <span>&copy; 2026 Red Barrow</span>
+  </div>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var RM = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- category preview data ---------- */
+  var CATS = {
+    "concepts": {
+      label:"Concepts", href:"https://climatefinancewiki.org/concepts/",
+      items:[
+        ["Greenwashing","https://climatefinancewiki.org/concepts/greenwashing/"],
+        ["Stranded Assets","https://climatefinancewiki.org/concepts/stranded-assets/"],
+        ["Net Zero vs Carbon Neutral","https://climatefinancewiki.org/concepts/net-zero-vs-carbon-neutral/"],
+        ["The 1.5°C Threshold","https://climatefinancewiki.org/concepts/1-5c-threshold/"]
+      ]
+    },
+    "frameworks": {
+      label:"Frameworks", href:"https://climatefinancewiki.org/frameworks/",
+      items:[
+        ["Paris Agreement","https://climatefinancewiki.org/frameworks/paris-agreement/"],
+        ["EU Taxonomy","https://climatefinancewiki.org/frameworks/eu-taxonomy/"],
+        ["TCFD","https://climatefinancewiki.org/frameworks/tcfd/"],
+        ["CSRD","https://climatefinancewiki.org/frameworks/csrd/"]
+      ]
+    },
+    "case-studies": {
+      label:"Case Studies", href:"https://climatefinancewiki.org/case-studies/",
+      items:[
+        ["PG&E Bankruptcy","https://climatefinancewiki.org/case-studies/pge-bankruptcy/"],
+        ["VW Dieselgate","https://climatefinancewiki.org/case-studies/volkswagen-dieselgate/"],
+        ["Engine No. 1 vs ExxonMobil","https://climatefinancewiki.org/case-studies/engine-no-1-exxonmobil/"],
+        ["Norway's GPFG Divestment","https://climatefinancewiki.org/case-studies/norway-gpfg-divestment/"]
+      ]
+    },
+    "actors": {
+      label:"Actors", href:"https://climatefinancewiki.org/actors/",
+      items:[
+        ["UNFCCC and COP","https://climatefinancewiki.org/actors/unfccc-and-cop/"],
+        ["BlackRock","https://climatefinancewiki.org/actors/"],
+        ["Central Banks & NGFS","https://climatefinancewiki.org/actors/"],
+        ["The Institutional Investors","https://climatefinancewiki.org/actors/"]
+      ]
+    },
+    "instruments": {
+      label:"Instruments", href:"https://climatefinancewiki.org/instruments/",
+      items:[
+        ["Green Bonds","https://climatefinancewiki.org/instruments/green-bonds/"],
+        ["The Greenium","https://climatefinancewiki.org/instruments/the-greenium/"],
+        ["Sustainability-Linked Bonds","https://climatefinancewiki.org/instruments/sustainability-linked-bonds/"],
+        ["Carbon Offsets","https://climatefinancewiki.org/instruments/carbon-offsets/"]
+      ]
+    }
+  };
+
+  function esc(s){ return s.replace(/&/g,"&amp;").replace(/</g,"&lt;"); }
+
+  function paneHTML(cat){
+    var c = CATS[cat], h = "<ul class=\"pane-list\">";
+    for (var i=0;i<c.items.length;i++){
+      h += "<li><span class=\"n\">"+String(i+1).padStart(2,"0")+"</span><a href=\""+c.items[i][1]+"\">"+esc(c.items[i][0])+"</a></li>";
+    }
+    h += "</ul><a class=\"pane-browse\" href=\""+c.href+"\">Browse "+esc(c.label)+" <span class=\"arr\">&rarr;</span></a>";
+    return h;
+  }
+
+  /* desktop preview pane */
+  var paneBody = document.getElementById("pane-body");
+  var paneLabel = document.getElementById("pane-cat-label");
+  var current = "concepts";
+  var swapTimer = null;
+
+  function setPane(cat, instant){
+    if (cat === current && paneBody.innerHTML !== "") return;
+    current = cat;
+    if (RM || instant){
+      paneBody.innerHTML = paneHTML(cat);
+      paneLabel.textContent = CATS[cat].label;
+      return;
+    }
+    paneBody.classList.add("is-swapping");
+    clearTimeout(swapTimer);
+    swapTimer = setTimeout(function(){
+      paneBody.innerHTML = paneHTML(cat);
+      paneLabel.textContent = CATS[cat].label;
+      paneBody.classList.remove("is-swapping");
+    }, 90);
+  }
+  setPane("concepts", true);
+
+  var items = document.querySelectorAll(".idx-item");
+  function activate(item){
+    for (var i=0;i<items.length;i++) items[i].classList.remove("is-active");
+    item.classList.add("is-active");
+    setPane(item.getAttribute("data-cat"));
+  }
+  for (var i=0;i<items.length;i++){
+    (function(item){
+      item.addEventListener("mouseenter", function(){ activate(item); });
+      item.addEventListener("focusin", function(){ activate(item); });
+    })(items[i]);
+  }
+  if (items.length) items[0].classList.add("is-active");
+
+  /* mobile inline toggles */
+  var toggles = document.querySelectorAll(".idx-toggle");
+  for (var t=0;t<toggles.length;t++){
+    (function(btn){
+      var item = btn.closest(".idx-item");
+      var cat = item.getAttribute("data-cat");
+      var panel = document.getElementById("inline-"+cat);
+      btn.addEventListener("click", function(){
+        var open = btn.getAttribute("aria-expanded") === "true";
+        btn.setAttribute("aria-expanded", String(!open));
+        if (!open){
+          if (!panel.innerHTML) panel.innerHTML = paneHTML(cat);
+          panel.classList.add("open");
+        } else {
+          panel.classList.remove("open");
+        }
+      });
+    })(toggles[t]);
+  }
+
+  /* ---------- scroll reveals with stagger ---------- */
+  var reveals = document.querySelectorAll(".reveal");
+  if (!RM && "IntersectionObserver" in window){
+    var io = new IntersectionObserver(function(entries){
+      var delay = 0;
+      for (var e=0;e<entries.length;e++){
+        if (entries[e].isIntersecting){
+          var el = entries[e].target;
+          el.style.transitionDelay = delay + "ms";
+          el.classList.add("in");
+          io.unobserve(el);
+          delay += 70;
+        }
+      }
+    }, {threshold:.12, rootMargin:"0px 0px -40px 0px"});
+    for (var r=0;r<reveals.length;r++) io.observe(reveals[r]);
+  } else {
+    for (var r2=0;r2<reveals.length;r2++) reveals[r2].classList.add("in");
+  }
+
+  /* ---------- stat count-up ---------- */
+  var vals = document.querySelectorAll(".hero-stats .val");
+  if (!RM && vals.length && "IntersectionObserver" in window){
+    var done = false;
+    var io2 = new IntersectionObserver(function(entries){
+      if (done || !entries[0].isIntersecting) return;
+      done = true;
+      var start = null, dur = 900;
+      var targets = [];
+      for (var v=0;v<vals.length;v++) targets.push(parseInt(vals[v].getAttribute("data-count"),10));
+      function tick(ts){
+        if (!start) start = ts;
+        var p = Math.min((ts - start)/dur, 1);
+        var eased = 1 - Math.pow(1 - p, 3);
+        for (var v=0;v<vals.length;v++){
+          vals[v].textContent = Math.round(targets[v]*eased);
+        }
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+      io2.disconnect();
+    }, {threshold:.4});
+    io2.observe(vals[0]);
+  }
+})();
+</script>
+</body>
+</html>

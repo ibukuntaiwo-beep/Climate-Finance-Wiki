@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Climate Finance Wiki — How the world funds its response to climate change</title>
+<meta name="description" content="Climate finance explained for the people who explain it. Case studies, key concepts, and the mechanisms behind green bonds, carbon markets, and climate risk.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0F1512;
+    --bg-lift: #131A16;
+    --ink: #EDEAE3;
+    --ink-muted: #98A29A;
+    --brass: #B8A26E;
+    --brass-dim: rgba(184, 162, 110, 0.35);
+    --hairline: rgba(237, 234, 227, 0.10);
+    --serif: 'Fraunces', Georgia, serif;
+    --sans: 'Instrument Sans', system-ui, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection { background: var(--brass); color: var(--bg); }
+
+  a { color: inherit; text-decoration: none; }
+
+  .shell {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 clamp(1.25rem, 4vw, 4rem);
+  }
+
+  /* ---------- Labels ---------- */
+  .label {
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--brass);
+  }
+
+  /* ---------- Underline draw ---------- */
+  .u-draw {
+    position: relative;
+    padding-bottom: 2px;
+  }
+  .u-draw::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 100%; height: 1px;
+    background: var(--brass);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 250ms var(--ease-out);
+  }
+  .u-draw:hover::after,
+  .u-draw:focus-visible::after { transform: scaleX(1); }
+
+  /* ---------- Nav ---------- */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(15, 21, 18, 0.86);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 4.25rem;
+  }
+  .wordmark {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+  .wordmark em {
+    font-style: italic;
+    color: var(--brass);
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: clamp(1.25rem, 3vw, 2.5rem);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--ink-muted);
+  }
+  .nav-links a { color: var(--ink-muted); transition: color 200ms var(--ease-out); }
+  .nav-links a:hover, .nav-links a:focus-visible { color: var(--ink); }
+  .nav-search {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.1rem; height: 2.1rem;
+    border: 1px solid var(--hairline);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--ink-muted);
+    cursor: pointer;
+    transition: border-color 200ms var(--ease-out), color 200ms var(--ease-out);
+  }
+  .nav-search:hover { border-color: var(--brass-dim); color: var(--ink); }
+  .nav-search:active { transform: scale(0.98); }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    min-height: min(88dvh, 60rem);
+    display: flex;
+    align-items: center;
+  }
+  .hero-copy {
+    position: relative;
+    z-index: 2;
+    padding: clamp(4rem, 10vh, 8rem) 0 clamp(4rem, 8vh, 6rem);
+    max-width: 44rem;
+  }
+  .hero-copy .label { display: block; margin-bottom: 2rem; }
+  .hero h1 {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(2.6rem, 5.6vw, 4.9rem);
+    line-height: 1.04;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+  .hero h1 .accent { font-style: italic; color: var(--brass); font-weight: 400; }
+  .hero-sub {
+    margin-top: 2rem;
+    font-size: 1.05rem;
+    color: var(--ink-muted);
+    max-width: 32rem;
+  }
+  .hero-actions {
+    margin-top: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.95rem 1.9rem;
+    border: 1px solid var(--brass-dim);
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    background: rgba(184, 162, 110, 0.07);
+    will-change: transform;
+    transition: border-color 250ms var(--ease-out), background 250ms var(--ease-out);
+  }
+  .btn-primary:hover { border-color: var(--brass); background: rgba(184, 162, 110, 0.13); }
+  .btn-primary:active { transform: scale(0.98) !important; }
+  .btn-primary .arrow { transition: transform 250ms var(--ease-out); }
+  .btn-primary:hover .arrow { transform: translateX(4px); }
+  .btn-ghost {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--ink-muted);
+  }
+  .btn-ghost:hover { color: var(--ink); }
+
+  .hero-photo {
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 52%;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .hero-photo img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    transform: scale(1);
+    will-change: transform;
+  }
+  @keyframes kenburns {
+    from { transform: scale(1) translateX(0); }
+    to   { transform: scale(1.06) translateX(-1.5%); }
+  }
+  .hero-photo img { animation: kenburns 22s var(--ease-out) forwards; }
+  .hero-photo::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(90deg, var(--bg) 0%, rgba(15,21,18,0.72) 26%, rgba(15,21,18,0.18) 58%, rgba(15,21,18,0.42) 100%),
+      linear-gradient(180deg, rgba(15,21,18,0.55) 0%, rgba(15,21,18,0) 30%, rgba(15,21,18,0.1) 68%, var(--bg) 100%);
+  }
+
+  /* ---------- Stats strip ---------- */
+  .stats {
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .stat {
+    padding: 2.5rem clamp(1rem, 3vw, 3rem);
+    border-left: 1px solid var(--hairline);
+  }
+  .stat:first-child { border-left: none; padding-left: 0; }
+  .stat-num {
+    font-family: var(--mono);
+    font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+    font-weight: 400;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
+  .stat-name {
+    margin-top: 0.4rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  /* ---------- Sections ---------- */
+  section { padding: clamp(4.5rem, 10vh, 7.5rem) 0 0; }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: clamp(2.25rem, 5vh, 3.5rem);
+  }
+  .section-head .more {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--ink-muted);
+    white-space: nowrap;
+  }
+  .section-head .more:hover { color: var(--brass); }
+
+  /* ---------- Featured case ---------- */
+  .case {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: start;
+  }
+  .case h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(1.9rem, 3.4vw, 2.9rem);
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  .case-quote {
+    border-left: 1px solid var(--brass-dim);
+    padding-left: 1.75rem;
+  }
+  .case-quote p {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(1.15rem, 2vw, 1.45rem);
+    line-height: 1.5;
+    color: var(--ink-muted);
+  }
+  .case-quote .case-link {
+    display: inline-block;
+    margin-top: 1.75rem;
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--brass);
+    letter-spacing: 0.03em;
+  }
+
+  /* ---------- Index table (categories) ---------- */
+  .index-list { border-top: 1px solid var(--hairline); }
+  .index-row {
+    display: grid;
+    grid-template-columns: 4rem minmax(0, 1fr) auto auto;
+    align-items: center;
+    gap: clamp(1rem, 3vw, 2.5rem);
+    padding: 1.6rem 0;
+    border-bottom: 1px solid var(--hairline);
+    transition: background 250ms var(--ease-out), padding-left 250ms var(--ease-out);
+  }
+  .index-row:hover { background: var(--bg-lift); padding-left: 1rem; }
+  .index-row:active { transform: scale(0.995); }
+  .index-num {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--brass);
+  }
+  .index-name {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(1.25rem, 2.2vw, 1.7rem);
+    letter-spacing: -0.005em;
+  }
+  .index-count {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .index-arrow {
+    color: var(--ink-muted);
+    transition: transform 250ms var(--ease-out), color 250ms var(--ease-out);
+  }
+  .index-row:hover .index-arrow { transform: translateX(6px); color: var(--brass); }
+
+  /* ---------- Trails ---------- */
+  .trails {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--hairline);
+  }
+  .trail {
+    padding: 2.5rem clamp(1.25rem, 2.5vw, 2.5rem) 2.75rem;
+    border-left: 1px solid var(--hairline);
+    transition: background 300ms var(--ease-out);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .trail:first-child { border-left: none; padding-left: 0; }
+  .trail:hover { background: var(--bg-lift); }
+  .trail-num { font-family: var(--mono); font-size: 0.8rem; color: var(--brass); }
+  .trail h3 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 1.45rem;
+    line-height: 1.2;
+  }
+  .trail p { font-size: 0.92rem; color: var(--ink-muted); flex-grow: 1; }
+  .trail-meta {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    color: var(--ink-muted);
+  }
+  .trail .u-draw { align-self: flex-start; font-size: 0.88rem; font-weight: 600; color: var(--brass); }
+
+  /* ---------- News ledger ---------- */
+  .news-list { border-top: 1px solid var(--hairline); }
+  .news-row {
+    display: grid;
+    grid-template-columns: 9.5rem minmax(0, 1fr) auto;
+    align-items: baseline;
+    gap: clamp(1rem, 3vw, 2.5rem);
+    padding: 1.4rem 0;
+    border-bottom: 1px solid var(--hairline);
+    transition: background 250ms var(--ease-out), padding-left 250ms var(--ease-out);
+  }
+  .news-row:hover { background: var(--bg-lift); padding-left: 1rem; }
+  .news-date {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--ink-muted);
+    white-space: nowrap;
+  }
+  .news-title {
+    font-size: 1.02rem;
+    font-weight: 500;
+    line-height: 1.45;
+  }
+  .news-tag {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--brass);
+    white-space: nowrap;
+  }
+
+  /* ---------- Provenance band ---------- */
+  .provenance {
+    position: relative;
+    margin-top: clamp(5rem, 12vh, 8rem);
+    overflow: hidden;
+  }
+  .provenance-photo {
+    position: absolute;
+    inset: 0;
+  }
+  .provenance-photo img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center 60%;
+  }
+  .provenance-photo::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(180deg, var(--bg) 0%, rgba(15,21,18,0.72) 35%, rgba(15,21,18,0.78) 65%, var(--bg) 100%);
+  }
+  .provenance-inner {
+    position: relative;
+    z-index: 2;
+    padding: clamp(6rem, 16vh, 10rem) 0;
+    max-width: 46rem;
+  }
+  .provenance-inner .label { display: block; margin-bottom: 1.5rem; }
+  .provenance-inner p {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.3rem, 2.4vw, 1.8rem);
+    line-height: 1.45;
+    color: var(--ink);
+    text-wrap: balance;
+  }
+  .provenance-inner .curator {
+    margin-top: 2.25rem;
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    color: var(--ink-muted);
+  }
+  .provenance-inner .curator a { color: var(--ink); }
+  .provenance-inner .curator a:hover { color: var(--brass); }
+
+  /* ---------- Footer ---------- */
+  footer {
+    border-top: 1px solid var(--hairline);
+    padding: 3rem 0 3.5rem;
+  }
+  .foot {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .foot-brand p {
+    margin-top: 0.6rem;
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+    max-width: 22rem;
+  }
+  .foot-links {
+    display: flex;
+    gap: clamp(1.5rem, 3vw, 3rem);
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+  }
+  .foot-links a:hover { color: var(--ink); }
+  .foot-legal {
+    margin-top: 2.5rem;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--ink-muted);
+  }
+
+  /* ---------- Reveal ---------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+    transition-delay: var(--d, 0ms);
+  }
+  .reveal.is-in { opacity: 1; transform: translateY(0); }
+
+  /* ---------- Mobile ---------- */
+  @media (max-width: 900px) {
+    .hero { flex-direction: column; align-items: stretch; min-height: auto; }
+    .hero-photo {
+      position: relative;
+      width: 100%;
+      height: 44vw;
+      min-height: 15rem;
+      order: -1;
+    }
+    .hero-photo::before {
+      background: linear-gradient(180deg, rgba(15,21,18,0.35) 0%, rgba(15,21,18,0.05) 45%, var(--bg) 100%);
+    }
+    .hero-copy { padding-top: 1.5rem; }
+    .case { grid-template-columns: 1fr; }
+    .trails { grid-template-columns: 1fr; }
+    .trail { border-left: none; border-bottom: 1px solid var(--hairline); padding-left: 0; }
+    .trail:last-child { border-bottom: none; }
+    .stats-row { grid-template-columns: 1fr; }
+    .stat { border-left: none; border-top: 1px solid var(--hairline); padding-left: 0; }
+    .stat:first-child { border-top: none; }
+    .news-row { grid-template-columns: 1fr; gap: 0.35rem; padding-left: 0 !important; }
+    .index-row { grid-template-columns: 2.5rem minmax(0,1fr) auto; }
+    .index-arrow { display: none; }
+    .nav-links { gap: 1rem; }
+    .nav-links .nav-topics { display: none; }
+  }
+
+  /* ---------- Reduced motion ---------- */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .hero-photo img { animation: none; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="shell">
+    <nav class="nav" aria-label="Primary">
+      <a class="wordmark" href="https://climatefinancewiki.org/">Climate <em>Finance</em> Wiki</a>
+      <div class="nav-links">
+        <a class="nav-topics u-draw" href="https://climatefinancewiki.org/#categories">Topics</a>
+        <a class="u-draw" href="https://climatefinancewiki.org/news/">News</a>
+        <a class="u-draw" href="https://climatefinancewiki.org/about/">About</a>
+        <button class="nav-search" aria-label="Search the wiki">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="21" y1="21" x2="16.5" y2="16.5"></line>
+          </svg>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-photo" aria-hidden="true">
+      <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80" alt="">
+    </div>
+    <div class="shell" style="width:100%">
+      <div class="hero-copy">
+        <span class="label reveal">A field guide, kept current</span>
+        <h1 class="reveal" style="--d:80ms">How the world funds its response to <span class="accent">climate change.</span></h1>
+        <p class="hero-sub reveal" style="--d:160ms">Making climate finance make sense &mdash; for the people who explain it.</p>
+        <div class="hero-actions reveal" style="--d:240ms">
+          <a class="btn-primary" id="magnetic-cta" href="https://climatefinancewiki.org/start-here/">
+            Start here <span class="arrow" aria-hidden="true">&rarr;</span>
+          </a>
+          <a class="btn-ghost u-draw" href="https://climatefinancewiki.org/#categories">Browse the index</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="shell">
+      <div class="stats-row">
+        <div class="stat reveal">
+          <div class="stat-num" data-count="52">0</div>
+          <div class="stat-name">Articles</div>
+        </div>
+        <div class="stat reveal" style="--d:100ms">
+          <div class="stat-num" data-count="5">0</div>
+          <div class="stat-name">Categories</div>
+        </div>
+        <div class="stat reveal" style="--d:200ms">
+          <div class="stat-num" data-count="3">0</div>
+          <div class="stat-name">Reading trails</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURED CASE -->
+  <section aria-labelledby="case-heading">
+    <div class="shell">
+      <div class="section-head reveal">
+        <span class="label">Featured case study</span>
+      </div>
+      <div class="case">
+        <h2 id="case-heading" class="reveal">The First Climate Change Bankruptcy</h2>
+        <div class="case-quote reveal" style="--d:120ms">
+          <p>$30 billion in wildfire liabilities destroyed California&rsquo;s largest utility, proving physical climate risk isn&rsquo;t theoretical.</p>
+          <a class="case-link u-draw" href="https://climatefinancewiki.org/case-studies/pge-bankruptcy/">Read the case study &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDEX -->
+  <section aria-labelledby="index-heading">
+    <div class="shell">
+      <div class="section-head reveal">
+        <span class="label" id="index-heading">The index</span>
+      </div>
+      <div class="index-list">
+        <a class="index-row reveal" href="https://climatefinancewiki.org/concepts/">
+          <span class="index-num">01</span>
+          <span class="index-name">Concepts</span>
+          <span class="index-count">12 articles</span>
+          <span class="index-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+        <a class="index-row reveal" style="--d:60ms" href="https://climatefinancewiki.org/frameworks/">
+          <span class="index-num">02</span>
+          <span class="index-name">Frameworks</span>
+          <span class="index-count">13 articles</span>
+          <span class="index-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+        <a class="index-row reveal" style="--d:120ms" href="https://climatefinancewiki.org/case-studies/">
+          <span class="index-num">03</span>
+          <span class="index-name">Case Studies</span>
+          <span class="index-count">12 articles</span>
+          <span class="index-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+        <a class="index-row reveal" style="--d:180ms" href="https://climatefinancewiki.org/actors/">
+          <span class="index-num">04</span>
+          <span class="index-name">Actors</span>
+          <span class="index-count">9 articles</span>
+          <span class="index-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+        <a class="index-row reveal" style="--d:240ms" href="https://climatefinancewiki.org/instruments/">
+          <span class="index-num">05</span>
+          <span class="index-name">Instruments</span>
+          <span class="index-count">6 articles</span>
+          <span class="index-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRAILS -->
+  <section aria-labelledby="trails-heading">
+    <div class="shell">
+      <div class="section-head reveal">
+        <span class="label" id="trails-heading">Three ways through</span>
+      </div>
+      <div class="trails">
+        <div class="trail reveal">
+          <span class="trail-num">I</span>
+          <h3>The Greenwashing Trail</h3>
+          <p>From misleading claims to criminal charges.</p>
+          <span class="trail-meta">6 articles &middot; ~35 min</span>
+          <a class="u-draw" href="https://climatefinancewiki.org/concepts/greenwashing/">Begin &rarr;</a>
+        </div>
+        <div class="trail reveal" style="--d:100ms">
+          <span class="trail-num">II</span>
+          <h3>Follow the Money</h3>
+          <p>How climate finance actually flows, and where it gets stuck.</p>
+          <span class="trail-meta">6 articles &middot; ~35 min</span>
+          <a class="u-draw" href="https://climatefinancewiki.org/concepts/climate-finance/">Begin &rarr;</a>
+        </div>
+        <div class="trail reveal" style="--d:200ms">
+          <span class="trail-num">III</span>
+          <h3>Architecture of Climate Policy</h3>
+          <p>The agreements, taxonomies, and standards that set the rules.</p>
+          <span class="trail-meta">6 articles &middot; ~35 min</span>
+          <a class="u-draw" href="https://climatefinancewiki.org/frameworks/paris-agreement/">Begin &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWS -->
+  <section aria-labelledby="news-heading">
+    <div class="shell">
+      <div class="section-head reveal">
+        <span class="label" id="news-heading">The ledger &mdash; latest dispatches</span>
+        <a class="more u-draw" href="https://climatefinancewiki.org/news/">All news &rarr;</a>
+      </div>
+      <div class="news-list">
+        <a class="news-row reveal" href="https://climatefinancewiki.org/news/">
+          <span class="news-date">Jun 24, 2026</span>
+          <span class="news-title">EU Council backs simpler SFDR with three clear fund labels</span>
+          <span class="news-tag">Regulation</span>
+        </a>
+        <a class="news-row reveal" style="--d:60ms" href="https://climatefinancewiki.org/news/">
+          <span class="news-date">Jun 23, 2026</span>
+          <span class="news-title">GFANZ drops its Paris-alignment requirement; ShareAction pushes back</span>
+          <span class="news-tag">Net zero</span>
+        </a>
+        <a class="news-row reveal" style="--d:120ms" href="https://climatefinancewiki.org/news/">
+          <span class="news-date">Jun 15, 2026</span>
+          <span class="news-title">Vietnam issues detailed rules for its carbon market</span>
+          <span class="news-tag">Carbon markets</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROVENANCE -->
+  <div class="provenance">
+    <div class="provenance-photo" aria-hidden="true">
+      <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1600&q=80" alt="" loading="lazy">
+    </div>
+    <div class="shell">
+      <div class="provenance-inner">
+        <span class="label reveal">Provenance</span>
+        <p class="reveal" style="--d:100ms">Built from ICMA Green Bond Principles, UNFCCC reports, SEC enforcement filings, the EU Taxonomy, and IPCC Assessment Reports.</p>
+        <p class="curator reveal" style="--d:200ms">Curated by <a class="u-draw" href="https://climatefinancewiki.org/author/ibukun-taiwo/">Ibukun Taiwo</a> &mdash; communications professional specialising in climate finance.</p>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="shell">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="wordmark" href="https://climatefinancewiki.org/">Climate <em>Finance</em> Wiki</a>
+        <p>Making climate finance make sense &mdash; for the people who explain it.</p>
+      </div>
+      <div class="foot-links">
+        <a href="https://climatefinancewiki.org/concepts/">Concepts</a>
+        <a href="https://climatefinancewiki.org/instruments/">Instruments</a>
+        <a href="https://climatefinancewiki.org/actors/">Actors</a>
+        <a href="https://climatefinancewiki.org/frameworks/">Frameworks</a>
+        <a href="https://climatefinancewiki.org/case-studies/">Case Studies</a>
+        <a href="https://climatefinancewiki.org/news/">News</a>
+      </div>
+    </div>
+    <p class="foot-legal">&copy; 2026 Red Barrow. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Staggered reveals */
+  var revealEls = document.querySelectorAll('.reveal');
+  if (reduced || !('IntersectionObserver' in window)) {
+    revealEls.forEach(function (el) { el.classList.add('is-in'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -5% 0px' });
+    revealEls.forEach(function (el) { io.observe(el); });
+  }
+
+  /* Count-up figures */
+  var counters = document.querySelectorAll('[data-count]');
+  function countUp(el) {
+    var target = parseInt(el.getAttribute('data-count'), 10);
+    if (reduced) { el.textContent = target; return; }
+    var start = null, dur = 1200;
+    function frame(ts) {
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(eased * target);
+      if (p < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+  if ('IntersectionObserver' in window && !reduced) {
+    var cio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          countUp(entry.target);
+          cio.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.6 });
+    counters.forEach(function (el) { cio.observe(el); });
+  } else {
+    counters.forEach(function (el) { el.textContent = el.getAttribute('data-count'); });
+  }
+
+  /* Magnetic CTA */
+  var cta = document.getElementById('magnetic-cta');
+  if (cta && !reduced && window.matchMedia('(pointer: fine)').matches) {
+    var raf = null, tx = 0, ty = 0;
+    cta.addEventListener('mousemove', function (e) {
+      var r = cta.getBoundingClientRect();
+      var dx = e.clientX - (r.left + r.width / 2);
+      var dy = e.clientY - (r.top + r.height / 2);
+      tx = Math.max(-12, Math.min(12, dx * 0.18));
+      ty = Math.max(-8, Math.min(8, dy * 0.22));
+      if (!raf) {
+        raf = requestAnimationFrame(function () {
+          cta.style.transition = 'border-color 250ms, background 250ms';
+          cta.style.transform = 'translate(' + tx + 'px,' + ty + 'px)';
+          raf = null;
+        });
+      }
+    });
+    cta.addEventListener('mouseleave', function () {
+      cta.style.transition = 'transform 450ms cubic-bezier(0.16, 1, 0.3, 1), border-color 250ms, background 250ms';
+      cta.style.transform = 'translate(0, 0)';
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
