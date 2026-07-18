@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PG&amp;E Bankruptcy — Climate Finance Wiki</title>
+<meta name="description" content="How climate-driven wildfires pushed PG&E, California's largest utility, into the first corporate bankruptcy directly caused by climate change.">
+<!-- Interior page sample: case-study article, in Option 9 (The Composite) design language. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6F5F1;
+  --ink:#161616;
+  --ink-2:rgba(22,22,22,.64);
+  --ink-3:rgba(22,22,22,.42);
+  --body:rgba(22,22,22,.82);
+  --line:#DBD8CE;
+  --green:#1E4D3A;
+  --green-tint:rgba(30,77,58,.04);
+  --green-line:rgba(30,77,58,.35);
+  --sans:'Space Grotesk',system-ui,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+::selection{background:var(--green);color:var(--bg)}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+img{max-width:100%;display:block}
+
+/* ---------- frame ---------- */
+.frame{
+  max-width:1360px;
+  margin-inline:auto;
+  border-left:1px solid var(--line);
+  border-right:1px solid var(--line);
+  min-height:100dvh;
+}
+@media (max-width:1400px){.frame{border-left:0;border-right:0}}
+.pad{padding-inline:clamp(20px,4vw,64px)}
+
+/* ---------- labels ---------- */
+.tag{
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink-2);
+}
+.tag .num{color:var(--green)}
+
+/* ---------- header ---------- */
+header{
+  position:sticky;top:0;z-index:20;
+  background:rgba(246,245,241,.92);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.nav{
+  display:flex;align-items:center;justify-content:space-between;
+  height:64px;
+}
+.wordmark{
+  font-weight:600;font-size:15px;letter-spacing:-.01em;
+  display:flex;align-items:baseline;gap:10px;
+}
+.wordmark .mono-mark{
+  font-family:var(--mono);font-size:10px;font-weight:500;
+  color:var(--green);letter-spacing:.12em;
+}
+.nav-links{display:flex;gap:clamp(16px,3vw,36px);align-items:center}
+.nav-links a{
+  font-size:13.5px;font-weight:500;letter-spacing:.01em;
+  position:relative;padding:4px 0;
+}
+.nav-links a::after{
+  content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;
+  background:var(--ink);transform:scaleX(0);transform-origin:left;
+  transition:transform .22s var(--ease);
+}
+.nav-links a:hover::after,.nav-links a:focus-visible::after{transform:scaleX(1)}
+.nav-search{
+  font-family:var(--mono);font-size:11px;letter-spacing:.1em;
+  border:1px solid var(--line);padding:7px 14px;
+  color:var(--ink-2);
+  transition:border-color .22s var(--ease),color .22s var(--ease),transform .1s var(--ease);
+}
+.nav-search:hover{border-color:var(--ink);color:var(--ink)}
+.nav-search:active{transform:scale(.98)}
+@media (max-width:356px){
+  .nav{flex-wrap:wrap;height:auto;min-height:64px;row-gap:8px;padding-block:12px}
+}
+
+/* ---------- breadcrumbs ---------- */
+.crumbs{
+  padding-top:26px;
+  font-family:var(--mono);font-size:11px;font-weight:500;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);
+  display:flex;flex-wrap:wrap;gap:6px 10px;
+}
+.crumbs a{transition:color .22s var(--ease)}
+.crumbs a:hover{color:var(--green)}
+.crumbs .sep{color:var(--ink-3)}
+.crumbs .here{color:var(--ink)}
+
+/* ---------- case head ---------- */
+.art-head{
+  padding-top:clamp(28px,4.5vh,48px);
+  padding-bottom:clamp(28px,4.5vh,44px);
+  border-bottom:1px solid var(--line);
+}
+.art-head h1{
+  font-size:clamp(2.2rem,4.5vw,3.6rem);
+  font-weight:500;line-height:1.04;letter-spacing:-.03em;
+  max-width:18ch;
+  margin-top:16px;
+}
+.art-sub{
+  margin-top:18px;
+  font-size:17px;line-height:1.6;color:var(--ink-2);
+  max-width:62ch;
+}
+.byline{
+  margin-top:24px;
+  font-family:var(--mono);font-size:11px;font-weight:500;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);
+}
+.byline a{color:var(--green);border-bottom:1px solid var(--green-line);transition:border-color .22s var(--ease)}
+.byline a:hover{border-color:var(--green)}
+
+/* ---------- stats panel (case studies get the big ledger) ---------- */
+.keystats{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  border-bottom:1px solid var(--line);
+}
+.kstat{
+  padding:26px clamp(16px,2vw,28px) 28px;
+  border-left:1px solid var(--line);
+}
+.kstat:first-child{border-left:0;padding-left:0}
+.kstat .kv{
+  font-size:clamp(1.6rem,2.6vw,2.2rem);
+  font-weight:500;letter-spacing:-.025em;line-height:1.1;
+  color:var(--green);
+  font-variant-numeric:tabular-nums;
+}
+.kstat .kl{
+  margin-top:8px;
+  font-family:var(--mono);font-size:10.5px;font-weight:500;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);
+}
+@media (max-width:900px){
+  .keystats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .kstat:nth-child(odd){border-left:0;padding-left:0}
+  .kstat:nth-child(n+3){border-top:1px solid var(--line)}
+}
+
+/* ---------- layout ---------- */
+.art-layout{
+  display:grid;
+  grid-template-columns:minmax(0,7.2fr) minmax(0,3.2fr);
+  gap:clamp(32px,4.5vw,80px);
+  padding-block:clamp(36px,6vh,64px);
+  border-bottom:1px solid var(--line);
+}
+.art-body{max-width:68ch;font-size:17px;line-height:1.7}
+.art-body p{margin-bottom:19px;color:var(--body)}
+.sec-label{margin:48px 0 20px;scroll-margin-top:96px}
+.sec-label:first-child{margin-top:0}
+
+/* timeline */
+.timeline{list-style:none;counter-reset:tl}
+.tl-row{
+  display:grid;
+  grid-template-columns:110px minmax(0,1fr);
+  gap:16px;align-items:baseline;
+  padding:14px 4px;
+  border-top:1px solid var(--line);
+}
+.timeline .tl-row:last-child{border-bottom:1px solid var(--line)}
+.tl-year{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--green);white-space:nowrap}
+.tl-desc{font-size:15px;line-height:1.6;color:var(--body)}
+@media (max-width:520px){
+  .tl-row{grid-template-columns:minmax(0,1fr);row-gap:4px;padding-block:12px}
+}
+
+/* debate — white filed panel, like the plates */
+.debate{
+  border:1px solid var(--line);
+  background:#fff;
+  padding:26px 28px;
+}
+.debate p{font-size:15.5px;line-height:1.68;color:var(--body);margin-bottom:16px}
+.debate p:last-child{margin-bottom:0}
+.debate .tag{display:block;margin-bottom:16px}
+
+/* unexpected */
+.unexpected{
+  margin:48px 0 0;
+  border:1px solid var(--line);
+  background:var(--green-tint);
+  padding:24px 26px;
+}
+.unexpected .ux-h{
+  font-size:1.1rem;font-weight:500;letter-spacing:-.015em;line-height:1.3;
+  margin-top:12px;
+}
+.unexpected p{margin:10px 0 0;font-size:15px;line-height:1.65;color:var(--ink-2)}
+
+/* sources */
+.sources{margin-top:46px;padding-top:26px;border-top:1px solid var(--line)}
+.sources ol{list-style:none;margin-top:14px;counter-reset:src}
+.sources li{
+  counter-increment:src;
+  display:flex;gap:14px;align-items:baseline;
+  padding:9px 0;
+  border-bottom:1px solid var(--line);
+  font-size:14px;line-height:1.55;color:var(--ink-2);
+}
+.sources li::before{
+  content:counter(src,decimal-leading-zero);
+  font-family:var(--mono);font-size:11px;font-weight:500;color:var(--green);
+}
+.sources li:last-child{border-bottom:0}
+.sources a{color:var(--ink);border-bottom:1px solid var(--line);transition:color .22s var(--ease),border-color .22s var(--ease)}
+.sources a:hover{color:var(--green);border-color:var(--green)}
+
+/* ---------- rail ---------- */
+.rail{border-left:1px solid var(--line);padding-left:clamp(20px,2.5vw,36px)}
+.rail-sticky{position:sticky;top:96px}
+.toc{list-style:none;margin-top:18px}
+.toc li{border-top:1px solid var(--line)}
+.toc li:last-child{border-bottom:1px solid var(--line)}
+.toc a{
+  display:flex;gap:12px;align-items:baseline;
+  padding:11px 2px;
+  font-size:14px;font-weight:500;letter-spacing:-.005em;
+  color:var(--ink-2);
+  transition:color .22s var(--ease);
+}
+.toc .n{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--green)}
+.toc a:hover{color:var(--ink)}
+.toc li.on a{color:var(--green)}
+.rail-back{
+  display:inline-flex;align-items:center;gap:8px;
+  margin-top:26px;
+  font-family:var(--mono);font-size:11px;font-weight:500;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);
+  transition:color .22s var(--ease);
+}
+.rail-back:hover{color:var(--green)}
+@media (max-width:900px){
+  .art-layout{grid-template-columns:minmax(0,1fr)}
+  .rail{display:none}
+}
+
+/* ---------- see also ---------- */
+.sa-sec{border-bottom:1px solid var(--line)}
+.sec-head{
+  display:flex;align-items:baseline;justify-content:space-between;gap:16px;
+  padding-top:clamp(36px,5vh,56px);
+  padding-bottom:clamp(20px,3vh,32px);
+}
+.sa-list{list-style:none;padding-bottom:clamp(44px,6vh,72px)}
+.sa-item{border-top:1px solid var(--line)}
+.sa-item:last-child{border-bottom:1px solid var(--line)}
+.sa-row{
+  display:grid;
+  grid-template-columns:130px minmax(0,1fr) auto;
+  gap:16px;align-items:baseline;
+  padding:clamp(14px,2vh,20px) 8px;
+  transition:background-color .22s var(--ease);
+}
+.sa-row:hover{background:var(--green-tint)}
+.sa-cat{
+  font-family:var(--mono);font-size:10.5px;font-weight:500;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--green);
+  white-space:nowrap;
+}
+.sa-main .sa-title{font-size:16px;font-weight:500;letter-spacing:-.005em}
+.sa-main .sa-desc{margin-top:3px;font-size:13.5px;line-height:1.5;color:var(--ink-2);display:block}
+.sa-arr{color:var(--ink);transition:transform .22s var(--ease),color .22s var(--ease)}
+.sa-row:hover .sa-arr{transform:translateX(4px);color:var(--green)}
+@media (max-width:900px){
+  .sa-row{grid-template-columns:minmax(0,1fr) auto;row-gap:6px}
+  .sa-cat{grid-row:1;grid-column:1}
+  .sa-main{grid-column:1}
+  .sa-arr{grid-row:1;grid-column:2}
+}
+
+/* ---------- footer ---------- */
+footer .foot{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;
+  padding-block:26px;
+}
+footer .foot-links{display:flex;flex-wrap:wrap;gap:8px 22px}
+footer a,footer span{
+  font-family:var(--mono);font-size:11px;letter-spacing:.08em;
+  color:var(--ink-2);text-transform:uppercase;
+}
+footer a{transition:color .22s var(--ease)}
+footer a:hover{color:var(--green)}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .4s var(--ease),transform .4s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+  }
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+<noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+</head>
+<body>
+<div class="frame">
+
+<header>
+  <nav class="nav pad" aria-label="Primary">
+    <a class="wordmark" href="https://climatefinancewiki.org/">
+      Climate Finance Wiki
+      <span class="mono-mark">EST. 2026</span>
+    </a>
+    <div class="nav-links">
+      <a href="https://climatefinancewiki.org/#categories">Topics</a>
+      <a href="https://climatefinancewiki.org/news/">News</a>
+      <a href="https://climatefinancewiki.org/about/">About</a>
+      <button class="nav-search" type="button" aria-label="Search the wiki">SEARCH</button>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+<!-- BREADCRUMBS -->
+<nav class="crumbs pad" aria-label="Breadcrumb">
+  <a href="https://climatefinancewiki.org/">Home</a>
+  <span class="sep">&rarr;</span>
+  <a href="https://climatefinancewiki.org/case-studies/">Case Studies</a>
+  <span class="sep">&rarr;</span>
+  <span class="here">PG&amp;E Bankruptcy</span>
+</nav>
+
+<!-- CASE HEAD -->
+<div class="art-head pad">
+  <p class="tag"><span class="num">Case Study</span></p>
+  <h1>PG&amp;E Bankruptcy</h1>
+  <p class="art-sub">Climate-driven wildfires destroyed a utility worth tens of billions: the first climate change bankruptcy.</p>
+  <p class="byline">By <a href="https://climatefinancewiki.org/author/ibukun-taiwo/">Ibukun Taiwo</a></p>
+</div>
+
+<!-- STATS PANEL -->
+<div class="keystats pad">
+  <div class="kstat"><div class="kv">$30B</div><div class="kl">Estimated Liabilities</div></div>
+  <div class="kstat"><div class="kv">85</div><div class="kl">Lives Lost (Camp Fire)</div></div>
+  <div class="kstat"><div class="kv">$13.5B</div><div class="kl">Victim Settlement</div></div>
+  <div class="kstat"><div class="kv">2019</div><div class="kl">Bankruptcy Filed</div></div>
+</div>
+
+<!-- BODY + RAIL -->
+<div class="art-layout pad">
+  <article class="art-body">
+    <p class="tag sec-label" id="case-file"><span class="num">01</span>&ensp;/&ensp;The Case</p>
+    <p>Pacific Gas and Electric, California&rsquo;s largest utility serving approximately 16 million customers, filed for Chapter 11 bankruptcy protection in January 2019. The trigger was wildfire liability. PG&amp;E&rsquo;s equipment had been linked to multiple catastrophic blazes, most devastatingly the Camp Fire of November 2018, which killed 85 people and destroyed the town of Paradise, the deadliest and most destructive wildfire in California history.</p>
+    <p>At the time of filing, PG&amp;E faced 750 civil lawsuits and estimated wildfire liabilities of up to $30 billion, far exceeding its insurance coverage. The company ultimately reached a $13.5 billion settlement with wildfire victims and emerged from bankruptcy in 2020 under state supervision.</p>
+    <p>The legal mechanism that made PG&amp;E uniquely vulnerable was California&rsquo;s doctrine of inverse condemnation: utilities are strictly liable for damage caused by their equipment, regardless of whether negligence is proven. As climate change extended California&rsquo;s wildfire season, through longer droughts, stronger winds, and higher temperatures, this doctrine transformed physical climate risk into existential financial exposure.</p>
+    <p>Columbia University&rsquo;s Climate School described PG&amp;E as &ldquo;the first climate change bankruptcy.&rdquo; The case demonstrated that the theoretical link between rising temperatures and financial collapse was not abstract, it was concrete. Traditional utility valuation models had not priced in catastrophic wildfire liability, and investors were caught largely off-guard.</p>
+    <p>The bankruptcy accelerated regulatory interest in mandatory climate risk disclosure, particularly for asset-intensive sectors with physical exposure. The TCFD and IFRS S2 frameworks&rsquo; emphasis on physical risk scenarios owes a direct debt to cases like PG&amp;E, which proved that physical risks are financial risks, present-day solvency threats rather than future theoretical concerns.</p>
+
+    <p class="tag sec-label" id="timeline"><span class="num">02</span>&ensp;/&ensp;Timeline</p>
+    <ul class="timeline">
+      <li class="tl-row reveal"><span class="tl-year">2017</span><span class="tl-desc">PG&amp;E equipment linked to the Tubbs Fire and other major California wildfires</span></li>
+      <li class="tl-row reveal"><span class="tl-year">Nov 2018</span><span class="tl-desc">Camp Fire ignited by faulty PG&amp;E transmission line, 85 killed, town of Paradise destroyed</span></li>
+      <li class="tl-row reveal"><span class="tl-year">Jan 2019</span><span class="tl-desc">PG&amp;E files for Chapter 11 bankruptcy facing $30B in estimated wildfire liabilities</span></li>
+      <li class="tl-row reveal"><span class="tl-year">2019</span><span class="tl-desc">750 civil lawsuits consolidated; $13.5B settlement reached with wildfire victims</span></li>
+      <li class="tl-row reveal"><span class="tl-year">2020</span><span class="tl-desc">PG&amp;E emerges from bankruptcy under state supervision and probation agreement</span></li>
+    </ul>
+
+    <p class="tag sec-label" id="debate"><span class="num">03</span>&ensp;/&ensp;The Debate</p>
+    <div class="debate reveal">
+      <p>PG&amp;E&rsquo;s bankruptcy raises a systemic question: should a single utility bear the financial cost of climate-driven disasters it did not cause? California&rsquo;s inverse condemnation doctrine holds utilities strictly liable for wildfire damage, regardless of fault. Critics argue this framework was designed for a different climate, one where wildfires were occasional and manageable, not annual and catastrophic. Holding a utility responsible for damage driven by global temperature rise creates an unsustainable liability model.</p>
+      <p>Defenders of the doctrine counter that someone must bear the cost, and the entity whose equipment ignited the fire is the most logical candidate. If utilities cannot be held liable, the cost falls entirely on homeowners, insurers, and taxpayers, none of whom chose to defer infrastructure maintenance or operate ageing equipment in increasingly dangerous conditions. PG&amp;E had a documented history of underinvestment in safety.</p>
+      <p>The deeper debate is about disclosure and foresight. PG&amp;E&rsquo;s investors were caught off-guard because neither the company nor the market had adequately modelled catastrophic wildfire exposure. The case is now used to argue for mandatory physical risk disclosure, but it also raises the question of whether disclosure alone is sufficient, or whether some climate risks are simply too large and too fast-moving for markets to price correctly.</p>
+    </div>
+
+    <div class="unexpected reveal" id="unexpected">
+      <p class="tag"><span class="num">You Might Not Expect</span></p>
+      <p class="ux-h">No negligence required</p>
+      <p>California&rsquo;s doctrine of inverse condemnation means utilities are strictly liable for damage caused by their equipment, regardless of whether they maintained it reasonably. If a power line starts a fire, the utility pays, even without proof of negligence. As climate change extends wildfire season, this legal doctrine turned a physical risk into an existential financial one.</p>
+    </div>
+
+    <div class="sources" id="sources">
+      <p class="tag"><span class="num">Sources</span></p>
+      <ol>
+        <li><span><a href="https://www.energypolicy.columbia.edu/publications/pge-market-and-policy-perspectives-first-climate-change-bankruptcy/" target="_blank" rel="noopener">Columbia Climate School, PG&amp;E: The First Climate Change Bankruptcy</a></span></li>
+        <li><span><a href="https://www.utilitydive.com/news/pge-escape-inverse-condemnation/567676/" target="_blank" rel="noopener">Utility Dive, PG&amp;E challenges inverse condemnation as it presses judge to reject California liability standards</a></span></li>
+        <li><span><a href="https://www.utilitydive.com/news/wildfires-pushed-pge-into-bankruptcy-should-other-utilities-be-worried/588435/" target="_blank" rel="noopener">Utility Dive, Wildfires pushed PG&amp;E into bankruptcy</a></span></li>
+        <li><span><a href="https://calmatters.org/economy/2019/01/pge-bankruptcy-problems-wildfires-outcomes/" target="_blank" rel="noopener">CalMatters, The big problem this bankruptcy won&rsquo;t solve for PG&amp;E</a></span></li>
+      </ol>
+    </div>
+  </article>
+
+  <aside class="rail">
+    <div class="rail-sticky">
+      <p class="tag">On This Page</p>
+      <ul class="toc" id="toc">
+        <li data-for="case-file"><a href="#case-file"><span class="n">01</span>The Case</a></li>
+        <li data-for="timeline"><a href="#timeline"><span class="n">02</span>Timeline</a></li>
+        <li data-for="debate"><a href="#debate"><span class="n">03</span>The Debate</a></li>
+      </ul>
+      <a class="rail-back" href="https://climatefinancewiki.org/case-studies/">&larr; All Case Studies</a>
+    </div>
+  </aside>
+</div>
+
+<!-- SEE ALSO -->
+<section class="sa-sec" aria-labelledby="sa-h">
+  <div class="pad">
+    <div class="sec-head">
+      <p class="tag" id="sa-h"><span class="num">See Also</span></p>
+    </div>
+    <ul class="sa-list">
+      <li class="sa-item reveal">
+        <a class="sa-row" href="https://climatefinancewiki.org/concepts/physical-risks/">
+          <span class="sa-cat">Concepts</span>
+          <span class="sa-main">
+            <span class="sa-title">Physical Risks</span>
+            <span class="sa-desc">The most dramatic example of physical climate risk destroying a company&rsquo;s finances.</span>
+          </span>
+          <span class="sa-arr">&rarr;</span>
+        </a>
+      </li>
+      <li class="sa-item reveal">
+        <a class="sa-row" href="https://climatefinancewiki.org/concepts/stranded-assets/">
+          <span class="sa-cat">Concepts</span>
+          <span class="sa-main">
+            <span class="sa-title">Stranded Assets</span>
+            <span class="sa-desc">PG&amp;E&rsquo;s infrastructure became a liability as climate conditions changed around it.</span>
+          </span>
+          <span class="sa-arr">&rarr;</span>
+        </a>
+      </li>
+      <li class="sa-item reveal">
+        <a class="sa-row" href="https://climatefinancewiki.org/concepts/climate-litigation/">
+          <span class="sa-cat">Concepts</span>
+          <span class="sa-main">
+            <span class="sa-title">Climate Litigation</span>
+            <span class="sa-desc">Inverse condemnation as a climate liability mechanism.</span>
+          </span>
+          <span class="sa-arr">&rarr;</span>
+        </a>
+      </li>
+      <li class="sa-item reveal">
+        <a class="sa-row" href="https://climatefinancewiki.org/frameworks/tcfd/">
+          <span class="sa-cat">Frameworks</span>
+          <span class="sa-main">
+            <span class="sa-title">TCFD</span>
+            <span class="sa-desc">The disclosure framework whose emphasis on physical risk scenarios was reinforced by cases like PG&amp;E.</span>
+          </span>
+          <span class="sa-arr">&rarr;</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="foot pad">
+    <div class="foot-links">
+      <a href="https://climatefinancewiki.org/concepts/">Concepts</a>
+      <a href="https://climatefinancewiki.org/instruments/">Instruments</a>
+      <a href="https://climatefinancewiki.org/actors/">Actors</a>
+      <a href="https://climatefinancewiki.org/frameworks/">Frameworks</a>
+      <a href="https://climatefinancewiki.org/case-studies/">Case Studies</a>
+      <a href="https://climatefinancewiki.org/news/">News</a>
+    </div>
+    <span>&copy; 2026 Red Barrow</span>
+  </div>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var RM = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* scroll reveals */
+  var reveals = document.querySelectorAll(".reveal");
+  if (!RM && "IntersectionObserver" in window){
+    var io = new IntersectionObserver(function(entries){
+      var delay = 0;
+      for (var e=0;e<entries.length;e++){
+        if (entries[e].isIntersecting){
+          var el = entries[e].target;
+          el.style.transitionDelay = delay + "ms";
+          el.classList.add("in");
+          io.unobserve(el);
+          delay += 70;
+        }
+      }
+    }, {threshold:.12, rootMargin:"0px 0px -40px 0px"});
+    for (var r=0;r<reveals.length;r++) io.observe(reveals[r]);
+  } else {
+    for (var r2=0;r2<reveals.length;r2++) reveals[r2].classList.add("in");
+  }
+
+  /* TOC active tracking */
+  var tocItems = document.querySelectorAll("#toc li");
+  if (tocItems.length && "IntersectionObserver" in window){
+    var map = {};
+    for (var t=0;t<tocItems.length;t++) map[tocItems[t].getAttribute("data-for")] = tocItems[t];
+    var io2 = new IntersectionObserver(function(entries){
+      for (var e=0;e<entries.length;e++){
+        if (entries[e].isIntersecting){
+          for (var k in map) map[k].classList.remove("on");
+          var li = map[entries[e].target.id];
+          if (li) li.classList.add("on");
+        }
+      }
+    }, {rootMargin:"-20% 0px -70% 0px"});
+    var heads = document.querySelectorAll(".art-body .sec-label[id]");
+    for (var h=0;h<heads.length;h++) io2.observe(heads[h]);
+    tocItems[0].classList.add("on");
+  }
+})();
+</script>
+</body>
+</html>

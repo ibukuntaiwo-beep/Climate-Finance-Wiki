@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EU Council Backs Simpler SFDR Fund Labels (2026) — Climate Finance Wiki</title>
+<meta name="description" content="The EU Council agreed its position on revised SFDR rules in June 2026, proposing three fund categories — sustainable, transition, ESG basics — to cut greenwashing. What it means.">
+<!-- Interior page sample: NEWS ITEM. Design language: Option 9 (The Composite). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6F5F1;
+  --ink:#161616;
+  --ink-2:rgba(22,22,22,.64);
+  --ink-3:rgba(22,22,22,.42);
+  --line:#DBD8CE;
+  --green:#1E4D3A;
+  --green-tint:rgba(30,77,58,.04);
+  --green-tint-2:rgba(30,77,58,.08);
+  --sans:'Space Grotesk',system-ui,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+::selection{background:var(--green);color:var(--bg)}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+input{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+img{max-width:100%;display:block}
+
+/* ---------- frame ---------- */
+.frame{
+  max-width:1360px;
+  margin-inline:auto;
+  border-left:1px solid var(--line);
+  border-right:1px solid var(--line);
+  min-height:100dvh;
+}
+@media (max-width:1400px){.frame{border-left:0;border-right:0}}
+.pad{padding-inline:clamp(20px,4vw,64px)}
+
+/* ---------- labels ---------- */
+.tag{
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink-2);
+}
+.tag .num{color:var(--green)}
+
+/* ---------- header ---------- */
+header{
+  position:sticky;top:0;z-index:20;
+  background:rgba(246,245,241,.92);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.nav{
+  display:flex;align-items:center;justify-content:space-between;
+  height:64px;
+}
+.wordmark{
+  font-weight:600;font-size:15px;letter-spacing:-.01em;
+  display:flex;align-items:baseline;gap:10px;
+}
+.wordmark .mono-mark{
+  font-family:var(--mono);font-size:10px;font-weight:500;
+  color:var(--green);letter-spacing:.12em;
+}
+.nav-links{display:flex;gap:clamp(16px,3vw,36px);align-items:center}
+.nav-links a{
+  font-size:13.5px;font-weight:500;letter-spacing:.01em;
+  position:relative;padding:4px 0;
+}
+.nav-links a::after{
+  content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;
+  background:var(--ink);transform:scaleX(0);transform-origin:left;
+  transition:transform .22s var(--ease);
+}
+.nav-links a:hover::after,.nav-links a:focus-visible::after,
+.nav-links a.is-active::after{transform:scaleX(1)}
+.nav-search{
+  font-family:var(--mono);font-size:11px;letter-spacing:.1em;
+  border:1px solid var(--line);padding:7px 14px;
+  color:var(--ink-2);
+  transition:border-color .22s var(--ease),color .22s var(--ease),transform .1s var(--ease);
+}
+.nav-search:hover{border-color:var(--ink);color:var(--ink)}
+.nav-search:active{transform:scale(.98)}
+@media (max-width:356px){
+  .nav{flex-wrap:wrap;height:auto;min-height:64px;row-gap:8px;padding-block:12px}
+}
+
+/* ---------- article head ---------- */
+.page-head{
+  border-bottom:1px solid var(--line);
+  padding-top:clamp(28px,4.5vh,48px);
+  padding-bottom:clamp(32px,5vh,56px);
+}
+.crumbs{
+  font-family:var(--mono);font-size:11px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink-3);
+  margin-bottom:clamp(28px,5vh,52px);
+}
+.crumbs a{transition:color .22s var(--ease)}
+.crumbs a:hover{color:var(--green)}
+.crumbs .sep{margin-inline:10px}
+.page-head h1{
+  font-size:clamp(1.8rem,3.4vw,2.9rem);
+  font-weight:500;line-height:1.1;letter-spacing:-.03em;
+  margin-top:16px;max-width:26ch;
+}
+.standfirst{
+  margin-top:18px;
+  font-size:16.5px;color:var(--ink-2);
+  max-width:58ch;line-height:1.6;
+}
+.byline{
+  margin-top:24px;
+  font-family:var(--mono);font-size:11px;font-weight:500;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);
+}
+.byline a{color:var(--ink);transition:color .22s var(--ease)}
+.byline a:hover{color:var(--green)}
+
+/* ---------- layout ---------- */
+.article-layout{
+  display:grid;
+  grid-template-columns:minmax(0,7.5fr) minmax(0,4.5fr);
+  gap:clamp(28px,4vw,72px);
+  padding-block:clamp(36px,5.5vh,64px) clamp(48px,7vh,80px);
+}
+.article-body{max-width:68ch}
+.article-body p{
+  font-size:16.5px;line-height:1.7;color:var(--ink);
+}
+.article-body p + p{margin-top:1.25em}
+.article-body strong{font-weight:600}
+.article-body em{font-style:italic}
+.wl{
+  color:var(--green);
+  border-bottom:1px solid rgba(30,77,58,.35);
+  transition:border-color .18s var(--ease);
+}
+.wl:hover{border-color:var(--green)}
+
+/* source box */
+.src-box{
+  margin-top:44px;
+  border:1px solid var(--line);
+  background:var(--green-tint);
+  padding:22px 24px;
+}
+.src-box .tag{display:block;margin-bottom:12px}
+.src-link{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:15px;font-weight:500;letter-spacing:-.005em;
+  transition:color .22s var(--ease);
+}
+.src-link .arr{transition:transform .22s var(--ease)}
+.src-link:hover{color:var(--green)}
+.src-link:hover .arr{transform:translateX(4px)}
+
+/* related */
+.related{margin-top:clamp(40px,6vh,56px)}
+.related .tag{display:block;margin-bottom:6px}
+.rel-list{list-style:none}
+.rel-list li{border-bottom:1px solid var(--line)}
+.rel-list li:first-child{border-top:1px solid var(--line)}
+.rel-row{
+  display:grid;
+  grid-template-columns:120px minmax(0,1fr);
+  gap:16px;align-items:baseline;
+  padding:14px 8px;
+  transition:background-color .22s var(--ease);
+}
+.rel-row:hover{background:var(--green-tint)}
+.rel-cat{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--green);
+}
+.rel-title{font-size:15.5px;font-weight:500;letter-spacing:-.005em;transition:color .18s var(--ease)}
+.rel-row:hover .rel-title{color:var(--green)}
+.rel-desc{display:block;margin-top:4px;font-size:13.5px;color:var(--ink-2);line-height:1.5}
+@media (max-width:640px){
+  .rel-row{grid-template-columns:minmax(0,1fr)}
+}
+
+.curated{
+  margin-top:clamp(36px,5vh,48px);
+  font-family:var(--mono);font-size:11px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink-3);
+}
+
+/* ---------- sidebar ---------- */
+.side{
+  border-left:1px solid var(--line);
+  padding-left:clamp(24px,3vw,48px);
+  align-self:stretch;
+}
+.side-sticky{position:sticky;top:104px}
+.side-block + .side-block{
+  margin-top:clamp(30px,4.5vh,44px);
+  padding-top:clamp(26px,4vh,38px);
+  border-top:1px solid var(--line);
+}
+.side-block .tag{display:block;margin-bottom:16px}
+.side-text{font-size:14px;color:var(--ink-2);line-height:1.6;max-width:38ch}
+.sub-form{margin-top:18px}
+.sub-input{
+  width:100%;
+  border:1px solid var(--line);
+  background:#fff;
+  padding:12px 14px;
+  font-size:14px;
+  transition:border-color .22s var(--ease);
+}
+.sub-input::placeholder{color:var(--ink-3)}
+.sub-input:hover,.sub-input:focus{border-color:var(--ink);outline:0}
+.sub-btn{
+  margin-top:10px;width:100%;
+  padding:12px 14px;
+  border:1px solid var(--ink);
+  font-size:13.5px;font-weight:500;letter-spacing:.02em;
+  transition:background-color .22s var(--ease),color .22s var(--ease),transform .1s var(--ease);
+}
+.sub-btn:hover{background:var(--ink);color:var(--bg)}
+.sub-btn:active{transform:scale(.98)}
+.rss-link,.back-link{
+  display:inline-flex;align-items:center;gap:8px;
+  margin-top:16px;
+  font-family:var(--mono);font-size:11px;font-weight:500;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink);
+  transition:color .22s var(--ease);
+}
+.rss-link .arr,.back-link .arr{transition:transform .22s var(--ease)}
+.rss-link:hover,.back-link:hover{color:var(--green)}
+.rss-link:hover .arr{transform:translateX(4px)}
+.back-link{margin-top:0}
+.back-link:hover .arr{transform:translateX(-4px)}
+.b-list{list-style:none}
+.b-list li{border-bottom:1px solid var(--line)}
+.b-list li:first-child{border-top:1px solid var(--line)}
+.b-row{
+  display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+  padding:11px 0;
+}
+.b-row .b-name{font-size:14.5px;font-weight:500;transition:color .18s var(--ease)}
+.b-row:hover .b-name{color:var(--green)}
+.b-row .b-count{font-family:var(--mono);font-size:11.5px;color:var(--ink-2);letter-spacing:.06em}
+
+@media (max-width:900px){
+  .article-layout{grid-template-columns:minmax(0,1fr)}
+  .side{border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:clamp(28px,4vh,40px)}
+  .side-sticky{position:static}
+}
+
+/* ---------- footer ---------- */
+footer .foot{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;
+  padding-block:26px;
+  border-top:1px solid var(--line);
+}
+footer .foot-links{display:flex;flex-wrap:wrap;gap:8px 22px}
+footer a,footer span{
+  font-family:var(--mono);font-size:11px;letter-spacing:.08em;
+  color:var(--ink-2);text-transform:uppercase;
+}
+footer a{transition:color .22s var(--ease)}
+footer a:hover{color:var(--green)}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .4s var(--ease),transform .4s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+  }
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+<noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+</head>
+<body>
+<div class="frame">
+
+<header>
+  <nav class="nav pad" aria-label="Primary">
+    <a class="wordmark" href="https://climatefinancewiki.org/">
+      Climate Finance Wiki
+      <span class="mono-mark">EST. 2026</span>
+    </a>
+    <div class="nav-links">
+      <a href="https://climatefinancewiki.org/#categories">Topics</a>
+      <a class="is-active" href="https://climatefinancewiki.org/news/" aria-current="page">News</a>
+      <a href="https://climatefinancewiki.org/about/">About</a>
+      <button class="nav-search" type="button" aria-label="Search the wiki">SEARCH</button>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+<!-- ARTICLE HEAD -->
+<section class="page-head pad" aria-labelledby="page-h">
+  <p class="crumbs"><a href="https://climatefinancewiki.org/">Home</a><span class="sep">&rarr;</span><a href="news.html">News</a><span class="sep">&rarr;</span><span aria-current="page">EU Council backs simpler SFDR</span></p>
+  <p class="tag"><span class="num">Regulation</span>&ensp;&middot;&ensp;June 24, 2026</p>
+  <h1 id="page-h">EU Council backs simpler SFDR with three clear fund labels</h1>
+  <p class="standfirst">Brussels wants to scrap the confusing Article 6/8/9 system and replace it with three plain categories &mdash; sustainable, transition, and ESG basics &mdash; to make green claims easier to check.</p>
+  <p class="byline">By <a href="https://climatefinancewiki.org/author/ibukun-taiwo/">Ibukun Taiwo</a></p>
+</section>
+
+<!-- BODY + SIDEBAR -->
+<div class="article-layout pad">
+
+  <article>
+    <div class="article-body reveal">
+      <p>On 24 June 2026, the EU Council agreed its negotiating position on a revised version of the <a class="wl" href="https://climatefinancewiki.org/frameworks/sfdr/">SFDR</a>, setting up talks with the European Parliament. The headline change: replacing the much-criticised Article 6, 8, and 9 classifications with three plainer fund categories &mdash; <strong>sustainable</strong>, <strong>transition</strong>, and <strong>ESG basics</strong>.</p>
+      <p>The reason matters for anyone communicating about funds. Investors and the press had been treating the <a class="wl" href="https://climatefinancewiki.org/frameworks/sfdr/">SFDR</a> article numbers as if they were product labels &mdash; so an &ldquo;Article 9&rdquo; fund got marketed as the gold standard. That was never the regulation&rsquo;s intent, and the confusion fuelled exactly the <a class="wl" href="https://climatefinancewiki.org/concepts/greenwashing/">Greenwashing</a> worries SFDR was built to stop. Clearer category names, tied to what a fund actually does, are meant to make claims easier to verify against the <a class="wl" href="https://climatefinancewiki.org/frameworks/eu-taxonomy/">EU Taxonomy</a>.</p>
+      <p>For comms teams: this is still a <em>Council position</em>, not final law &mdash; Parliament negotiations come next, and the labels could shift. But it signals where the EU is heading, and any fund currently leaning on its &ldquo;Article 8&rdquo; or &ldquo;Article 9&rdquo; status in marketing should expect to re-explain itself under the new names.</p>
+
+      <div class="src-box">
+        <span class="tag">Original source &mdash; full credit to the reporting outlet</span>
+        <a class="src-link" href="https://esgnews.com/eu-council-backs-simpler-sfdr-rules-to-cut-greenwashing-risk-clarify-sustainable-fund-labels/" target="_blank" rel="noopener nofollow">Read the full story at ESG News <span class="arr">&rarr;</span></a>
+      </div>
+    </div>
+
+    <div class="related reveal">
+      <span class="tag"><span class="num">Related</span>&ensp;on the Wiki</span>
+      <ul class="rel-list">
+        <li>
+          <a class="rel-row" href="https://climatefinancewiki.org/frameworks/sfdr/">
+            <span class="rel-cat">Frameworks</span>
+            <span><span class="rel-title">SFDR</span><span class="rel-desc">The disclosure regulation being overhauled.</span></span>
+          </a>
+        </li>
+        <li>
+          <a class="rel-row" href="https://climatefinancewiki.org/concepts/greenwashing/">
+            <span class="rel-cat">Concepts</span>
+            <span><span class="rel-title">Greenwashing</span><span class="rel-desc">The core problem the reform is meant to fix.</span></span>
+          </a>
+        </li>
+        <li>
+          <a class="rel-row" href="https://climatefinancewiki.org/frameworks/eu-taxonomy/">
+            <span class="rel-cat">Frameworks</span>
+            <span><span class="rel-title">EU Taxonomy</span><span class="rel-desc">The classification system that defines what counts as green.</span></span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <p class="curated reveal">Curated June 24, 2026&ensp;&middot;&ensp;Climate Finance Wiki</p>
+  </article>
+
+  <aside class="side">
+    <div class="side-sticky">
+      <div class="side-block reveal">
+        <a class="back-link" href="news.html"><span class="arr">&larr;</span> All news</a>
+      </div>
+      <div class="side-block reveal">
+        <span class="tag">Stay Updated</span>
+        <p class="side-text">New climate-finance dispatches and explainers, in plain English. No spam.</p>
+        <form class="sub-form" aria-label="Subscribe to the newsletter">
+          <input class="sub-input" type="email" name="email" placeholder="you@example.com" aria-label="Email address">
+          <button class="sub-btn" type="button">Subscribe</button>
+        </form>
+        <a class="rss-link" href="https://climatefinancewiki.org/rss.xml">Or subscribe via RSS <span class="arr">&rarr;</span></a>
+      </div>
+      <div class="side-block reveal">
+        <span class="tag">Browse the Wiki</span>
+        <ul class="b-list">
+          <li><a class="b-row" href="https://climatefinancewiki.org/concepts/"><span class="b-name">Concepts</span><span class="b-count">12</span></a></li>
+          <li><a class="b-row" href="https://climatefinancewiki.org/instruments/"><span class="b-name">Instruments</span><span class="b-count">6</span></a></li>
+          <li><a class="b-row" href="https://climatefinancewiki.org/actors/"><span class="b-name">Actors</span><span class="b-count">9</span></a></li>
+          <li><a class="b-row" href="https://climatefinancewiki.org/frameworks/"><span class="b-name">Frameworks</span><span class="b-count">13</span></a></li>
+          <li><a class="b-row" href="https://climatefinancewiki.org/case-studies/"><span class="b-name">Case Studies</span><span class="b-count">12</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+</div>
+
+</main>
+
+<footer>
+  <div class="foot pad">
+    <div class="foot-links">
+      <a href="https://climatefinancewiki.org/concepts/">Concepts</a>
+      <a href="https://climatefinancewiki.org/instruments/">Instruments</a>
+      <a href="https://climatefinancewiki.org/actors/">Actors</a>
+      <a href="https://climatefinancewiki.org/frameworks/">Frameworks</a>
+      <a href="https://climatefinancewiki.org/case-studies/">Case Studies</a>
+      <a href="https://climatefinancewiki.org/news/">News</a>
+    </div>
+    <span>&copy; 2026 Red Barrow</span>
+  </div>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var RM = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var reveals = document.querySelectorAll(".reveal");
+  if (!RM && "IntersectionObserver" in window){
+    var io = new IntersectionObserver(function(entries){
+      var delay = 0;
+      for (var e=0;e<entries.length;e++){
+        if (entries[e].isIntersecting){
+          var el = entries[e].target;
+          el.style.transitionDelay = delay + "ms";
+          el.classList.add("in");
+          io.unobserve(el);
+          delay += 70;
+        }
+      }
+    }, {threshold:.12, rootMargin:"0px 0px -40px 0px"});
+    for (var r=0;r<reveals.length;r++) io.observe(reveals[r]);
+  } else {
+    for (var r2=0;r2<reveals.length;r2++) reveals[r2].classList.add("in");
+  }
+})();
+</script>
+</body>
+</html>

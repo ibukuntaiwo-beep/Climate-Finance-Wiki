@@ -454,17 +454,17 @@ footer a:hover{color:var(--green)}
     <p class="tag"><span class="num">01</span>&ensp;/&ensp;The Reference</p>
     <h1 id="hero-h">How the world <em>funds</em> its response to climate change.</h1>
     <div class="hero-case reveal">
-      <p class="tag">Featured Case Study&ensp;&mdash;&ensp;California, 2019</p>
-      <h2>The First Climate Change Bankruptcy</h2>
-      <p class="case-quote">$30 billion in wildfire liabilities destroyed California&rsquo;s largest utility, proving physical climate risk isn&rsquo;t theoretical.</p>
-      <a class="case-cta" href="https://climatefinancewiki.org/case-studies/pge-bankruptcy/">Read the case study <span class="arr">&rarr;</span></a>
+      <p class="tag" id="case-tag">Featured Case Study&ensp;&mdash;&ensp;California, 2019</p>
+      <h2 id="case-headline">The First Climate Change Bankruptcy</h2>
+      <p class="case-quote" id="case-quote">$30 billion in wildfire liabilities destroyed California&rsquo;s largest utility, proving physical climate risk isn&rsquo;t theoretical.</p>
+      <a class="case-cta" id="case-cta" href="https://climatefinancewiki.org/case-studies/pge-bankruptcy/">Read the case study <span class="arr">&rarr;</span></a>
     </div>
   </div>
   <figure class="plate reveal">
     <div class="plate-img">
-      <img src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&w=1600&q=80" alt="Aerial view of utility-scale solar farm rows on a green field" width="1600" height="1000">
+      <img id="case-img" src="https://images.unsplash.com/photo-1600581808016-6fa27d8742a1?auto=format&fit=crop&w=1600&q=80" alt="House surrounded by wildfire glow at night" width="1600" height="1000">
     </div>
-    <figcaption>Fig. 01 — Aerial view, utility-scale solar</figcaption>
+    <figcaption id="case-figcaption">Fig. 01 — Wildfire at the urban edge, California</figcaption>
   </figure>
 </section>
 
@@ -637,6 +637,60 @@ footer a:hover{color:var(--green)}
 
 </div>
 
+<script>
+(function () {
+  "use strict";
+  var studies = [
+    {
+      tag: 'Featured Case Study — California, 2019',
+      headline: 'The First Climate Change Bankruptcy',
+      quote: '$30 billion in wildfire liabilities destroyed California’s largest utility, proving physical climate risk isn’t theoretical.',
+      link: 'https://climatefinancewiki.org/case-studies/pge-bankruptcy/',
+      img: 'https://images.unsplash.com/photo-1600581808016-6fa27d8742a1?auto=format&fit=crop&w=1600&q=80',
+      alt: 'House surrounded by wildfire glow at night',
+      figcaption: 'Fig. 01 — Wildfire at the urban edge, California'
+    },
+    {
+      tag: 'Featured Case Study — Wolfsburg, 2015',
+      headline: 'The Ad Campaign That Became a Criminal Evidence File',
+      quote: '11 million cars. 40× the legal emissions limit. And a “Clean Diesel” campaign that became evidence for prosecutors.',
+      link: 'https://climatefinancewiki.org/case-studies/volkswagen-dieselgate/',
+      img: 'https://images.unsplash.com/photo-1579519772836-2732b96a6306?auto=format&fit=crop&w=1600&q=80',
+      alt: 'Queued traffic in dense smog at night, taillights glowing',
+      figcaption: 'Fig. 01 — Tailpipe emissions, urban traffic'
+    },
+    {
+      tag: 'Featured Case Study — Houston, 2021',
+      headline: 'The Shareholder with 0.02% That Rewrote ExxonMobil’s Board',
+      quote: 'Engine No. 1’s stake was negligible but its argument was not. This is the story of a $40 million argument that BlackRock, Vanguard, and State Street couldn’t vote against.',
+      link: 'https://climatefinancewiki.org/case-studies/engine-no-1-exxonmobil/',
+      img: 'https://images.unsplash.com/photo-1431540015161-0bf868a2d407?auto=format&fit=crop&w=1600&q=80',
+      alt: 'Oval conference table and chairs in a boardroom',
+      figcaption: 'Fig. 01 — The boardroom'
+    },
+    {
+      tag: 'Featured Case Study — Oslo, 2019',
+      headline: 'The $1 Trillion Oil Fund That Sold Its Oil Stocks',
+      quote: 'Norway’s sovereign wealth fund was created to manage oil revenues. In 2019, it divested from 134 upstream oil companies because it already had too much oil exposure.',
+      link: 'https://climatefinancewiki.org/case-studies/norway-gpfg-divestment/',
+      img: 'https://images.unsplash.com/photo-1633829131104-e2134f75c6e5?auto=format&fit=crop&w=1600&q=80',
+      alt: 'Oil rig in the middle of the ocean at sunset',
+      figcaption: 'Fig. 01 — Offshore platform, North Sea'
+    }
+  ];
+  var idx = parseInt(localStorage.getItem('heroIdx') || '0', 10);
+  var pick = studies[idx % studies.length];
+  localStorage.setItem('heroIdx', String(idx + 1));
+  document.getElementById('case-tag').textContent = pick.tag;
+  document.getElementById('case-headline').textContent = pick.headline;
+  document.getElementById('case-quote').textContent = pick.quote;
+  document.getElementById('case-cta').href = pick.link;
+  var img = document.getElementById('case-img');
+  img.src = pick.img;
+  img.alt = pick.alt;
+  document.getElementById('case-figcaption').textContent = pick.figcaption;
+})();
+</script>
 <script>
 (function(){
   "use strict";

@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Start Here — Climate Finance Wiki</title>
+<meta name="description" content="A curated path through the cases, concepts, and turning points that explain how climate became the defining financial story of our time.">
+<!-- Interior page sample: start-here / recommended path. Design language: Option 9 composite. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6F5F1;
+  --ink:#161616;
+  --ink-2:rgba(22,22,22,.64);
+  --ink-3:rgba(22,22,22,.42);
+  --line:#DBD8CE;
+  --green:#1E4D3A;
+  --green-tint:rgba(30,77,58,.04);
+  --green-tint-2:rgba(30,77,58,.08);
+  --sans:'Space Grotesk',system-ui,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+::selection{background:var(--green);color:var(--bg)}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+img{max-width:100%;display:block}
+
+/* ---------- frame ---------- */
+.frame{
+  max-width:1360px;
+  margin-inline:auto;
+  border-left:1px solid var(--line);
+  border-right:1px solid var(--line);
+  min-height:100dvh;
+}
+@media (max-width:1400px){.frame{border-left:0;border-right:0}}
+.pad{padding-inline:clamp(20px,4vw,64px)}
+
+/* ---------- labels ---------- */
+.tag{
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink-2);
+}
+.tag .num{color:var(--green)}
+
+/* ---------- header ---------- */
+header{
+  position:sticky;top:0;z-index:20;
+  background:rgba(246,245,241,.92);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.nav{
+  display:flex;align-items:center;justify-content:space-between;
+  height:64px;
+}
+.wordmark{
+  font-weight:600;font-size:15px;letter-spacing:-.01em;
+  display:flex;align-items:baseline;gap:10px;
+}
+.wordmark .mono-mark{
+  font-family:var(--mono);font-size:10px;font-weight:500;
+  color:var(--green);letter-spacing:.12em;
+}
+.nav-links{display:flex;gap:clamp(16px,3vw,36px);align-items:center}
+.nav-links a{
+  font-size:13.5px;font-weight:500;letter-spacing:.01em;
+  position:relative;padding:4px 0;
+}
+.nav-links a::after{
+  content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;
+  background:var(--ink);transform:scaleX(0);transform-origin:left;
+  transition:transform .22s var(--ease);
+}
+.nav-links a:hover::after,.nav-links a:focus-visible::after{transform:scaleX(1)}
+.nav-search{
+  font-family:var(--mono);font-size:11px;letter-spacing:.1em;
+  border:1px solid var(--line);padding:7px 14px;
+  color:var(--ink-2);
+  transition:border-color .22s var(--ease),color .22s var(--ease),transform .1s var(--ease);
+}
+.nav-search:hover{border-color:var(--ink);color:var(--ink)}
+.nav-search:active{transform:scale(.98)}
+@media (max-width:356px){
+  .nav{flex-wrap:wrap;height:auto;min-height:64px;row-gap:8px;padding-block:12px}
+}
+
+/* ---------- path header ---------- */
+.path-head{
+  border-bottom:1px solid var(--line);
+  padding-top:clamp(36px,6vh,72px);
+  padding-bottom:clamp(40px,6vh,72px);
+}
+.path-head h1{
+  font-size:clamp(2.5rem,5.4vw,4.6rem);
+  font-weight:500;line-height:1.04;letter-spacing:-.035em;
+  margin-top:20px;
+  max-width:18ch;
+}
+.path-head h1 em{font-style:normal;color:var(--green)}
+.path-intro{
+  margin-top:22px;
+  font-size:15.5px;color:var(--ink-2);
+  max-width:56ch;
+}
+
+/* ---------- steps ---------- */
+.steps-sec{border-bottom:1px solid var(--line)}
+.step-list{list-style:none;padding-bottom:clamp(48px,7vh,80px)}
+.step-item{border-top:1px solid var(--line)}
+.step-item:last-child{border-bottom:1px solid var(--line)}
+.step{
+  display:grid;
+  grid-template-columns:64px minmax(0,1fr) auto;
+  gap:16px;align-items:baseline;
+  padding:clamp(18px,2.6vh,26px) 8px;
+  transition:background-color .22s var(--ease);
+}
+.step .s-num{
+  font-family:var(--mono);font-size:12px;font-weight:500;color:var(--green);
+  transition:transform .22s var(--ease);
+}
+.step .s-kind{
+  display:block;
+  font-family:var(--mono);font-size:10px;font-weight:500;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--green);
+  margin-bottom:6px;
+}
+.step .s-title{
+  display:block;
+  font-size:clamp(1.25rem,2.2vw,1.7rem);
+  font-weight:500;letter-spacing:-.02em;line-height:1.12;
+}
+.step .s-blurb{
+  display:block;
+  margin-top:8px;
+  font-size:14px;color:var(--ink-2);line-height:1.55;
+  max-width:66ch;
+}
+.step .s-arr{
+  font-family:var(--mono);font-size:13px;color:var(--ink-3);
+  transition:transform .22s var(--ease),color .22s var(--ease);
+}
+.step:hover{background:var(--green-tint)}
+.step:hover .s-num{transform:translateX(4px)}
+.step:hover .s-arr{transform:translateX(4px);color:var(--green)}
+
+/* ---------- trails (broadsheet columns) ---------- */
+.trails-sec{border-bottom:1px solid var(--line)}
+.next-intro{
+  font-size:15.5px;color:var(--ink-2);
+  max-width:52ch;
+  margin-top:-8px;
+  padding-bottom:clamp(24px,4vh,40px);
+}
+.sec-head{
+  display:flex;align-items:baseline;justify-content:space-between;gap:16px;
+  padding-top:clamp(40px,6vh,64px);
+  padding-bottom:clamp(16px,2.5vh,24px);
+}
+.trails-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  padding-bottom:clamp(48px,7vh,80px);
+}
+.trail{
+  padding:6px clamp(20px,2.6vw,36px) 8px;
+  border-left:1px solid var(--line);
+  display:flex;flex-direction:column;align-items:flex-start;
+}
+.trail:first-child{border-left:0;padding-left:0}
+.trail:last-child{padding-right:0}
+.trail .t-num{
+  font-family:var(--mono);font-size:12px;font-weight:500;
+  color:var(--green);margin-bottom:16px;
+}
+.trail h3{
+  font-size:clamp(1.25rem,1.9vw,1.6rem);
+  font-weight:500;letter-spacing:-.015em;line-height:1.15;
+  margin-bottom:10px;
+}
+.trail p{font-size:14px;color:var(--ink-2);line-height:1.6;margin-bottom:18px}
+.trail .t-meta{
+  font-family:var(--mono);font-size:11px;color:var(--ink-3);
+  letter-spacing:.06em;margin-bottom:22px;
+}
+.trail-link{
+  margin-top:auto;
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:11px;font-weight:500;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--green);
+}
+.trail-link .arr{transition:transform .22s var(--ease)}
+.trail-link:hover .arr{transform:translateX(4px)}
+@media (max-width:900px){
+  .trails-grid{grid-template-columns:minmax(0,1fr)}
+  .trail{border-left:0;border-top:1px solid var(--line);padding:22px 0 28px}
+  .trail:first-child{border-top:0;padding-top:0}
+  .trail:last-child{padding-bottom:0}
+}
+
+/* ---------- footer ---------- */
+footer .foot{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;
+  padding-block:26px;
+}
+footer .foot-links{display:flex;flex-wrap:wrap;gap:8px 22px}
+footer a,footer span{
+  font-family:var(--mono);font-size:11px;letter-spacing:.08em;
+  color:var(--ink-2);text-transform:uppercase;
+}
+footer a{transition:color .22s var(--ease)}
+footer a:hover{color:var(--green)}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .4s var(--ease),transform .4s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+  }
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+<noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+</head>
+<body>
+<div class="frame">
+
+<header>
+  <nav class="nav pad" aria-label="Primary">
+    <a class="wordmark" href="https://climatefinancewiki.org/">
+      Climate Finance Wiki
+      <span class="mono-mark">EST. 2026</span>
+    </a>
+    <div class="nav-links">
+      <a href="https://climatefinancewiki.org/#categories">Topics</a>
+      <a href="https://climatefinancewiki.org/news/">News</a>
+      <a href="https://climatefinancewiki.org/about/">About</a>
+      <button class="nav-search" type="button" aria-label="Search the wiki">SEARCH</button>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+<!-- PATH HEADER -->
+<section class="path-head pad" aria-labelledby="path-h">
+  <p class="tag"><span class="num">Editor&rsquo;s Recommended Path</span></p>
+  <h1 id="path-h">New to climate finance? <em>Start here.</em></h1>
+  <p class="path-intro">A curated path through the cases, concepts, and turning points that explain how climate became the defining financial story of our time. Eleven articles, no prior knowledge needed.</p>
+</section>
+
+<!-- STEPS -->
+<section class="steps-sec" aria-label="Recommended reading order">
+  <div class="pad">
+    <div class="sec-head">
+      <p class="tag"><span class="num">01</span>&ensp;/&ensp;The Path</p>
+      <p class="tag">11 ARTICLES</p>
+    </div>
+    <ol class="step-list">
+      <li class="step-item reveal">
+        <a class="step" href="https://climatefinancewiki.org/case-studies/pge-bankruptcy/">
+          <span class="s-num">01</span>
+          <span>
+            <span class="s-kind">Case Study</span>
+            <span class="s-title">PG&amp;E Bankruptcy</span>
+            <span class="s-blurb">A utility worth $30 billion went bankrupt because of wildfires. Start here to understand why climate change is now a financial crisis, not just an environmental one.</span>
+          </span>
+          <span class="s-arr">&rarr;</span>
+        </a>
+      </li>
+      <li class="step-item reveal">
+        <a class="step" href="https://climatefinancewiki.org/concepts/climate-finance/">
+          <span class="s-num">02</span>
+          <span>
+            <span class="s-kind">Concept</span>
+            <span class="s-title">Climate Finance</span>
+            <span class="s-blurb">What is this field, and why does money matter in the climate story? The foundation everything else builds on.</span>
+          </span>
+          <span class="s-arr">&rarr;</span>
+        </a>
+      </li>
+      <li class="step-item reveal">
+        <a class="step" href="https://climatefinancewiki.org/concepts/the-1.5c-threshold/">
+          <span class="s-num">03</span>
+          <span>
+            <span class="s-kind">Concept</span>
+            <span class="s-title">The 1.5&deg;C Threshold</span>
+            <span class="s-blurb">The number that defines the stakes. Understanding why every decimal point matters changes how you read every story that follows.</span>
+          </span>
+          <span class="s-arr">&rarr;</span>
+        </a>
+      </li>
+      <li class="step-item reveal">
+        <a class="step" href="https://climatefinancewiki.org/concepts/physical-risks/">
+          <span class="s-num">04</span>
+          <span>
+            <span class="s-kind">Concept</span>
+            <span class="s-title">Physical Risks</span>
+            <span class="s-blurb">The first way climate threatens financial assets: direct physical damage from extreme weather, flooding, and a changing climate.</span>
+          </span>
+          <span class="s-arr">&rarr;</span>
+        </a>
+      </li>
+      <li class="step-item reveal">
+        <a class="step" href="https://climatefinancewiki.org/concepts/transition-risks/">
+          <span class="s-num">05</span>
+          <span>
+            <span class="s-kind">Concept</span>
+            <span class="s-title">Transition Risks</span>
+            <span class="s-blurb">The second way: policy changes, technology shifts, and market pressure make entire asset classes uneconomic almost overnight.</span>
+          </span>
+          <span class="s-arr">&rarr;</span>
+        </a>
+      </li>
+      <li class="step-item reveal">
+        <a class="step" href="https://climatefinancewiki.org/actors/mark-carney/">
+          <span class="s-num">06</span>
+          <span>
+            <span class="s-kind">Actor</span>
+            <span class="s-title">Mark Carney and the Tragedy of the Horizon</span>
+            <span class="s-blurb">The 2015 speech that moved climate risk from an environmental concern to a mainstream financial obligation.</span>
+          </span>
+          <span class="s-arr">&rarr;</span>
+        </a>
+      </li>
+      <li class="step-item reveal">
+        <a class="step" href="https://climatefinancewiki.org/case-studies/hsbc-greenwashing/">
+          <span class="s-num">07</span>
+          <span>
+            <span class="s-kind">Case Study</span>
+            <span class="s-title">HSBC Greenwashing</span>
+            <span class="s-blurb">How a major bank responded to climate pressure with a poster campaign &mdash; and got banned by the advertising regulator for it.</span>
+          </span>
+          <span class="s-arr">&rarr;</span>
+        </a>
+      </li>
+      <li class="step-item reveal">
+        <a class="step" href="https://climatefinancewiki.org/concepts/greenwashing/">
+          <span class="s-num">08</span>
+          <span>
+            <span class="s-kind">Concept</span>
+            <span class="s-title">Greenwashing</span>
+            <span class="s-blurb">What it is, why it proliferated, and why it is now regulated across advertising, investment products, and corporate disclosure.</span>
+          </span>
+          <span class="s-arr">&rarr;</span>
+        </a>
+      </li>
+      <li class="step-item reveal">
+        <a class="step" href="https://climatefinancewiki.org/frameworks/tcfd/">
+          <span class="s-num">09</span>
+          <span>
+            <span class="s-kind">Framework</span>
+            <span class="s-title">TCFD</span>
+            <span class="s-blurb">The framework that made climate disclosure mainstream, and the template for almost every disclosure standard that followed.</span>
+          </span>
+          <span class="s-arr">&rarr;</span>
+        </a>
+      </li>
+      <li class="step-item reveal">
+        <a class="step" href="https://climatefinancewiki.org/case-studies/engine-no-1-exxonmobil/">
+          <span class="s-num">10</span>
+          <span>
+            <span class="s-kind">Case Study</span>
+            <span class="s-title">Engine No. 1 vs ExxonMobil</span>
+            <span class="s-blurb">How a $40 million stake took on the world&rsquo;s largest oil company &mdash; and won three board seats by persuading the institutions that couldn&rsquo;t sell.</span>
+          </span>
+          <span class="s-arr">&rarr;</span>
+        </a>
+      </li>
+      <li class="step-item reveal">
+        <a class="step" href="https://climatefinancewiki.org/case-studies/seychelles-blue-bond/">
+          <span class="s-num">11</span>
+          <span>
+            <span class="s-kind">Case Study</span>
+            <span class="s-title">Seychelles Blue Bond</span>
+            <span class="s-blurb">What good climate finance looks like in practice: a small island state pioneering an instrument the world is still learning from.</span>
+          </span>
+          <span class="s-arr">&rarr;</span>
+        </a>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- WHERE TO GO NEXT -->
+<section class="trails-sec" aria-labelledby="next-h">
+  <div class="pad">
+    <div class="sec-head">
+      <p class="tag" id="next-h"><span class="num">02</span>&ensp;/&ensp;Where to Go Next</p>
+    </div>
+    <p class="next-intro">You now have the foundation. Pick a trail to go deeper.</p>
+    <div class="trails-grid">
+      <article class="trail reveal">
+        <span class="t-num">01</span>
+        <h3>The Greenwashing Trail</h3>
+        <p>From misleading claims to criminal charges.</p>
+        <span class="t-meta">6 ARTICLES&nbsp;&middot;&nbsp;~35 MIN</span>
+        <a class="trail-link" href="https://climatefinancewiki.org/concepts/greenwashing/">Begin <span class="arr">&rarr;</span></a>
+      </article>
+      <article class="trail reveal">
+        <span class="t-num">02</span>
+        <h3>Follow the Money</h3>
+        <p>How climate finance actually flows, and where it gets stuck.</p>
+        <span class="t-meta">6 ARTICLES&nbsp;&middot;&nbsp;~35 MIN</span>
+        <a class="trail-link" href="https://climatefinancewiki.org/concepts/climate-finance/">Begin <span class="arr">&rarr;</span></a>
+      </article>
+      <article class="trail reveal">
+        <span class="t-num">03</span>
+        <h3>Architecture of Climate Policy</h3>
+        <p>The agreements, taxonomies, and standards that set the rules.</p>
+        <span class="t-meta">6 ARTICLES&nbsp;&middot;&nbsp;~35 MIN</span>
+        <a class="trail-link" href="https://climatefinancewiki.org/frameworks/paris-agreement/">Begin <span class="arr">&rarr;</span></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="foot pad">
+    <div class="foot-links">
+      <a href="https://climatefinancewiki.org/concepts/">Concepts</a>
+      <a href="https://climatefinancewiki.org/instruments/">Instruments</a>
+      <a href="https://climatefinancewiki.org/actors/">Actors</a>
+      <a href="https://climatefinancewiki.org/frameworks/">Frameworks</a>
+      <a href="https://climatefinancewiki.org/case-studies/">Case Studies</a>
+      <a href="https://climatefinancewiki.org/news/">News</a>
+    </div>
+    <span>&copy; 2026 Red Barrow</span>
+  </div>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var RM = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var reveals = document.querySelectorAll(".reveal");
+  if (!RM && "IntersectionObserver" in window){
+    var io = new IntersectionObserver(function(entries){
+      var delay = 0;
+      for (var e=0;e<entries.length;e++){
+        if (entries[e].isIntersecting){
+          var el = entries[e].target;
+          el.style.transitionDelay = delay + "ms";
+          el.classList.add("in");
+          io.unobserve(el);
+          delay += 60;
+        }
+      }
+    }, {threshold:.12, rootMargin:"0px 0px -40px 0px"});
+    for (var r=0;r<reveals.length;r++) io.observe(reveals[r]);
+  } else {
+    for (var r2=0;r2<reveals.length;r2++) reveals[r2].classList.add("in");
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Greenwashing — Climate Finance Wiki</title>
+<meta name="description" content="Making misleading claims (through action, omission, or emphasis) about the environmental credentials of a product, strategy, or organisation.">
+<!-- Interior page sample: standard wiki article, in Option 9 (The Composite) design language. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6F5F1;
+  --ink:#161616;
+  --ink-2:rgba(22,22,22,.64);
+  --ink-3:rgba(22,22,22,.42);
+  --body:rgba(22,22,22,.82);
+  --line:#DBD8CE;
+  --green:#1E4D3A;
+  --green-tint:rgba(30,77,58,.04);
+  --green-line:rgba(30,77,58,.35);
+  --sans:'Space Grotesk',system-ui,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+::selection{background:var(--green);color:var(--bg)}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+img{max-width:100%;display:block}
+
+/* ---------- frame ---------- */
+.frame{
+  max-width:1360px;
+  margin-inline:auto;
+  border-left:1px solid var(--line);
+  border-right:1px solid var(--line);
+  min-height:100dvh;
+}
+@media (max-width:1400px){.frame{border-left:0;border-right:0}}
+.pad{padding-inline:clamp(20px,4vw,64px)}
+
+/* ---------- labels ---------- */
+.tag{
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink-2);
+}
+.tag .num{color:var(--green)}
+
+/* ---------- header ---------- */
+header{
+  position:sticky;top:0;z-index:20;
+  background:rgba(246,245,241,.92);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.nav{
+  display:flex;align-items:center;justify-content:space-between;
+  height:64px;
+}
+.wordmark{
+  font-weight:600;font-size:15px;letter-spacing:-.01em;
+  display:flex;align-items:baseline;gap:10px;
+}
+.wordmark .mono-mark{
+  font-family:var(--mono);font-size:10px;font-weight:500;
+  color:var(--green);letter-spacing:.12em;
+}
+.nav-links{display:flex;gap:clamp(16px,3vw,36px);align-items:center}
+.nav-links a{
+  font-size:13.5px;font-weight:500;letter-spacing:.01em;
+  position:relative;padding:4px 0;
+}
+.nav-links a::after{
+  content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;
+  background:var(--ink);transform:scaleX(0);transform-origin:left;
+  transition:transform .22s var(--ease);
+}
+.nav-links a:hover::after,.nav-links a:focus-visible::after{transform:scaleX(1)}
+.nav-search{
+  font-family:var(--mono);font-size:11px;letter-spacing:.1em;
+  border:1px solid var(--line);padding:7px 14px;
+  color:var(--ink-2);
+  transition:border-color .22s var(--ease),color .22s var(--ease),transform .1s var(--ease);
+}
+.nav-search:hover{border-color:var(--ink);color:var(--ink)}
+.nav-search:active{transform:scale(.98)}
+@media (max-width:356px){
+  .nav{flex-wrap:wrap;height:auto;min-height:64px;row-gap:8px;padding-block:12px}
+}
+
+/* ---------- breadcrumbs ---------- */
+.crumbs{
+  padding-top:26px;
+  font-family:var(--mono);font-size:11px;font-weight:500;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);
+  display:flex;flex-wrap:wrap;gap:6px 10px;
+}
+.crumbs a{transition:color .22s var(--ease)}
+.crumbs a:hover{color:var(--green)}
+.crumbs .sep{color:var(--ink-3)}
+.crumbs .here{color:var(--ink)}
+
+/* ---------- article head ---------- */
+.art-head{
+  padding-top:clamp(28px,4.5vh,48px);
+  padding-bottom:clamp(28px,4.5vh,44px);
+  border-bottom:1px solid var(--line);
+}
+.art-head h1{
+  font-size:clamp(2.2rem,4.5vw,3.6rem);
+  font-weight:500;line-height:1.04;letter-spacing:-.03em;
+  max-width:18ch;
+  margin-top:16px;
+}
+.art-sub{
+  margin-top:18px;
+  font-size:17px;line-height:1.6;color:var(--ink-2);
+  max-width:62ch;
+}
+.byline{
+  margin-top:24px;
+  font-family:var(--mono);font-size:11px;font-weight:500;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);
+}
+.byline a{color:var(--green);border-bottom:1px solid var(--green-line);transition:border-color .22s var(--ease)}
+.byline a:hover{border-color:var(--green)}
+
+/* ---------- key stats ---------- */
+.keystats{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  border-bottom:1px solid var(--line);
+}
+.kstat{
+  padding:22px clamp(16px,2vw,28px) 24px;
+  border-left:1px solid var(--line);
+}
+.kstat:first-child{border-left:0;padding-left:0}
+.kstat .kv{
+  font-size:clamp(1.05rem,1.6vw,1.35rem);
+  font-weight:500;letter-spacing:-.015em;line-height:1.15;
+  color:var(--green);
+}
+.kstat .kl{
+  margin-top:8px;
+  font-family:var(--mono);font-size:10.5px;font-weight:500;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);
+}
+@media (max-width:900px){
+  .keystats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .kstat:nth-child(odd){border-left:0;padding-left:0}
+  .kstat:nth-child(n+3){border-top:1px solid var(--line)}
+}
+
+/* ---------- article layout ---------- */
+.art-layout{
+  display:grid;
+  grid-template-columns:minmax(0,7.2fr) minmax(0,3.2fr);
+  gap:clamp(32px,4.5vw,80px);
+  padding-block:clamp(36px,6vh,64px);
+  border-bottom:1px solid var(--line);
+}
+.art-body{max-width:68ch;font-size:17px;line-height:1.7}
+.art-body p{margin-bottom:19px;color:var(--body)}
+.art-body h2{
+  font-size:clamp(1.35rem,2.2vw,1.7rem);
+  font-weight:500;letter-spacing:-.02em;line-height:1.2;
+  margin:46px 0 18px;
+  scroll-margin-top:96px;
+}
+.art-body h2:first-child{margin-top:0}
+.h2num{
+  display:block;
+  font-family:var(--mono);font-size:11px;font-weight:500;
+  letter-spacing:.14em;color:var(--green);
+  margin-bottom:8px;
+}
+.wl{
+  color:var(--green);
+  border-bottom:1px solid var(--green-line);
+  transition:border-color .22s var(--ease);
+}
+.wl:hover{border-color:var(--green)}
+
+/* unexpected */
+.unexpected{
+  margin:40px 0;
+  border:1px solid var(--line);
+  background:var(--green-tint);
+  padding:24px 26px;
+}
+.unexpected .ux-h{
+  font-size:1.1rem;font-weight:500;letter-spacing:-.015em;line-height:1.3;
+  margin-top:12px;
+}
+.unexpected p{margin:10px 0 0;font-size:15px;line-height:1.65;color:var(--ink-2)}
+
+/* sources */
+.sources{margin-top:46px;padding-top:26px;border-top:1px solid var(--line)}
+.sources ul{list-style:none;margin-top:14px}
+.sources li{
+  padding:9px 0;
+  border-bottom:1px solid var(--line);
+  font-size:14px;line-height:1.55;color:var(--ink-2);
+}
+.sources li:last-child{border-bottom:0}
+.sources a{color:var(--ink);border-bottom:1px solid var(--line);transition:color .22s var(--ease),border-color .22s var(--ease)}
+.sources a:hover{color:var(--green);border-color:var(--green)}
+
+/* ---------- rail ---------- */
+.rail{border-left:1px solid var(--line);padding-left:clamp(20px,2.5vw,36px)}
+.rail-sticky{position:sticky;top:96px}
+.toc{list-style:none;margin-top:18px}
+.toc li{border-top:1px solid var(--line)}
+.toc li:last-child{border-bottom:1px solid var(--line)}
+.toc a{
+  display:flex;gap:12px;align-items:baseline;
+  padding:11px 2px;
+  font-size:14px;font-weight:500;letter-spacing:-.005em;
+  color:var(--ink-2);
+  transition:color .22s var(--ease);
+}
+.toc .n{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--green)}
+.toc a:hover{color:var(--ink)}
+.toc li.on a{color:var(--green)}
+.rail-back{
+  display:inline-flex;align-items:center;gap:8px;
+  margin-top:26px;
+  font-family:var(--mono);font-size:11px;font-weight:500;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);
+  transition:color .22s var(--ease);
+}
+.rail-back:hover{color:var(--green)}
+@media (max-width:900px){
+  .art-layout{grid-template-columns:minmax(0,1fr)}
+  .rail{display:none}
+}
+
+/* ---------- see also ---------- */
+.sa-sec{border-bottom:1px solid var(--line)}
+.sec-head{
+  display:flex;align-items:baseline;justify-content:space-between;gap:16px;
+  padding-top:clamp(36px,5vh,56px);
+  padding-bottom:clamp(20px,3vh,32px);
+}
+.sa-list{list-style:none;padding-bottom:clamp(44px,6vh,72px)}
+.sa-item{border-top:1px solid var(--line)}
+.sa-item:last-child{border-bottom:1px solid var(--line)}
+.sa-row{
+  display:grid;
+  grid-template-columns:130px minmax(0,1fr) auto;
+  gap:16px;align-items:baseline;
+  padding:clamp(14px,2vh,20px) 8px;
+  transition:background-color .22s var(--ease);
+}
+.sa-row:hover{background:var(--green-tint)}
+.sa-cat{
+  font-family:var(--mono);font-size:10.5px;font-weight:500;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--green);
+  white-space:nowrap;
+}
+.sa-main .sa-title{font-size:16px;font-weight:500;letter-spacing:-.005em}
+.sa-main .sa-desc{margin-top:3px;font-size:13.5px;line-height:1.5;color:var(--ink-2)}
+.sa-arr{color:var(--ink);transition:transform .22s var(--ease),color .22s var(--ease)}
+.sa-row:hover .sa-arr{transform:translateX(4px);color:var(--green)}
+@media (max-width:900px){
+  .sa-row{grid-template-columns:minmax(0,1fr) auto;row-gap:6px}
+  .sa-cat{grid-row:1;grid-column:1}
+  .sa-main{grid-column:1}
+  .sa-arr{grid-row:1;grid-column:2}
+}
+
+/* ---------- footer ---------- */
+footer .foot{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;
+  padding-block:26px;
+}
+footer .foot-links{display:flex;flex-wrap:wrap;gap:8px 22px}
+footer a,footer span{
+  font-family:var(--mono);font-size:11px;letter-spacing:.08em;
+  color:var(--ink-2);text-transform:uppercase;
+}
+footer a{transition:color .22s var(--ease)}
+footer a:hover{color:var(--green)}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .4s var(--ease),transform .4s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+  }
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+<noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+</head>
+<body>
+<div class="frame">
+
+<header>
+  <nav class="nav pad" aria-label="Primary">
+    <a class="wordmark" href="https://climatefinancewiki.org/">
+      Climate Finance Wiki
+      <span class="mono-mark">EST. 2026</span>
+    </a>
+    <div class="nav-links">
+      <a href="https://climatefinancewiki.org/#categories">Topics</a>
+      <a href="https://climatefinancewiki.org/news/">News</a>
+      <a href="https://climatefinancewiki.org/about/">About</a>
+      <button class="nav-search" type="button" aria-label="Search the wiki">SEARCH</button>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+<!-- BREADCRUMBS -->
+<nav class="crumbs pad" aria-label="Breadcrumb">
+  <a href="https://climatefinancewiki.org/">Home</a>
+  <span class="sep">&rarr;</span>
+  <a href="https://climatefinancewiki.org/concepts/">Concepts</a>
+  <span class="sep">&rarr;</span>
+  <span class="here">Greenwashing</span>
+</nav>
+
+<!-- ARTICLE HEAD -->
+<div class="art-head pad">
+  <p class="tag"><span class="num">Concepts</span>&ensp;/&ensp;Article</p>
+  <h1>Greenwashing</h1>
+  <p class="art-sub">Making misleading claims (through action, omission, or emphasis) about the environmental credentials of a product, strategy, or organisation.</p>
+  <p class="byline">By <a href="https://climatefinancewiki.org/author/ibukun-taiwo/">Ibukun Taiwo</a></p>
+</div>
+
+<!-- KEY STATS -->
+<div class="keystats pad">
+  <div class="kstat"><div class="kv">1980s</div><div class="kl">Term originated</div></div>
+  <div class="kstat"><div class="kv">Fastest-growing</div><div class="kl">Climate-washing litigation</div></div>
+  <div class="kstat"><div class="kv">SFDR + Taxonomy</div><div class="kl">EU regulatory response</div></div>
+  <div class="kstat"><div class="kv">Both ends</div><div class="kl">Regulators pursue fraud and carelessness</div></div>
+</div>
+
+<!-- BODY + RAIL -->
+<div class="art-layout pad">
+  <article class="art-body">
+    <h2 id="overview"><span class="h2num">01</span>Overview</h2>
+    <p>Greenwashing is when the environmental story an organisation tells is better than the environmental reality it lives. It can be deliberate fraud, careless marketing, or something in between, an inconvenient truth buried in small print, a vague claim about &ldquo;sustainability&rdquo; that collapses under scrutiny, or a minor green initiative used to distract attention from a much larger damaging one.</p>
+    <p>The term has been around since the 1980s, but it has become a central concern of <a class="wl" href="https://climatefinancewiki.org/concepts/climate-finance/">Climate Finance</a> in the last decade as money has flooded into sustainable investment products and regulatory frameworks have multiplied. The more financial value attached to a &ldquo;green&rdquo; label, the stronger the incentive to claim it without earning it.</p>
+    <p>Beyond being a reputational problem, greenwashing is increasingly a legal one. Regulators in the EU, UK, US, and Australia have all moved to prosecute misleading environmental claims. The <a class="wl" href="https://climatefinancewiki.org/frameworks/sfdr/">SFDR</a> in the EU, for instance, requires investment products labelled as sustainable to meet specific criteria. The <a class="wl" href="https://climatefinancewiki.org/frameworks/eu-taxonomy/">EU Taxonomy</a> sets standards for what economic activities qualify as environmentally sustainable. Both were partly designed to make greenwashing harder to get away with.</p>
+
+    <h2 id="spectrum"><span class="h2num">02</span>The Spectrum of Greenwashing</h2>
+    <p>Greenwashing exists on a spectrum from deliberate deception to well-intentioned but careless communication. At the deliberate end: companies that knowingly misrepresent their emissions, claim offsets that do not exist, or use certifications they are not entitled to. In the middle: companies that cherry-pick data, use vague language like &ldquo;eco-friendly&rdquo; or &ldquo;green&rdquo; without qualification, or promote a minor positive action while continuing a majority harmful one. At the careless end: organisations that have not done the work to understand whether their claims hold up.</p>
+    <p>The detailed taxonomy of greenwashing types, greencrowding, greenlighting, greenshifting, and so on, is covered in <a class="wl" href="https://climatefinancewiki.org/concepts/greenwashing-typology/">Greenwashing Typology</a>. That article also addresses the reverse phenomenon: <a class="wl" href="https://climatefinancewiki.org/concepts/greenwashing-typology/">greenhushing</a>, where organisations deliberately downplay legitimate sustainability activities to avoid scrutiny.</p>
+
+    <div class="unexpected reveal">
+      <p class="tag"><span class="num">You Might Not Expect</span></p>
+      <p class="ux-h">Hiding your sustainability progress is now a documented risk too</p>
+      <p>The term &lsquo;greenhushing&rsquo; describes organisations that deliberately downplay legitimate sustainability activities to avoid the scrutiny that comes with making public claims. It is the mirror image of greenwashing, and it means companies face reputational and regulatory exposure from both saying too much and saying too little.</p>
+    </div>
+
+    <h2 id="comms"><span class="h2num">03</span>Why Communications Professionals Need to Own This</h2>
+    <p>For a communications specialist, greenwashing is both a threat to manage and a lens to apply to everything your organisation says. A press release, an advertising campaign, an annual report, a CEO speech, all of it is potential greenwashing exposure if the underlying claims are not properly grounded.</p>
+    <p><a class="wl" href="https://climatefinancewiki.org/concepts/climate-litigation/">Climate Litigation</a> is expanding in this direction. &ldquo;Climate-washing&rdquo; cases, legal challenges to false or misleading marketing claims about climate action, are one of the fastest-growing categories of climate-related legal action. The <a class="wl" href="https://climatefinancewiki.org/concepts/net-zero-vs-carbon-neutral/">Net Zero vs Carbon Neutral</a> distinction is one of the most common flashpoints: companies that use &ldquo;net zero&rdquo; loosely in advertising have faced regulatory action in multiple jurisdictions.</p>
+    <p>The <a class="wl" href="https://climatefinancewiki.org/concepts/science-based-targets-initiative/">Science Based Targets Initiative</a> and <a class="wl" href="https://climatefinancewiki.org/concepts/gfanz/">GFANZ</a> both publish standards specifically to reduce greenwashing at the corporate and portfolio level. Disclosure frameworks like <a class="wl" href="https://climatefinancewiki.org/frameworks/tcfd/">TCFD</a> and <a class="wl" href="https://climatefinancewiki.org/frameworks/ifrs-s1-s2/">IFRS S1 and S2</a> create a paper trail that makes greenwashing claims easier to challenge after the fact.</p>
+
+    <div class="sources" id="sources">
+      <p class="tag"><span class="num">Sources</span></p>
+      <ul>
+        <li><a href="https://environment.ec.europa.eu/topics/circular-economy/green-claims_en" target="_blank" rel="noopener">European Commission, Proposal for a Directive on Green Claims</a></li>
+        <li><a href="https://www.ftc.gov/legal-library/browse/federal-register-notices/guides-use-environmental-marketing-claims-green-guides" target="_blank" rel="noopener">FTC, Guides for the Use of Environmental Marketing Claims (Green Guides)</a></li>
+        <li><a href="https://asic.gov.au/regulatory-resources/financial-services/how-to-avoid-greenwashing-when-offering-or-promoting-sustainability-related-products/" target="_blank" rel="noopener">ASIC, How to Avoid Greenwashing When Offering or Promoting Sustainability-Related Products</a></li>
+      </ul>
+    </div>
+  </article>
+
+  <aside class="rail">
+    <div class="rail-sticky">
+      <p class="tag">In This Article</p>
+      <ul class="toc" id="toc">
+        <li data-for="overview"><a href="#overview"><span class="n">01</span>Overview</a></li>
+        <li data-for="spectrum"><a href="#spectrum"><span class="n">02</span>The Spectrum of Greenwashing</a></li>
+        <li data-for="comms"><a href="#comms"><span class="n">03</span>Why Communications Professionals Need to Own This</a></li>
+      </ul>
+      <a class="rail-back" href="https://climatefinancewiki.org/concepts/">&larr; All Concepts</a>
+    </div>
+  </aside>
+</div>
+
+<!-- SEE ALSO -->
+<section class="sa-sec" aria-labelledby="sa-h">
+  <div class="pad">
+    <div class="sec-head">
+      <p class="tag" id="sa-h"><span class="num">See Also</span></p>
+    </div>
+    <ul class="sa-list">
+      <li class="sa-item reveal">
+        <a class="sa-row" href="https://climatefinancewiki.org/concepts/greenwashing-typology/">
+          <span class="sa-cat">Concepts</span>
+          <span class="sa-main">
+            <span class="sa-title">Greenwashing Typology</span>
+            <span class="sa-desc" style="display:block">The detailed taxonomy of greenwashing types, greencrowding, greenlighting, greenshifting, and more.</span>
+          </span>
+          <span class="sa-arr">&rarr;</span>
+        </a>
+      </li>
+      <li class="sa-item reveal">
+        <a class="sa-row" href="https://climatefinancewiki.org/concepts/net-zero-vs-carbon-neutral/">
+          <span class="sa-cat">Concepts</span>
+          <span class="sa-main">
+            <span class="sa-title">Net Zero vs Carbon Neutral</span>
+            <span class="sa-desc" style="display:block">The distinction most commonly exploited in greenwashing claims.</span>
+          </span>
+          <span class="sa-arr">&rarr;</span>
+        </a>
+      </li>
+      <li class="sa-item reveal">
+        <a class="sa-row" href="https://climatefinancewiki.org/concepts/climate-litigation/">
+          <span class="sa-cat">Concepts</span>
+          <span class="sa-main">
+            <span class="sa-title">Climate Litigation</span>
+            <span class="sa-desc" style="display:block">Legal action targeting false or misleading climate marketing claims.</span>
+          </span>
+          <span class="sa-arr">&rarr;</span>
+        </a>
+      </li>
+      <li class="sa-item reveal">
+        <a class="sa-row" href="https://climatefinancewiki.org/frameworks/sfdr/">
+          <span class="sa-cat">Frameworks</span>
+          <span class="sa-main">
+            <span class="sa-title">SFDR</span>
+            <span class="sa-desc" style="display:block">The EU regulation requiring sustainable investment products to meet specific criteria.</span>
+          </span>
+          <span class="sa-arr">&rarr;</span>
+        </a>
+      </li>
+      <li class="sa-item reveal">
+        <a class="sa-row" href="https://climatefinancewiki.org/frameworks/eu-taxonomy/">
+          <span class="sa-cat">Frameworks</span>
+          <span class="sa-main">
+            <span class="sa-title">EU Taxonomy</span>
+            <span class="sa-desc" style="display:block">The EU standard for what economic activities qualify as environmentally sustainable.</span>
+          </span>
+          <span class="sa-arr">&rarr;</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="foot pad">
+    <div class="foot-links">
+      <a href="https://climatefinancewiki.org/concepts/">Concepts</a>
+      <a href="https://climatefinancewiki.org/instruments/">Instruments</a>
+      <a href="https://climatefinancewiki.org/actors/">Actors</a>
+      <a href="https://climatefinancewiki.org/frameworks/">Frameworks</a>
+      <a href="https://climatefinancewiki.org/case-studies/">Case Studies</a>
+      <a href="https://climatefinancewiki.org/news/">News</a>
+    </div>
+    <span>&copy; 2026 Red Barrow</span>
+  </div>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var RM = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* scroll reveals */
+  var reveals = document.querySelectorAll(".reveal");
+  if (!RM && "IntersectionObserver" in window){
+    var io = new IntersectionObserver(function(entries){
+      var delay = 0;
+      for (var e=0;e<entries.length;e++){
+        if (entries[e].isIntersecting){
+          var el = entries[e].target;
+          el.style.transitionDelay = delay + "ms";
+          el.classList.add("in");
+          io.unobserve(el);
+          delay += 70;
+        }
+      }
+    }, {threshold:.12, rootMargin:"0px 0px -40px 0px"});
+    for (var r=0;r<reveals.length;r++) io.observe(reveals[r]);
+  } else {
+    for (var r2=0;r2<reveals.length;r2++) reveals[r2].classList.add("in");
+  }
+
+  /* TOC active tracking */
+  var tocItems = document.querySelectorAll("#toc li");
+  if (tocItems.length && "IntersectionObserver" in window){
+    var map = {};
+    for (var t=0;t<tocItems.length;t++) map[tocItems[t].getAttribute("data-for")] = tocItems[t];
+    var io2 = new IntersectionObserver(function(entries){
+      for (var e=0;e<entries.length;e++){
+        if (entries[e].isIntersecting){
+          for (var k in map) map[k].classList.remove("on");
+          var li = map[entries[e].target.id];
+          if (li) li.classList.add("on");
+        }
+      }
+    }, {rootMargin:"-20% 0px -70% 0px"});
+    var heads = document.querySelectorAll(".art-body h2[id]");
+    for (var h=0;h<heads.length;h++) io2.observe(heads[h]);
+    tocItems[0].classList.add("on");
+  }
+})();
+</script>
+</body>
+</html>

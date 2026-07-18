@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Climate Finance News — Climate Finance Wiki</title>
+<meta name="description" content="Short, curated dispatches on the climate-finance news that matters — what happened, why it matters, and where to read more.">
+<!-- Interior page sample: NEWS INDEX. Design language: Option 9 (The Composite). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6F5F1;
+  --ink:#161616;
+  --ink-2:rgba(22,22,22,.64);
+  --ink-3:rgba(22,22,22,.42);
+  --line:#DBD8CE;
+  --green:#1E4D3A;
+  --green-tint:rgba(30,77,58,.04);
+  --green-tint-2:rgba(30,77,58,.08);
+  --sans:'Space Grotesk',system-ui,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+::selection{background:var(--green);color:var(--bg)}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+input{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+img{max-width:100%;display:block}
+
+/* ---------- frame ---------- */
+.frame{
+  max-width:1360px;
+  margin-inline:auto;
+  border-left:1px solid var(--line);
+  border-right:1px solid var(--line);
+  min-height:100dvh;
+}
+@media (max-width:1400px){.frame{border-left:0;border-right:0}}
+.pad{padding-inline:clamp(20px,4vw,64px)}
+
+/* ---------- labels ---------- */
+.tag{
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink-2);
+}
+.tag .num{color:var(--green)}
+
+/* ---------- header ---------- */
+header{
+  position:sticky;top:0;z-index:20;
+  background:rgba(246,245,241,.92);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.nav{
+  display:flex;align-items:center;justify-content:space-between;
+  height:64px;
+}
+.wordmark{
+  font-weight:600;font-size:15px;letter-spacing:-.01em;
+  display:flex;align-items:baseline;gap:10px;
+}
+.wordmark .mono-mark{
+  font-family:var(--mono);font-size:10px;font-weight:500;
+  color:var(--green);letter-spacing:.12em;
+}
+.nav-links{display:flex;gap:clamp(16px,3vw,36px);align-items:center}
+.nav-links a{
+  font-size:13.5px;font-weight:500;letter-spacing:.01em;
+  position:relative;padding:4px 0;
+}
+.nav-links a::after{
+  content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;
+  background:var(--ink);transform:scaleX(0);transform-origin:left;
+  transition:transform .22s var(--ease);
+}
+.nav-links a:hover::after,.nav-links a:focus-visible::after,
+.nav-links a.is-active::after{transform:scaleX(1)}
+.nav-search{
+  font-family:var(--mono);font-size:11px;letter-spacing:.1em;
+  border:1px solid var(--line);padding:7px 14px;
+  color:var(--ink-2);
+  transition:border-color .22s var(--ease),color .22s var(--ease),transform .1s var(--ease);
+}
+.nav-search:hover{border-color:var(--ink);color:var(--ink)}
+.nav-search:active{transform:scale(.98)}
+@media (max-width:356px){
+  .nav{flex-wrap:wrap;height:auto;min-height:64px;row-gap:8px;padding-block:12px}
+}
+
+/* ---------- page head ---------- */
+.page-head{
+  border-bottom:1px solid var(--line);
+  padding-top:clamp(28px,4.5vh,48px);
+  padding-bottom:clamp(32px,5vh,56px);
+}
+.crumbs{
+  font-family:var(--mono);font-size:11px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink-3);
+  margin-bottom:clamp(28px,5vh,52px);
+}
+.crumbs a{transition:color .22s var(--ease)}
+.crumbs a:hover{color:var(--green)}
+.crumbs .sep{margin-inline:10px}
+.page-head h1{
+  font-size:clamp(2.1rem,4.2vw,3.5rem);
+  font-weight:500;line-height:1.05;letter-spacing:-.03em;
+  margin-top:16px;max-width:20ch;
+}
+.page-desc{
+  margin-top:18px;
+  font-size:15.5px;color:var(--ink-2);
+  max-width:56ch;line-height:1.6;
+}
+.page-meta{
+  margin-top:26px;
+  font-family:var(--mono);font-size:12px;font-weight:500;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--ink);
+}
+.page-meta .val{color:var(--green)}
+.page-meta .sep{color:var(--ink-3);margin-inline:10px}
+.page-meta a{transition:color .22s var(--ease)}
+.page-meta a:hover{color:var(--green)}
+
+/* ---------- layout ---------- */
+.news-layout{
+  display:grid;
+  grid-template-columns:minmax(0,7.5fr) minmax(0,4.5fr);
+  gap:clamp(28px,4vw,72px);
+  padding-block:clamp(36px,5.5vh,64px) clamp(48px,7vh,80px);
+}
+
+/* dispatch rows (extends the landing's 04 / Dispatches) */
+.d-list{list-style:none}
+.d-item{border-top:1px solid var(--line)}
+.d-item:last-child{border-bottom:1px solid var(--line)}
+.d-row{
+  display:grid;
+  grid-template-columns:150px minmax(0,1fr) auto;
+  gap:6px 16px;align-items:start;
+  padding:clamp(20px,3vh,28px) 8px;
+  transition:background-color .22s var(--ease);
+}
+.d-row:hover{background:var(--green-tint)}
+.d-date{
+  font-family:var(--mono);font-size:11.5px;color:var(--ink-2);
+  letter-spacing:.06em;padding-top:5px;
+}
+.d-cat{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--green);white-space:nowrap;padding-top:5px;
+}
+.d-title{
+  font-size:clamp(1.15rem,1.8vw,1.45rem);
+  font-weight:500;letter-spacing:-.015em;line-height:1.25;
+}
+.d-sum{
+  margin-top:8px;
+  font-size:14.5px;color:var(--ink-2);
+  max-width:60ch;line-height:1.55;
+}
+.d-read{
+  display:inline-flex;align-items:center;gap:8px;
+  margin-top:14px;
+  font-family:var(--mono);font-size:11px;font-weight:500;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink);
+  transition:color .22s var(--ease);
+}
+.d-read .arr{transition:transform .22s var(--ease)}
+.d-row:hover .d-read{color:var(--green)}
+.d-row:hover .d-read .arr{transform:translateX(4px)}
+@media (max-width:900px){
+  .d-row{grid-template-columns:minmax(0,1fr) auto}
+  .d-date{grid-row:1;grid-column:1;padding-top:0}
+  .d-cat{grid-row:1;grid-column:2;padding-top:0}
+  .d-main{grid-row:2;grid-column:1 / -1;margin-top:6px}
+}
+
+/* ---------- sidebar ---------- */
+.side{
+  border-left:1px solid var(--line);
+  padding-left:clamp(24px,3vw,48px);
+  align-self:stretch;
+}
+.side-sticky{position:sticky;top:104px}
+.side-block + .side-block{
+  margin-top:clamp(30px,4.5vh,44px);
+  padding-top:clamp(26px,4vh,38px);
+  border-top:1px solid var(--line);
+}
+.side-block .tag{display:block;margin-bottom:16px}
+.side-text{font-size:14px;color:var(--ink-2);line-height:1.6;max-width:38ch}
+.sub-form{margin-top:18px}
+.sub-input{
+  width:100%;
+  border:1px solid var(--line);
+  background:#fff;
+  padding:12px 14px;
+  font-size:14px;
+  transition:border-color .22s var(--ease);
+}
+.sub-input::placeholder{color:var(--ink-3)}
+.sub-input:hover,.sub-input:focus{border-color:var(--ink);outline:0}
+.sub-btn{
+  margin-top:10px;width:100%;
+  padding:12px 14px;
+  border:1px solid var(--ink);
+  font-size:13.5px;font-weight:500;letter-spacing:.02em;
+  transition:background-color .22s var(--ease),color .22s var(--ease),transform .1s var(--ease);
+}
+.sub-btn:hover{background:var(--ink);color:var(--bg)}
+.sub-btn:active{transform:scale(.98)}
+.rss-link{
+  display:inline-flex;align-items:center;gap:8px;
+  margin-top:16px;
+  font-family:var(--mono);font-size:11px;font-weight:500;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink);
+  transition:color .22s var(--ease);
+}
+.rss-link .arr{transition:transform .22s var(--ease)}
+.rss-link:hover{color:var(--green)}
+.rss-link:hover .arr{transform:translateX(4px)}
+.b-list{list-style:none}
+.b-list li{border-bottom:1px solid var(--line)}
+.b-list li:first-child{border-top:1px solid var(--line)}
+.b-row{
+  display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+  padding:11px 0;
+}
+.b-row .b-name{font-size:14.5px;font-weight:500;transition:color .18s var(--ease)}
+.b-row:hover .b-name{color:var(--green)}
+.b-row .b-count{font-family:var(--mono);font-size:11.5px;color:var(--ink-2);letter-spacing:.06em}
+
+@media (max-width:900px){
+  .news-layout{grid-template-columns:minmax(0,1fr)}
+  .side{border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:clamp(28px,4vh,40px)}
+  .side-sticky{position:static}
+}
+
+/* ---------- footer ---------- */
+footer .foot{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;
+  padding-block:26px;
+  border-top:1px solid var(--line);
+}
+footer .foot-links{display:flex;flex-wrap:wrap;gap:8px 22px}
+footer a,footer span{
+  font-family:var(--mono);font-size:11px;letter-spacing:.08em;
+  color:var(--ink-2);text-transform:uppercase;
+}
+footer a{transition:color .22s var(--ease)}
+footer a:hover{color:var(--green)}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .4s var(--ease),transform .4s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+  }
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+<noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+</head>
+<body>
+<div class="frame">
+
+<header>
+  <nav class="nav pad" aria-label="Primary">
+    <a class="wordmark" href="https://climatefinancewiki.org/">
+      Climate Finance Wiki
+      <span class="mono-mark">EST. 2026</span>
+    </a>
+    <div class="nav-links">
+      <a href="https://climatefinancewiki.org/#categories">Topics</a>
+      <a class="is-active" href="https://climatefinancewiki.org/news/" aria-current="page">News</a>
+      <a href="https://climatefinancewiki.org/about/">About</a>
+      <button class="nav-search" type="button" aria-label="Search the wiki">SEARCH</button>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+<!-- PAGE HEAD -->
+<section class="page-head pad" aria-labelledby="page-h">
+  <p class="crumbs"><a href="https://climatefinancewiki.org/">Home</a><span class="sep">&rarr;</span><span aria-current="page">News</span></p>
+  <p class="tag"><span class="num">News</span>&ensp;/&ensp;Dispatches</p>
+  <h1 id="page-h">Climate Finance News</h1>
+  <p class="page-desc">Short, curated dispatches on the climate-finance news that matters &mdash; what happened, why it matters, and where to read more. Each one links out to the original source and into the wiki concepts behind the story.</p>
+  <p class="page-meta"><span class="val">5</span>&nbsp;DISPATCHES<span class="sep">/</span><a href="https://climatefinancewiki.org/rss.xml">RSS FEED</a></p>
+</section>
+
+<!-- DISPATCHES + SIDEBAR -->
+<div class="news-layout pad">
+
+  <ul class="d-list">
+    <li class="d-item reveal">
+      <a class="d-row" href="news-item.html">
+        <span class="d-date">JUN 24, 2026</span>
+        <span class="d-main">
+          <span class="d-title">EU Council backs simpler SFDR with three clear fund labels</span>
+          <span class="d-sum" style="display:block">Brussels wants to scrap the confusing Article 6/8/9 system and replace it with three plain categories &mdash; sustainable, transition, and ESG basics &mdash; to make green claims easier to check.</span>
+          <span class="d-read">Read <span class="arr">&rarr;</span></span>
+        </span>
+        <span class="d-cat">Regulation</span>
+      </a>
+    </li>
+    <li class="d-item reveal">
+      <a class="d-row" href="https://climatefinancewiki.org/news/gfanz-drops-paris-alignment-requirement-2026/">
+        <span class="d-date">JUN 23, 2026</span>
+        <span class="d-main">
+          <span class="d-title">GFANZ drops its Paris-alignment requirement; ShareAction pushes back</span>
+          <span class="d-sum" style="display:block">The world&rsquo;s largest net-zero finance coalition has stopped requiring members to align with the Paris Agreement. Campaigners warn the change lets banks and investors quietly lower their ambition.</span>
+          <span class="d-read">Read <span class="arr">&rarr;</span></span>
+        </span>
+        <span class="d-cat">Net Zero</span>
+      </a>
+    </li>
+    <li class="d-item reveal">
+      <a class="d-row" href="https://climatefinancewiki.org/news/vietnam-carbon-market-rules-2026/">
+        <span class="d-date">JUN 15, 2026</span>
+        <span class="d-main">
+          <span class="d-title">Vietnam issues detailed rules for its carbon market</span>
+          <span class="d-sum" style="display:block">Vietnam&rsquo;s finance ministry has published Circular 48/2026, setting out how emission allowances and carbon credits will be supervised and traded &mdash; another emerging economy building the plumbing for carbon pricing.</span>
+          <span class="d-read">Read <span class="arr">&rarr;</span></span>
+        </span>
+        <span class="d-cat">Carbon Markets</span>
+      </a>
+    </li>
+    <li class="d-item reveal">
+      <a class="d-row" href="https://climatefinancewiki.org/news/sustainable-bond-market-2026-forecast/">
+        <span class="d-date">JUN 1, 2026</span>
+        <span class="d-main">
+          <span class="d-title">Sustainable bond issuance forecast near $950bn for 2026</span>
+          <span class="d-sum" style="display:block">Analysts expect close to $950 billion of green, social, and sustainability-linked bonds to be issued in 2026, with Europe accounting for roughly 42% &mdash; even as the market enters a tougher, more scrutinised phase.</span>
+          <span class="d-read">Read <span class="arr">&rarr;</span></span>
+        </span>
+        <span class="d-cat">Markets</span>
+      </a>
+    </li>
+    <li class="d-item reveal">
+      <a class="d-row" href="https://climatefinancewiki.org/news/sec-rescinds-climate-disclosure-rule-2026/">
+        <span class="d-date">MAY 13, 2026</span>
+        <span class="d-main">
+          <span class="d-title">SEC moves to rescind its 2024 climate-disclosure rule</span>
+          <span class="d-sum" style="display:block">The US securities regulator has started formally unwinding the climate-reporting rule it adopted in 2024 &mdash; leaving American companies with a patchwork of state, EU, and voluntary standards instead.</span>
+          <span class="d-read">Read <span class="arr">&rarr;</span></span>
+        </span>
+        <span class="d-cat">Regulation</span>
+      </a>
+    </li>
+  </ul>
+
+  <aside class="side">
+    <div class="side-sticky">
+      <div class="side-block reveal">
+        <span class="tag">Stay Updated</span>
+        <p class="side-text">New climate-finance dispatches and explainers, in plain English. No spam.</p>
+        <form class="sub-form" aria-label="Subscribe to the newsletter">
+          <input class="sub-input" type="email" name="email" placeholder="you@example.com" aria-label="Email address">
+          <button class="sub-btn" type="button">Subscribe</button>
+        </form>
+        <a class="rss-link" href="https://climatefinancewiki.org/rss.xml">Or subscribe via RSS <span class="arr">&rarr;</span></a>
+      </div>
+      <div class="side-block reveal">
+        <span class="tag">Browse the Wiki</span>
+        <ul class="b-list">
+          <li><a class="b-row" href="https://climatefinancewiki.org/concepts/"><span class="b-name">Concepts</span><span class="b-count">12</span></a></li>
+          <li><a class="b-row" href="https://climatefinancewiki.org/instruments/"><span class="b-name">Instruments</span><span class="b-count">6</span></a></li>
+          <li><a class="b-row" href="https://climatefinancewiki.org/actors/"><span class="b-name">Actors</span><span class="b-count">9</span></a></li>
+          <li><a class="b-row" href="https://climatefinancewiki.org/frameworks/"><span class="b-name">Frameworks</span><span class="b-count">13</span></a></li>
+          <li><a class="b-row" href="https://climatefinancewiki.org/case-studies/"><span class="b-name">Case Studies</span><span class="b-count">12</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+</div>
+
+</main>
+
+<footer>
+  <div class="foot pad">
+    <div class="foot-links">
+      <a href="https://climatefinancewiki.org/concepts/">Concepts</a>
+      <a href="https://climatefinancewiki.org/instruments/">Instruments</a>
+      <a href="https://climatefinancewiki.org/actors/">Actors</a>
+      <a href="https://climatefinancewiki.org/frameworks/">Frameworks</a>
+      <a href="https://climatefinancewiki.org/case-studies/">Case Studies</a>
+      <a href="https://climatefinancewiki.org/news/">News</a>
+    </div>
+    <span>&copy; 2026 Red Barrow</span>
+  </div>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var RM = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var reveals = document.querySelectorAll(".reveal");
+  if (!RM && "IntersectionObserver" in window){
+    var io = new IntersectionObserver(function(entries){
+      var delay = 0;
+      for (var e=0;e<entries.length;e++){
+        if (entries[e].isIntersecting){
+          var el = entries[e].target;
+          el.style.transitionDelay = delay + "ms";
+          el.classList.add("in");
+          io.unobserve(el);
+          delay += 70;
+        }
+      }
+    }, {threshold:.12, rootMargin:"0px 0px -40px 0px"});
+    for (var r=0;r<reveals.length;r++) io.observe(reveals[r]);
+  } else {
+    for (var r2=0;r2<reveals.length;r2++) reveals[r2].classList.add("in");
+  }
+})();
+</script>
+</body>
+</html>
