@@ -1,263 +1,819 @@
-<title>CFW Landing Redesign — Review Gallery</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Climate Finance Wiki — Option 9 · The Composite</title>
+<meta name="description" content="Climate finance explained for communications professionals. Case studies, key concepts, and the mechanisms behind green bonds, carbon markets, and climate risk.">
+<!-- Option 9: composite of Option 3 (The Index, foundation) and Option 1 (The Ledger). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    color-scheme: dark;
-    --bg: #18181B;
-    --panel: #202024;
-    --panel-border: #303036;
-    --text: #E4E4E7;
-    --text-muted: #9A9AA2;
-    --text-faint: #6B6B74;
-    --accent: #E4E4E7;
-    --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
-    --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  }
+:root{
+  --bg:#F6F5F1;
+  --ink:#161616;
+  --ink-2:rgba(22,22,22,.64);
+  --ink-3:rgba(22,22,22,.42);
+  --line:#DBD8CE;
+  --green:#1E4D3A;
+  --green-tint:rgba(30,77,58,.04);
+  --green-tint-2:rgba(30,77,58,.08);
+  --sans:'Space Grotesk',system-ui,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+::selection{background:var(--green);color:var(--bg)}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+img{max-width:100%;display:block}
 
-  * { box-sizing: border-box; }
+/* ---------- frame ---------- */
+.frame{
+  max-width:1360px;
+  margin-inline:auto;
+  border-left:1px solid var(--line);
+  border-right:1px solid var(--line);
+  min-height:100dvh;
+}
+@media (max-width:1400px){.frame{border-left:0;border-right:0}}
+.pad{padding-inline:clamp(20px,4vw,64px)}
 
-  html, body {
-    margin: 0;
-    padding: 0;
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--sans);
-  }
+/* ---------- labels ---------- */
+.tag{
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink-2);
+}
+.tag .num{color:var(--green)}
 
-  body {
-    padding: 40px 24px 64px;
-  }
+/* ---------- header ---------- */
+header{
+  position:sticky;top:0;z-index:20;
+  background:rgba(246,245,241,.92);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.nav{
+  display:flex;align-items:center;justify-content:space-between;
+  height:64px;
+}
+.wordmark{
+  font-weight:600;font-size:15px;letter-spacing:-.01em;
+  display:flex;align-items:baseline;gap:10px;
+}
+.wordmark .mono-mark{
+  font-family:var(--mono);font-size:10px;font-weight:500;
+  color:var(--green);letter-spacing:.12em;
+}
+.nav-links{display:flex;gap:clamp(16px,3vw,36px);align-items:center}
+.nav-links a{
+  font-size:13.5px;font-weight:500;letter-spacing:.01em;
+  position:relative;padding:4px 0;
+}
+.nav-links a::after{
+  content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;
+  background:var(--ink);transform:scaleX(0);transform-origin:left;
+  transition:transform .22s var(--ease);
+}
+.nav-links a:hover::after,.nav-links a:focus-visible::after{transform:scaleX(1)}
+.nav-search{
+  font-family:var(--mono);font-size:11px;letter-spacing:.1em;
+  border:1px solid var(--line);padding:7px 14px;
+  color:var(--ink-2);
+  transition:border-color .22s var(--ease),color .22s var(--ease),transform .1s var(--ease);
+}
+.nav-search:hover{border-color:var(--ink);color:var(--ink)}
+.nav-search:active{transform:scale(.98)}
+@media (max-width:356px){
+  .nav{flex-wrap:wrap;height:auto;min-height:64px;row-gap:8px;padding-block:12px}
+}
 
-  header {
-    max-width: 1100px;
-    margin: 0 auto 40px;
-  }
+/* ---------- hero ---------- */
+.hero{
+  border-bottom:1px solid var(--line);
+  padding-top:clamp(40px,6.5vh,80px);
+  padding-bottom:clamp(48px,7vh,88px);
+  display:grid;
+  grid-template-columns:minmax(0,6.4fr) minmax(0,4.6fr);
+  gap:clamp(32px,5vw,88px);
+  align-items:start;
+}
+.hero h1{
+  font-size:clamp(2.3rem,4.4vw,3.9rem);
+  font-weight:500;
+  line-height:1.02;
+  letter-spacing:-.035em;
+  max-width:16ch;
+  margin-top:16px;
+}
+.hero h1 em{font-style:normal;color:var(--green)}
 
-  h1 {
-    font-size: 22px;
-    font-weight: 600;
-    margin: 0 0 8px;
-    letter-spacing: -0.01em;
-  }
+/* featured case, folded into the hero (from The Ledger) */
+.hero-case{
+  margin-top:clamp(30px,5vh,52px);
+  padding-top:clamp(24px,3.5vh,36px);
+  border-top:1px solid var(--line);
+}
+.hero-case h2{
+  font-size:clamp(1.6rem,3vw,2.5rem);
+  font-weight:500;letter-spacing:-.025em;line-height:1.08;
+  margin-top:14px;
+  max-width:20ch;
+}
+.case-quote{
+  margin-top:16px;
+  font-size:16px;color:var(--ink-2);
+  max-width:50ch;line-height:1.6;
+}
+.case-cta{
+  display:inline-flex;align-items:center;gap:10px;
+  margin-top:28px;
+  padding:13px 22px;
+  border:1px solid var(--ink);
+  font-size:13.5px;font-weight:500;letter-spacing:.02em;
+  transition:background-color .22s var(--ease),color .22s var(--ease),transform .1s var(--ease);
+}
+.case-cta .arr{transition:transform .22s var(--ease)}
+.case-cta:hover{background:var(--ink);color:var(--bg)}
+.case-cta:hover .arr{transform:translateX(4px)}
+.case-cta:active{transform:scale(.98)}
 
-  header p {
-    margin: 0;
-    color: var(--text-muted);
-    font-size: 14px;
-    line-height: 1.5;
-  }
+/* widened plate + at-a-glance stats (rail idea from The Ledger) */
+.plate{max-width:480px;justify-self:end;width:100%}
+.plate .plate-img{
+  border:1px solid var(--line);
+  padding:8px;
+  background:#fff;
+}
+.plate img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;filter:saturate(.82) contrast(1.02)}
+.plate figcaption{
+  margin-top:10px;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;
+  color:var(--ink-2);text-transform:uppercase;
+}
+.plate-stats{margin-top:26px}
+.plate-stats .stats-label{display:block;margin-bottom:10px}
+.stat-row{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding:9px 0;
+  border-top:1px solid var(--line);
+  font-family:var(--mono);
+}
+.stat-row:last-child{border-bottom:1px solid var(--line)}
+.stat-row .k{font-size:11.5px;color:var(--ink-2);letter-spacing:.08em;text-transform:uppercase}
+.stat-row .val{font-size:13px;font-weight:500;color:var(--green);font-variant-numeric:tabular-nums}
+@media (max-width:900px){
+  .hero{grid-template-columns:minmax(0,1fr);align-items:start}
+  .plate{justify-self:start;max-width:440px}
+}
 
-  .grid {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
+/* ---------- wide plate interlude (from The Ledger) ---------- */
+.plate-wide{
+  border-bottom:1px solid var(--line);
+  padding-block:clamp(40px,6vh,64px);
+}
+.plate-wide .wide-frame{
+  border:1px solid var(--line);
+  padding:8px;
+  background:#fff;
+}
+.plate-wide .wide-clip{overflow:hidden}
+.plate-wide img{
+  width:100%;
+  height:clamp(260px,42vw,440px);
+  object-fit:cover;
+  filter:grayscale(1) contrast(1.04) brightness(1.02);
+  transform:scale(1);
+  transition:transform 1.2s var(--ease);
+}
+.plate-wide:hover img{transform:scale(1.02)}
+.wide-caption{
+  display:flex;justify-content:space-between;align-items:baseline;
+  gap:12px 20px;flex-wrap:wrap;
+  margin-top:12px;
+}
+.wide-caption .cap-text{
+  font-size:clamp(14.5px,1.5vw,17px);
+  font-weight:500;letter-spacing:-.01em;
+}
+.wide-caption .cap-credit{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;
+  color:var(--ink-2);text-transform:uppercase;white-space:nowrap;
+}
 
-  @media (max-width: 760px) {
-    .grid {
-      grid-template-columns: 1fr;
-    }
-  }
+/* ---------- section head ---------- */
+.sec-head{
+  display:flex;align-items:baseline;justify-content:space-between;gap:16px;
+  padding-top:clamp(40px,6vh,64px);
+  padding-bottom:clamp(24px,4vh,40px);
+}
+.sec-head .more{
+  font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-2);white-space:nowrap;
+  transition:color .22s var(--ease);
+}
+.sec-head .more:hover{color:var(--green)}
 
-  a.tile {
-    display: block;
-    text-decoration: none;
-    color: inherit;
-    background: var(--panel);
-    border: 1px solid var(--panel-border);
-    border-radius: 10px;
-    overflow: hidden;
-    transition: border-color 0.15s ease, transform 0.15s ease;
-  }
+/* ---------- index (signature) ---------- */
+.index-sec{border-bottom:1px solid var(--line)}
+.index-grid{
+  display:grid;
+  grid-template-columns:minmax(0,7fr) minmax(0,5fr);
+  gap:clamp(28px,4vw,72px);
+  padding-bottom:clamp(48px,7vh,80px);
+}
+.idx-list{list-style:none}
+.idx-item{border-top:1px solid var(--line);position:relative}
+.idx-item:last-child{border-bottom:1px solid var(--line)}
+.idx-row{
+  display:grid;
+  grid-template-columns:64px minmax(0,1fr) auto;
+  align-items:baseline;
+  gap:16px;
+  padding:clamp(18px,2.6vh,26px) 8px;
+  transition:background-color .22s var(--ease);
+}
+.idx-row .idx-num{
+  font-family:var(--mono);font-size:12px;font-weight:500;
+  color:var(--green);
+  transition:transform .22s var(--ease);
+}
+.idx-row .idx-name{
+  font-size:clamp(1.45rem,2.8vw,2.15rem);
+  font-weight:500;letter-spacing:-.02em;line-height:1.1;
+}
+.idx-row .idx-count{
+  font-family:var(--mono);font-size:12px;color:var(--ink-2);
+  letter-spacing:.06em;white-space:nowrap;
+}
+.idx-item:hover .idx-row,
+.idx-item.is-active .idx-row{background:var(--green-tint)}
+.idx-item:hover .idx-num,
+.idx-item.is-active .idx-num{transform:translateX(4px)}
+.idx-item.is-active .idx-name{color:var(--green)}
+.idx-row:active{transform:scale(.995)}
 
-  a.tile:hover {
-    border-color: #4A4A54;
-    transform: translateY(-1px);
-  }
+/* toggle: mobile only */
+.idx-toggle{
+  display:none;
+  position:absolute;top:0;right:0;
+  width:56px;height:68px;
+  font-family:var(--mono);font-size:16px;font-weight:400;
+  color:var(--ink-2);
+}
+.idx-toggle::before{content:"+";display:inline-block;transition:transform .22s var(--ease)}
+.idx-toggle[aria-expanded="true"]::before{transform:rotate(45deg)}
+.idx-inline{display:none}
 
-  a.tile:focus-visible {
-    outline: 2px solid var(--text);
-    outline-offset: 2px;
-  }
+/* preview pane (desktop) */
+.idx-pane{
+  border-left:1px solid var(--line);
+  padding-left:clamp(24px,3vw,48px);
+  align-self:stretch;
+}
+.idx-pane-sticky{position:sticky;top:104px}
+.idx-pane .pane-label{margin-bottom:22px}
+.pane-body{transition:opacity .18s var(--ease),transform .18s var(--ease)}
+.pane-body.is-swapping{opacity:0;transform:translateY(5px)}
+.pane-list{list-style:none;margin-top:6px}
+.pane-list li{
+  display:flex;gap:14px;align-items:baseline;
+  padding:11px 0;
+  border-bottom:1px solid var(--line);
+}
+.pane-list li:first-child{border-top:1px solid var(--line)}
+.pane-list .n{font-family:var(--mono);font-size:11px;color:var(--green);font-weight:500}
+.pane-list a{
+  font-size:15px;font-weight:500;letter-spacing:-.005em;
+  transition:color .18s var(--ease);
+}
+.pane-list a:hover{color:var(--green)}
+.pane-browse{
+  display:inline-flex;align-items:center;gap:8px;
+  margin-top:22px;
+  font-family:var(--mono);font-size:11px;font-weight:500;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink);
+  transition:color .22s var(--ease);
+}
+.pane-browse .arr{transition:transform .22s var(--ease)}
+.pane-browse:hover{color:var(--green)}
+.pane-browse:hover .arr{transform:translateX(4px)}
 
-  .preview {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16 / 10;
-    background: #0F0F11;
-    overflow: hidden;
-    border-bottom: 1px solid var(--panel-border);
+@media (max-width:900px){
+  .index-grid{grid-template-columns:minmax(0,1fr)}
+  .idx-pane{display:none}
+  .idx-toggle{display:block}
+  .idx-row{grid-template-columns:44px minmax(0,1fr) auto;padding-right:56px}
+  .idx-inline{
+    display:none;
+    padding:4px 8px 22px 60px;
   }
+  .idx-inline.open{display:block;animation:inlineIn .18s var(--ease)}
+  .idx-inline .pane-list li:first-child{border-top:0}
+  @keyframes inlineIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+}
 
-  .preview iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 1280px;
-    height: 800px;
-    border: 0;
-    pointer-events: none;
-    transform-origin: top left;
-    background: #fff;
-  }
+/* ---------- trails ---------- */
+.trails-sec{border-bottom:1px solid var(--line)}
+.trail-list{list-style:none;padding-bottom:clamp(48px,7vh,80px)}
+.trail{
+  border-top:1px solid var(--line);
+  display:grid;
+  grid-template-columns:64px minmax(0,5fr) minmax(0,4fr) auto;
+  gap:16px;align-items:baseline;
+  padding:clamp(18px,2.6vh,26px) 8px;
+  transition:background-color .22s var(--ease);
+}
+.trail:last-child{border-bottom:1px solid var(--line)}
+.trail:hover{background:var(--green-tint)}
+.trail .t-num{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--green);transition:transform .22s var(--ease)}
+.trail:hover .t-num{transform:translateX(4px)}
+.trail .t-name{font-size:clamp(1.2rem,2.2vw,1.6rem);font-weight:500;letter-spacing:-.015em}
+.trail .t-tag{font-size:14px;color:var(--ink-2)}
+.trail .t-meta{
+  font-family:var(--mono);font-size:11px;color:var(--ink-2);
+  letter-spacing:.06em;white-space:nowrap;
+  display:flex;align-items:center;gap:14px;
+}
+.trail .t-meta .arr{color:var(--ink);transition:transform .22s var(--ease)}
+.trail:hover .t-meta .arr{transform:translateX(4px);color:var(--green)}
+@media (max-width:900px){
+  .trail{grid-template-columns:44px minmax(0,1fr);grid-template-rows:auto auto auto;row-gap:6px}
+  .trail .t-num{grid-row:1}
+  .trail .t-name{grid-column:2}
+  .trail .t-tag{grid-column:2}
+  .trail .t-meta{grid-column:2}
+}
 
-  .placeholder {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-faint);
-    font-size: 13px;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-    background: #0F0F11;
-  }
+/* ---------- news ---------- */
+.news-sec{border-bottom:1px solid var(--line)}
+.news-list{list-style:none;padding-bottom:clamp(48px,7vh,80px)}
+.news-item{border-top:1px solid var(--line)}
+.news-item:last-child{border-bottom:1px solid var(--line)}
+.news-link{
+  display:grid;
+  grid-template-columns:150px minmax(0,1fr) auto;
+  gap:16px;align-items:baseline;
+  padding:clamp(16px,2.2vh,22px) 8px;
+  transition:background-color .22s var(--ease);
+}
+.news-link:hover{background:var(--green-tint)}
+.news-date{font-family:var(--mono);font-size:11.5px;color:var(--ink-2);letter-spacing:.06em}
+.news-title{font-size:16px;font-weight:500;letter-spacing:-.005em;line-height:1.35}
+.news-cat{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--green);white-space:nowrap;
+}
+@media (max-width:900px){
+  .news-link{grid-template-columns:minmax(0,1fr) auto;row-gap:4px}
+  .news-date{grid-row:2;grid-column:1}
+}
 
-  .info {
-    padding: 14px 16px;
-  }
+/* ---------- colophon ---------- */
+.colophon{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:clamp(28px,4vw,72px);
+  padding-block:clamp(40px,6vh,64px);
+  border-bottom:1px solid var(--line);
+}
+.colophon p{font-size:14px;color:var(--ink-2);max-width:46ch;line-height:1.7}
+.colophon .who{font-weight:500;color:var(--ink)}
+.colophon .who a{border-bottom:1px solid var(--line);transition:border-color .22s var(--ease),color .22s var(--ease)}
+.colophon .who a:hover{color:var(--green);border-color:var(--green)}
+@media (max-width:900px){.colophon{grid-template-columns:minmax(0,1fr)}}
 
-  .info .num {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--text-faint);
-    margin-bottom: 4px;
-  }
+/* ---------- footer ---------- */
+footer .foot{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;
+  padding-block:26px;
+}
+footer .foot-links{display:flex;flex-wrap:wrap;gap:8px 22px}
+footer a,footer span{
+  font-family:var(--mono);font-size:11px;letter-spacing:.08em;
+  color:var(--ink-2);text-transform:uppercase;
+}
+footer a{transition:color .22s var(--ease)}
+footer a:hover{color:var(--green)}
 
-  .info .title {
-    font-size: 15px;
-    font-weight: 600;
-    margin-bottom: 4px;
-    color: var(--text);
-  }
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .4s var(--ease),transform .4s var(--ease)}
+.reveal.in{opacity:1;transform:none}
 
-  .info .desc {
-    font-size: 13px;
-    color: var(--text-muted);
-    line-height: 1.4;
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
   }
-
-  .pending .info .title,
-  .pending .info .desc {
-    color: var(--text-faint);
-  }
-
-  .pending .info .num {
-    color: var(--text-faint);
-  }
-
-  footer {
-    max-width: 1100px;
-    margin: 48px auto 0;
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--text-faint);
-  }
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none}
+}
 </style>
+<noscript><style>.reveal{opacity:1;transform:none}.idx-toggle{display:none!important}</style></noscript>
+</head>
+<body>
+<div class="frame">
 
 <header>
-  <h1>Climate Finance Wiki — Landing Redesign Review</h1>
-  <p>Open each option full-screen. Claude options 1–4; Codex options 5–8.</p>
+  <nav class="nav pad" aria-label="Primary">
+    <a class="wordmark" href="https://climatefinancewiki.org/">
+      Climate Finance Wiki
+      <span class="mono-mark">EST. 2026</span>
+    </a>
+    <div class="nav-links">
+      <a href="https://climatefinancewiki.org/#categories">Topics</a>
+      <a href="https://climatefinancewiki.org/news/">News</a>
+      <a href="https://climatefinancewiki.org/about/">About</a>
+      <button class="nav-search" type="button" aria-label="Search the wiki">SEARCH</button>
+    </div>
+  </nav>
 </header>
 
-<div class="grid" id="grid"></div>
+<main>
 
-<footer>Branch: design/landing-reimagine — worktree: Websites/cfw-landing-redesign</footer>
+<!-- 01 · HERO -->
+<section class="hero pad" aria-labelledby="hero-h">
+  <div>
+    <p class="tag"><span class="num">01</span>&ensp;/&ensp;The Reference</p>
+    <h1 id="hero-h">How the world <em>funds</em> its response to climate change.</h1>
+    <div class="hero-case reveal">
+      <p class="tag">Featured Case Study&ensp;&mdash;&ensp;California, 2019</p>
+      <h2>The First Climate Change Bankruptcy</h2>
+      <p class="case-quote">$30 billion in wildfire liabilities destroyed California&rsquo;s largest utility, proving physical climate risk isn&rsquo;t theoretical.</p>
+      <a class="case-cta" href="https://climatefinancewiki.org/case-studies/pge-bankruptcy/">Read the case study <span class="arr">&rarr;</span></a>
+    </div>
+  </div>
+  <figure class="plate reveal">
+    <div class="plate-img">
+      <img src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&w=1600&q=80" alt="Aerial view of utility-scale solar farm rows on a green field" width="1600" height="1000">
+    </div>
+    <figcaption>Fig. 01 — Aerial view, utility-scale solar</figcaption>
+    <div class="plate-stats" aria-label="52 articles, 5 categories, 3 reading trails">
+      <span class="tag stats-label">The Wiki at a Glance</span>
+      <div class="stat-row"><span class="k">Articles</span><span class="val" data-count="52">52</span></div>
+      <div class="stat-row"><span class="k">Categories</span><span class="val" data-count="5">5</span></div>
+      <div class="stat-row"><span class="k">Reading trails</span><span class="val" data-count="3">3</span></div>
+    </div>
+  </figure>
+</section>
+
+<!-- WIDE PLATE INTERLUDE -->
+<section class="plate-wide pad" aria-label="Transmission infrastructure photograph">
+  <figure class="reveal">
+    <div class="wide-frame">
+      <div class="wide-clip">
+        <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1600&q=80" alt="Electricity pylons crossing a plain at dusk" loading="lazy">
+      </div>
+    </div>
+    <figcaption class="wide-caption">
+      <span class="cap-text">Making climate finance make sense &mdash; for the people who explain it.</span>
+      <span class="cap-credit">Fig. 02 &mdash; Transmission</span>
+    </figcaption>
+  </figure>
+</section>
+
+<!-- 02 · THE INDEX -->
+<section class="index-sec" aria-labelledby="idx-h">
+  <div class="pad">
+    <div class="sec-head">
+      <p class="tag" id="idx-h"><span class="num">02</span>&ensp;/&ensp;The Index</p>
+    </div>
+    <div class="index-grid">
+      <ul class="idx-list">
+        <li class="idx-item" data-cat="concepts">
+          <a class="idx-row" href="https://climatefinancewiki.org/concepts/">
+            <span class="idx-num">01</span>
+            <span class="idx-name">Concepts</span>
+            <span class="idx-count">12&nbsp;ENTRIES</span>
+          </a>
+          <button class="idx-toggle" type="button" aria-expanded="false" aria-controls="inline-concepts" aria-label="Preview Concepts articles"></button>
+          <div class="idx-inline" id="inline-concepts"></div>
+        </li>
+        <li class="idx-item" data-cat="frameworks">
+          <a class="idx-row" href="https://climatefinancewiki.org/frameworks/">
+            <span class="idx-num">02</span>
+            <span class="idx-name">Frameworks</span>
+            <span class="idx-count">13&nbsp;ENTRIES</span>
+          </a>
+          <button class="idx-toggle" type="button" aria-expanded="false" aria-controls="inline-frameworks" aria-label="Preview Frameworks articles"></button>
+          <div class="idx-inline" id="inline-frameworks"></div>
+        </li>
+        <li class="idx-item" data-cat="case-studies">
+          <a class="idx-row" href="https://climatefinancewiki.org/case-studies/">
+            <span class="idx-num">03</span>
+            <span class="idx-name">Case Studies</span>
+            <span class="idx-count">12&nbsp;ENTRIES</span>
+          </a>
+          <button class="idx-toggle" type="button" aria-expanded="false" aria-controls="inline-case-studies" aria-label="Preview Case Studies articles"></button>
+          <div class="idx-inline" id="inline-case-studies"></div>
+        </li>
+        <li class="idx-item" data-cat="actors">
+          <a class="idx-row" href="https://climatefinancewiki.org/actors/">
+            <span class="idx-num">04</span>
+            <span class="idx-name">Actors</span>
+            <span class="idx-count">9&nbsp;ENTRIES</span>
+          </a>
+          <button class="idx-toggle" type="button" aria-expanded="false" aria-controls="inline-actors" aria-label="Preview Actors articles"></button>
+          <div class="idx-inline" id="inline-actors"></div>
+        </li>
+        <li class="idx-item" data-cat="instruments">
+          <a class="idx-row" href="https://climatefinancewiki.org/instruments/">
+            <span class="idx-num">05</span>
+            <span class="idx-name">Instruments</span>
+            <span class="idx-count">6&nbsp;ENTRIES</span>
+          </a>
+          <button class="idx-toggle" type="button" aria-expanded="false" aria-controls="inline-instruments" aria-label="Preview Instruments articles"></button>
+          <div class="idx-inline" id="inline-instruments"></div>
+        </li>
+      </ul>
+      <aside class="idx-pane" aria-live="polite">
+        <div class="idx-pane-sticky">
+          <p class="tag pane-label">Selected&nbsp;/&nbsp;<span class="num" id="pane-cat-label">Concepts</span></p>
+          <div class="pane-body" id="pane-body"></div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- 03 · TRAILS -->
+<section class="trails-sec" aria-labelledby="trails-h">
+  <div class="pad">
+    <div class="sec-head">
+      <p class="tag" id="trails-h"><span class="num">03</span>&ensp;/&ensp;Reading Trails</p>
+      <a class="more" href="https://climatefinancewiki.org/start-here/">Start here</a>
+    </div>
+    <ul class="trail-list">
+      <li>
+        <a class="trail reveal" href="https://climatefinancewiki.org/concepts/greenwashing/">
+          <span class="t-num">01</span>
+          <span class="t-name">The Greenwashing Trail</span>
+          <span class="t-tag">From misleading claims to criminal charges.</span>
+          <span class="t-meta">6 ARTICLES&nbsp;&middot;&nbsp;~35 MIN <span class="arr">&rarr;</span></span>
+        </a>
+      </li>
+      <li>
+        <a class="trail reveal" href="https://climatefinancewiki.org/concepts/climate-finance/">
+          <span class="t-num">02</span>
+          <span class="t-name">Follow the Money</span>
+          <span class="t-tag">How climate finance actually flows, and where it gets stuck.</span>
+          <span class="t-meta">6 ARTICLES&nbsp;&middot;&nbsp;~35 MIN <span class="arr">&rarr;</span></span>
+        </a>
+      </li>
+      <li>
+        <a class="trail reveal" href="https://climatefinancewiki.org/frameworks/paris-agreement/">
+          <span class="t-num">03</span>
+          <span class="t-name">Architecture of Climate Policy</span>
+          <span class="t-tag">The agreements, taxonomies, and standards that set the rules.</span>
+          <span class="t-meta">6 ARTICLES&nbsp;&middot;&nbsp;~35 MIN <span class="arr">&rarr;</span></span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- 04 · DISPATCHES -->
+<section class="news-sec" aria-labelledby="news-h">
+  <div class="pad">
+    <div class="sec-head">
+      <p class="tag" id="news-h"><span class="num">04</span>&ensp;/&ensp;Dispatches</p>
+      <a class="more" href="https://climatefinancewiki.org/news/">All news</a>
+    </div>
+    <ul class="news-list">
+      <li class="news-item reveal">
+        <a class="news-link" href="https://climatefinancewiki.org/news/">
+          <span class="news-date">JUN 24, 2026</span>
+          <span class="news-title">EU Council backs simpler SFDR with three clear fund labels</span>
+          <span class="news-cat">Regulation</span>
+        </a>
+      </li>
+      <li class="news-item reveal">
+        <a class="news-link" href="https://climatefinancewiki.org/news/">
+          <span class="news-date">JUN 23, 2026</span>
+          <span class="news-title">GFANZ drops its Paris-alignment requirement; ShareAction pushes back</span>
+          <span class="news-cat">Policy</span>
+        </a>
+      </li>
+      <li class="news-item reveal">
+        <a class="news-link" href="https://climatefinancewiki.org/news/">
+          <span class="news-date">JUN 15, 2026</span>
+          <span class="news-title">Vietnam issues detailed rules for its carbon market</span>
+          <span class="news-cat">Markets</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- COLOPHON -->
+<div class="colophon pad">
+  <p class="reveal">Built from ICMA Green Bond Principles, UNFCCC reports, SEC enforcement filings, the EU Taxonomy, and IPCC Assessment Reports.</p>
+  <p class="who reveal">Curated by <a href="https://climatefinancewiki.org/author/ibukun-taiwo/">Ibukun Taiwo</a><br><span style="font-weight:400;color:var(--ink-2)">Communications professional specialising in climate finance.</span></p>
+</div>
+
+</main>
+
+<footer>
+  <div class="foot pad">
+    <div class="foot-links">
+      <a href="https://climatefinancewiki.org/concepts/">Concepts</a>
+      <a href="https://climatefinancewiki.org/instruments/">Instruments</a>
+      <a href="https://climatefinancewiki.org/actors/">Actors</a>
+      <a href="https://climatefinancewiki.org/frameworks/">Frameworks</a>
+      <a href="https://climatefinancewiki.org/case-studies/">Case Studies</a>
+      <a href="https://climatefinancewiki.org/news/">News</a>
+    </div>
+    <span>&copy; 2026 Red Barrow</span>
+  </div>
+</footer>
+
+</div>
 
 <script>
-  var options = [
-    { num: 1, file: "option-1-the-ledger.html", title: "The Ledger", desc: "Editorial broadsheet, light" },
-    { num: 2, file: "option-2-the-institution.html", title: "The Institution", desc: "Dark sovereign capital" },
-    { num: 3, file: "option-3-the-index.html", title: "The Index", desc: "Swiss typographic archive" },
-    { num: 4, file: "option-4-the-atlas.html", title: "The Atlas", desc: "Data-forward, animated capital flows" },
-    { num: 5, file: "codex-option-1.html", title: "Codex Option 5", desc: "pending", pending: true },
-    { num: 6, file: "codex-option-2.html", title: "Codex Option 6", desc: "pending", pending: true },
-    { num: 7, file: "codex-option-3.html", title: "Codex Option 7", desc: "pending", pending: true },
-    { num: 8, file: "codex-option-4.html", title: "Codex Option 8", desc: "pending", pending: true }
-  ];
+(function(){
+  "use strict";
+  var RM = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  var grid = document.getElementById("grid");
-
-  options.forEach(function (opt) {
-    var tile = document.createElement("a");
-    tile.className = "tile" + (opt.pending ? " pending" : "");
-    tile.href = opt.file;
-    tile.target = "_blank";
-    tile.rel = "noopener";
-
-    var preview = document.createElement("div");
-    preview.className = "preview";
-
-    var iframe = document.createElement("iframe");
-    iframe.src = opt.file;
-    iframe.loading = "lazy";
-    iframe.setAttribute("tabindex", "-1");
-
-    function showPlaceholder() {
-      if (!preview.contains(iframe)) return;
-      preview.removeChild(iframe);
-      var ph = document.createElement("div");
-      ph.className = "placeholder";
-      ph.textContent = "Not yet delivered";
-      preview.appendChild(ph);
+  /* ---------- category preview data ---------- */
+  var CATS = {
+    "concepts": {
+      label:"Concepts", href:"https://climatefinancewiki.org/concepts/",
+      items:[
+        ["Greenwashing","https://climatefinancewiki.org/concepts/greenwashing/"],
+        ["Stranded Assets","https://climatefinancewiki.org/concepts/stranded-assets/"],
+        ["Net Zero vs Carbon Neutral","https://climatefinancewiki.org/concepts/net-zero-vs-carbon-neutral/"],
+        ["The 1.5°C Threshold","https://climatefinancewiki.org/concepts/1-5c-threshold/"]
+      ]
+    },
+    "frameworks": {
+      label:"Frameworks", href:"https://climatefinancewiki.org/frameworks/",
+      items:[
+        ["Paris Agreement","https://climatefinancewiki.org/frameworks/paris-agreement/"],
+        ["EU Taxonomy","https://climatefinancewiki.org/frameworks/eu-taxonomy/"],
+        ["TCFD","https://climatefinancewiki.org/frameworks/tcfd/"],
+        ["CSRD","https://climatefinancewiki.org/frameworks/csrd/"]
+      ]
+    },
+    "case-studies": {
+      label:"Case Studies", href:"https://climatefinancewiki.org/case-studies/",
+      items:[
+        ["PG&E Bankruptcy","https://climatefinancewiki.org/case-studies/pge-bankruptcy/"],
+        ["VW Dieselgate","https://climatefinancewiki.org/case-studies/volkswagen-dieselgate/"],
+        ["Engine No. 1 vs ExxonMobil","https://climatefinancewiki.org/case-studies/engine-no-1-exxonmobil/"],
+        ["Norway's GPFG Divestment","https://climatefinancewiki.org/case-studies/norway-gpfg-divestment/"]
+      ]
+    },
+    "actors": {
+      label:"Actors", href:"https://climatefinancewiki.org/actors/",
+      items:[
+        ["UNFCCC and COP","https://climatefinancewiki.org/actors/unfccc-and-cop/"],
+        ["BlackRock","https://climatefinancewiki.org/actors/"],
+        ["Central Banks & NGFS","https://climatefinancewiki.org/actors/"],
+        ["The Institutional Investors","https://climatefinancewiki.org/actors/"]
+      ]
+    },
+    "instruments": {
+      label:"Instruments", href:"https://climatefinancewiki.org/instruments/",
+      items:[
+        ["Green Bonds","https://climatefinancewiki.org/instruments/green-bonds/"],
+        ["The Greenium","https://climatefinancewiki.org/instruments/the-greenium/"],
+        ["Sustainability-Linked Bonds","https://climatefinancewiki.org/instruments/sustainability-linked-bonds/"],
+        ["Carbon Offsets","https://climatefinancewiki.org/instruments/carbon-offsets/"]
+      ]
     }
+  };
 
-    iframe.addEventListener("error", showPlaceholder);
-    preview.appendChild(iframe);
+  function esc(s){ return s.replace(/&/g,"&amp;").replace(/</g,"&lt;"); }
 
-    // Scale the 1280px-wide iframe down to fit the tile.
-    function scaleToFit() {
-      var w = preview.clientWidth;
-      if (!w) return;
-      var scale = w / 1280;
-      iframe.style.transform = "scale(" + scale + ")";
-      iframe.style.height = (preview.clientHeight / scale) + "px";
+  function paneHTML(cat){
+    var c = CATS[cat], h = "<ul class=\"pane-list\">";
+    for (var i=0;i<c.items.length;i++){
+      h += "<li><span class=\"n\">"+String(i+1).padStart(2,"0")+"</span><a href=\""+c.items[i][1]+"\">"+esc(c.items[i][0])+"</a></li>";
     }
-    window.addEventListener("resize", scaleToFit);
+    h += "</ul><a class=\"pane-browse\" href=\""+c.href+"\">Browse "+esc(c.label)+" <span class=\"arr\">&rarr;</span></a>";
+    return h;
+  }
 
-    // Best-effort existence check via fetch HEAD. On file:// this will
-    // usually fail/throw, so we just leave the iframe as-is in that case.
-    try {
-      if (window.location.protocol !== "file:" && window.fetch) {
-        fetch(opt.file, { method: "HEAD" })
-          .then(function (res) {
-            if (!res.ok) showPlaceholder();
-          })
-          .catch(function () {
-            // Network/fetch failure: leave iframe as-is, onerror/onload
-            // on the iframe itself is the fallback signal.
-          });
+  /* desktop preview pane */
+  var paneBody = document.getElementById("pane-body");
+  var paneLabel = document.getElementById("pane-cat-label");
+  var current = "concepts";
+  var swapTimer = null;
+
+  function setPane(cat, instant){
+    if (cat === current && paneBody.innerHTML !== "") return;
+    current = cat;
+    if (RM || instant){
+      paneBody.innerHTML = paneHTML(cat);
+      paneLabel.textContent = CATS[cat].label;
+      return;
+    }
+    paneBody.classList.add("is-swapping");
+    clearTimeout(swapTimer);
+    swapTimer = setTimeout(function(){
+      paneBody.innerHTML = paneHTML(cat);
+      paneLabel.textContent = CATS[cat].label;
+      paneBody.classList.remove("is-swapping");
+    }, 90);
+  }
+  setPane("concepts", true);
+
+  var items = document.querySelectorAll(".idx-item");
+  function activate(item){
+    for (var i=0;i<items.length;i++) items[i].classList.remove("is-active");
+    item.classList.add("is-active");
+    setPane(item.getAttribute("data-cat"));
+  }
+  for (var i=0;i<items.length;i++){
+    (function(item){
+      item.addEventListener("mouseenter", function(){ activate(item); });
+      item.addEventListener("focusin", function(){ activate(item); });
+    })(items[i]);
+  }
+  if (items.length) items[0].classList.add("is-active");
+
+  /* mobile inline toggles */
+  var toggles = document.querySelectorAll(".idx-toggle");
+  for (var t=0;t<toggles.length;t++){
+    (function(btn){
+      var item = btn.closest(".idx-item");
+      var cat = item.getAttribute("data-cat");
+      var panel = document.getElementById("inline-"+cat);
+      btn.addEventListener("click", function(){
+        var open = btn.getAttribute("aria-expanded") === "true";
+        btn.setAttribute("aria-expanded", String(!open));
+        if (!open){
+          if (!panel.innerHTML) panel.innerHTML = paneHTML(cat);
+          panel.classList.add("open");
+        } else {
+          panel.classList.remove("open");
+        }
+      });
+    })(toggles[t]);
+  }
+
+  /* ---------- scroll reveals with stagger ---------- */
+  var reveals = document.querySelectorAll(".reveal");
+  if (!RM && "IntersectionObserver" in window){
+    var io = new IntersectionObserver(function(entries){
+      var delay = 0;
+      for (var e=0;e<entries.length;e++){
+        if (entries[e].isIntersecting){
+          var el = entries[e].target;
+          el.style.transitionDelay = delay + "ms";
+          el.classList.add("in");
+          io.unobserve(el);
+          delay += 70;
+        }
       }
-    } catch (e) {
-      // Swallow: never let the existence check break the gallery.
-    }
+    }, {threshold:.12, rootMargin:"0px 0px -40px 0px"});
+    for (var r=0;r<reveals.length;r++) io.observe(reveals[r]);
+  } else {
+    for (var r2=0;r2<reveals.length;r2++) reveals[r2].classList.add("in");
+  }
 
-    var info = document.createElement("div");
-    info.className = "info";
-
-    var num = document.createElement("div");
-    num.className = "num";
-    num.textContent = "#" + opt.num;
-
-    var title = document.createElement("div");
-    title.className = "title";
-    title.textContent = opt.pending ? "Codex Option " + opt.num + " — pending" : opt.title;
-
-    var desc = document.createElement("div");
-    desc.className = "desc";
-    desc.textContent = opt.desc;
-
-    info.appendChild(num);
-    info.appendChild(title);
-    info.appendChild(desc);
-
-    tile.appendChild(preview);
-    tile.appendChild(info);
-    grid.appendChild(tile);
-    scaleToFit();
-  });
+  /* ---------- stat count-up ---------- */
+  var vals = document.querySelectorAll(".plate-stats .val");
+  if (!RM && vals.length && "IntersectionObserver" in window){
+    var done = false;
+    var io2 = new IntersectionObserver(function(entries){
+      if (done || !entries[0].isIntersecting) return;
+      done = true;
+      var start = null, dur = 900;
+      var targets = [];
+      for (var v=0;v<vals.length;v++) targets.push(parseInt(vals[v].getAttribute("data-count"),10));
+      function tick(ts){
+        if (!start) start = ts;
+        var p = Math.min((ts - start)/dur, 1);
+        var eased = 1 - Math.pow(1 - p, 3);
+        for (var v=0;v<vals.length;v++){
+          vals[v].textContent = Math.round(targets[v]*eased);
+        }
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+      io2.disconnect();
+    }, {threshold:.4});
+    io2.observe(vals[0]);
+  }
+})();
 </script>
+</body>
+</html>
