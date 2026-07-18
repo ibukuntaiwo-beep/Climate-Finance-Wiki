@@ -1,0 +1,211 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { url } from '../lib/url';
+import { getCollection } from 'astro:content';
+import { categories } from '../data/categories';
+
+interface Props {
+  slug: string;
+}
+const { slug } = Astro.props;
+
+const catData = categories.find(c => c.slug === slug)!;
+const allArticles = await getCollection('articles');
+const articles = allArticles
+  .filter(a => a.data.category === slug)
+  .sort((a, b) => {
+    const aFoundational = catData.foundational.includes(a.id) ? 0 : 1;
+    const bFoundational = catData.foundational.includes(b.id) ? 0 : 1;
+    return aFoundational - bFoundational;
+  });
+const otherCategories = categories.filter(c => c.slug !== slug);
+---
+<BaseLayout title={`${catData.name} | Climate Finance Wiki`} footerType="internal" activePage="topics">
+<main>
+
+  <section class="cat-head pad" aria-labelledby="cat-h">
+    <div>
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href={url('/')}>Home</a>
+        <span class="sep" aria-hidden="true">&rarr;</span>
+        <span class="here" aria-current="page">{catData.name}</span>
+      </nav>
+      <h1 id="cat-h">{catData.name}</h1>
+      <p class="cat-desc">{catData.description}</p>
+      <p class="cat-meta" aria-label={`${articles.length} articles, ${catData.connectionCount} connections`}>
+        <span class="val">{articles.length}</span>&nbsp;ARTICLES<span class="sep">/</span><span class="val">{catData.connectionCount}</span>&nbsp;CONNECTIONS
+      </p>
+    </div>
+    {catData.caption && <p class="cat-aside reveal">{catData.caption}</p>}
+  </section>
+
+  <section class="list-sec" aria-label={`${catData.name} articles`} id="articles">
+    <div class="pad list-grid">
+      <ul class="art-list">
+        {articles.map((article, i) => {
+          const isFoundational = catData.foundational.includes(article.id);
+          return (
+            <li class="art-item reveal">
+              <a class="art-row" href={url(`/${slug}/${article.id}/`)}>
+                <span class="a-num">{String(i + 1).padStart(2, '0')}</span>
+                <span class="a-main">
+                  <span class="a-title">{article.data.title}{isFoundational && <span class="chip">Foundational</span>}</span>
+                  <span class="a-sub">{article.data.subtitle}</span>
+                </span>
+                <span class="a-arr" aria-hidden="true">&rarr;</span>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+
+      <aside class="side" aria-label="Category context">
+        <div class="side-sticky reveal">
+          <span class="tag">Related Categories</span>
+          <ul class="rel-list">
+            {otherCategories.map(cat => (
+              <li>
+                <a class="rel-row" href={url(`/${cat.slug}/`)}>
+                  <span class="r-name">{cat.name}</span>
+                  <span class="r-count">{cat.articleCount}&nbsp;ARTICLES</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+</main>
+
+<style>
+/* ---------- breadcrumbs ---------- */
+.crumbs {
+  font-family: var(--mono); font-size: 11px; font-weight: 500;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2);
+  display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: baseline;
+}
+.crumbs a { transition: color .22s var(--ease); }
+.crumbs a:hover { color: var(--green); }
+.crumbs .sep { color: var(--ink-3); }
+.crumbs .here { color: var(--green); }
+
+/* ---------- category header ---------- */
+.cat-head {
+  border-bottom: 1px solid var(--line);
+  padding-top: clamp(36px, 6vh, 72px);
+  padding-bottom: clamp(40px, 6vh, 72px);
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+  gap: clamp(32px, 5vw, 88px);
+  align-items: end;
+}
+.cat-head h1 {
+  font-size: clamp(2.5rem, 5.4vw, 4.6rem);
+  font-weight: 500; line-height: 1.02; letter-spacing: -.035em;
+  margin-top: 20px;
+}
+.cat-desc {
+  margin-top: 22px;
+  font-size: 15.5px; color: var(--ink-2);
+  max-width: 52ch;
+}
+.cat-meta {
+  margin-top: clamp(24px, 4vh, 40px);
+  font-family: var(--mono); font-size: 12.5px; font-weight: 500;
+  letter-spacing: .1em;
+}
+.cat-meta .val { color: var(--green); }
+.cat-meta .sep { color: var(--ink-3); margin-inline: 8px; }
+.cat-aside {
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  font-weight: 500; letter-spacing: -.015em; line-height: 1.35;
+  max-width: 24ch;
+}
+@media (max-width: 900px) {
+  .cat-head { grid-template-columns: minmax(0, 1fr); align-items: start; }
+  .cat-aside { max-width: 32ch; }
+}
+
+/* ---------- article index ---------- */
+.list-sec { border-bottom: 1px solid var(--line); }
+.list-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 8fr) minmax(0, 4fr);
+  gap: clamp(28px, 4vw, 72px);
+  padding-block: clamp(40px, 6vh, 72px);
+}
+.art-list { list-style: none; }
+.art-item { border-top: 1px solid var(--line); }
+.art-item:last-child { border-bottom: 1px solid var(--line); }
+.art-row {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr) auto;
+  gap: 16px; align-items: baseline;
+  padding: clamp(18px, 2.6vh, 26px) 8px;
+  transition: background-color .22s var(--ease);
+}
+.art-row .a-num {
+  font-family: var(--mono); font-size: 12px; font-weight: 500; color: var(--green);
+  transition: transform .22s var(--ease);
+}
+.art-row .a-title {
+  font-size: clamp(1.25rem, 2.2vw, 1.7rem);
+  font-weight: 500; letter-spacing: -.02em; line-height: 1.12;
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 12px;
+}
+.art-row .a-sub {
+  display: block;
+  margin-top: 8px;
+  font-size: 14px; color: var(--ink-2); line-height: 1.55;
+  max-width: 62ch;
+}
+.art-row .a-arr {
+  font-family: var(--mono); font-size: 13px; color: var(--ink-3);
+  transition: transform .22s var(--ease), color .22s var(--ease);
+}
+.art-row:hover { background: var(--green-tint); }
+.art-row:hover .a-num { transform: translateX(4px); }
+.art-row:hover .a-arr { transform: translateX(4px); color: var(--green); }
+.chip {
+  font-family: var(--mono); font-size: 9.5px; font-weight: 500;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--green);
+  border: 1px solid var(--green);
+  padding: 2px 8px;
+  white-space: nowrap;
+  position: relative; top: -2px;
+}
+
+/* sidebar */
+.side { border-left: 1px solid var(--line); padding-left: clamp(24px, 3vw, 48px); }
+.side-sticky { position: sticky; top: 104px; }
+.side .tag { display: block; margin-bottom: 14px; }
+.rel-list { list-style: none; }
+.rel-row {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline; gap: 12px;
+  padding: 12px 0;
+  border-top: 1px solid var(--line);
+  transition: background-color .22s var(--ease);
+}
+.rel-list li:last-child .rel-row { border-bottom: 1px solid var(--line); }
+.rel-row .r-name {
+  font-size: 15px; font-weight: 500; letter-spacing: -.005em;
+  transition: color .22s var(--ease);
+}
+.rel-row .r-count {
+  font-family: var(--mono); font-size: 11.5px; color: var(--ink-2); letter-spacing: .06em;
+  white-space: nowrap;
+}
+.rel-row:hover .r-name { color: var(--green); }
+@media (max-width: 900px) {
+  .list-grid { grid-template-columns: minmax(0, 1fr); }
+  .side { border-left: 0; padding-left: 0; border-top: 1px solid var(--line); padding-top: 28px; }
+  .side-sticky { position: static; }
+}
+</style>
+</BaseLayout>

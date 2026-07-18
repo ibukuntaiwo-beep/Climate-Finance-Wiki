@@ -5,23 +5,39 @@ interface Props {
 }
 const { before, after } = Astro.props;
 ---
-<div class="before-after">
-  <div class="before-after-grid">
-    <div class="before-after-col">
-      <h3>Before</h3>
-      <ul>
-        {before.map((item) => (
-          <li>{item}</li>
-        ))}
-      </ul>
-    </div>
-    <div class="before-after-col">
-      <h3>After</h3>
-      <ul>
-        {after.map((item) => (
-          <li>{item}</li>
-        ))}
-      </ul>
-    </div>
+<div class="before-after-grid">
+  <div class="ba-col">
+    <p class="tag"><span class="num">Before</span></p>
+    <ul>
+      {before.map((item) => (
+        <li>{item}</li>
+      ))}
+    </ul>
+  </div>
+  <div class="ba-col">
+    <p class="tag"><span class="num">After</span></p>
+    <ul>
+      {after.map((item) => (
+        <li>{item}</li>
+      ))}
+    </ul>
   </div>
 </div>
+
+<style is:global>
+.before-after-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:clamp(20px,3vw,44px);
+}
+.ba-col ul,.art-body .ba-col ul{list-style:none;margin:12px 0 0}
+.ba-col li,.art-body .ba-col li{
+  padding:10px 0;margin:0;
+  border-top:1px solid var(--line);
+  font-size:15px;line-height:1.6;color:rgba(22,22,22,.82);
+}
+.ba-col li:last-child{border-bottom:1px solid var(--line)}
+@media (max-width:700px){
+  .before-after-grid{grid-template-columns:minmax(0,1fr)}
+}
+</style>

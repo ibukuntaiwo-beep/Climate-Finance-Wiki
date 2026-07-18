@@ -48,6 +48,8 @@ const seeAlsoWithHrefs = seeAlso.map(a => ({
     a.category.toLowerCase()
   ) + '/' + a.slug}/`)
 }));
+
+const pad2 = (n: number) => String(n).padStart(2, '0');
 ---
 <BaseLayout title={`${metaTitle || title} | Climate Finance Wiki`} description={metaDescription || subtitle} footerType="internal" schemaType="Article">
   {trail && (
@@ -60,113 +62,246 @@ const seeAlsoWithHrefs = seeAlso.map(a => ({
     />
   )}
 
-  <header class="article-header">
-    <Breadcrumbs items={[
-      {label: 'Home', href: url('/')},
-      {label: categoryDisplay, href: url(`/${categorySlug}/`)},
-      {label: title}
-    ]} />
-    <div class="category-label fade-up fade-up-d1">{categoryDisplay}</div>
-    <h1 class="article-title fade-up fade-up-d2">{title}</h1>
-    <p class="article-subtitle fade-up fade-up-d3">{subtitle}</p>
-    <p class="article-byline fade-up fade-up-d3">By <a href={url('/author/ibukun-taiwo/')}>Ibukun Taiwo</a></p>
-  </header>
+  <Breadcrumbs items={[
+    {label: 'Home', href: url('/')},
+    {label: categoryDisplay, href: url(`/${categorySlug}/`)},
+    {label: title}
+  ]} />
 
-  <KeyStats stats={stats} />
+  <div class="art-head pad">
+    <p class="tag"><span class="num">{categoryDisplay}</span>&ensp;/&ensp;Article</p>
+    <h1>{title}</h1>
+    <p class="art-sub" set:html={subtitle}></p>
+    <p class="byline">By <a href={url('/author/ibukun-taiwo/')}>Ibukun Taiwo</a></p>
+  </div>
 
-  <div class="article-layout">
-    <main class="article-main">
-      <article class="article-body">
-        <slot />
+  {stats && stats.length > 0 && <KeyStats stats={stats} />}
 
-        {unexpected && (
-          <Unexpected headline={unexpected.headline}>
-            <Fragment set:html={unexpected.body} />
-          </Unexpected>
-        )}
+  <div class="art-layout pad">
+    <article class="art-body">
+      <slot />
 
-        {sources && sources.length > 0 && (
-        <div class="sources-section">
-          <h2>Sources</h2>
-          <ul class="sources-list">
+      {unexpected && (
+        <Unexpected headline={unexpected.headline}>
+          <Fragment set:html={unexpected.body} />
+        </Unexpected>
+      )}
+
+      {sources && sources.length > 0 && (
+        <div class="sources" id="sources">
+          <p class="tag"><span class="num">Sources</span></p>
+          <ul>
             {sources.map(source => (
               <li set:html={source}></li>
             ))}
           </ul>
         </div>
-        )}
-      </article>
-
-      <SeeAlso articles={seeAlsoWithHrefs} />
-
-      {trail && (
-        <div class="thread-bottom" style="margin-top: 48px;">
-          <div class="thread-bottom-inner">
-            <div class="thread-bottom-info">
-              <div class="thread-dots">
-                {Array.from({length: trail.total}).map((_, i) => (
-                  <span class={`thread-dot ${i < trail.current - 1 ? 'filled' : ''} ${i === trail.current - 1 ? 'current' : ''}`}></span>
-                ))}
-              </div>
-              <div class="thread-bottom-text">
-                Article {trail.current} of {trail.total} in <strong>{trail.trailName}</strong>
-              </div>
-            </div>
-            {trail.nextHref ? (
-              <a href={trail.nextHref} class="thread-cta">Next in thread &rarr;</a>
-            ) : trail.prevHref ? (
-              <a href={trail.prevHref} class="thread-prev">&larr; Previous</a>
-            ) : null}
-          </div>
-        </div>
       )}
-    </main>
+    </article>
 
-    <aside class="article-sidebar">
-      <div class="toc-card">
-        <div class="toc-label">In This Article</div>
-        <ul class="toc-list">
-          {tocSections.map(section => (
-            <li><a href={`#${section.id}`} data-section={section.id}>{section.title}</a></li>
+    <aside class="rail">
+      <div class="rail-sticky">
+        <p class="tag">In This Article</p>
+        <ul class="toc" id="toc">
+          {tocSections.map((section, i) => (
+            <li data-for={section.id}>
+              <a href={`#${section.id}`}><span class="n">{pad2(i + 1)}</span>{section.title}</a>
+            </li>
           ))}
         </ul>
+        <a class="rail-back" href={url(`/${categorySlug}/`)}>&larr; All {categoryDisplay}</a>
       </div>
     </aside>
   </div>
 
-  <script>
-    // TOC active state tracking
-    (function() {
-      const sections = document.querySelectorAll('.article-body section[id], .article-body h2[id]');
-      const tocLinks = document.querySelectorAll('.toc-list a[data-section]');
+  {trail && (
+    <div class="trail-band pad">
+      <div class="trail-band-info">
+        <p class="tag">Article {trail.current} of {trail.total}&ensp;/&ensp;<span class="num">{trail.trailName}</span></p>
+      </div>
+      {trail.nextHref ? (
+        <a href={trail.nextHref} class="trail-band-cta">Next in trail <span class="arr">&rarr;</span></a>
+      ) : trail.prevHref ? (
+        <a href={trail.prevHref} class="trail-band-cta"><span class="arr">&larr;</span> Previous in trail</a>
+      ) : null}
+    </div>
+  )}
 
-      if (!sections.length || !tocLinks.length) return;
+  <SeeAlso articles={seeAlsoWithHrefs} />
+
+  <style is:global>
+  /* ---------- article head ---------- */
+  .art-head{
+    padding-top:clamp(28px,4.5vh,48px);
+    padding-bottom:clamp(28px,4.5vh,44px);
+    border-bottom:1px solid var(--line);
+  }
+  .art-head h1{
+    font-size:clamp(2.2rem,4.5vw,3.6rem);
+    font-weight:500;line-height:1.04;letter-spacing:-.03em;
+    max-width:18ch;
+    margin-top:16px;
+  }
+  .art-sub{
+    margin-top:18px;
+    font-size:17px;line-height:1.6;color:var(--ink-2);
+    max-width:62ch;
+  }
+  .byline{
+    margin-top:24px;
+    font-family:var(--mono);font-size:11px;font-weight:500;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);
+  }
+  .byline a{color:var(--green);border-bottom:1px solid rgba(30,77,58,.35);transition:border-color .22s var(--ease)}
+  .byline a:hover{border-color:var(--green)}
+
+  /* ---------- article layout ---------- */
+  .art-layout{
+    display:grid;
+    grid-template-columns:minmax(0,7.2fr) minmax(0,3.2fr);
+    gap:clamp(32px,4.5vw,80px);
+    padding-block:clamp(36px,6vh,64px);
+    border-bottom:1px solid var(--line);
+  }
+  .art-body{max-width:68ch;font-size:17px;line-height:1.7;counter-reset:h2sec}
+  .art-body > :first-child{margin-top:0}
+  .art-body p{margin-bottom:19px;color:rgba(22,22,22,.82)}
+  .art-body h2{
+    font-size:clamp(1.35rem,2.2vw,1.7rem);
+    font-weight:500;letter-spacing:-.02em;line-height:1.2;
+    margin:46px 0 18px;
+    scroll-margin-top:96px;
+    counter-increment:h2sec;
+  }
+  .art-body h2::before{
+    content:counter(h2sec,decimal-leading-zero);
+    display:block;
+    font-family:var(--mono);font-size:11px;font-weight:500;
+    letter-spacing:.14em;color:var(--green);
+    margin-bottom:8px;
+  }
+  .art-body h3{
+    font-size:1.1rem;font-weight:500;letter-spacing:-.01em;
+    margin:32px 0 12px;
+    scroll-margin-top:96px;
+  }
+  .art-body ul,.art-body ol{margin:0 0 19px 22px;color:rgba(22,22,22,.82)}
+  .art-body ul{list-style:disc}
+  .art-body ol{list-style:decimal}
+  .art-body li{margin-bottom:8px}
+  .art-body li::marker{color:var(--green)}
+  .art-body blockquote{
+    margin:0 0 19px;
+    padding:4px 0 4px 20px;
+    border-left:2px solid var(--green);
+    color:var(--ink-2);
+  }
+  .art-body code{
+    font-family:var(--mono);font-size:.88em;
+    background:var(--green-tint-2);
+    padding:1px 5px;
+  }
+  .art-body hr{border:0;border-top:1px solid var(--line);margin:32px 0}
+  .art-body a{
+    color:var(--green);
+    border-bottom:1px solid rgba(30,77,58,.35);
+    transition:border-color .22s var(--ease);
+  }
+  .art-body a:hover{border-color:var(--green)}
+  .art-body .wikilink-broken{color:var(--ink-2)}
+
+  /* sources */
+  .sources{margin-top:46px;padding-top:26px;border-top:1px solid var(--line)}
+  .sources ul,.sources ol{list-style:none;margin:14px 0 0}
+  .sources li{
+    padding:9px 0;
+    border-bottom:1px solid var(--line);
+    font-size:14px;line-height:1.55;color:var(--ink-2);
+    margin:0;
+  }
+  .sources li:last-child{border-bottom:0}
+  .sources a,.art-body .sources a{
+    color:var(--ink);border-bottom:1px solid var(--line);
+    transition:color .22s var(--ease),border-color .22s var(--ease);
+  }
+  .sources a:hover,.art-body .sources a:hover{color:var(--green);border-color:var(--green)}
+
+  /* ---------- rail ---------- */
+  .rail{border-left:1px solid var(--line);padding-left:clamp(20px,2.5vw,36px)}
+  .rail-sticky{position:sticky;top:96px}
+  .toc{list-style:none;margin-top:18px}
+  .toc li{border-top:1px solid var(--line);margin:0}
+  .toc li:last-child{border-bottom:1px solid var(--line)}
+  .toc a{
+    display:flex;gap:12px;align-items:baseline;
+    padding:11px 2px;
+    font-size:14px;font-weight:500;letter-spacing:-.005em;
+    color:var(--ink-2);
+    border-bottom:0;
+    transition:color .22s var(--ease);
+  }
+  .toc .n{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--green)}
+  .toc a:hover{color:var(--ink)}
+  .toc li.on a{color:var(--green)}
+  .rail-back{
+    display:inline-flex;align-items:center;gap:8px;
+    margin-top:26px;
+    font-family:var(--mono);font-size:11px;font-weight:500;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);
+    transition:color .22s var(--ease);
+  }
+  .rail-back:hover{color:var(--green)}
+  @media (max-width:900px){
+    .art-layout{grid-template-columns:minmax(0,1fr)}
+    .rail{display:none}
+  }
+
+  /* ---------- trail band (bottom) ---------- */
+  .trail-band{
+    display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;
+    gap:10px 24px;
+    padding-block:18px;
+    border-bottom:1px solid var(--line);
+    background:var(--green-tint);
+  }
+  .trail-band-cta{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:var(--mono);font-size:11px;font-weight:500;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--ink);
+    transition:color .22s var(--ease);
+  }
+  .trail-band-cta .arr{transition:transform .22s var(--ease)}
+  .trail-band-cta:hover{color:var(--green)}
+  .trail-band-cta:hover .arr{transform:translateX(4px)}
+  </style>
+
+  <script>
+    // TOC active-state tracking (native anchors handle the scroll).
+    (function() {
+      const tocItems = document.querySelectorAll('#toc li[data-for]');
+      if (!tocItems.length || !('IntersectionObserver' in window)) return;
+
+      const map: Record<string, Element> = {};
+      tocItems.forEach(function(li) {
+        const id = li.getAttribute('data-for');
+        if (id) map[id] = li;
+      });
 
       const observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
           if (entry.isIntersecting) {
-            tocLinks.forEach(function(link) { link.classList.remove('active'); });
-            const activeLink = document.querySelector('.toc-list a[data-section="' + entry.target.id + '"]');
-            if (activeLink) activeLink.classList.add('active');
+            Object.keys(map).forEach(function(k) { map[k].classList.remove('on'); });
+            const li = map[entry.target.id];
+            if (li) li.classList.add('on');
           }
         });
-      }, { rootMargin: '-80px 0px -60% 0px', threshold: 0 });
+      }, { rootMargin: '-20% 0px -70% 0px' });
 
-      sections.forEach(function(section) { observer.observe(section); });
-
-      tocLinks.forEach(function(link) {
-        link.addEventListener('click', function(e) {
-          e.preventDefault();
-          var target = document.getElementById(this.getAttribute('data-section'));
-          if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            history.pushState(null, '', '#' + this.getAttribute('data-section'));
-          }
-        });
+      document.querySelectorAll('.art-body h2[id], .art-body h3[id]').forEach(function(head) {
+        if (map[head.id]) observer.observe(head);
       });
 
-      // Set first TOC link as active by default
-      if (tocLinks.length > 0) tocLinks[0].classList.add('active');
+      tocItems[0].classList.add('on');
     })();
   </script>
 </BaseLayout>

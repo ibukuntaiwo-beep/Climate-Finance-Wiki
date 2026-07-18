@@ -4,15 +4,54 @@ interface Props {
 }
 const { articles } = Astro.props;
 ---
-<div class="see-also">
-  <h2>See Also</h2>
-  <div class="see-also-grid">
-    {articles.map((article) => (
-      <a href={article.href} class="see-also-card">
-        <span class="see-also-badge">{article.category}</span>
-        <div class="see-also-title">{article.title}</div>
-        <div class="see-also-desc">{article.description}</div>
-      </a>
-    ))}
+<section class="sa-sec" aria-labelledby="sa-h">
+  <div class="pad">
+    <div class="sec-head">
+      <p class="tag" id="sa-h"><span class="num">See Also</span></p>
+    </div>
+    <ul class="sa-list">
+      {articles.map((article) => (
+        <li class="sa-item reveal">
+          <a class="sa-row" href={article.href}>
+            <span class="sa-cat">{article.category}</span>
+            <span class="sa-main">
+              <span class="sa-title">{article.title}</span>
+              <span class="sa-desc" set:html={article.description}></span>
+            </span>
+            <span class="sa-arr">&rarr;</span>
+          </a>
+        </li>
+      ))}
+    </ul>
   </div>
-</div>
+</section>
+
+<style is:global>
+.sa-sec{border-bottom:1px solid var(--line)}
+.sa-list{list-style:none;padding-bottom:clamp(44px,6vh,72px)}
+.sa-item{border-top:1px solid var(--line)}
+.sa-item:last-child{border-bottom:1px solid var(--line)}
+.sa-row{
+  display:grid;
+  grid-template-columns:130px minmax(0,1fr) auto;
+  gap:16px;align-items:baseline;
+  padding:clamp(14px,2vh,20px) 8px;
+  transition:background-color .22s var(--ease);
+}
+.sa-row:hover{background:var(--green-tint)}
+.sa-cat{
+  font-family:var(--mono);font-size:10.5px;font-weight:500;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--green);
+  white-space:nowrap;
+}
+.sa-main .sa-title{font-size:16px;font-weight:500;letter-spacing:-.005em}
+.sa-main .sa-desc{margin-top:3px;font-size:13.5px;line-height:1.5;color:var(--ink-2);display:block}
+.sa-arr{color:var(--ink);transition:transform .22s var(--ease),color .22s var(--ease)}
+.sa-row:hover .sa-arr{transform:translateX(4px);color:var(--green)}
+@media (max-width:900px){
+  .sa-row{grid-template-columns:minmax(0,1fr) auto;row-gap:6px}
+  .sa-cat{grid-row:1;grid-column:1}
+  .sa-main{grid-column:1}
+  .sa-arr{grid-row:1;grid-column:2}
+}
+</style>

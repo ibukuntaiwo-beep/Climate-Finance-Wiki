@@ -4,10 +4,24 @@ interface Props {
 }
 const { headline } = Astro.props;
 ---
-<div class="unexpected-block">
-  <div class="unexpected-label">You Might Not Expect</div>
-  <div class="unexpected-headline">{headline}</div>
-  <div class="unexpected-text">
-    <slot />
-  </div>
+<div class="unexpected reveal">
+  <p class="tag"><span class="num">You Might Not Expect</span></p>
+  <p class="ux-h">{headline}</p>
+  <div class="ux-body"><slot /></div>
 </div>
+
+<style is:global>
+.unexpected{
+  margin:40px 0 0;
+  border:1px solid var(--line);
+  background:var(--green-tint);
+  padding:24px 26px;
+}
+.unexpected .ux-h{
+  font-size:1.1rem;font-weight:500;letter-spacing:-.015em;line-height:1.3;
+  margin-top:12px;
+}
+.unexpected .ux-body{margin-top:10px;font-size:15px;line-height:1.65;color:var(--ink-2)}
+.unexpected .ux-body p{margin:10px 0 0;font-size:15px;line-height:1.65;color:var(--ink-2)}
+.unexpected .ux-body p:first-child{margin-top:0}
+</style>

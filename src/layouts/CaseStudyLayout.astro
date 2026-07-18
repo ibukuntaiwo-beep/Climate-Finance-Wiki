@@ -1,10 +1,12 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import { url } from '../lib/url';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
 import KeyStats from '../components/KeyStats.astro';
 import Timeline from '../components/Timeline.astro';
 import BeforeAfter from '../components/BeforeAfter.astro';
 import Unexpected from '../components/Unexpected.astro';
+import SeeAlso from '../components/SeeAlso.astro';
 
 interface Props {
   title: string;
@@ -38,111 +40,282 @@ const seeAlsoHrefs = seeAlso.map(a => {
   const cat = a.category.toLowerCase() === 'case studies' ? 'case-studies' : a.category.toLowerCase();
   return { ...a, href: url(`/${cat}/${a.slug}/`) };
 });
+
+const hasTimeline = caseStudy?.visualFormat === 'timeline' && !!caseStudy.timeline;
+const hasBeforeAfter = caseStudy?.visualFormat === 'before-after' && !!caseStudy.before && !!caseStudy.after;
+
+const sections: Array<{id: string; title: string}> = [{ id: 'case-file', title: 'The Case' }];
+if (hasTimeline) sections.push({ id: 'timeline', title: 'Timeline' });
+if (hasBeforeAfter) sections.push({ id: 'before-after', title: 'Before & After' });
+if (caseStudy?.debate) sections.push({ id: 'debate', title: 'The Debate' });
+
+const pad2 = (n: number) => String(n).padStart(2, '0');
+const secNum: Record<string, string> = {};
+sections.forEach((s, i) => { secNum[s.id] = pad2(i + 1); });
 ---
 <BaseLayout title={`${metaTitle || title} | Climate Finance Wiki`} description={metaDescription || subtitle} footerType="internal" schemaType="Article">
-  <header class="case-header">
-    <div class="case-header-inner">
-      <div class="breadcrumbs anim-1">
-        <a href={url('/')}>Home</a><span class="sep">&rarr;</span>
-        <a href={url('/case-studies/')}>Case Studies</a><span class="sep">&rarr;</span>
-        {title}
-      </div>
-      <div class="case-label anim-2">Case Study</div>
-      <h1 class="anim-3">{title}</h1>
-      <p class="case-subtitle anim-4" set:html={subtitle}></p>
-      <p class="article-byline anim-5">By <a href={url('/author/ibukun-taiwo/')}>Ibukun Taiwo</a></p>
-    </div>
-  </header>
+  <Breadcrumbs items={[
+    {label: 'Home', href: url('/')},
+    {label: 'Case Studies', href: url('/case-studies/')},
+    {label: title}
+  ]} />
 
-  <div class="stats-panel anim-5">
-    <div class="stats-panel-inner" style={`grid-template-columns: repeat(${stats.length}, 1fr);`}>
-      {stats.map(stat => (
-        <div class="stat-item">
-          <div class="stat-number" set:html={stat.value}></div>
-          <div class="stat-label">{stat.label}</div>
-        </div>
-      ))}
-    </div>
+  <div class="art-head pad">
+    <p class="tag"><span class="num">Case Study</span></p>
+    <h1>{title}</h1>
+    <p class="art-sub" set:html={subtitle}></p>
+    <p class="byline">By <a href={url('/author/ibukun-taiwo/')}>Ibukun Taiwo</a></p>
   </div>
 
-  <article class="case-article-body">
-    {caseStudy?.body ? (
-      <div set:html={caseStudy.body}></div>
-    ) : (
-      <slot />
-    )}
-  </article>
+  {stats && stats.length > 0 && <KeyStats stats={stats} size="large" />}
 
-  {caseStudy?.visualFormat === 'timeline' && caseStudy.timeline && (
-    <div class="timeline-section reveal">
-      <div class="section-label">Timeline</div>
-      <Timeline events={caseStudy.timeline} />
-    </div>
-  )}
+  <div class="art-layout pad">
+    <article class="art-body art-body--case">
+      <p class="tag sec-label" id="case-file"><span class="num">{secNum['case-file']}</span>&ensp;/&ensp;The Case</p>
+      {caseStudy?.body ? (
+        <div set:html={caseStudy.body}></div>
+      ) : (
+        <slot />
+      )}
 
-  {caseStudy?.visualFormat === 'before-after' && caseStudy.before && caseStudy.after && (
-    <div class="before-after reveal">
-      <div class="section-label">Before &amp; After</div>
-      <BeforeAfter before={caseStudy.before} after={caseStudy.after} />
-    </div>
-  )}
+      {hasTimeline && (
+        <>
+          <p class="tag sec-label" id="timeline"><span class="num">{secNum['timeline']}</span>&ensp;/&ensp;Timeline</p>
+          <Timeline events={caseStudy.timeline} />
+        </>
+      )}
 
-  {caseStudy?.debate && (
-    <div class="debate-section reveal">
-      <div class="debate-card">
-        <h2>The Debate</h2>
-        <Fragment set:html={caseStudy.debate} />
+      {hasBeforeAfter && (
+        <>
+          <p class="tag sec-label" id="before-after"><span class="num">{secNum['before-after']}</span>&ensp;/&ensp;Before &amp; After</p>
+          <BeforeAfter before={caseStudy.before} after={caseStudy.after} />
+        </>
+      )}
+
+      {caseStudy?.debate && (
+        <>
+          <p class="tag sec-label" id="debate"><span class="num">{secNum['debate']}</span>&ensp;/&ensp;The Debate</p>
+          <div class="debate reveal">
+            <Fragment set:html={caseStudy.debate} />
+          </div>
+        </>
+      )}
+
+      {unexpected && (
+        <Unexpected headline={unexpected.headline}>
+          <Fragment set:html={unexpected.body} />
+        </Unexpected>
+      )}
+
+      {sources && sources.length > 0 && (
+        <div class="sources sources--numbered" id="sources">
+          <p class="tag"><span class="num">Sources</span></p>
+          <ol>
+            {sources.map(source => (
+              <li><span set:html={source}></span></li>
+            ))}
+          </ol>
+        </div>
+      )}
+    </article>
+
+    <aside class="rail">
+      <div class="rail-sticky">
+        <p class="tag">On This Page</p>
+        <ul class="toc" id="toc">
+          {sections.map((section) => (
+            <li data-for={section.id}>
+              <a href={`#${section.id}`}><span class="n">{secNum[section.id]}</span>{section.title}</a>
+            </li>
+          ))}
+        </ul>
+        <a class="rail-back" href={url('/case-studies/')}>&larr; All Case Studies</a>
       </div>
-    </div>
-  )}
+    </aside>
+  </div>
 
   {trail && (
-    <div class="thread-bar-card reveal">
-      <div class="thread-bar-inner">
-        <div class="thread-info">
-          <div class="thread-label">Article {trail.current} of {trail.total} in <strong>{trail.trailName}</strong></div>
-          <div class="thread-progress">
-            {Array.from({length: trail.total}).map((_, i) => (
-              <span class={`thread-dot ${i < trail.current - 1 ? 'filled' : ''} ${i === trail.current - 1 ? 'current' : ''}`}></span>
-            ))}
-          </div>
-        </div>
-        <div class="thread-nav">
-          {trail.prevHref ? <a href={trail.prevHref}>&larr; Previous</a> : null}
-          {trail.nextHref ? <a href={trail.nextHref}>Next &rarr;</a> : null}
-        </div>
+    <div class="trail-band pad">
+      <div class="trail-band-info">
+        <p class="tag">Article {trail.current} of {trail.total}&ensp;/&ensp;<span class="num">{trail.trailName}</span></p>
       </div>
+      {trail.nextHref ? (
+        <a href={trail.nextHref} class="trail-band-cta">Next in trail <span class="arr">&rarr;</span></a>
+      ) : trail.prevHref ? (
+        <a href={trail.prevHref} class="trail-band-cta"><span class="arr">&larr;</span> Previous in trail</a>
+      ) : null}
     </div>
   )}
 
-  {unexpected && (
-    <div class="surprise-section reveal">
-      <div class="surprise-card">
-        <div class="surprise-label">You Might Not Expect</div>
-        <div class="surprise-headline">{unexpected.headline}</div>
-        <p set:html={unexpected.body}></p>
-      </div>
-    </div>
-  )}
+  <SeeAlso articles={seeAlsoHrefs} />
 
-  <div class="see-also-section reveal" style="max-width:780px;margin:0 auto;padding:0 32px;">
-    <div class="section-label">See Also</div>
-    <div class="see-also-list">
-      {seeAlsoHrefs.map(a => (
-        <a href={a.href}>{a.title}</a>
-      ))}
-    </div>
-  </div>
+  <style is:global>
+  /* ---------- article head ---------- */
+  .art-head{
+    padding-top:clamp(28px,4.5vh,48px);
+    padding-bottom:clamp(28px,4.5vh,44px);
+    border-bottom:1px solid var(--line);
+  }
+  .art-head h1{
+    font-size:clamp(2.2rem,4.5vw,3.6rem);
+    font-weight:500;line-height:1.04;letter-spacing:-.03em;
+    max-width:18ch;
+    margin-top:16px;
+  }
+  .art-sub{
+    margin-top:18px;
+    font-size:17px;line-height:1.6;color:var(--ink-2);
+    max-width:62ch;
+  }
+  .byline{
+    margin-top:24px;
+    font-family:var(--mono);font-size:11px;font-weight:500;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);
+  }
+  .byline a{color:var(--green);border-bottom:1px solid rgba(30,77,58,.35);transition:border-color .22s var(--ease)}
+  .byline a:hover{border-color:var(--green)}
 
-  {sources && sources.length > 0 && (
-  <div class="case-sources-section reveal">
-    <div class="section-label">Sources</div>
-    <ul class="sources-list">
-      {sources.map((source, i) => (
-        <li><span class="source-num">{i + 1}</span><span set:html={source}></span></li>
-      ))}
-    </ul>
-  </div>
-  )}
+  /* ---------- layout ---------- */
+  .art-layout{
+    display:grid;
+    grid-template-columns:minmax(0,7.2fr) minmax(0,3.2fr);
+    gap:clamp(32px,4.5vw,80px);
+    padding-block:clamp(36px,6vh,64px);
+    border-bottom:1px solid var(--line);
+  }
+  .art-body{max-width:68ch;font-size:17px;line-height:1.7}
+  .art-body > :first-child{margin-top:0}
+  .art-body p{margin-bottom:19px;color:rgba(22,22,22,.82)}
+  .art-body a{
+    color:var(--green);
+    border-bottom:1px solid rgba(30,77,58,.35);
+    transition:border-color .22s var(--ease);
+  }
+  .art-body a:hover{border-color:var(--green)}
+  .art-body .sec-label{margin:48px 0 20px;scroll-margin-top:96px}
+  .art-body .sec-label:first-child{margin-top:0}
+  .art-body--case h2{
+    font-size:clamp(1.35rem,2.2vw,1.7rem);
+    font-weight:500;letter-spacing:-.02em;line-height:1.2;
+    margin:46px 0 18px;
+    scroll-margin-top:96px;
+  }
+  .art-body ul:not(.timeline),.art-body ol{margin:0 0 19px 22px;color:rgba(22,22,22,.82)}
+  .art-body ul:not(.timeline){list-style:disc}
+  .art-body ol{list-style:decimal}
+  .art-body li{margin-bottom:8px}
+  .art-body ul.timeline{margin:0;list-style:none}
+  .art-body ul.timeline li{margin-bottom:0}
 
+  /* debate — white filed panel, like the plates */
+  .debate{
+    border:1px solid var(--line);
+    background:#fff;
+    padding:26px 28px;
+  }
+  .debate p{font-size:15.5px;line-height:1.68;color:rgba(22,22,22,.82);margin-bottom:16px}
+  .debate p:last-child{margin-bottom:0}
+
+  /* sources (numbered) */
+  .sources{margin-top:46px;padding-top:26px;border-top:1px solid var(--line)}
+  .sources ol,.sources ul{list-style:none;margin:14px 0 0;counter-reset:src}
+  .sources--numbered li{
+    counter-increment:src;
+    display:flex;gap:14px;align-items:baseline;
+  }
+  .sources--numbered li::before{
+    content:counter(src,decimal-leading-zero);
+    font-family:var(--mono);font-size:11px;font-weight:500;color:var(--green);
+  }
+  .sources li{
+    padding:9px 0;
+    border-bottom:1px solid var(--line);
+    font-size:14px;line-height:1.55;color:var(--ink-2);
+    margin:0;
+  }
+  .sources li:last-child{border-bottom:0}
+  .art-body .sources a{
+    color:var(--ink);border-bottom:1px solid var(--line);
+    transition:color .22s var(--ease),border-color .22s var(--ease);
+  }
+  .art-body .sources a:hover{color:var(--green);border-color:var(--green)}
+
+  /* ---------- rail ---------- */
+  .rail{border-left:1px solid var(--line);padding-left:clamp(20px,2.5vw,36px)}
+  .rail-sticky{position:sticky;top:96px}
+  .toc{list-style:none;margin-top:18px}
+  .toc li{border-top:1px solid var(--line);margin:0}
+  .toc li:last-child{border-bottom:1px solid var(--line)}
+  .toc a{
+    display:flex;gap:12px;align-items:baseline;
+    padding:11px 2px;
+    font-size:14px;font-weight:500;letter-spacing:-.005em;
+    color:var(--ink-2);
+    border-bottom:0;
+    transition:color .22s var(--ease);
+  }
+  .toc .n{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--green)}
+  .toc a:hover{color:var(--ink)}
+  .toc li.on a{color:var(--green)}
+  .rail-back{
+    display:inline-flex;align-items:center;gap:8px;
+    margin-top:26px;
+    font-family:var(--mono);font-size:11px;font-weight:500;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);
+    transition:color .22s var(--ease);
+  }
+  .rail-back:hover{color:var(--green)}
+  @media (max-width:900px){
+    .art-layout{grid-template-columns:minmax(0,1fr)}
+    .rail{display:none}
+  }
+
+  /* ---------- trail band (bottom) ---------- */
+  .trail-band{
+    display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;
+    gap:10px 24px;
+    padding-block:18px;
+    border-bottom:1px solid var(--line);
+    background:var(--green-tint);
+  }
+  .trail-band-cta{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:var(--mono);font-size:11px;font-weight:500;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--ink);
+    transition:color .22s var(--ease);
+  }
+  .trail-band-cta .arr{transition:transform .22s var(--ease)}
+  .trail-band-cta:hover{color:var(--green)}
+  .trail-band-cta:hover .arr{transform:translateX(4px)}
+  </style>
+
+  <script>
+    // TOC active-state tracking (native anchors handle the scroll).
+    (function() {
+      const tocItems = document.querySelectorAll('#toc li[data-for]');
+      if (!tocItems.length || !('IntersectionObserver' in window)) return;
+
+      const map: Record<string, Element> = {};
+      tocItems.forEach(function(li) {
+        const id = li.getAttribute('data-for');
+        if (id) map[id] = li;
+      });
+
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            Object.keys(map).forEach(function(k) { map[k].classList.remove('on'); });
+            const li = map[entry.target.id];
+            if (li) li.classList.add('on');
+          }
+        });
+      }, { rootMargin: '-20% 0px -70% 0px' });
+
+      document.querySelectorAll('.art-body .sec-label[id]').forEach(function(head) {
+        if (map[head.id]) observer.observe(head);
+      });
+
+      tocItems[0].classList.add('on');
+    })();
+  </script>
 </BaseLayout>

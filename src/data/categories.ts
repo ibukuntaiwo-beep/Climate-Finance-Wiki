@@ -57,6 +57,6 @@ export const categories = [
     articleCount: 12,
     connectionCount: 36,
     depthPercent: 62,
-    topArticles: ['VW Dieselgate', 'HSBC Greenwashing', 'DWS SEC Fine'],
+    topArticles: ['Volkswagen Dieselgate', 'HSBC Greenwashing', 'DWS SEC Fine'],
   }
 ];

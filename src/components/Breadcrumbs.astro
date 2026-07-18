@@ -4,14 +4,27 @@ interface Props {
 }
 const { items } = Astro.props;
 ---
-<div class="breadcrumbs">
+<nav class="crumbs pad" aria-label="Breadcrumb">
   {items.map((item, i) => (
     <>
       {i > 0 && <span class="sep">&rarr;</span>}
       {item.href
         ? <a href={item.href}>{item.label}</a>
-        : <span>{item.label}</span>
+        : <span class="here">{item.label}</span>
       }
     </>
   ))}
-</div>
+</nav>
+
+<style is:global>
+.crumbs{
+  padding-top:26px;
+  font-family:var(--mono);font-size:11px;font-weight:500;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);
+  display:flex;flex-wrap:wrap;gap:6px 10px;
+}
+.crumbs a{transition:color .22s var(--ease)}
+.crumbs a:hover{color:var(--green)}
+.crumbs .sep{color:var(--ink-3)}
+.crumbs .here{color:var(--ink)}
+</style>

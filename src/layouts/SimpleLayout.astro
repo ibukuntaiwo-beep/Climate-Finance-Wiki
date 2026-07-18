@@ -8,7 +8,71 @@ interface Props {
 const { title } = Astro.props;
 ---
 <BaseLayout title={title} footerType="internal">
-  <div class="simple-layout">
-    <slot />
-  </div>
+  <main class="simple-layout pad">
+    <div class="simple-inner">
+      <slot />
+    </div>
+  </main>
 </BaseLayout>
+
+<style is:global>
+.simple-layout {
+  padding-top: clamp(28px, 4.5vh, 48px);
+  padding-bottom: clamp(48px, 7vh, 88px);
+}
+.simple-inner {
+  max-width: 760px;
+  counter-reset: simplesec;
+}
+.simple-inner h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -.03em;
+  max-width: 20ch;
+}
+/* the "Last updated ..." line directly after the title */
+.simple-inner h1 + p {
+  margin-top: 16px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  padding-bottom: clamp(24px, 4vh, 40px);
+  border-bottom: 1px solid var(--line);
+}
+.simple-inner h2 {
+  counter-increment: simplesec;
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+  font-weight: 500;
+  letter-spacing: -.02em;
+  line-height: 1.2;
+  margin: 44px 0 14px;
+  scroll-margin-top: 96px;
+}
+.simple-inner h2::before {
+  content: counter(simplesec, decimal-leading-zero);
+  display: block;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .14em;
+  color: var(--green);
+  margin-bottom: 8px;
+}
+.simple-inner p {
+  font-size: 16.5px;
+  line-height: 1.7;
+  color: rgba(22, 22, 22, .82);
+  margin-bottom: 17px;
+  max-width: 68ch;
+}
+.simple-inner a {
+  color: var(--green);
+  border-bottom: 1px solid rgba(30, 77, 58, .35);
+  transition: border-color .22s var(--ease);
+}
+.simple-inner a:hover { border-color: var(--green); }
+</style>

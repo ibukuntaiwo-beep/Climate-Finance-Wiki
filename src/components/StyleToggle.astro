@@ -22,3 +22,18 @@
   });
 })();
 </script>
+
+<style is:global>
+.toggle-section{display:flex;justify-content:flex-end;margin:16px 0}
+.style-toggle{display:inline-flex;border:1px solid var(--line)}
+.style-toggle button{
+  font-family:var(--mono);font-size:11px;font-weight:500;
+  letter-spacing:.1em;text-transform:uppercase;
+  padding:7px 14px;color:var(--ink-2);
+  transition:background-color .22s var(--ease),color .22s var(--ease);
+}
+.style-toggle button + button{border-left:1px solid var(--line)}
+.style-toggle button.active{background:var(--ink);color:var(--bg)}
+.body-version{display:none}
+.body-version.active{display:block}
+</style>

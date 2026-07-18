@@ -4,68 +4,53 @@ import { url } from '../lib/url';
 ---
 <BaseLayout title="About | Climate Finance Wiki" activePage="about" footerType="internal">
 
-  <!-- Breadcrumbs -->
-  <div class="breadcrumbs" style="max-width:var(--max-width);margin:0 auto;padding:20px 32px 0;display:flex;align-items:center;gap:8px;">
+  <nav class="crumbs pad" aria-label="Breadcrumb">
     <a href={url('/')}>Home</a>
     <span class="sep">&rarr;</span>
-    <span>About</span>
+    <span class="here">About</span>
+  </nav>
+
+  <div class="art-head pad">
+    <p class="tag"><span class="num">About</span>&ensp;/&ensp;The Wiki</p>
+    <h1>About This Wiki</h1>
+    <p class="art-sub">A curated reference for communications professionals navigating climate finance.</p>
   </div>
 
-  <!-- About Layout: main + sidebar -->
-  <div class="about-layout">
+  <div class="art-layout pad">
 
-    <!-- Main Column -->
-    <main class="about-main">
+    <main class="art-body">
 
-      <!-- Page Header -->
-      <header class="page-header" style="padding:0;margin-bottom:40px;">
-        <h1 class="page-title" style="font-size:2.5rem;">About This Wiki</h1>
-        <p class="page-subtitle" style="font-size:1.125rem;">A curated reference for communications professionals navigating climate finance.</p>
-      </header>
-
-      <!-- Section 1: What This Is -->
       <section class="body-section">
-        <h2>What This Is</h2>
+        <h2><span class="h2num">01</span>What This Is</h2>
         <p>This wiki is a curated, editorially maintained reference covering the language, instruments, institutions, and case studies of climate finance. It is not a textbook, not a database, and not crowdsourced. Every article is written to the same standard: clear enough for a non-specialist, rigorous enough for a professional.</p>
         <p>The wiki currently contains 52 articles across five categories (Concepts, Instruments, Actors, Frameworks, and Case Studies) with over 240 cross-connections between them. Three guided reading trails offer structured paths through the material for readers who prefer a curated sequence over free browsing.</p>
       </section>
 
-      <!-- Section 2: Who's It For? -->
       <section class="body-section">
-        <h2>Who It&rsquo;s For</h2>
+        <h2><span class="h2num">02</span>Who It&rsquo;s For</h2>
         <p>Communications professionals. The people who write press releases about green bonds, brief executives before climate summits, advise clients on sustainability messaging, and need to know whether a &ldquo;net zero&rdquo; claim will hold up under scrutiny.</p>
         <p>Every editorial decision (what to include, how to explain it, what angle to take) passes one test: would a comms professional need to know this to do their job well? Technical financial modelling, quantitative methods, and regulatory compliance detail are excluded or summarised. The story behind the mechanism, the landscape of key players, what&rsquo;s contested, and what&rsquo;s emerging: that&rsquo;s what stays.</p>
 
         <div class="callout">
-          <div class="callout-label">Editorial Standard</div>
-          <div class="callout-text">&ldquo;Informed and curious, like a smart journalist. Not academic, not corporate. Plain English first. Define jargon immediately. Short paragraphs. Active voice.&rdquo;</div>
+          <p class="tag"><span class="num">Editorial Standard</span></p>
+          <p class="callout-text">&ldquo;Informed and curious, like a smart journalist. Not academic, not corporate. Plain English first. Define jargon immediately. Short paragraphs. Active voice.&rdquo;</p>
         </div>
       </section>
 
-      <!-- Section 3: How to Use It -->
       <section class="body-section">
-        <h2 id="how-to-use">How to Use It</h2>
+        <h2 id="how-to-use"><span class="h2num">03</span>How to Use It</h2>
         <p>There are four ways in:</p>
 
-        <div class="ways-in">
-          <div class="way">
-            <p><strong>Browse by category.</strong> The five category pages (<a href={url('/concepts/')}>Concepts</a>, <a href={url('/instruments/')}>Instruments</a>, <a href={url('/actors/')}>Actors</a>, <a href={url('/frameworks/')}>Frameworks</a>, and <a href={url('/case-studies/')}>Case Studies</a>) each show every article in that domain with a one-sentence summary. Start here if you know the general area but not the specific article.</p>
-          </div>
-          <div class="way">
-            <p><strong>Follow a trail.</strong> Three expert-curated reading paths take you through the material in a deliberate sequence. &ldquo;The Greenwashing Trail&rdquo; moves from definition to typology to real-world cases. &ldquo;Follow the Money&rdquo; traces how climate finance flows from green bonds through to carbon offsets. &ldquo;Architecture of Climate Policy&rdquo; covers the agreements and standards that set the rules. Each article shows your position in the trail and links to the next.</p>
-          </div>
-          <div class="way">
-            <p><strong>Search or scan the glossary.</strong> The glossary offers plain-English definitions of every key term in two sentences or less. If you need depth, each entry links to its full article. If you just need a quick decode, the definition is enough.</p>
-          </div>
-          <div class="way">
-            <p><strong>Follow the connections.</strong> Every article links to related concepts, instruments, and cases through inline wikilinks and &ldquo;See Also&rdquo; sections. Some connections are expected; others are deliberately surprising, flagged in &ldquo;You Might Not Expect&rdquo; blocks at the end of each article.</p>
-          </div>
-        </div>
+        <ul class="ways-in">
+          <li><p><strong>Browse by category.</strong> The five category pages (<a class="wl" href={url('/concepts/')}>Concepts</a>, <a class="wl" href={url('/instruments/')}>Instruments</a>, <a class="wl" href={url('/actors/')}>Actors</a>, <a class="wl" href={url('/frameworks/')}>Frameworks</a>, and <a class="wl" href={url('/case-studies/')}>Case Studies</a>) each show every article in that domain with a one-sentence summary. Start here if you know the general area but not the specific article.</p></li>
+          <li><p><strong>Follow a trail.</strong> Three expert-curated reading paths take you through the material in a deliberate sequence. &ldquo;The Greenwashing Trail&rdquo; moves from definition to typology to real-world cases. &ldquo;Follow the Money&rdquo; traces how climate finance flows from green bonds through to carbon offsets. &ldquo;Architecture of Climate Policy&rdquo; covers the agreements and standards that set the rules. Each article shows your position in the trail and links to the next.</p></li>
+          <li><p><strong>Search or scan the glossary.</strong> The glossary offers plain-English definitions of every key term in two sentences or less. If you need depth, each entry links to its full article. If you just need a quick decode, the definition is enough.</p></li>
+          <li><p><strong>Follow the connections.</strong> Every article links to related concepts, instruments, and cases through inline wikilinks and &ldquo;See Also&rdquo; sections. Some connections are expected; others are deliberately surprising, flagged in &ldquo;You Might Not Expect&rdquo; blocks at the end of each article.</p></li>
+        </ul>
       </section>
 
-      <!-- Section 4: What's Included -->
       <section class="body-section">
-        <h2>What&rsquo;s Included</h2>
+        <h2><span class="h2num">04</span>What&rsquo;s Included</h2>
         <p>The wiki covers:</p>
 
         <ul class="category-list">
@@ -77,13 +62,12 @@ import { url } from '../lib/url';
         </ul>
       </section>
 
-      <!-- Section 5: Sources -->
       <section class="body-section">
-        <h2>Sources</h2>
+        <h2><span class="h2num">05</span>Sources</h2>
         <p>This wiki is built from:</p>
 
         <ul class="sources-list">
-          <li><a href="https://www.cfainstitute.org/programs/climate-investing-certificate" target="_blank" rel="noopener">My course notes</a>, CFA Institute Climate Finance Certificate</li>
+          <li><a class="wl" href="https://www.cfainstitute.org/programs/climate-investing-certificate" target="_blank" rel="noopener">My course notes</a>, CFA Institute Climate Finance Certificate</li>
           <li>ICMA Green Bond Principles</li>
           <li>UNFCCC official reports and treaty texts</li>
           <li>SEC enforcement filings</li>
@@ -96,51 +80,29 @@ import { url } from '../lib/url';
         <p>While every article cites its specific sources, this wiki is a hobby project and should not be considered conclusive.</p>
       </section>
 
-      <!-- Section 6: Contact -->
       <section class="body-section">
-        <h2 id="contact">Contact</h2>
-        <p>This wiki is a Red Barrow publication, maintained by <span class="placeholder">Ibukun Taiwo</span>.</p>
+        <h2 id="contact"><span class="h2num">06</span>Contact</h2>
+        <p>This wiki is a Red Barrow publication, maintained by <a class="wl" href={url('/author/ibukun-taiwo/')}>Ibukun Taiwo</a>.</p>
         <p>For corrections, suggestions, or inquiries:</p>
-        <p>LinkedIn: <a href="https://linkedin.com/in/ibukuntaiwo" target="_blank" rel="noopener">linkedin.com/in/ibukuntaiwo</a><br>
-        GitHub: <a href="https://github.com/ibukuntaiwo-beep" target="_blank" rel="noopener">github.com/ibukuntaiwo-beep</a></p>
+        <p>LinkedIn: <a class="wl" href="https://linkedin.com/in/ibukuntaiwo" target="_blank" rel="noopener">linkedin.com/in/ibukuntaiwo</a><br>
+        GitHub: <a class="wl" href="https://github.com/ibukuntaiwo-beep" target="_blank" rel="noopener">github.com/ibukuntaiwo-beep</a></p>
       </section>
 
     </main>
 
-    <!-- Sidebar -->
-    <aside class="about-sidebar">
+    <aside class="rail">
+      <div class="rail-sticky">
+        <p class="tag">Wiki at a Glance</p>
+        <ul class="glance">
+          <li><span class="k">Articles</span><span class="v">52</span></li>
+          <li><span class="k">Connections</span><span class="v">240+</span></li>
+          <li><span class="k">Categories</span><span class="v">5</span></li>
+          <li><span class="k">Guided trails</span><span class="v">3</span></li>
+        </ul>
+        <p class="glance-meta">Last updated: May 2026</p>
 
-      <!-- Card 1: Wiki at a Glance -->
-      <div class="sidebar-card">
-        <div class="sidebar-card-label">Wiki at a Glance</div>
-        <div class="stat-row">
-          <span class="stat-number">52</span>
-          <span class="stat-label">articles</span>
-        </div>
-        <div class="stat-row">
-          <span class="stat-number">240+</span>
-          <span class="stat-label">connections</span>
-        </div>
-        <div class="stat-row">
-          <span class="stat-number">5</span>
-          <span class="stat-label">categories</span>
-        </div>
-        <div class="stat-row">
-          <span class="stat-number">3</span>
-          <span class="stat-label">guided trails</span>
-        </div>
-        <div class="stat-meta">Last updated: May 2026</div>
-      </div>
-
-      <!-- Sidebar photo -->
-      <div class="sidebar-photo">
-        <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=400&q=80" alt="Library shelves" loading="lazy">
-      </div>
-
-      <!-- Card 2: Built From -->
-      <div class="sidebar-card">
-        <div class="sidebar-card-label">Built From</div>
-        <ul class="built-from-list">
+        <p class="tag rail-tag-2">Built From</p>
+        <ul class="built-from">
           <li>CFA Institute</li>
           <li>ICMA</li>
           <li>UNFCCC</li>
@@ -149,9 +111,122 @@ import { url } from '../lib/url';
           <li>World Bank</li>
         </ul>
       </div>
-
     </aside>
 
   </div>
 
 </BaseLayout>
+
+<style>
+.crumbs {
+  padding-top: 26px;
+  font-family: var(--mono); font-size: 11px; font-weight: 500;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2);
+  display: flex; flex-wrap: wrap; gap: 6px 10px;
+}
+.crumbs a { transition: color .22s var(--ease); }
+.crumbs a:hover { color: var(--green); }
+.crumbs .sep { color: var(--ink-3); }
+.crumbs .here { color: var(--ink); }
+
+.art-head {
+  padding-top: clamp(28px, 4.5vh, 48px);
+  padding-bottom: clamp(28px, 4.5vh, 44px);
+  border-bottom: 1px solid var(--line);
+}
+.art-head h1 {
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  font-weight: 500; line-height: 1.04; letter-spacing: -.03em;
+  max-width: 18ch;
+  margin-top: 16px;
+}
+.art-sub {
+  margin-top: 18px;
+  font-size: 17px; line-height: 1.6; color: var(--ink-2);
+  max-width: 62ch;
+}
+
+.art-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 7.2fr) minmax(0, 3.2fr);
+  gap: clamp(32px, 4.5vw, 80px);
+  padding-block: clamp(36px, 6vh, 64px);
+}
+.art-body { max-width: 68ch; font-size: 17px; line-height: 1.7; }
+.art-body p { margin-bottom: 19px; color: rgba(22, 22, 22, .82); }
+.art-body h2 {
+  font-size: clamp(1.35rem, 2.2vw, 1.7rem);
+  font-weight: 500; letter-spacing: -.02em; line-height: 1.2;
+  margin: 46px 0 18px;
+  scroll-margin-top: 96px;
+}
+.body-section:first-child h2 { margin-top: 0; }
+.h2num {
+  display: block;
+  font-family: var(--mono); font-size: 11px; font-weight: 500;
+  letter-spacing: .14em; color: var(--green);
+  margin-bottom: 8px;
+}
+.wl {
+  color: var(--green);
+  border-bottom: 1px solid rgba(30, 77, 58, .35);
+  transition: border-color .22s var(--ease);
+}
+.wl:hover { border-color: var(--green); }
+
+.callout {
+  margin: 32px 0 8px;
+  border: 1px solid var(--line);
+  background: var(--green-tint);
+  padding: 24px 26px;
+}
+.callout .callout-text {
+  margin: 12px 0 0;
+  font-size: 15.5px; line-height: 1.65; color: var(--ink-2);
+}
+
+.ways-in { list-style: none; margin-top: 4px; }
+.ways-in li { border-top: 1px solid var(--line); padding: 16px 0 0; }
+.ways-in li:first-child { border-top: 0; padding-top: 0; }
+.ways-in li p { margin-bottom: 16px; }
+
+.category-list, .sources-list { list-style: none; margin: 4px 0 19px; }
+.category-list li, .sources-list li {
+  padding: 11px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 15px; line-height: 1.6; color: rgba(22, 22, 22, .82);
+}
+.category-list li:last-child, .sources-list li:last-child { border-bottom: 0; }
+
+.rail { border-left: 1px solid var(--line); padding-left: clamp(20px, 2.5vw, 36px); }
+.rail-sticky { position: sticky; top: 96px; }
+.glance { list-style: none; margin-top: 16px; }
+.glance li {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 9px 0;
+  border-top: 1px solid var(--line);
+  font-family: var(--mono);
+}
+.glance li:last-child { border-bottom: 1px solid var(--line); }
+.glance .k { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
+.glance .v { font-size: 13px; font-weight: 500; color: var(--green); font-variant-numeric: tabular-nums; }
+.glance-meta {
+  margin-top: 12px;
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: .06em;
+  color: var(--ink-3); text-transform: uppercase;
+}
+.rail-tag-2 { display: block; margin-top: 34px; }
+.built-from { list-style: none; margin-top: 12px; }
+.built-from li {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 14px; font-weight: 500; letter-spacing: -.005em;
+}
+.built-from li:last-child { border-bottom: 0; }
+
+@media (max-width: 900px) {
+  .art-layout { grid-template-columns: minmax(0, 1fr); }
+  .rail { border-left: 0; padding-left: 0; border-top: 1px solid var(--line); padding-top: 28px; }
+  .rail-sticky { position: static; }
+}
+</style>

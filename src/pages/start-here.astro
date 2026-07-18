@@ -90,218 +90,168 @@ const nextPaths = [
 ];
 ---
 <BaseLayout title="Start Here | Climate Finance Wiki" footerType="internal">
+<main>
 
-  <header class="path-header">
-    <div class="path-header-inner">
-      <div class="path-label">Editor's Recommended Path</div>
-      <h1>New to climate finance?<br>Start here.</h1>
-      <p class="path-intro">A curated path through the cases, concepts, and turning points that explain how climate became the defining financial story of our time. Eleven articles, no prior knowledge needed.</p>
+  <section class="path-head pad" aria-labelledby="path-h">
+    <p class="tag"><span class="num">Editor&rsquo;s Recommended Path</span></p>
+    <h1 id="path-h">New to climate finance? <em>Start here.</em></h1>
+    <p class="path-intro">A curated path through the cases, concepts, and turning points that explain how climate became the defining financial story of our time. Eleven articles, no prior knowledge needed.</p>
+  </section>
+
+  <section class="steps-sec" aria-label="Recommended reading order">
+    <div class="pad">
+      <div class="sec-head">
+        <p class="tag"><span class="num">01</span>&ensp;/&ensp;The Path</p>
+        <p class="tag">{steps.length} ARTICLES</p>
+      </div>
+      <ol class="step-list">
+        {steps.map((step, i) => (
+          <li class="step-item reveal">
+            <a class="step" href={step.href}>
+              <span class="s-num">{String(i + 1).padStart(2, '0')}</span>
+              <span class="s-main">
+                <span class="s-kind">{step.category}</span>
+                <span class="s-title">{step.title}</span>
+                <span class="s-blurb">{step.note}</span>
+              </span>
+              <span class="s-arr" aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+        ))}
+      </ol>
     </div>
-  </header>
+  </section>
 
-  <div class="path-body">
-
-    <ol class="path-steps">
-      {steps.map((step, i) => (
-        <li class="path-step reveal">
-          <div class="path-step-num">{String(i + 1).padStart(2, '0')}</div>
-          <div class="path-step-content">
-            <div class="path-step-meta">
-              <span class={`path-step-badge path-step-badge--${step.category.toLowerCase().replace(' ', '-')}`}>{step.category}</span>
-            </div>
-            <a href={step.href} class="path-step-title">{step.title}</a>
-            <p class="path-step-note">{step.note}</p>
-          </div>
-        </li>
-      ))}
-    </ol>
-
-    <div class="path-next reveal">
-      <div class="section-label">Where to Go Next</div>
-      <p class="path-next-intro">You now have the foundation. Pick a trail to go deeper.</p>
-      <div class="path-next-grid">
-        {nextPaths.map(trail => (
-          <a href={trail.href} class="path-next-card">
-            <div class="path-next-name">{trail.name}</div>
-            <div class="path-next-tagline">{trail.tagline}</div>
-            <span class="path-next-cta">Start &rarr;</span>
-          </a>
+  <section class="trails-sec" aria-labelledby="next-h">
+    <div class="pad">
+      <div class="sec-head sec-head--tight">
+        <p class="tag" id="next-h"><span class="num">02</span>&ensp;/&ensp;Where to Go Next</p>
+      </div>
+      <p class="next-intro">You now have the foundation. Pick a trail to go deeper.</p>
+      <div class="trails-grid">
+        {nextPaths.map((trail, i) => (
+          <article class="trail reveal">
+            <span class="t-num">{String(i + 1).padStart(2, '0')}</span>
+            <h3>{trail.name}</h3>
+            <p>{trail.tagline}</p>
+            <span class="t-meta">6 ARTICLES&nbsp;&middot;&nbsp;~35 MIN</span>
+            <a class="trail-link" href={trail.href}>Begin <span class="arr">&rarr;</span></a>
+          </article>
         ))}
       </div>
     </div>
+  </section>
 
-  </div>
-
-</BaseLayout>
+</main>
 
 <style>
-.path-header {
-  background: var(--color-bg-secondary);
-  padding: 80px 32px 60px;
-  border-bottom: 1px solid var(--color-border);
+/* ---------- path header ---------- */
+.path-head {
+  border-bottom: 1px solid var(--line);
+  padding-top: clamp(36px, 6vh, 72px);
+  padding-bottom: clamp(40px, 6vh, 72px);
 }
-.path-header-inner {
-  max-width: 680px;
-  margin: 0 auto;
+.path-head h1 {
+  font-size: clamp(2.5rem, 5.4vw, 4.6rem);
+  font-weight: 500; line-height: 1.04; letter-spacing: -.035em;
+  margin-top: 20px;
+  max-width: 18ch;
 }
-.path-label {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--color-accent);
-  margin-bottom: 16px;
-}
-.path-header h1 {
-  font-family: var(--font-display);
-  font-size: 2.25rem;
-  font-weight: 700;
-  line-height: 1.15;
-  color: var(--color-text-primary);
-  margin: 0 0 20px;
-}
+.path-head h1 em { font-style: normal; color: var(--green); }
 .path-intro {
-  font-size: 1.0625rem;
-  color: var(--color-text-secondary);
-  line-height: 1.65;
-  margin: 0;
+  margin-top: 22px;
+  font-size: 15.5px; color: var(--ink-2);
+  max-width: 56ch;
 }
 
-.path-body {
-  max-width: 780px;
-  margin: 0 auto;
-  padding: 60px 32px 80px;
-}
-
-.path-steps {
-  list-style: none;
-  margin: 0 0 80px;
-  padding: 0;
-}
-.path-step {
-  display: flex;
-  gap: 28px;
-  padding: 28px 0;
-  border-bottom: 1px solid var(--color-border);
-}
-.path-step:first-child {
-  border-top: 1px solid var(--color-border);
-}
-.path-step-num {
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  font-weight: 700;
-  color: var(--color-text-muted);
-  letter-spacing: 0.05em;
-  padding-top: 3px;
-  min-width: 28px;
-}
-.path-step-content {
-  flex: 1;
-}
-.path-step-meta {
-  margin-bottom: 8px;
-}
-.path-step-badge {
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
-  padding: 3px 8px;
-  border-radius: 3px;
-}
-.path-step-badge--case-study {
-  background: #fef3c7;
-  color: #92400e;
-}
-.path-step-badge--concept {
-  background: #dbeafe;
-  color: #1e40af;
-}
-.path-step-badge--framework {
-  background: #d1fae5;
-  color: #065f46;
-}
-.path-step-badge--actor {
-  background: #ede9fe;
-  color: #4c1d95;
-}
-.path-step-title {
-  display: block;
-  font-family: var(--font-display);
-  font-size: 1.125rem;
-  font-weight: 700;
-  color: var(--color-text-primary);
-  text-decoration: none;
-  margin-bottom: 8px;
-  line-height: 1.3;
-}
-.path-step-title:hover {
-  color: var(--color-accent);
-}
-.path-step-note {
-  font-size: 0.9375rem;
-  color: var(--color-text-secondary);
-  line-height: 1.6;
-  margin: 0;
-}
-
-.path-next {
-  border-top: 2px solid var(--color-border);
-  padding-top: 48px;
-}
-.path-next-intro {
-  font-size: 0.9375rem;
-  color: var(--color-text-secondary);
-  margin: 12px 0 32px;
-}
-.path-next-grid {
+/* ---------- steps ---------- */
+.steps-sec { border-bottom: 1px solid var(--line); }
+.step-list { list-style: none; padding-bottom: clamp(48px, 7vh, 80px); }
+.step-item { border-top: 1px solid var(--line); }
+.step-item:last-child { border-bottom: 1px solid var(--line); }
+.step {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  grid-template-columns: 64px minmax(0, 1fr) auto;
+  gap: 16px; align-items: baseline;
+  padding: clamp(18px, 2.6vh, 26px) 8px;
+  transition: background-color .22s var(--ease);
 }
-.path-next-card {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding: 20px;
-  background: var(--color-card-bg);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  text-decoration: none;
-  transition: border-color 0.15s, box-shadow 0.15s;
+.step .s-num {
+  font-family: var(--mono); font-size: 12px; font-weight: 500; color: var(--green);
+  transition: transform .22s var(--ease);
 }
-.path-next-card:hover {
-  border-color: var(--color-accent);
-  box-shadow: var(--shadow-card);
+.step .s-kind {
+  display: block;
+  font-family: var(--mono); font-size: 10px; font-weight: 500;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--green);
+  margin-bottom: 6px;
 }
-.path-next-name {
-  font-family: var(--font-display);
-  font-size: 0.9375rem;
-  font-weight: 700;
-  color: var(--color-text-primary);
+.step .s-title {
+  display: block;
+  font-size: clamp(1.25rem, 2.2vw, 1.7rem);
+  font-weight: 500; letter-spacing: -.02em; line-height: 1.12;
 }
-.path-next-tagline {
-  font-size: 0.8125rem;
-  color: var(--color-text-secondary);
-  line-height: 1.5;
-  flex: 1;
+.step .s-blurb {
+  display: block;
+  margin-top: 8px;
+  font-size: 14px; color: var(--ink-2); line-height: 1.55;
+  max-width: 66ch;
 }
-.path-next-cta {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--color-accent);
-  margin-top: 4px;
+.step .s-arr {
+  font-family: var(--mono); font-size: 13px; color: var(--ink-3);
+  transition: transform .22s var(--ease), color .22s var(--ease);
 }
+.step:hover { background: var(--green-tint); }
+.step:hover .s-num { transform: translateX(4px); }
+.step:hover .s-arr { transform: translateX(4px); color: var(--green); }
 
-@media (max-width: 768px) {
-  .path-header { padding: 60px 20px 40px; }
-  .path-header h1 { font-size: 1.75rem; }
-  .path-body { padding: 40px 20px 60px; }
-  .path-next-grid { grid-template-columns: 1fr; }
-  .path-step { gap: 16px; }
+/* ---------- trails (broadsheet columns) ---------- */
+.trails-sec { border-bottom: 1px solid var(--line); }
+.sec-head--tight { padding-bottom: clamp(16px, 2.5vh, 24px); }
+.next-intro {
+  font-size: 15.5px; color: var(--ink-2);
+  max-width: 52ch;
+  padding-bottom: clamp(24px, 4vh, 40px);
+}
+.trails-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding-bottom: clamp(48px, 7vh, 80px);
+}
+.trail {
+  padding: 6px clamp(20px, 2.6vw, 36px) 8px;
+  border-left: 1px solid var(--line);
+  display: flex; flex-direction: column; align-items: flex-start;
+}
+.trail:first-child { border-left: 0; padding-left: 0; }
+.trail:last-child { padding-right: 0; }
+.trail .t-num {
+  font-family: var(--mono); font-size: 12px; font-weight: 500;
+  color: var(--green); margin-bottom: 16px;
+}
+.trail h3 {
+  font-size: clamp(1.25rem, 1.9vw, 1.6rem);
+  font-weight: 500; letter-spacing: -.015em; line-height: 1.15;
+  margin-bottom: 10px;
+}
+.trail p { font-size: 14px; color: var(--ink-2); line-height: 1.6; margin-bottom: 18px; }
+.trail .t-meta {
+  font-family: var(--mono); font-size: 11px; color: var(--ink-3);
+  letter-spacing: .06em; margin-bottom: 22px;
+}
+.trail-link {
+  margin-top: auto;
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--mono); font-size: 11px; font-weight: 500;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--green);
+}
+.trail-link .arr { transition: transform .22s var(--ease); }
+.trail-link:hover .arr { transform: translateX(4px); }
+@media (max-width: 900px) {
+  .trails-grid { grid-template-columns: minmax(0, 1fr); }
+  .trail { border-left: 0; border-top: 1px solid var(--line); padding: 22px 0 28px; }
+  .trail:first-child { border-top: 0; padding-top: 0; }
+  .trail:last-child { padding-bottom: 0; }
 }
 </style>
+</BaseLayout>

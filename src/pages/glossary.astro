@@ -6,7 +6,7 @@ const glossaryTerms = [
   { term: 'Adaptation', def: 'Actions that reduce vulnerability to the impacts of climate change already locked in.', article: url('/concepts/adaptation-vs-mitigation/') },
   { term: 'Blended Finance', def: 'The strategic use of public or philanthropic capital to de-risk and mobilise private investment in climate outcomes.', article: null },
   { term: 'Carbon Neutral', def: 'Achieving zero net carbon dioxide emissions, typically by offsetting residual emissions.', article: url('/concepts/net-zero-vs-carbon-neutral/') },
-  { term: 'Carbon Offsets', def: 'Credits representing one tonne of CO\u2082 reduced or removed from the atmosphere.', article: url('/instruments/carbon-offsets/') },
+  { term: 'Carbon Offsets', def: 'Credits representing one tonne of CO₂ reduced or removed from the atmosphere.', article: url('/instruments/carbon-offsets/') },
   { term: 'Climate Action 100+', def: 'An investor-led initiative pressing the world\'s largest corporate emitters to take action.', article: url('/actors/climate-action-100-plus/') },
   { term: 'Climate Finance', def: 'The flow of capital directed at reducing emissions, building resilience, and managing climate-related financial risk.', article: url('/concepts/climate-finance/') },
   { term: 'CSRD', def: 'EU regulation requiring large companies to report on sustainability topics under European Sustainability Reporting Standards.', article: url('/frameworks/csrd/') },
@@ -20,13 +20,13 @@ const glossaryTerms = [
   { term: 'MDBs', def: 'Institutions like the World Bank that use public capital to mobilise private climate finance.', article: url('/actors/development-finance-institutions/') },
   { term: 'Mitigation', def: 'Actions that reduce or prevent greenhouse gas emissions.', article: url('/concepts/adaptation-vs-mitigation/') },
   { term: 'Net Zero', def: 'A state in which greenhouse gas emissions entering the atmosphere are balanced by removals.', article: url('/concepts/net-zero-vs-carbon-neutral/') },
-  { term: 'Paris Agreement', def: 'The 2015 international treaty committing signatories to limit global warming to well below 2\u00b0C.', article: url('/frameworks/paris-agreement/') },
+  { term: 'Paris Agreement', def: 'The 2015 international treaty committing signatories to limit global warming to well below 2°C.', article: url('/frameworks/paris-agreement/') },
   { term: 'Physical Risks', def: 'Financial risks arising from the direct physical effects of climate change.', article: url('/concepts/physical-risks/') },
-  { term: 'Science Based Targets', def: 'Emissions reduction targets validated as consistent with limiting warming to 1.5\u00b0C or well below 2\u00b0C.', article: url('/actors/science-based-targets-initiative/') },
+  { term: 'Science Based Targets', def: 'Emissions reduction targets validated as consistent with limiting warming to 1.5°C or well below 2°C.', article: url('/actors/science-based-targets-initiative/') },
   { term: 'Stranded Assets', def: 'Assets that have lost value or must be retired early due to climate policy, regulation, or market shifts.', article: url('/concepts/stranded-assets/') },
   { term: 'Sustainability-Linked Bonds', def: 'Bonds whose financial terms change if the issuer hits or misses pre-agreed sustainability targets.', article: url('/instruments/sustainability-linked-bonds/') },
   { term: 'TCFD', def: 'A framework for companies to disclose climate-related risks and opportunities.', article: url('/frameworks/tcfd/') },
-  { term: 'The 1.5\u00b0C Threshold', def: 'The aspirational warming limit set by the Paris Agreement. Breached on an annual basis in 2024.', article: url('/concepts/the-1.5c-threshold/') },
+  { term: 'The 1.5°C Threshold', def: 'The aspirational warming limit set by the Paris Agreement. Breached on an annual basis in 2024.', article: url('/concepts/the-1.5c-threshold/') },
   { term: 'The Greenium', def: 'The lower borrowing cost that green bond issuers may achieve compared to conventional bonds.', article: url('/instruments/the-greenium/') },
   { term: 'Transition Bonds', def: 'Bonds designed to finance the decarbonisation of high-emitting sectors.', article: url('/instruments/transition-bonds/') },
   { term: 'Transition Risks', def: 'Financial risks arising from the shift to a low-carbon economy.', article: url('/concepts/transition-risks/') },
@@ -43,23 +43,21 @@ for (const t of glossaryTerms) {
 const letters = Object.keys(grouped).sort();
 ---
 <BaseLayout title="Glossary | Climate Finance Wiki" footerType="internal">
-  <div class="breadcrumb-strip">
-    <div class="breadcrumb-inner">
-      <a href={url('/')}>Home</a>
-      <span class="breadcrumb-sep">&rarr;</span>
-      <span class="breadcrumb-current">Glossary</span>
-    </div>
-  </div>
 
-  <div class="page-header">
-    <div class="header-top">
-      <h1 class="page-title">Glossary</h1>
-    </div>
-    <p class="page-subtitle">Plain-English definitions for the terms that matter in climate finance</p>
+  <nav class="crumbs pad" aria-label="Breadcrumb">
+    <a href={url('/')}>Home</a>
+    <span class="sep">&rarr;</span>
+    <span class="here">Glossary</span>
+  </nav>
+
+  <div class="art-head pad">
+    <p class="tag"><span class="num">Glossary</span>&ensp;/&ensp;The Decoder</p>
+    <h1 class="page-title">Glossary</h1>
+    <p class="art-sub">Plain-English definitions for the terms that matter in climate finance</p>
     <p class="term-count" id="termCount">{glossaryTerms.length} terms</p>
   </div>
 
-  <div class="search-container">
+  <div class="search-container pad">
     <div class="search-wrapper">
       <span class="search-icon">
         <svg width="16" height="16" viewBox="0 0 17 17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="7" cy="7" r="5"/><line x1="10.8" y1="10.8" x2="15.5" y2="15.5"/></svg>
@@ -68,7 +66,7 @@ const letters = Object.keys(grouped).sort();
     </div>
   </div>
 
-  <div class="glossary-container" id="glossaryList">
+  <div class="glossary-container pad" id="glossaryList">
     {letters.map(letter => (
       <div class="letter-section" id={`letter-${letter}`}>
         <h2 class="letter-header">{letter}</h2>
@@ -118,4 +116,87 @@ const letters = Object.keys(grouped).sort();
       });
     });
   </script>
+
 </BaseLayout>
+
+<style>
+.crumbs {
+  padding-top: 26px;
+  font-family: var(--mono); font-size: 11px; font-weight: 500;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2);
+  display: flex; flex-wrap: wrap; gap: 6px 10px;
+}
+.crumbs a { transition: color .22s var(--ease); }
+.crumbs a:hover { color: var(--green); }
+.crumbs .sep { color: var(--ink-3); }
+.crumbs .here { color: var(--ink); }
+
+.art-head {
+  padding-top: clamp(28px, 4.5vh, 48px);
+  padding-bottom: clamp(28px, 4.5vh, 44px);
+}
+.art-head h1 {
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  font-weight: 500; line-height: 1.04; letter-spacing: -.03em;
+  margin-top: 16px;
+}
+.art-sub {
+  margin-top: 18px;
+  font-size: 17px; line-height: 1.6; color: var(--ink-2);
+  max-width: 62ch;
+}
+.term-count {
+  margin-top: 20px;
+  font-family: var(--mono); font-size: 11px; font-weight: 500;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--green);
+}
+
+.search-container { padding-bottom: clamp(28px, 4vh, 44px); border-bottom: 1px solid var(--line); }
+.search-wrapper {
+  display: flex; align-items: center; gap: 12px;
+  max-width: 520px;
+  border: 1px solid var(--line);
+  background: #fff;
+  padding: 12px 16px;
+  transition: border-color .22s var(--ease);
+}
+.search-wrapper:focus-within { border-color: var(--green); }
+.search-icon { color: var(--ink-3); display: flex; }
+.search-input {
+  border: 0; outline: 0; background: none;
+  font-family: var(--sans); font-size: 15px; color: var(--ink);
+  width: 100%;
+}
+.search-input::placeholder { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; color: var(--ink-3); text-transform: uppercase; }
+
+.glossary-container { padding-block: clamp(32px, 5vh, 56px) clamp(48px, 7vh, 88px); }
+.letter-section { margin-bottom: clamp(28px, 4vh, 44px); }
+.letter-header {
+  font-family: var(--mono); font-size: 12px; font-weight: 500;
+  letter-spacing: .14em; color: var(--green);
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+.term-entry {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 6fr) 150px;
+  gap: 8px 28px;
+  align-items: baseline;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+.term-name { font-size: 16px; font-weight: 500; letter-spacing: -.005em; }
+.term-def { font-size: 14.5px; line-height: 1.6; color: var(--ink-2); margin: 0; }
+.term-link {
+  font-family: var(--mono); font-size: 10.5px; font-weight: 500;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--green);
+  white-space: nowrap;
+  transition: color .22s var(--ease);
+}
+.term-link:hover { color: var(--ink); }
+
+@media (max-width: 900px) {
+  .term-entry { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  .term-link { justify-self: start; }
+}
+</style>

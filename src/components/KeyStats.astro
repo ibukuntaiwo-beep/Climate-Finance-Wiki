@@ -1,16 +1,49 @@
 ---
 interface Props {
   stats: Array<{value: string, label: string}>;
+  size?: 'default' | 'large';
 }
-const { stats } = Astro.props;
+const { stats, size = 'default' } = Astro.props;
 ---
-<div class="key-stats">
-  <div class="key-stats-inner">
-    {stats.map((stat) => (
-      <div class="stat-item">
-        <div class="stat-number">{stat.value}</div>
-        <div class="stat-label">{stat.label}</div>
-      </div>
-    ))}
-  </div>
+<div class={`keystats pad${size === 'large' ? ' keystats--lg' : ''}`} style={`--kcols:${stats.length}`}>
+  {stats.map((stat) => (
+    <div class="kstat">
+      <div class="kv" set:html={stat.value}></div>
+      <div class="kl">{stat.label}</div>
+    </div>
+  ))}
 </div>
+
+<style is:global>
+.keystats{
+  display:grid;
+  grid-template-columns:repeat(var(--kcols,4),minmax(0,1fr));
+  border-bottom:1px solid var(--line);
+}
+.kstat{
+  padding:22px clamp(16px,2vw,28px) 24px;
+  border-left:1px solid var(--line);
+}
+.kstat:first-child{border-left:0;padding-left:0}
+.kstat .kv{
+  font-size:clamp(1.05rem,1.6vw,1.35rem);
+  font-weight:500;letter-spacing:-.015em;line-height:1.15;
+  color:var(--green);
+}
+.keystats--lg .kstat{padding-top:26px;padding-bottom:28px}
+.keystats--lg .kstat .kv{
+  font-size:clamp(1.6rem,2.6vw,2.2rem);
+  letter-spacing:-.025em;line-height:1.1;
+  font-variant-numeric:tabular-nums;
+}
+.kstat .kl{
+  margin-top:8px;
+  font-family:var(--mono);font-size:10.5px;font-weight:500;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);
+}
+@media (max-width:900px){
+  .keystats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .kstat:nth-child(odd){border-left:0;padding-left:0}
+  .kstat:nth-child(n+3){border-top:1px solid var(--line)}
+}
+</style>

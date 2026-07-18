@@ -11,11 +11,10 @@ const { trailName, current, total, prevHref, nextHref } = Astro.props;
 const dots = Array.from({ length: total }, (_, i) => i + 1);
 ---
 <div class="thread-bar">
-  <div class="thread-bar-inner">
+  <div class="thread-bar-inner pad">
     <div class="thread-info">
-      <span class="thread-label">Trail:</span>
-      <span class="thread-name">{trailName}</span>
-      <div class="thread-dots">
+      <p class="tag"><span class="num">Trail</span>&ensp;/&ensp;{trailName}</p>
+      <div class="thread-dots" aria-label={`Article ${current} of ${total}`}>
         {dots.map((dot) => (
           <span class:list={[
             'thread-dot',
@@ -28,12 +27,38 @@ const dots = Array.from({ length: total }, (_, i) => i + 1);
     <div class="thread-nav-links">
       {prevHref
         ? <a href={prevHref}>&larr; Previous</a>
-        : <a class="disabled">&larr; Previous</a>
+        : <span class="disabled">&larr; Previous</span>
       }
       {nextHref
         ? <a href={nextHref}>Next &rarr;</a>
-        : <a class="disabled">Next &rarr;</a>
+        : <span class="disabled">Next &rarr;</span>
       }
     </div>
   </div>
 </div>
+
+<style is:global>
+.thread-bar{border-bottom:1px solid var(--line);background:var(--green-tint)}
+.thread-bar-inner{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+  gap:8px 24px;
+  padding-block:12px;
+}
+.thread-info{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px}
+.thread-dots{display:flex;align-items:center;gap:6px}
+.thread-dot{
+  width:6px;height:6px;
+  border:1px solid var(--ink-3);
+  display:inline-block;
+}
+.thread-dot.filled{background:var(--green);border-color:var(--green)}
+.thread-dot.current{border-color:var(--green);background:var(--green-tint-2)}
+.thread-nav-links{display:flex;gap:18px}
+.thread-nav-links a,.thread-nav-links .disabled{
+  font-family:var(--mono);font-size:11px;font-weight:500;
+  letter-spacing:.1em;text-transform:uppercase;
+}
+.thread-nav-links a{color:var(--ink-2);transition:color .22s var(--ease)}
+.thread-nav-links a:hover{color:var(--green)}
+.thread-nav-links .disabled{color:var(--ink-3)}
+</style>

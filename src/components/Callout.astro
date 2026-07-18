@@ -5,8 +5,18 @@ interface Props {
 const { label = 'COMMS INSIGHT' } = Astro.props;
 ---
 <div class="callout">
-  <div class="callout-label">{label}</div>
-  <div class="callout-text">
-    <slot />
-  </div>
+  <p class="tag"><span class="num">{label}</span></p>
+  <div class="callout-text"><slot /></div>
 </div>
+
+<style is:global>
+.callout{
+  margin:32px 0;
+  border:1px solid var(--line);
+  background:var(--green-tint);
+  padding:22px 24px;
+}
+.callout .callout-text{margin-top:12px;font-size:15px;line-height:1.65;color:var(--ink-2)}
+.callout .callout-text p{margin:10px 0 0}
+.callout .callout-text p:first-child{margin-top:0}
+</style>

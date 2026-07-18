@@ -4,13 +4,28 @@ interface Props {
 }
 const { events } = Astro.props;
 ---
-<div class="timeline-section">
-  <div class="timeline">
-    {events.map((event) => (
-      <div class="timeline-item">
-        <div class="timeline-year">{event.year}</div>
-        <div class="timeline-desc">{event.description}</div>
-      </div>
-    ))}
-  </div>
-</div>
+<ul class="timeline">
+  {events.map((event) => (
+    <li class="tl-row reveal">
+      <span class="tl-year">{event.year}</span>
+      <span class="tl-desc">{event.description}</span>
+    </li>
+  ))}
+</ul>
+
+<style is:global>
+.timeline{list-style:none}
+.tl-row{
+  display:grid;
+  grid-template-columns:110px minmax(0,1fr);
+  gap:16px;align-items:baseline;
+  padding:14px 4px;
+  border-top:1px solid var(--line);
+}
+.timeline .tl-row:last-child{border-bottom:1px solid var(--line)}
+.tl-year{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--green);white-space:nowrap}
+.tl-desc{font-size:15px;line-height:1.6;color:rgba(22,22,22,.82)}
+@media (max-width:520px){
+  .tl-row{grid-template-columns:minmax(0,1fr);row-gap:4px;padding-block:12px}
+}
+</style>

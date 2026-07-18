@@ -23,6 +23,7 @@ const articles = defineCollection({
     }).optional(),
     sources: z.array(z.string()).optional(),
     caseStudy: z.object({
+      body: z.string().optional(),
       economistBody: z.string().optional(),
       natureBody: z.string().optional(),
       visualFormat: z.enum(['timeline', 'before-after']).optional(),

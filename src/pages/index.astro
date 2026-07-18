@@ -5,216 +5,537 @@ import { trails } from '../data/trails';
 import { categories } from '../data/categories';
 import { getCollection } from 'astro:content';
 
+const articles = await getCollection('articles');
+
 const latestNews = (await getCollection('news'))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 3);
-const fmtNews = (d: Date) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+const fmtNews = (d: Date) =>
+  d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }).toUpperCase();
+
+// Index section: mockup order, data from categories.ts.
+// Pane items resolve topArticles titles to real article URLs where a
+// title match exists in the collection; otherwise fall back to the
+// category index page.
+const catOrder = ['concepts', 'frameworks', 'case-studies', 'actors', 'instruments'];
+const indexCats = catOrder
+  .map((slug) => categories.find((c) => c.slug === slug))
+  .filter((c): c is (typeof categories)[number] => Boolean(c));
+
+const CATS: Record<string, { label: string; href: string; items: [string, string][] }> = {};
+for (const cat of indexCats) {
+  CATS[cat.slug] = {
+    label: cat.name,
+    href: url(`/${cat.slug}/`),
+    items: cat.topArticles.map((title) => {
+      const match =
+        articles.find((a) => a.data.category === cat.slug && a.data.title === title) ??
+        articles.find((a) => a.data.category === cat.slug && a.data.title.startsWith(title));
+      return [title, match ? url(`/${cat.slug}/${match.id}/`) : url(`/${cat.slug}/`)] as [string, string];
+    }),
+  };
+}
+const padNum = (n: number) => String(n).padStart(2, '0');
 ---
 <BaseLayout title="Climate Finance Wiki" footerType="landing">
 
-<!-- HERO -->
-<section class="hero-split">
-  <div class="hero-photo">
-    <img id="hero-img" src="https://images.unsplash.com/photo-1600581808016-6fa27d8742a1?auto=format&fit=crop&w=1200&q=80" alt="House surrounded by wildfire glow at night">
-    <div class="hero-photo-overlay"></div>
+<!-- 01 · HERO -->
+<section class="hero pad" aria-labelledby="hero-h">
+  <div>
+    <p class="tag"><span class="num">01</span>&ensp;/&ensp;The Reference</p>
+    <h1 id="hero-h">How the world <em>funds</em> its response to climate change.</h1>
+    <div class="hero-case reveal">
+      <p class="tag" id="case-tag">Featured Case Study&ensp;&mdash;&ensp;California, 2019</p>
+      <h2 id="case-headline">The First Climate Change Bankruptcy</h2>
+      <p class="case-quote" id="case-quote">$30 billion in wildfire liabilities destroyed California&rsquo;s largest utility, proving physical climate risk isn&rsquo;t theoretical.</p>
+      <a class="btn-outline case-cta" id="case-cta" href={url('/case-studies/pge-bankruptcy/')}>Read the case study <span class="arr">&rarr;</span></a>
+    </div>
   </div>
-  <div class="hero-text">
-    <div class="hero-case-label">Featured Case Study</div>
-    <h1 id="hero-headline">The First Climate Change Bankruptcy</h1>
-    <blockquote class="hero-pullquote">
-      <p id="hero-quote">$30 billion in wildfire liabilities destroyed California&rsquo;s largest utility, proving physical climate risk isn&rsquo;t theoretical.</p>
-    </blockquote>
-<a id="hero-cta" href={url('/case-studies/pge-bankruptcy/')} class="hero-cta">Read the case study &rarr;</a>
-  </div>
+  <figure class="plate reveal">
+    <div class="plate-img">
+      <img id="case-img" src="https://images.unsplash.com/photo-1600581808016-6fa27d8742a1?auto=format&fit=crop&w=1600&q=80" alt="House surrounded by wildfire glow at night" width="1600" height="1000">
+    </div>
+    <figcaption class="plate-cap" id="case-figcaption">Fig. 01 — Wildfire at the urban edge, California</figcaption>
+  </figure>
 </section>
+
 <script is:inline>
 (function () {
+  "use strict";
   var base = document.querySelector('meta[name="base"]').content;
   var studies = [
     {
+      tag: 'Featured Case Study — California, 2019',
       headline: 'The First Climate Change Bankruptcy',
-      quote: '$30 billion in wildfire liabilities destroyed California\u2019s largest utility, proving physical climate risk isn\u2019t theoretical.',
+      quote: '$30 billion in wildfire liabilities destroyed California’s largest utility, proving physical climate risk isn’t theoretical.',
       link: base + '/case-studies/pge-bankruptcy/',
-      img: 'https://images.unsplash.com/photo-1600581808016-6fa27d8742a1?auto=format&fit=crop&w=1200&q=80',
-      alt: 'House surrounded by wildfire glow at night'
+      img: 'https://images.unsplash.com/photo-1600581808016-6fa27d8742a1?auto=format&fit=crop&w=1600&q=80',
+      alt: 'House surrounded by wildfire glow at night',
+      figcaption: 'Fig. 01 — Wildfire at the urban edge, California'
     },
     {
+      tag: 'Featured Case Study — Wolfsburg, 2015',
       headline: 'The Ad Campaign That Became a Criminal Evidence File',
-      quote: '11 million cars. 40\u00d7 the legal emissions limit. And a \u201cClean Diesel\u201d campaign that became evidence for prosecutors.',
+      quote: '11 million cars. 40× the legal emissions limit. And a “Clean Diesel” campaign that became evidence for prosecutors.',
       link: base + '/case-studies/volkswagen-dieselgate/',
-      img: 'https://images.unsplash.com/photo-1486006920555-c77dcf18193c?auto=format&fit=crop&w=1200&q=80',
-      alt: 'Car exhaust fumes on a city street'
+      img: 'https://images.unsplash.com/photo-1579519772836-2732b96a6306?auto=format&fit=crop&w=1600&q=80',
+      alt: 'Queued traffic in dense smog at night, taillights glowing',
+      figcaption: 'Fig. 01 — Tailpipe emissions, urban traffic'
     },
     {
-      headline: 'The Shareholder with 0.02% That Rewrote ExxonMobil\u2019s Board',
-      quote: 'Engine No. 1\u2019s stake was negligible but its argument was not. This is the story of a $40 million argument that BlackRock, Vanguard, and State Street couldn\u2019t vote against.',
+      tag: 'Featured Case Study — Houston, 2021',
+      headline: 'The Shareholder with 0.02% That Rewrote ExxonMobil’s Board',
+      quote: 'Engine No. 1’s stake was negligible but its argument was not. This is the story of a $40 million argument that BlackRock, Vanguard, and State Street couldn’t vote against.',
       link: base + '/case-studies/engine-no-1-exxonmobil/',
-      img: 'https://images.unsplash.com/photo-1431540015161-0bf868a2d407?auto=format&fit=crop&w=1200&q=80',
-      alt: 'Oval conference table and chairs in a boardroom'
+      img: 'https://images.unsplash.com/photo-1431540015161-0bf868a2d407?auto=format&fit=crop&w=1600&q=80',
+      alt: 'Oval conference table and chairs in a boardroom',
+      figcaption: 'Fig. 01 — The boardroom'
     },
     {
+      tag: 'Featured Case Study — Oslo, 2019',
       headline: 'The $1 Trillion Oil Fund That Sold Its Oil Stocks',
-      quote: 'Norway\u2019s sovereign wealth fund was created to manage oil revenues. In 2019, it divested from 134 upstream oil companies because it already had too much oil exposure.',
+      quote: 'Norway’s sovereign wealth fund was created to manage oil revenues. In 2019, it divested from 134 upstream oil companies because it already had too much oil exposure.',
       link: base + '/case-studies/norway-gpfg-divestment/',
-      img: 'https://images.unsplash.com/photo-1633829131104-e2134f75c6e5?auto=format&fit=crop&w=1200&q=80',
-      alt: 'Oil rig in the middle of the ocean at sunset'
+      img: 'https://images.unsplash.com/photo-1633829131104-e2134f75c6e5?auto=format&fit=crop&w=1600&q=80',
+      alt: 'Oil rig in the middle of the ocean at sunset',
+      figcaption: 'Fig. 01 — Offshore platform, North Sea'
     }
   ];
   var idx = parseInt(localStorage.getItem('heroIdx') || '0', 10);
   var pick = studies[idx % studies.length];
   localStorage.setItem('heroIdx', String(idx + 1));
-  document.getElementById('hero-headline').textContent = pick.headline;
-  document.getElementById('hero-quote').textContent = pick.quote;
-  document.getElementById('hero-cta').href = pick.link;
-  var img = document.getElementById('hero-img');
+  document.getElementById('case-tag').textContent = pick.tag;
+  document.getElementById('case-headline').textContent = pick.headline;
+  document.getElementById('case-quote').textContent = pick.quote;
+  document.getElementById('case-cta').href = pick.link;
+  var img = document.getElementById('case-img');
   img.src = pick.img;
   img.alt = pick.alt;
+  document.getElementById('case-figcaption').textContent = pick.figcaption;
 })();
 </script>
 
-<!-- FLOATING CARDS -->
-<div class="floating-cards">
-  <div class="floating-card floating-card--topic">
-    <div class="floating-card-label">Topic of the Day</div>
-    <h3>Stranded Assets</h3>
-    <p>Why $1.4 trillion in fossil fuel reserves may never be burned, and what that means for every portfolio still holding them.</p>
-    <a href={url('/concepts/stranded-assets/')}>Read &rarr;</a>
-  </div>
-  <div class="floating-card floating-card--news">
-    <div class="floating-card-label">Editor's Recommendation</div>
-    <h3>New to climate finance? Start here</h3>
-    <p>A curated path through the cases, concepts, and turning points that explain how climate became the defining financial story of our time.</p>
-    <a href={url('/start-here/')}>Start the thread &rarr;</a>
-  </div>
-</div>
-
-<!-- LATEST NEWS -->
-{latestNews.length > 0 && (
-<section class="latest-news-section reveal">
-  <div class="latest-news-head">
-    <div>
-      <div class="section-label">Latest News</div>
-      <p class="trails-subtitle">Curated climate-finance news, explained plainly &mdash; with links out to the source and into the wiki.</p>
+<!-- WIDE PLATE INTERLUDE -->
+<section class="plate-wide pad" aria-label="Transmission infrastructure photograph">
+  <figure class="reveal">
+    <div class="wide-frame">
+      <div class="wide-clip">
+        <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1600&q=80" alt="Electricity pylons crossing a plain at dusk" loading="lazy">
+      </div>
     </div>
-    <a href={url('/news/')} class="latest-news-all">All news&ensp;&rarr;</a>
-  </div>
-  <div class="latest-news-grid">
-    {latestNews.map((item) => (
-      <a href={url(`/news/${item.id}/`)} class="latest-news-card">
-        <div class="latest-news-card__meta">
-          <span class="news-tag">{item.data.tag}</span>
-          <span class="news-date">{fmtNews(item.data.date)}</span>
+    <figcaption class="wide-caption">
+      <span class="cap-text">Making climate finance make sense &mdash; for the people who explain it.</span>
+      <span class="cap-credit">Fig. 02 &mdash; Transmission</span>
+    </figcaption>
+  </figure>
+</section>
+
+<!-- 02 · THE INDEX -->
+<section class="index-sec" aria-labelledby="idx-h" id="categories">
+  <div class="pad">
+    <div class="sec-head">
+      <p class="tag" id="idx-h"><span class="num">02</span>&ensp;/&ensp;The Index</p>
+    </div>
+    <div class="index-grid">
+      <ul class="idx-list">
+        {indexCats.map((cat, i) => (
+          <li class="idx-item" data-cat={cat.slug}>
+            <a class="idx-row" href={url(`/${cat.slug}/`)}>
+              <span class="idx-num">{padNum(i + 1)}</span>
+              <span class="idx-name">{cat.name}</span>
+              <span class="idx-count">{cat.articleCount}&nbsp;ENTRIES</span>
+            </a>
+            <button class="idx-toggle" type="button" aria-expanded="false" aria-controls={`inline-${cat.slug}`} aria-label={`Preview ${cat.name} articles`}></button>
+            <div class="idx-inline" id={`inline-${cat.slug}`}></div>
+          </li>
+        ))}
+      </ul>
+      <aside class="idx-pane" aria-live="polite">
+        <div class="idx-pane-sticky">
+          <p class="tag pane-label">Selected&nbsp;/&nbsp;<span class="num" id="pane-cat-label">Concepts</span></p>
+          <div class="pane-body" id="pane-body"></div>
         </div>
-        <h3 class="latest-news-card__title">{item.data.title}</h3>
-        <p class="latest-news-card__summary">{item.data.summary}</p>
-        <span class="latest-news-card__cta">Read&ensp;&rarr;</span>
-      </a>
-    ))}
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- 03 · READING TRAILS -->
+<section class="trails-sec" aria-labelledby="trails-h">
+  <div class="pad">
+    <div class="sec-head">
+      <p class="tag" id="trails-h"><span class="num">03</span>&ensp;/&ensp;Reading Trails</p>
+      <a class="more" href={url('/start-here/')}>Start here</a>
+    </div>
+    <div class="trails-grid">
+      {trails.map((trail, i) => (
+        <article class="trail reveal">
+          <span class="t-num">{padNum(i + 1)}</span>
+          <h3>{trail.name}</h3>
+          <p>{trail.tagline}</p>
+          <span class="t-meta">{trail.articles.length} ARTICLES&nbsp;&middot;&nbsp;~35 MIN</span>
+          <a class="trail-link" href={url(`/${trail.articles[0].category}/${trail.articles[0].slug}/`)}>Begin <span class="arr">&rarr;</span></a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- 04 · DISPATCHES -->
+{latestNews.length > 0 && (
+<section class="news-sec" aria-labelledby="news-h">
+  <div class="pad">
+    <div class="sec-head">
+      <p class="tag" id="news-h"><span class="num">04</span>&ensp;/&ensp;Dispatches</p>
+      <a class="more" href={url('/news/')}>All news</a>
+    </div>
+    <ul class="news-list">
+      {latestNews.map((item) => (
+        <li class="news-item reveal">
+          <a class="news-link" href={url(`/news/${item.id}/`)}>
+            <span class="news-date">{fmtNews(item.data.date)}</span>
+            <span class="news-title">{item.data.title}</span>
+            <span class="news-cat">{item.data.tag}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
   </div>
 </section>
 )}
 
-<!-- STATS STRIP -->
-<div class="stats-strip reveal">
-  <div class="stats-strip-inner">
-    <span class="strip-stat">52 articles across 5 categories</span>
-  </div>
+<!-- COLOPHON -->
+<div class="colophon pad">
+  <p class="reveal">Built from ICMA Green Bond Principles, UNFCCC reports, SEC enforcement filings, the EU Taxonomy, and IPCC Assessment Reports.</p>
+  <p class="who reveal">Curated by <a href={url('/author/ibukun-taiwo/')}>Ibukun Taiwo</a><br><span class="who-role">Communications professional specialising in climate finance.</span></p>
 </div>
 
-<!-- THREAD CARDS -->
-<section class="trails-section reveal">
-  <div class="section-label">Choose Your Path</div>
-  <p class="trails-subtitle">Three expert-curated paths through the material. Pick the one that matches your need.</p>
-  <div class="trails-grid">
-    {trails.map((trail) => (
-      <div class="trail-card">
-        <div class="trail-card-photo">
-          <img src={trail.photo} alt={trail.name} loading="lazy">
-          <div class="trail-card-photo-overlay"></div>
-          <span class="trail-card-photo-label">6 articles &middot; ~35 min</span>
-        </div>
-        <div class="trail-card-body">
-          <h3>{trail.name}</h3>
-          <p class="trail-card-tagline">{trail.tagline}</p>
-          <ol class="trail-card-list">
-            {trail.articles.map((article, i) => (
-              <li>
-                <span class="trail-num">{String(i + 1).padStart(2, '0')}</span>
-                <a href={url(`/${article.category}/${article.slug}/`)} class="trail-article">{article.title}</a>
-              </li>
-            ))}
-          </ol>
-          <a href={url(`/${trail.articles[0].category}/${trail.articles[0].slug}/`)} class="trail-card-cta">Start this trail &rarr;</a>
-        </div>
-      </div>
-    ))}
-  </div>
-</section>
+<script is:inline define:vars={{ CATS }}>
+(function(){
+  "use strict";
+  var RM = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-<!-- PHOTO DIVIDER -->
-<div class="photo-divider">
-  <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1400&q=80" alt="Wind turbines on green hillside at sunset">
-  <div class="photo-divider-overlay"></div>
-  <p class="photo-divider-text">How the world funds its response to climate change.</p>
-</div>
+  function esc(s){ return s.replace(/&/g,"&amp;").replace(/</g,"&lt;"); }
 
-<!-- CATEGORIES WITH DEPTH -->
-<section class="categories-section reveal" id="categories">
-  <div class="section-label">Browse by Category</div>
-  <div class="categories-grid">
-    {categories.slice(0, 3).map(cat => (
-      <div class="category-card">
-        <div class="category-card-header">
-          <h3>{cat.name}</h3>
-          <div class="category-card-counts">
-            <span class="category-card-count">{cat.articleCount} articles</span>
-            <span class="category-card-count-label">{cat.connectionCount} connections</span>
-            <div class="category-depth-bar"><div class="category-depth-bar-fill" style={`width:${cat.depthPercent}%`}></div></div>
-          </div>
-        </div>
-        <div class="category-card-top-label">Top Articles</div>
-        <ul class="category-card-articles">
-          {cat.topArticles.map(a => <li>{a}</li>)}
-        </ul>
-        <a href={url(`/${cat.slug}/`)} class="category-card-link">Browse {cat.name} &rarr;</a>
-      </div>
-    ))}
-  </div>
-  <div class="categories-grid-bottom">
-    {categories.slice(3).map(cat => (
-      <div class="category-card">
-        <div class="category-card-header">
-          <h3>{cat.name}</h3>
-          <div class="category-card-counts">
-            <span class="category-card-count">{cat.articleCount} articles</span>
-            <span class="category-card-count-label">{cat.connectionCount} connections</span>
-            <div class="category-depth-bar"><div class="category-depth-bar-fill" style={`width:${cat.depthPercent}%`}></div></div>
-          </div>
-        </div>
-        <div class="category-card-top-label">Top Articles</div>
-        <ul class="category-card-articles">
-          {cat.topArticles.map(a => <li>{a}</li>)}
-        </ul>
-        <a href={url(`/${cat.slug}/`)} class="category-card-link">Browse {cat.name} &rarr;</a>
-      </div>
-    ))}
-  </div>
-</section>
+  function paneHTML(cat){
+    var c = CATS[cat], h = "<ul class=\"pane-list\">";
+    for (var i=0;i<c.items.length;i++){
+      h += "<li><span class=\"n\">"+String(i+1).padStart(2,"0")+"</span><a href=\""+c.items[i][1]+"\">"+esc(c.items[i][0])+"</a></li>";
+    }
+    h += "</ul><a class=\"pane-browse\" href=\""+c.href+"\">Browse "+esc(c.label)+" <span class=\"arr\">&rarr;</span></a>";
+    return h;
+  }
 
-<!-- SOURCES BAR -->
-<div class="sources-bar reveal">
-  <div class="sources-bar-inner">
-    <span class="sources-bar-label">Built From</span>
-    <span class="sources-bar-text">ICMA Green Bond Principles, UNFCCC official reports, SEC enforcement filings, EU Taxonomy Regulation, IPCC Assessment Reports</span>
-  </div>
-</div>
+  /* desktop preview pane */
+  var paneBody = document.getElementById("pane-body");
+  var paneLabel = document.getElementById("pane-cat-label");
+  var current = "";
+  var swapTimer = null;
 
-<!-- AUTHOR BLOCK -->
-<div class="author-bar reveal">
-  <div class="author-bar-inner">
-    <span class="author-bar-text">Curated by <a href={url('/author/ibukun-taiwo/')} class="author-bar-link">Ibukun Taiwo</a></span>
-    <span class="author-bar-role">Communications professional specialising in climate finance</span>
-  </div>
-</div>
+  function setPane(cat, instant){
+    if (cat === current && paneBody.innerHTML !== "") return;
+    current = cat;
+    if (RM || instant){
+      paneBody.innerHTML = paneHTML(cat);
+      paneLabel.textContent = CATS[cat].label;
+      return;
+    }
+    paneBody.classList.add("is-swapping");
+    clearTimeout(swapTimer);
+    swapTimer = setTimeout(function(){
+      paneBody.innerHTML = paneHTML(cat);
+      paneLabel.textContent = CATS[cat].label;
+      paneBody.classList.remove("is-swapping");
+    }, 90);
+  }
+
+  var items = document.querySelectorAll(".idx-item");
+  if (items.length) {
+    setPane(items[0].getAttribute("data-cat"), true);
+    items[0].classList.add("is-active");
+  }
+  function activate(item){
+    for (var i=0;i<items.length;i++) items[i].classList.remove("is-active");
+    item.classList.add("is-active");
+    setPane(item.getAttribute("data-cat"));
+  }
+  for (var i=0;i<items.length;i++){
+    (function(item){
+      item.addEventListener("mouseenter", function(){ activate(item); });
+      item.addEventListener("focusin", function(){ activate(item); });
+    })(items[i]);
+  }
+
+  /* mobile inline toggles */
+  var toggles = document.querySelectorAll(".idx-toggle");
+  for (var t=0;t<toggles.length;t++){
+    (function(btn){
+      var item = btn.closest(".idx-item");
+      var cat = item.getAttribute("data-cat");
+      var panel = document.getElementById("inline-"+cat);
+      btn.addEventListener("click", function(){
+        var open = btn.getAttribute("aria-expanded") === "true";
+        btn.setAttribute("aria-expanded", String(!open));
+        if (!open){
+          if (!panel.innerHTML) panel.innerHTML = paneHTML(cat);
+          panel.classList.add("open");
+        } else {
+          panel.classList.remove("open");
+        }
+      });
+    })(toggles[t]);
+  }
+})();
+</script>
+
+<style is:global>
+/* ---------- hero ---------- */
+.hero{
+  border-bottom:1px solid var(--line);
+  padding-top:clamp(40px,6.5vh,80px);
+  padding-bottom:clamp(48px,7vh,88px);
+  display:grid;
+  grid-template-columns:minmax(0,6.4fr) minmax(0,4.6fr);
+  gap:clamp(32px,5vw,88px);
+  align-items:start;
+}
+.hero h1{
+  font-size:clamp(2.3rem,4.4vw,3.9rem);
+  font-weight:500;
+  line-height:1.02;
+  letter-spacing:-.035em;
+  max-width:16ch;
+  margin-top:16px;
+}
+.hero h1 em{font-style:normal;color:var(--green)}
+
+.hero-case{
+  margin-top:clamp(30px,5vh,52px);
+  padding-top:clamp(24px,3.5vh,36px);
+  border-top:1px solid var(--line);
+}
+.hero-case h2{
+  font-size:clamp(1.6rem,3vw,2.5rem);
+  font-weight:500;letter-spacing:-.025em;line-height:1.08;
+  margin-top:14px;
+  max-width:20ch;
+}
+.case-quote{
+  margin-top:16px;
+  font-size:16px;color:var(--ink-2);
+  max-width:50ch;line-height:1.6;
+}
+.case-cta{margin-top:28px}
+
+.plate{max-width:480px;justify-self:end;width:100%}
+.plate img{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;filter:saturate(.82) contrast(1.02)}
+@media (max-width:900px){
+  .hero{grid-template-columns:minmax(0,1fr)}
+  .plate{justify-self:start;max-width:440px}
+}
+
+/* ---------- wide plate interlude ---------- */
+.plate-wide{
+  border-bottom:1px solid var(--line);
+  padding-block:clamp(40px,6vh,64px);
+}
+.plate-wide .wide-frame{
+  border:1px solid var(--line);
+  padding:8px;
+  background:#fff;
+}
+.plate-wide .wide-clip{overflow:hidden}
+.plate-wide img{
+  width:100%;
+  height:clamp(260px,42vw,440px);
+  object-fit:cover;
+  filter:grayscale(1) contrast(1.04) brightness(1.02);
+  transform:scale(1);
+  transition:transform 1.2s var(--ease);
+}
+.plate-wide:hover img{transform:scale(1.02)}
+.wide-caption{
+  display:flex;justify-content:space-between;align-items:baseline;
+  gap:12px 20px;flex-wrap:wrap;
+  margin-top:12px;
+}
+.wide-caption .cap-text{
+  font-size:clamp(14.5px,1.5vw,17px);
+  font-weight:500;letter-spacing:-.01em;
+}
+.wide-caption .cap-credit{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;
+  color:var(--ink-2);text-transform:uppercase;white-space:nowrap;
+}
+
+/* ---------- index (signature) ---------- */
+.index-sec{border-bottom:1px solid var(--line)}
+.index-grid{
+  display:grid;
+  grid-template-columns:minmax(0,7fr) minmax(0,5fr);
+  gap:clamp(28px,4vw,72px);
+  padding-bottom:clamp(48px,7vh,80px);
+}
+.idx-list{list-style:none}
+.idx-item{border-top:1px solid var(--line);position:relative}
+.idx-item:last-child{border-bottom:1px solid var(--line)}
+.idx-row{
+  display:grid;
+  grid-template-columns:64px minmax(0,1fr) auto;
+  align-items:baseline;
+  gap:16px;
+  padding:clamp(18px,2.6vh,26px) 8px;
+  transition:background-color .22s var(--ease);
+}
+.idx-row .idx-num{
+  font-family:var(--mono);font-size:12px;font-weight:500;
+  color:var(--green);
+  transition:transform .22s var(--ease);
+}
+.idx-row .idx-name{
+  font-size:clamp(1.45rem,2.8vw,2.15rem);
+  font-weight:500;letter-spacing:-.02em;line-height:1.1;
+}
+.idx-row .idx-count{
+  font-family:var(--mono);font-size:12px;color:var(--ink-2);
+  letter-spacing:.06em;white-space:nowrap;
+}
+.idx-item:hover .idx-row,
+.idx-item.is-active .idx-row{background:var(--green-tint)}
+.idx-item:hover .idx-num,
+.idx-item.is-active .idx-num{transform:translateX(4px)}
+.idx-item.is-active .idx-name{color:var(--green)}
+.idx-row:active{transform:scale(.995)}
+
+/* toggle: mobile only */
+.idx-toggle{
+  display:none;
+  position:absolute;top:0;right:0;
+  width:56px;height:68px;
+  font-family:var(--mono);font-size:16px;font-weight:400;
+  color:var(--ink-2);
+}
+.idx-toggle::before{content:"+";display:inline-block;transition:transform .22s var(--ease)}
+.idx-toggle[aria-expanded="true"]::before{transform:rotate(45deg)}
+.idx-inline{display:none}
+
+/* preview pane (desktop) */
+.idx-pane{
+  border-left:1px solid var(--line);
+  padding-left:clamp(24px,3vw,48px);
+  align-self:stretch;
+}
+.idx-pane-sticky{position:sticky;top:104px}
+.idx-pane .pane-label{margin-bottom:22px}
+.pane-body{transition:opacity .18s var(--ease),transform .18s var(--ease)}
+.pane-body.is-swapping{opacity:0;transform:translateY(5px)}
+.pane-list{list-style:none;margin-top:6px}
+.pane-list li{
+  display:flex;gap:14px;align-items:baseline;
+  padding:11px 0;
+  border-bottom:1px solid var(--line);
+}
+.pane-list li:first-child{border-top:1px solid var(--line)}
+.pane-list .n{font-family:var(--mono);font-size:11px;color:var(--green);font-weight:500}
+.pane-list a{
+  font-size:15px;font-weight:500;letter-spacing:-.005em;
+  transition:color .18s var(--ease);
+}
+.pane-list a:hover{color:var(--green)}
+.pane-browse{
+  display:inline-flex;align-items:center;gap:8px;
+  margin-top:22px;
+  font-family:var(--mono);font-size:11px;font-weight:500;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink);
+  transition:color .22s var(--ease);
+}
+.pane-browse .arr{transition:transform .22s var(--ease)}
+.pane-browse:hover{color:var(--green)}
+.pane-browse:hover .arr{transform:translateX(4px)}
+
+@media (max-width:900px){
+  .index-grid{grid-template-columns:minmax(0,1fr)}
+  .idx-pane{display:none}
+  .idx-toggle{display:block}
+  .idx-row{grid-template-columns:44px minmax(0,1fr) auto;padding-right:56px}
+  .idx-inline{
+    display:none;
+    padding:4px 8px 22px 60px;
+  }
+  .idx-inline.open{display:block;animation:inlineIn .18s var(--ease)}
+  .idx-inline .pane-list li:first-child{border-top:0}
+  @keyframes inlineIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+}
+
+/* ---------- trails (broadsheet columns) ---------- */
+.trails-sec{border-bottom:1px solid var(--line)}
+.trails-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  padding-bottom:clamp(48px,7vh,80px);
+}
+.trail{
+  padding:6px clamp(20px,2.6vw,36px) 8px;
+  border-left:1px solid var(--line);
+  display:flex;flex-direction:column;align-items:flex-start;
+}
+.trail:first-child{border-left:0;padding-left:0}
+.trail:last-child{padding-right:0}
+.trail .t-num{
+  font-family:var(--mono);font-size:12px;font-weight:500;
+  color:var(--green);margin-bottom:16px;
+}
+.trail h3{
+  font-size:clamp(1.25rem,1.9vw,1.6rem);
+  font-weight:500;letter-spacing:-.015em;line-height:1.15;
+  margin-bottom:10px;
+}
+.trail p{font-size:14px;color:var(--ink-2);line-height:1.6;margin-bottom:18px}
+.trail .t-meta{
+  font-family:var(--mono);font-size:11px;color:var(--ink-3);
+  letter-spacing:.06em;margin-bottom:22px;
+}
+.trail-link{
+  margin-top:auto;
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:11px;font-weight:500;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--green);
+}
+.trail-link .arr{transition:transform .22s var(--ease)}
+.trail-link:hover .arr{transform:translateX(4px)}
+@media (max-width:900px){
+  .trails-grid{grid-template-columns:minmax(0,1fr)}
+  .trail{border-left:0;border-top:1px solid var(--line);padding:22px 0 28px}
+  .trail:first-child{border-top:0;padding-top:0}
+  .trail:last-child{padding-bottom:0}
+}
+
+/* ---------- dispatches ---------- */
+.news-sec{border-bottom:1px solid var(--line)}
+.news-list{list-style:none;padding-bottom:clamp(48px,7vh,80px)}
+.news-item{border-top:1px solid var(--line)}
+.news-item:last-child{border-bottom:1px solid var(--line)}
+.news-link{
+  display:grid;
+  grid-template-columns:150px minmax(0,1fr) auto;
+  gap:16px;align-items:baseline;
+  padding:clamp(16px,2.2vh,22px) 8px;
+  transition:background-color .22s var(--ease);
+}
+.news-link:hover{background:var(--green-tint)}
+.news-date{font-family:var(--mono);font-size:11.5px;color:var(--ink-2);letter-spacing:.06em}
+.news-title{font-size:16px;font-weight:500;letter-spacing:-.005em;line-height:1.35}
+.news-cat{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--green);white-space:nowrap;
+}
+@media (max-width:900px){
+  .news-link{grid-template-columns:minmax(0,1fr) auto;row-gap:4px}
+  .news-date{grid-row:2;grid-column:1}
+}
+
+/* ---------- colophon extras ---------- */
+.colophon .who-role{font-weight:400;color:var(--ink-2)}
+</style>
 
 </BaseLayout>

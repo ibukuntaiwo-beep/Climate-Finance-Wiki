@@ -7,7 +7,7 @@ import { categories } from '../../data/categories';
 const items = (await getCollection('news')).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
 );
-const fmt = (d: Date) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+const fmt = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 ---
 <BaseLayout
   title="Climate Finance News"
@@ -15,61 +15,209 @@ const fmt = (d: Date) => d.toLocaleDateString('en-US', { year: 'numeric', month:
   footerType="internal"
   activePage="news"
 >
-  <div class="breadcrumb" aria-label="Breadcrumb">
-    <ol class="breadcrumb__list">
-      <li><a href={url('/')} class="breadcrumb__link">Home</a></li>
-      <li class="breadcrumb__separator" aria-hidden="true">&rarr;</li>
-      <li class="breadcrumb__current" aria-current="page">News</li>
-    </ol>
-  </div>
-  <header class="category-header">
-    <div class="category-header__label">News</div>
-    <h1 class="category-header__title">Climate Finance News</h1>
-    <p class="category-header__description">Short, curated dispatches on the climate-finance news that matters &mdash; what happened, why it matters, and where to read more. Each one links out to the original source and into the wiki concepts behind the story.</p>
-    <div class="category-header__meta"><span>{items.length}</span>&nbsp;dispatches&ensp;&middot;&ensp;<a href={url('/rss.xml')} style="color:var(--color-primary)">RSS feed</a></div>
-  </header>
-  <div class="content-area">
-    <main class="main-column" id="articles">
+  <section class="page-head pad" aria-labelledby="page-h">
+    <p class="crumbs"><a href={url('/')}>Home</a><span class="sep">&rarr;</span><span aria-current="page">News</span></p>
+    <p class="tag"><span class="num">News</span>&ensp;/&ensp;Dispatches</p>
+    <h1 id="page-h">Climate Finance News</h1>
+    <p class="page-desc">Short, curated dispatches on the climate-finance news that matters &mdash; what happened, why it matters, and where to read more. Each one links out to the original source and into the wiki concepts behind the story.</p>
+    <p class="page-meta"><span class="val">{items.length}</span>&nbsp;DISPATCHES<span class="sep">/</span><a href={url('/rss.xml')}>RSS FEED</a></p>
+  </section>
+
+  <div class="news-layout pad">
+    <ul class="d-list" id="articles">
       {items.map((item) => (
-        <article class="article-card news-card">
-          <a href={url(`/news/${item.id}/`)} class="article-card__link">
-            <div class="article-card__top-row">
-              <span class="news-tag">{item.data.tag}</span>
-              <span class="news-date">{fmt(item.data.date)}</span>
-            </div>
-            <h2 class="article-card__title">{item.data.title}</h2>
-            <p class="article-card__subtitle">{item.data.summary}</p>
-            <div class="article-card__footer">
-              <span class="article-card__stats">Source:&nbsp;<span>{item.data.source.name}</span></span>
-              <span class="article-card__read-cta">Read&ensp;&rarr;</span>
-            </div>
+        <li class="d-item reveal">
+          <a class="d-row" href={url(`/news/${item.id}/`)}>
+            <span class="d-date">{fmt(item.data.date)}</span>
+            <span class="d-main">
+              <span class="d-title">{item.data.title}</span>
+              <span class="d-sum">{item.data.summary}</span>
+              <span class="d-read">Read <span class="arr">&rarr;</span></span>
+            </span>
+            <span class="d-cat">{item.data.tag}</span>
           </a>
-        </article>
+        </li>
       ))}
-    </main>
-    <aside class="sidebar" aria-label="News context">
-      <div class="sidebar-box news-subscribe-box">
-        <h2 class="sidebar-box__heading">Stay updated</h2>
-        <p class="news-subscribe__text">New climate-finance dispatches and explainers, in plain English. No spam.</p>
-        <!-- TODO: point `action` at your newsletter provider to go live. -->
-        <form class="news-subscribe" action="#" method="post">
-          <input type="email" name="email" required placeholder="you@example.com" aria-label="Email address" class="news-subscribe__input" />
-          <button type="submit" class="news-subscribe__btn">Subscribe</button>
-        </form>
-        <a href={url('/rss.xml')} class="news-rss-link">Or subscribe via RSS&ensp;&rarr;</a>
-      </div>
-      <div class="sidebar-box">
-        <h2 class="sidebar-box__heading">Browse the Wiki</h2>
-        {categories.map((cat) => (
-          <a href={url(`/${cat.slug}/`)} class="related-cat">
-            <span class="related-cat__name">{cat.name}</span>
-            <span class="related-cat__count">{cat.articleCount} articles</span>
-          </a>
-        ))}
+    </ul>
+
+    <aside class="side" aria-label="News context">
+      <div class="side-sticky">
+        <div class="side-block reveal">
+          <span class="tag">Stay Updated</span>
+          <p class="side-text">New climate-finance dispatches and explainers, in plain English. No spam.</p>
+          <!-- TODO: point `action` at your newsletter provider to go live. -->
+          <form class="sub-form" action="#" method="post" aria-label="Subscribe to the newsletter">
+            <input class="sub-input" type="email" name="email" required placeholder="you@example.com" aria-label="Email address" />
+            <button class="sub-btn" type="submit">Subscribe</button>
+          </form>
+          <a class="rss-link" href={url('/rss.xml')}>Or subscribe via RSS <span class="arr">&rarr;</span></a>
+        </div>
+        <div class="side-block reveal">
+          <span class="tag">Browse the Wiki</span>
+          <ul class="b-list">
+            {categories.map((cat) => (
+              <li>
+                <a class="b-row" href={url(`/${cat.slug}/`)}>
+                  <span class="b-name">{cat.name}</span>
+                  <span class="b-count">{cat.articleCount}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </aside>
   </div>
-  <script>
-    (function(){var p=window.matchMedia('(prefers-reduced-motion: reduce)').matches;var c=document.querySelectorAll('.article-card');if(p){c.forEach(function(d){d.classList.add('is-visible')});return}if('IntersectionObserver' in window){var o=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting){en.target.classList.add('is-visible');o.unobserve(en.target)}})},{threshold:0.15,rootMargin:'0px 0px -40px 0px'});c.forEach(function(d){o.observe(d)})}else{c.forEach(function(d){d.classList.add('is-visible')})}})();
-  </script>
+
+  <style>
+    /* ---------- page head ---------- */
+    .page-head {
+      border-bottom: 1px solid var(--line);
+      padding-top: clamp(28px, 4.5vh, 48px);
+      padding-bottom: clamp(32px, 5vh, 56px);
+    }
+    .crumbs {
+      font-family: var(--mono); font-size: 11px; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--ink-3);
+      margin-bottom: clamp(28px, 5vh, 52px);
+    }
+    .crumbs a { transition: color .22s var(--ease); }
+    .crumbs a:hover { color: var(--green); }
+    .crumbs .sep { margin-inline: 10px; }
+    .page-head h1 {
+      font-size: clamp(2.1rem, 4.2vw, 3.5rem);
+      font-weight: 500; line-height: 1.05; letter-spacing: -.03em;
+      margin-top: 16px; max-width: 20ch;
+    }
+    .page-desc {
+      margin-top: 18px;
+      font-size: 15.5px; color: var(--ink-2);
+      max-width: 56ch; line-height: 1.6;
+    }
+    .page-meta {
+      margin-top: 26px;
+      font-family: var(--mono); font-size: 12px; font-weight: 500;
+      letter-spacing: .1em; text-transform: uppercase; color: var(--ink);
+    }
+    .page-meta .val { color: var(--green); }
+    .page-meta .sep { color: var(--ink-3); margin-inline: 10px; }
+    .page-meta a { transition: color .22s var(--ease); }
+    .page-meta a:hover { color: var(--green); }
+
+    /* ---------- layout ---------- */
+    .news-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 7.5fr) minmax(0, 4.5fr);
+      gap: clamp(28px, 4vw, 72px);
+      padding-block: clamp(36px, 5.5vh, 64px) clamp(48px, 7vh, 80px);
+    }
+
+    /* dispatch rows (extends the landing's Dispatches) */
+    .d-list { list-style: none; }
+    .d-item { border-top: 1px solid var(--line); }
+    .d-item:last-child { border-bottom: 1px solid var(--line); }
+    .d-row {
+      display: grid;
+      grid-template-columns: 150px minmax(0, 1fr) auto;
+      gap: 6px 16px; align-items: start;
+      padding: clamp(20px, 3vh, 28px) 8px;
+      transition: background-color .22s var(--ease);
+    }
+    .d-row:hover { background: var(--green-tint); }
+    .d-date {
+      font-family: var(--mono); font-size: 11.5px; color: var(--ink-2);
+      letter-spacing: .06em; text-transform: uppercase; padding-top: 5px;
+    }
+    .d-cat {
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--green); white-space: nowrap; padding-top: 5px;
+    }
+    .d-title {
+      font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+      font-weight: 500; letter-spacing: -.015em; line-height: 1.25;
+    }
+    .d-sum {
+      display: block;
+      margin-top: 8px;
+      font-size: 14.5px; color: var(--ink-2);
+      max-width: 60ch; line-height: 1.55;
+    }
+    .d-read {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-top: 14px;
+      font-family: var(--mono); font-size: 11px; font-weight: 500;
+      letter-spacing: .12em; text-transform: uppercase; color: var(--ink);
+      transition: color .22s var(--ease);
+    }
+    .d-read .arr { transition: transform .22s var(--ease); }
+    .d-row:hover .d-read { color: var(--green); }
+    .d-row:hover .d-read .arr { transform: translateX(4px); }
+    @media (max-width: 900px) {
+      .d-row { grid-template-columns: minmax(0, 1fr) auto; }
+      .d-date { grid-row: 1; grid-column: 1; padding-top: 0; }
+      .d-cat { grid-row: 1; grid-column: 2; padding-top: 0; }
+      .d-main { grid-row: 2; grid-column: 1 / -1; margin-top: 6px; }
+    }
+
+    /* ---------- sidebar ---------- */
+    .side {
+      border-left: 1px solid var(--line);
+      padding-left: clamp(24px, 3vw, 48px);
+      align-self: stretch;
+    }
+    .side-sticky { position: sticky; top: 104px; }
+    .side-block + .side-block {
+      margin-top: clamp(30px, 4.5vh, 44px);
+      padding-top: clamp(26px, 4vh, 38px);
+      border-top: 1px solid var(--line);
+    }
+    .side-block .tag { display: block; margin-bottom: 16px; }
+    .side-text { font-size: 14px; color: var(--ink-2); line-height: 1.6; max-width: 38ch; }
+    .sub-form { margin-top: 18px; }
+    .sub-input {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: #fff;
+      padding: 12px 14px;
+      font: inherit; font-size: 14px; color: inherit;
+      transition: border-color .22s var(--ease);
+    }
+    .sub-input::placeholder { color: var(--ink-3); }
+    .sub-input:hover, .sub-input:focus { border-color: var(--ink); outline: 0; }
+    .sub-btn {
+      margin-top: 10px; width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--ink);
+      font-size: 13.5px; font-weight: 500; letter-spacing: .02em;
+      transition: background-color .22s var(--ease), color .22s var(--ease), transform .1s var(--ease);
+    }
+    .sub-btn:hover { background: var(--ink); color: var(--bg); }
+    .sub-btn:active { transform: scale(.98); }
+    .rss-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-top: 16px;
+      font-family: var(--mono); font-size: 11px; font-weight: 500;
+      letter-spacing: .12em; text-transform: uppercase; color: var(--ink);
+      transition: color .22s var(--ease);
+    }
+    .rss-link .arr { transition: transform .22s var(--ease); }
+    .rss-link:hover { color: var(--green); }
+    .rss-link:hover .arr { transform: translateX(4px); }
+    .b-list { list-style: none; }
+    .b-list li { border-bottom: 1px solid var(--line); }
+    .b-list li:first-child { border-top: 1px solid var(--line); }
+    .b-row {
+      display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
+      padding: 11px 0;
+    }
+    .b-row .b-name { font-size: 14.5px; font-weight: 500; transition: color .18s var(--ease); }
+    .b-row:hover .b-name { color: var(--green); }
+    .b-row .b-count { font-family: var(--mono); font-size: 11.5px; color: var(--ink-2); letter-spacing: .06em; }
+
+    @media (max-width: 900px) {
+      .news-layout { grid-template-columns: minmax(0, 1fr); }
+      .side { border-left: 0; padding-left: 0; border-top: 1px solid var(--line); padding-top: clamp(28px, 4vh, 40px); }
+      .side-sticky { position: static; }
+    }
+  </style>
 </BaseLayout>
