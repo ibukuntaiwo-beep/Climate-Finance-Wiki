@@ -1,29 +1,29 @@
 # Next Session — Resume Here
 
-> Handoff note for the next agent + owner. Last worked: **2026-06-28**.
-> Read this first, then prompt the owner about the **Open decisions** below before doing anything.
+> Handoff note for the next agent + owner. Last worked: **2026-07-18**.
 
 ## Where we are
 
-The **News / curation section** is built, verified against a production build (70 pages, no broken links), and journaled — but **not committed to git**. All files are saved on disk; nothing is lost.
+**The Option 9 redesign is live at climatefinancewiki.org** (deployed 2026-07-18, commit `03a4d99`). The whole site — landing, articles, case studies, category indexes, news, start-here, simple pages — now runs the "Option 9 / The Composite" design system (Space Grotesk + JetBrains Mono, forest green on warm paper, hairline rules). The News section shipped in the same push. Full history: `JOURNAL/2026-07-17.md` and `JOURNAL/2026-07-18.md`.
 
-What shipped this session (see `JOURNAL/2026-06-28.md` for the full list):
-- `/news/` listing + `/news/<slug>/` item pages (`src/pages/news/`, `src/layouts/NewsLayout.astro`)
-- `news` content collection (`src/content.config.ts`) + 5 seed dispatches (`src/content/news/*.md`)
-- RSS feed (`src/pages/rss.xml.js`), nav/footer "News" links, homepage "Latest News" strip
-- Audience widened to a **broad SEO hub** (owner-approved) — see memory `cfw-audience-broad-seo-hub`.
+Notable fixes that shipped with it:
+- Case-study rich bodies now render (stale `content.config.ts` schema had silently stripped `caseStudy.body` site-wide).
+- Landing hero rotates all 4 featured case studies per visit (text + plate image); VW's image replaced with a fitting smog-traffic photo.
+- Decorative "NN /" section numbering removed per owner feedback; contextual labels kept.
+
+Design references live in `mockups/` (landing + 6 interior page samples). The redesign branch `design/landing-reimagine` is fully merged into `main`.
 
 ## Open decisions — prompt the owner about these
 
-1. **Commit & deploy?** Nothing is committed yet. The work is on disk but unversioned. Pushing to `main` auto-deploys to GitHub Pages (`.github/workflows/deploy.yml`) → live at climatefinancewiki.org. Ask before committing; ask again before pushing/deploying.
-2. **Newsletter provider.** The subscribe form is UI-only (`action="#"` in `NewsLayout.astro` and `news/index.astro`). To make it real, the owner needs to pick a provider (Buttondown / ConvertKit / Mailchimp) and supply the form endpoint.
-3. **More news / cadence.** Only 5 seed dispatches exist. Does the owner want a regular curation rhythm, and should new items go through the curation gate (`docs/agent-rules/curation-workflow.md`)?
-4. **Next pillar?** Future SEO pillars imitated from aicopyrightlegal.com, not yet built: interactive **Cases/Tracker** index, a **Tools** pillar (checklists/calculators), surfacing existing reading `trails` (`src/data/trails.ts`) as a **Learn** path.
+1. **Newsletter provider.** The subscribe form is still UI-only (`action="#"` in `NewsLayout.astro` and `news/index.astro`). Owner needs to pick a provider (Buttondown / ConvertKit / Mailchimp) and supply the endpoint.
+2. **News cadence.** 5 seed dispatches exist. Regular curation rhythm? New items go through the curation gate (`docs/agent-rules/curation-workflow.md`).
+3. **Next pillar?** Not yet built: interactive **Cases/Tracker** index, a **Tools** pillar (checklists/calculators), surfacing reading `trails` as a **Learn** path.
+4. **Housekeeping (optional).** Delete the now-merged `design/landing-reimagine` branch + worktree (`Websites/cfw-landing-redesign`); the unused `economistBody`/`natureBody` schema fields and StyleToggle component could be retired.
 
 ## How to run / verify
 - `npm run dev` (or `npm run build` then `npm run preview`) from `Websites/climate-finance-wiki`.
-- Visit `/news/`, click into an item, check the outbound source link + inline wikilinks, and `/rss.xml`.
-- Note: in the automated browser sandbox, screenshots stall on `document_idle` (Google Fonts / Cloudflare beacon never settle) — verify via `npm run build` output and the generated HTML in `dist/` instead.
+- Deploys: push to `main` → `.github/workflows/deploy.yml` → GitHub Pages.
+- Headless-browser gotcha on this machine: use CDP `Emulation.setDeviceMetricsOverride` (`mobile:false`) for mobile-width testing; `--window-size` clamps at ~492px.
 
 ## Reminder
 Per project rules, update `JOURNAL/YYYY-MM-DD.md` as the final write action of any file-changing session, and delete/trim this file once its open items are resolved.
