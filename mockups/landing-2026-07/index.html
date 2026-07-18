@@ -161,23 +161,12 @@ header{
   padding:8px;
   background:#fff;
 }
-.plate img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;filter:saturate(.82) contrast(1.02)}
+.plate img{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;filter:saturate(.82) contrast(1.02)}
 .plate figcaption{
   margin-top:10px;
   font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;
   color:var(--ink-2);text-transform:uppercase;
 }
-.plate-stats{margin-top:26px}
-.plate-stats .stats-label{display:block;margin-bottom:10px}
-.stat-row{
-  display:flex;justify-content:space-between;align-items:baseline;
-  padding:9px 0;
-  border-top:1px solid var(--line);
-  font-family:var(--mono);
-}
-.stat-row:last-child{border-bottom:1px solid var(--line)}
-.stat-row .k{font-size:11.5px;color:var(--ink-2);letter-spacing:.08em;text-transform:uppercase}
-.stat-row .val{font-size:13px;font-weight:500;color:var(--green);font-variant-numeric:tabular-nums}
 @media (max-width:900px){
   .hero{grid-template-columns:minmax(0,1fr);align-items:start}
   .plate{justify-self:start;max-width:440px}
@@ -329,36 +318,47 @@ header{
   @keyframes inlineIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
 }
 
-/* ---------- trails ---------- */
+/* ---------- trails (broadsheet columns, from The Ledger) ---------- */
 .trails-sec{border-bottom:1px solid var(--line)}
-.trail-list{list-style:none;padding-bottom:clamp(48px,7vh,80px)}
-.trail{
-  border-top:1px solid var(--line);
+.trails-grid{
   display:grid;
-  grid-template-columns:64px minmax(0,5fr) minmax(0,4fr) auto;
-  gap:16px;align-items:baseline;
-  padding:clamp(18px,2.6vh,26px) 8px;
-  transition:background-color .22s var(--ease);
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  padding-bottom:clamp(48px,7vh,80px);
 }
-.trail:last-child{border-bottom:1px solid var(--line)}
-.trail:hover{background:var(--green-tint)}
-.trail .t-num{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--green);transition:transform .22s var(--ease)}
-.trail:hover .t-num{transform:translateX(4px)}
-.trail .t-name{font-size:clamp(1.2rem,2.2vw,1.6rem);font-weight:500;letter-spacing:-.015em}
-.trail .t-tag{font-size:14px;color:var(--ink-2)}
+.trail{
+  padding:6px clamp(20px,2.6vw,36px) 8px;
+  border-left:1px solid var(--line);
+  display:flex;flex-direction:column;align-items:flex-start;
+}
+.trail:first-child{border-left:0;padding-left:0}
+.trail:last-child{padding-right:0}
+.trail .t-num{
+  font-family:var(--mono);font-size:12px;font-weight:500;
+  color:var(--green);margin-bottom:16px;
+}
+.trail h3{
+  font-size:clamp(1.25rem,1.9vw,1.6rem);
+  font-weight:500;letter-spacing:-.015em;line-height:1.15;
+  margin-bottom:10px;
+}
+.trail p{font-size:14px;color:var(--ink-2);line-height:1.6;margin-bottom:18px}
 .trail .t-meta{
-  font-family:var(--mono);font-size:11px;color:var(--ink-2);
-  letter-spacing:.06em;white-space:nowrap;
-  display:flex;align-items:center;gap:14px;
+  font-family:var(--mono);font-size:11px;color:var(--ink-3);
+  letter-spacing:.06em;margin-bottom:22px;
 }
-.trail .t-meta .arr{color:var(--ink);transition:transform .22s var(--ease)}
-.trail:hover .t-meta .arr{transform:translateX(4px);color:var(--green)}
+.trail-link{
+  margin-top:auto;
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:11px;font-weight:500;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--green);
+}
+.trail-link .arr{transition:transform .22s var(--ease)}
+.trail-link:hover .arr{transform:translateX(4px)}
 @media (max-width:900px){
-  .trail{grid-template-columns:44px minmax(0,1fr);grid-template-rows:auto auto auto;row-gap:6px}
-  .trail .t-num{grid-row:1}
-  .trail .t-name{grid-column:2}
-  .trail .t-tag{grid-column:2}
-  .trail .t-meta{grid-column:2}
+  .trails-grid{grid-template-columns:minmax(0,1fr)}
+  .trail{border-left:0;border-top:1px solid var(--line);padding:22px 0 28px}
+  .trail:first-child{border-top:0;padding-top:0}
+  .trail:last-child{padding-bottom:0}
 }
 
 /* ---------- news ---------- */
@@ -465,12 +465,6 @@ footer a:hover{color:var(--green)}
       <img src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&w=1600&q=80" alt="Aerial view of utility-scale solar farm rows on a green field" width="1600" height="1000">
     </div>
     <figcaption>Fig. 01 — Aerial view, utility-scale solar</figcaption>
-    <div class="plate-stats" aria-label="52 articles, 5 categories, 3 reading trails">
-      <span class="tag stats-label">The Wiki at a Glance</span>
-      <div class="stat-row"><span class="k">Articles</span><span class="val" data-count="52">52</span></div>
-      <div class="stat-row"><span class="k">Categories</span><span class="val" data-count="5">5</span></div>
-      <div class="stat-row"><span class="k">Reading trails</span><span class="val" data-count="3">3</span></div>
-    </div>
   </figure>
 </section>
 
@@ -560,32 +554,29 @@ footer a:hover{color:var(--green)}
       <p class="tag" id="trails-h"><span class="num">03</span>&ensp;/&ensp;Reading Trails</p>
       <a class="more" href="https://climatefinancewiki.org/start-here/">Start here</a>
     </div>
-    <ul class="trail-list">
-      <li>
-        <a class="trail reveal" href="https://climatefinancewiki.org/concepts/greenwashing/">
-          <span class="t-num">01</span>
-          <span class="t-name">The Greenwashing Trail</span>
-          <span class="t-tag">From misleading claims to criminal charges.</span>
-          <span class="t-meta">6 ARTICLES&nbsp;&middot;&nbsp;~35 MIN <span class="arr">&rarr;</span></span>
-        </a>
-      </li>
-      <li>
-        <a class="trail reveal" href="https://climatefinancewiki.org/concepts/climate-finance/">
-          <span class="t-num">02</span>
-          <span class="t-name">Follow the Money</span>
-          <span class="t-tag">How climate finance actually flows, and where it gets stuck.</span>
-          <span class="t-meta">6 ARTICLES&nbsp;&middot;&nbsp;~35 MIN <span class="arr">&rarr;</span></span>
-        </a>
-      </li>
-      <li>
-        <a class="trail reveal" href="https://climatefinancewiki.org/frameworks/paris-agreement/">
-          <span class="t-num">03</span>
-          <span class="t-name">Architecture of Climate Policy</span>
-          <span class="t-tag">The agreements, taxonomies, and standards that set the rules.</span>
-          <span class="t-meta">6 ARTICLES&nbsp;&middot;&nbsp;~35 MIN <span class="arr">&rarr;</span></span>
-        </a>
-      </li>
-    </ul>
+    <div class="trails-grid">
+      <article class="trail reveal">
+        <span class="t-num">01</span>
+        <h3>The Greenwashing Trail</h3>
+        <p>From misleading claims to criminal charges.</p>
+        <span class="t-meta">6 ARTICLES&nbsp;&middot;&nbsp;~35 MIN</span>
+        <a class="trail-link" href="https://climatefinancewiki.org/concepts/greenwashing/">Begin <span class="arr">&rarr;</span></a>
+      </article>
+      <article class="trail reveal">
+        <span class="t-num">02</span>
+        <h3>Follow the Money</h3>
+        <p>How climate finance actually flows, and where it gets stuck.</p>
+        <span class="t-meta">6 ARTICLES&nbsp;&middot;&nbsp;~35 MIN</span>
+        <a class="trail-link" href="https://climatefinancewiki.org/concepts/climate-finance/">Begin <span class="arr">&rarr;</span></a>
+      </article>
+      <article class="trail reveal">
+        <span class="t-num">03</span>
+        <h3>Architecture of Climate Policy</h3>
+        <p>The agreements, taxonomies, and standards that set the rules.</p>
+        <span class="t-meta">6 ARTICLES&nbsp;&middot;&nbsp;~35 MIN</span>
+        <a class="trail-link" href="https://climatefinancewiki.org/frameworks/paris-agreement/">Begin <span class="arr">&rarr;</span></a>
+      </article>
+    </div>
   </div>
 </section>
 
@@ -787,31 +778,6 @@ footer a:hover{color:var(--green)}
     for (var r=0;r<reveals.length;r++) io.observe(reveals[r]);
   } else {
     for (var r2=0;r2<reveals.length;r2++) reveals[r2].classList.add("in");
-  }
-
-  /* ---------- stat count-up ---------- */
-  var vals = document.querySelectorAll(".plate-stats .val");
-  if (!RM && vals.length && "IntersectionObserver" in window){
-    var done = false;
-    var io2 = new IntersectionObserver(function(entries){
-      if (done || !entries[0].isIntersecting) return;
-      done = true;
-      var start = null, dur = 900;
-      var targets = [];
-      for (var v=0;v<vals.length;v++) targets.push(parseInt(vals[v].getAttribute("data-count"),10));
-      function tick(ts){
-        if (!start) start = ts;
-        var p = Math.min((ts - start)/dur, 1);
-        var eased = 1 - Math.pow(1 - p, 3);
-        for (var v=0;v<vals.length;v++){
-          vals[v].textContent = Math.round(targets[v]*eased);
-        }
-        if (p < 1) requestAnimationFrame(tick);
-      }
-      requestAnimationFrame(tick);
-      io2.disconnect();
-    }, {threshold:.4});
-    io2.observe(vals[0]);
   }
 })();
 </script>
