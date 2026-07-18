@@ -49,9 +49,6 @@ if (hasTimeline) sections.push({ id: 'timeline', title: 'Timeline' });
 if (hasBeforeAfter) sections.push({ id: 'before-after', title: 'Before & After' });
 if (caseStudy?.debate) sections.push({ id: 'debate', title: 'The Debate' });
 
-const pad2 = (n: number) => String(n).padStart(2, '0');
-const secNum: Record<string, string> = {};
-sections.forEach((s, i) => { secNum[s.id] = pad2(i + 1); });
 ---
 <BaseLayout title={`${metaTitle || title} | Climate Finance Wiki`} description={metaDescription || subtitle} footerType="internal" schemaType="Article">
   <Breadcrumbs items={[
@@ -71,7 +68,7 @@ sections.forEach((s, i) => { secNum[s.id] = pad2(i + 1); });
 
   <div class="art-layout pad">
     <article class="art-body art-body--case">
-      <p class="tag sec-label" id="case-file"><span class="num">{secNum['case-file']}</span>&ensp;/&ensp;The Case</p>
+      <p class="tag sec-label" id="case-file"><span class="num">The Case</span></p>
       {caseStudy?.body ? (
         <div set:html={caseStudy.body}></div>
       ) : (
@@ -80,21 +77,21 @@ sections.forEach((s, i) => { secNum[s.id] = pad2(i + 1); });
 
       {hasTimeline && (
         <>
-          <p class="tag sec-label" id="timeline"><span class="num">{secNum['timeline']}</span>&ensp;/&ensp;Timeline</p>
+          <p class="tag sec-label" id="timeline"><span class="num">Timeline</span></p>
           <Timeline events={caseStudy.timeline} />
         </>
       )}
 
       {hasBeforeAfter && (
         <>
-          <p class="tag sec-label" id="before-after"><span class="num">{secNum['before-after']}</span>&ensp;/&ensp;Before &amp; After</p>
+          <p class="tag sec-label" id="before-after"><span class="num">Before &amp; After</span></p>
           <BeforeAfter before={caseStudy.before} after={caseStudy.after} />
         </>
       )}
 
       {caseStudy?.debate && (
         <>
-          <p class="tag sec-label" id="debate"><span class="num">{secNum['debate']}</span>&ensp;/&ensp;The Debate</p>
+          <p class="tag sec-label" id="debate"><span class="num">The Debate</span></p>
           <div class="debate reveal">
             <Fragment set:html={caseStudy.debate} />
           </div>
@@ -125,7 +122,7 @@ sections.forEach((s, i) => { secNum[s.id] = pad2(i + 1); });
         <ul class="toc" id="toc">
           {sections.map((section) => (
             <li data-for={section.id}>
-              <a href={`#${section.id}`}><span class="n">{secNum[section.id]}</span>{section.title}</a>
+              <a href={`#${section.id}`}>{section.title}</a>
             </li>
           ))}
         </ul>
@@ -254,7 +251,6 @@ sections.forEach((s, i) => { secNum[s.id] = pad2(i + 1); });
     border-bottom:0;
     transition:color .22s var(--ease);
   }
-  .toc .n{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--green)}
   .toc a:hover{color:var(--ink)}
   .toc li.on a{color:var(--green)}
   .rail-back{

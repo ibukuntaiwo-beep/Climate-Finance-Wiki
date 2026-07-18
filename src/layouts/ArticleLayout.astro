@@ -49,7 +49,6 @@ const seeAlsoWithHrefs = seeAlso.map(a => ({
   ) + '/' + a.slug}/`)
 }));
 
-const pad2 = (n: number) => String(n).padStart(2, '0');
 ---
 <BaseLayout title={`${metaTitle || title} | Climate Finance Wiki`} description={metaDescription || subtitle} footerType="internal" schemaType="Article">
   {trail && (
@@ -105,7 +104,7 @@ const pad2 = (n: number) => String(n).padStart(2, '0');
         <ul class="toc" id="toc">
           {tocSections.map((section, i) => (
             <li data-for={section.id}>
-              <a href={`#${section.id}`}><span class="n">{pad2(i + 1)}</span>{section.title}</a>
+              <a href={`#${section.id}`}>{section.title}</a>
             </li>
           ))}
         </ul>
@@ -163,7 +162,7 @@ const pad2 = (n: number) => String(n).padStart(2, '0');
     padding-block:clamp(36px,6vh,64px);
     border-bottom:1px solid var(--line);
   }
-  .art-body{max-width:68ch;font-size:17px;line-height:1.7;counter-reset:h2sec}
+  .art-body{max-width:68ch;font-size:17px;line-height:1.7}
   .art-body > :first-child{margin-top:0}
   .art-body p{margin-bottom:19px;color:rgba(22,22,22,.82)}
   .art-body h2{
@@ -171,14 +170,6 @@ const pad2 = (n: number) => String(n).padStart(2, '0');
     font-weight:500;letter-spacing:-.02em;line-height:1.2;
     margin:46px 0 18px;
     scroll-margin-top:96px;
-    counter-increment:h2sec;
-  }
-  .art-body h2::before{
-    content:counter(h2sec,decimal-leading-zero);
-    display:block;
-    font-family:var(--mono);font-size:11px;font-weight:500;
-    letter-spacing:.14em;color:var(--green);
-    margin-bottom:8px;
   }
   .art-body h3{
     font-size:1.1rem;font-weight:500;letter-spacing:-.01em;
@@ -240,7 +231,6 @@ const pad2 = (n: number) => String(n).padStart(2, '0');
     border-bottom:0;
     transition:color .22s var(--ease);
   }
-  .toc .n{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--green)}
   .toc a:hover{color:var(--ink)}
   .toc li.on a{color:var(--green)}
   .rail-back{
