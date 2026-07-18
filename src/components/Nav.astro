@@ -5,20 +5,17 @@ interface Props {
 }
 const { activePage } = Astro.props;
 ---
-<nav>
-  <div class="nav-inner">
-    <div class="nav-left">
-      <a href={url('/')} style="display:flex;align-items:center;gap:12px;text-decoration:none">
-        <span class="nav-title">Climate Finance Wiki</span>
-      </a>
-    </div>
+<header class="site-head">
+  <nav class="nav pad" aria-label="Primary">
+    <a class="wordmark" href={url('/')}>
+      Climate Finance Wiki
+      <span class="mono-mark">EST. 2026</span>
+    </a>
     <div class="nav-links">
       <a href={url('/#categories')} class={activePage === 'topics' ? 'nav-active' : ''}>Topics</a>
       <a href={url('/news/')} class={activePage === 'news' ? 'nav-active' : ''}>News</a>
       <a href={url('/about/')} class={activePage === 'about' ? 'nav-active' : ''}>About</a>
-      <a href="#" class="nav-search" aria-label="Search" id="searchToggle">
-        <svg width="17" height="17" viewBox="0 0 17 17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="7" cy="7" r="5"/><line x1="10.8" y1="10.8" x2="15.5" y2="15.5"/></svg>
-      </a>
+      <button class="nav-search" type="button" aria-label="Search the wiki" id="searchToggle">SEARCH</button>
     </div>
-  </div>
-</nav>
+  </nav>
+</header>

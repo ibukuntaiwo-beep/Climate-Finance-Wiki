@@ -1,38 +1,21 @@
 ---
 import { url } from '../lib/url';
 ---
-<footer class="site-footer">
-  <div class="site-footer-inner">
-    <div class="site-footer-brand">
-      <span class="site-footer-wordmark">Climate Finance Wiki</span>
-      <p class="site-footer-tagline">Making climate finance make sense:<br>for the people who explain it.</p>
-      <span class="site-footer-publication">Created by <a href={url('/author/ibukun-taiwo/')} class="footer-author-link">Ibukun Taiwo</a> &middot; A Red Barrow publication</span>
+<footer>
+  <div class="foot foot--internal pad">
+    <div class="foot-links">
+      <a href={url('/concepts/')}>Concepts</a>
+      <a href={url('/instruments/')}>Instruments</a>
+      <a href={url('/actors/')}>Actors</a>
+      <a href={url('/frameworks/')}>Frameworks</a>
+      <a href={url('/case-studies/')}>Case Studies</a>
+      <a href={url('/news/')}>News</a>
+      <a href={url('/about/')}>About</a>
     </div>
-    <div>
-      <h3 class="site-footer-section-title">Categories</h3>
-      <div class="site-footer-links">
-        <a href={url('/concepts/')}>Concepts</a>
-        <a href={url('/instruments/')}>Instruments</a>
-        <a href={url('/actors/')}>Actors</a>
-        <a href={url('/frameworks/')}>Frameworks</a>
-        <a href={url('/case-studies/')}>Case Studies</a>
-      </div>
-    </div>
-    <div>
-      <h3 class="site-footer-section-title">Wiki</h3>
-      <div class="site-footer-links">
-        <a href={url('/news/')}>News</a>
-        <a href={url('/about/')}>About this project</a>
-        <a href={url('/about/#how-to-use')}>How to use the wiki</a>
-        <a href={url('/about/#contact')}>Contact</a>
-      </div>
-    </div>
-  </div>
-  <div class="site-footer-bottom">
-    <span class="site-footer-copyright">&copy; 2026 Red Barrow. All rights reserved.</span>
-    <div class="site-footer-legal">
+    <div class="foot-links">
       <a href={url('/privacy/')}>Privacy</a>
       <a href={url('/terms/')}>Terms</a>
+      <span>&copy; 2026 Red Barrow</span>
     </div>
   </div>
 </footer>
