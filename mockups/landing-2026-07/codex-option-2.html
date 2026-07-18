@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Making climate finance make sense — for the people who explain it.">
+  <title>Climate Finance Wiki — The Terrain</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400;500;600&family=Epilogue:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ground: #dce0d4;
+      --ground-deep: #ccd2c4;
+      --ink: #253128;
+      --muted: #657066;
+      --line: #aeb7aa;
+      --accent: #765932;
+      --sans: "Epilogue", Arial, sans-serif;
+      --mono: "Azeret Mono", Consolas, monospace;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; overflow-x: hidden; color: var(--ink); background: var(--ground); font-family: var(--sans); }
+    a { color: inherit; text-decoration: none; }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+    .wrap { width: min(1440px, calc(100% - 72px)); margin: auto; }
+    .micro { font-family: var(--mono); font-size: .63rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; }
+    .site-header { position: relative; z-index: 5; border-bottom: 1px solid var(--line); }
+    .nav { min-height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+    .wordmark { font-size: .94rem; font-weight: 600; letter-spacing: -.025em; }
+    .nav-links { display: flex; align-items: center; gap: 30px; font-family: var(--mono); font-size: .65rem; }
+    .nav-links a:hover { color: var(--accent); }
+    .hero { position: relative; min-height: 780px; display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: 40px; padding: 78px 0 92px; }
+    .hero-copy { position: relative; z-index: 2; }
+    .hero-copy h1 { max-width: 830px; margin: 23px 0 34px; font-size: clamp(3.7rem, 7.3vw, 8.4rem); font-weight: 500; line-height: .91; letter-spacing: -.075em; }
+    .hero-copy p { max-width: 520px; margin: 0; color: var(--muted); font-size: 1rem; line-height: 1.65; }
+    .coordinate { display: inline-flex; align-items: center; gap: 11px; color: var(--accent); }
+    .coordinate::before { content: ""; width: 34px; height: 1px; background: var(--accent); }
+    .terrain { position: relative; min-height: 610px; overflow: hidden; perspective: 900px; }
+    .terrain-plane { position: absolute; inset: 1% -12% -4% -18%; transform: rotateX(9deg) rotateZ(-5deg); transform-style: preserve-3d; transition: transform .4s cubic-bezier(.2,.75,.2,1); }
+    .terrain svg { width: 100%; height: 100%; overflow: visible; }
+    .contour { fill: none; stroke: var(--ink); stroke-width: 1.05; opacity: .24; vector-effect: non-scaling-stroke; }
+    .contour.major { stroke: var(--accent); stroke-width: 1.4; opacity: .62; }
+    .pin { position: absolute; z-index: 3; display: flex; align-items: center; gap: 9px; padding: 8px 10px; border: 1px solid var(--line); background: rgba(220,224,212,.92); font-family: var(--mono); font-size: .59rem; box-shadow: 8px 8px 0 rgba(37,49,40,.06); transition: transform .2s ease, opacity .2s ease; }
+    .pin::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+    .pin:hover, .pin:focus-visible { transform: translateY(-5px); }
+    .pin.one { top: 18%; left: 23%; }
+    .pin.two { top: 35%; right: 4%; }
+    .pin.three { top: 54%; left: 3%; }
+    .pin.four { right: 18%; bottom: 22%; }
+    .pin.five { left: 32%; bottom: 8%; }
+    .hero-stats { position: absolute; z-index: 3; right: 0; bottom: 34px; display: grid; grid-template-columns: repeat(3,auto); gap: 22px; padding: 18px 20px; border: 1px solid var(--line); background: var(--ground); }
+    .hero-stats span { display: grid; gap: 5px; color: var(--muted); }
+    .hero-stats strong { color: var(--ink); font-size: 1rem; font-weight: 500; }
+    .section { padding: 112px 0; border-top: 1px solid var(--line); }
+    .head { display: grid; grid-template-columns: .55fr 1.45fr; gap: 40px; margin-bottom: 66px; }
+    .head h2 { max-width: 900px; margin: 0; font-size: clamp(2.6rem, 5vw, 5.8rem); font-weight: 500; line-height: .95; letter-spacing: -.06em; }
+    .topic-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(48px, 8vw, 130px); }
+    .topic-map { position: relative; min-height: 450px; border: 1px solid var(--line); background: var(--ground-deep); overflow: hidden; }
+    .topic-map svg { position: absolute; inset: -14%; width: 128%; height: 128%; opacity: .5; }
+    .topic-map .map-label { position: absolute; top: 25px; left: 25px; }
+    .map-ring { position: absolute; width: 260px; height: 260px; right: 13%; top: 22%; border: 1px solid var(--accent); border-radius: 50%; }
+    .map-ring::before, .map-ring::after { content: ""; position: absolute; top: 50%; left: 50%; background: var(--accent); transform: translate(-50%,-50%); }
+    .map-ring::before { width: 120%; height: 1px; }
+    .map-ring::after { width: 1px; height: 120%; }
+    .topic-list { border-top: 1px solid var(--ink); }
+    .topic-list a { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 20px; padding: 19px 0; border-bottom: 1px solid var(--line); }
+    .topic-list .topic-name { font-size: clamp(1.25rem, 2.1vw, 2.05rem); font-weight: 500; letter-spacing: -.035em; }
+    .topic-list .topic-count { color: var(--accent); font-family: var(--mono); font-size: .69rem; }
+    .topic-list a:hover .topic-name { transform: translateX(8px); }
+    .topic-name { transition: transform .2s ease; }
+    .case { display: grid; grid-template-columns: 1.05fr .95fr; min-height: 600px; background: var(--ink); color: var(--ground); }
+    .case-image { min-height: 470px; overflow: hidden; }
+    .case-image img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(.75) sepia(.12); opacity: .72; transition: transform .8s cubic-bezier(.2,.75,.2,1), opacity .35s ease; }
+    .case:hover .case-image img { transform: scale(1.035); opacity: .88; }
+    .case-copy { display: flex; flex-direction: column; justify-content: space-between; padding: clamp(34px, 6vw, 88px); }
+    .case-copy .micro { color: #aeb7aa; }
+    .case-copy h2 { margin: 30px 0; font-size: clamp(2.7rem, 5vw, 6rem); font-weight: 500; line-height: .92; letter-spacing: -.065em; }
+    .case-copy p { max-width: 570px; margin: 0; color: #c9cec4; line-height: 1.7; }
+    .case-copy .arrow { align-self: flex-end; color: var(--accent); font-family: var(--mono); font-size: 2rem; transition: transform .2s ease; }
+    .case:hover .arrow { transform: translate(6px,-6px); }
+    .route { position: relative; margin-left: 7%; padding-left: 110px; }
+    .route::before { content: ""; position: absolute; top: 25px; bottom: 25px; left: 28px; width: 1px; background: var(--accent); }
+    .trail { position: relative; display: grid; grid-template-columns: 1.1fr 1fr auto; gap: 32px; align-items: center; min-height: 150px; border-bottom: 1px solid var(--line); }
+    .trail:first-child { border-top: 1px solid var(--line); }
+    .trail::before { content: attr(data-stop); position: absolute; left: -110px; display: grid; place-items: center; width: 57px; height: 57px; border: 1px solid var(--accent); border-radius: 50%; background: var(--ground); color: var(--accent); font-family: var(--mono); font-size: .65rem; }
+    .trail h3 { margin: 0; font-size: clamp(1.6rem, 2.9vw, 3rem); font-weight: 500; line-height: 1.05; letter-spacing: -.045em; }
+    .trail p { margin: 0; color: var(--muted); font-size: .9rem; line-height: 1.55; }
+    .trail .time { color: var(--accent); font-family: var(--mono); font-size: .62rem; white-space: nowrap; }
+    .news-list { border-top: 1px solid var(--ink); }
+    .news-item { display: grid; grid-template-columns: 210px 1fr auto; gap: 28px; align-items: center; min-height: 118px; border-bottom: 1px solid var(--line); }
+    .news-item time { color: var(--accent); font-family: var(--mono); font-size: .62rem; }
+    .news-item h3 { max-width: 930px; margin: 0; font-size: clamp(1.2rem, 2.1vw, 2.15rem); font-weight: 500; line-height: 1.2; letter-spacing: -.03em; }
+    .news-item .arrow { font-family: var(--mono); transition: transform .2s ease; }
+    .news-item:hover .arrow { transform: translateX(6px); }
+    .grounding { display: grid; grid-template-columns: 1.2fr .8fr; gap: 70px; padding: 80px 0; border-top: 1px solid var(--line); }
+    .grounding p { margin: 0; line-height: 1.7; }
+    .grounding .source { font-size: clamp(1.2rem, 2.3vw, 2.2rem); letter-spacing: -.03em; }
+    .grounding .author { color: var(--muted); font-family: var(--mono); font-size: .69rem; }
+    footer { background: var(--ink); color: var(--ground); }
+    .footer-inner { min-height: 165px; display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+    .footer-inner small { color: #aeb7aa; font-family: var(--mono); font-size: .63rem; }
+    .reveal { opacity: 0; transform: translateY(20px); transition: transform .65s cubic-bezier(.2,.75,.2,1), opacity .65s ease; }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+    @media (max-width: 980px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-copy { padding-top: 35px; }
+      .terrain { min-height: 470px; }
+      .topic-grid, .case { grid-template-columns: 1fr; }
+      .topic-map { min-height: 340px; }
+    }
+    @media (max-width: 767px) {
+      .wrap { width: min(100% - 36px, 1440px); }
+      .nav { min-height: 70px; align-items: flex-start; padding: 20px 0; }
+      .nav-links { max-width: 190px; justify-content: flex-end; gap: 12px; flex-wrap: wrap; }
+      .nav-links a:last-child { display: none; }
+      .hero { min-height: 0; padding: 56px 0 68px; }
+      .hero-copy h1 { font-size: clamp(3.3rem, 17.5vw, 5.4rem); }
+      .terrain { min-height: 410px; margin-top: 10px; }
+      .terrain-plane { inset: 1% -30% -5% -38%; }
+      .pin { font-size: .52rem; }
+      .pin.two { right: -2%; }
+      .hero-stats { position: static; grid-template-columns: repeat(3,1fr); gap: 10px; margin-top: 30px; }
+      .section { padding: 78px 0; }
+      .head { grid-template-columns: 1fr; gap: 18px; margin-bottom: 42px; }
+      .topic-map { min-height: 290px; }
+      .map-ring { width: 170px; height: 170px; }
+      .case-copy { min-height: 520px; }
+      .route { margin-left: 0; padding-left: 64px; }
+      .route::before { left: 21px; }
+      .trail { grid-template-columns: 1fr; gap: 12px; padding: 27px 0; }
+      .trail::before { left: -64px; width: 43px; height: 43px; }
+      .news-item { grid-template-columns: 1fr auto; gap: 14px; padding: 22px 0; }
+      .news-item time { grid-column: 1 / -1; }
+      .grounding { grid-template-columns: 1fr; gap: 34px; padding: 58px 0; }
+      .footer-inner { min-height: 145px; flex-direction: column; align-items: flex-start; justify-content: center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .terrain-plane { transform: none !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav wrap" aria-label="Primary">
+      <a class="wordmark" href="https://climatefinancewiki.org/">Climate Finance Wiki</a>
+      <div class="nav-links"><a href="https://climatefinancewiki.org/#categories">Topics</a><a href="https://climatefinancewiki.org/news/">News</a><a href="https://climatefinancewiki.org/about/">About</a><a href="https://climatefinancewiki.org/glossary/">Search</a></div>
+    </nav>
+  </header>
+  <main>
+    <section class="hero wrap">
+      <div class="hero-copy">
+        <span class="coordinate micro">Climate Finance Wiki</span>
+        <h1>How the world funds its response to climate change.</h1>
+        <p>Making climate finance make sense — for the people who explain it.</p>
+      </div>
+      <div class="terrain" id="terrain" aria-label="Climate finance topic map">
+        <div class="terrain-plane" id="terrainPlane">
+          <svg viewBox="0 0 700 640" role="img" aria-label="Abstract topographic contour map">
+            <path class="contour" d="M-20 120C70 9 203 23 248 110c53 101 156 32 228 3 105-42 206 26 247 126"/>
+            <path class="contour" d="M-18 146C67 50 190 54 225 130c45 96 149 62 234 22 111-52 205 17 260 115"/>
+            <path class="contour major" d="M-30 177C55 92 166 85 200 150c46 88 148 91 247 39 114-60 207 10 276 109"/>
+            <path class="contour" d="M-23 207C75 126 151 124 180 179c49 92 150 106 256 52 128-65 207 3 296 105"/>
+            <path class="contour" d="M-8 240c99-76 146-57 176-8 54 90 143 108 250 55 139-69 219-7 320 91"/>
+            <path class="contour" d="M-17 282c119-64 152-34 183 17 53 87 132 102 233 63 143-56 228-12 342 72"/>
+            <path class="contour major" d="M-8 328c113-45 151-10 180 39 51 87 124 88 213 57 149-53 249-13 356 73"/>
+            <path class="contour" d="M4 374c104-29 137 2 169 50 49 74 119 74 202 49 147-44 260-12 369 65"/>
+            <path class="contour" d="M-4 422c101-26 143 17 178 61 56 72 122 58 207 39 142-32 260-2 365 63"/>
+            <path class="contour major" d="M-8 470c102-25 152 25 197 67 67 61 134 40 209 28 139-22 250 3 347 59"/>
+            <path class="contour" d="M14 517c98-18 145 28 195 64 71 51 138 24 214 18 124-10 220 9 309 50"/>
+          </svg>
+        </div>
+        <a class="pin one" href="https://climatefinancewiki.org/concepts/">Concepts · 12</a>
+        <a class="pin two" href="https://climatefinancewiki.org/frameworks/">Frameworks · 13</a>
+        <a class="pin three" href="https://climatefinancewiki.org/case-studies/">Case Studies · 12</a>
+        <a class="pin four" href="https://climatefinancewiki.org/actors/">Actors · 9</a>
+        <a class="pin five" href="https://climatefinancewiki.org/instruments/">Instruments · 6</a>
+      </div>
+      <div class="hero-stats micro"><span><strong>52</strong>articles</span><span><strong>5</strong>categories</span><span><strong>3</strong>reading trails</span></div>
+    </section>
+
+    <section class="section wrap" id="topics">
+      <div class="head reveal"><p class="coordinate micro">Topics</p><h2>52 articles · 5 categories</h2></div>
+      <div class="topic-grid">
+        <div class="topic-map reveal" aria-hidden="true">
+          <span class="map-label micro">Climate Finance Wiki</span>
+          <svg viewBox="0 0 600 420"><path class="contour" d="M-20 75c97-78 169-43 212 9 65 80 151 46 224 3 88-51 178-18 236 57"/><path class="contour major" d="M-15 123c84-57 158-27 203 22 71 77 158 47 229 13 95-45 174-8 232 66"/><path class="contour" d="M-12 176c81-44 148-19 199 33 72 74 153 53 230 21 100-41 174-2 231 68"/><path class="contour" d="M-15 233c86-33 144-10 195 44 69 73 149 57 225 33 105-34 180 2 237 67"/><path class="contour major" d="M-12 297c82-25 140-2 193 49 70 67 149 51 224 36 108-22 184 8 240 61"/></svg>
+          <div class="map-ring"></div>
+        </div>
+        <div class="topic-list reveal">
+          <a href="https://climatefinancewiki.org/concepts/"><span class="topic-name">Concepts</span><span class="topic-count">12</span></a>
+          <a href="https://climatefinancewiki.org/frameworks/"><span class="topic-name">Frameworks</span><span class="topic-count">13</span></a>
+          <a href="https://climatefinancewiki.org/case-studies/"><span class="topic-name">Case Studies</span><span class="topic-count">12</span></a>
+          <a href="https://climatefinancewiki.org/actors/"><span class="topic-name">Actors</span><span class="topic-count">9</span></a>
+          <a href="https://climatefinancewiki.org/instruments/"><span class="topic-name">Instruments</span><span class="topic-count">6</span></a>
+        </div>
+      </div>
+    </section>
+
+    <a class="case" href="https://climatefinancewiki.org/case-studies/pge-bankruptcy/">
+      <div class="case-image"><img src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&amp;fit=crop&amp;w=1600&amp;q=80" alt="Aerial view of a solar farm"></div>
+      <div class="case-copy"><span class="micro">Featured case study</span><div><h2>The First Climate Change Bankruptcy</h2><p>$30 billion in wildfire liabilities destroyed California's largest utility, proving physical climate risk isn't theoretical.</p></div><span class="arrow" aria-hidden="true">↗</span></div>
+    </a>
+
+    <section class="section wrap">
+      <div class="head reveal"><p class="coordinate micro">3 reading trails</p><h2>6 articles · ~35 min</h2></div>
+      <div class="route">
+        <a class="trail reveal" data-stop="01" href="https://climatefinancewiki.org/concepts/greenwashing/"><h3>The Greenwashing Trail</h3><p>From misleading claims to criminal charges.</p><span class="time">6 articles · ~35 min</span></a>
+        <a class="trail reveal" data-stop="02" href="https://climatefinancewiki.org/concepts/climate-finance/"><h3>Follow the Money</h3><p>How climate finance actually flows, and where it gets stuck.</p><span class="time">6 articles · ~35 min</span></a>
+        <a class="trail reveal" data-stop="03" href="https://climatefinancewiki.org/frameworks/paris-agreement/"><h3>Architecture of Climate Policy</h3><p>The agreements, taxonomies, and standards that set the rules.</p><span class="time">6 articles · ~35 min</span></a>
+      </div>
+    </section>
+
+    <section class="section wrap">
+      <div class="head reveal"><p class="coordinate micro">News</p><h2>Jun 2026</h2></div>
+      <div class="news-list">
+        <a class="news-item reveal" href="https://climatefinancewiki.org/news/"><time>Jun 24, 2026 · Regulation</time><h3>EU Council backs simpler SFDR with three clear fund labels</h3><span class="arrow">→</span></a>
+        <a class="news-item reveal" href="https://climatefinancewiki.org/news/"><time>Jun 23, 2026</time><h3>GFANZ drops its Paris-alignment requirement; ShareAction pushes back</h3><span class="arrow">→</span></a>
+        <a class="news-item reveal" href="https://climatefinancewiki.org/news/"><time>Jun 15, 2026</time><h3>Vietnam issues detailed rules for its carbon market</h3><span class="arrow">→</span></a>
+      </div>
+    </section>
+    <section class="grounding wrap">
+      <p class="source reveal">Built from ICMA Green Bond Principles, UNFCCC reports, SEC enforcement filings, the EU Taxonomy, and IPCC Assessment Reports.</p>
+      <p class="author reveal">Curated by <a href="https://climatefinancewiki.org/author/ibukun-taiwo/">Ibukun Taiwo</a> — communications professional specialising in climate finance.</p>
+    </section>
+  </main>
+  <footer><div class="footer-inner wrap"><a class="wordmark" href="https://climatefinancewiki.org/">Climate Finance Wiki</a><small>© 2026 Red Barrow.</small></div></footer>
+  <script>
+    const terrain = document.querySelector('#terrain');
+    const plane = document.querySelector('#terrainPlane');
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduced) {
+      terrain.addEventListener('pointermove', (event) => {
+        const box = terrain.getBoundingClientRect();
+        const x = (event.clientX - box.left) / box.width - .5;
+        const y = (event.clientY - box.top) / box.height - .5;
+        plane.style.transform = `rotateX(${9 - y * 5}deg) rotateZ(${-5 + x * 4}deg) translate3d(${x * 12}px,${y * 12}px,0)`;
+      });
+      terrain.addEventListener('pointerleave', () => plane.style.transform = 'rotateX(9deg) rotateZ(-5deg)');
+    }
+    if (!reduced && 'IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
+        if (entry.isIntersecting) { entry.target.classList.add('in'); observer.unobserve(entry.target); }
+      }), { threshold: .1 });
+      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    } else document.querySelectorAll('.reveal').forEach((el) => el.classList.add('in'));
+  </script>
+</body>
+</html>
