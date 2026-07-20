@@ -92,13 +92,8 @@ const relatedWithHrefs = related.map(a => ({
         </div>
         <div class="side-block">
           <span class="tag">Stay Updated</span>
-          <p class="side-text">New climate-finance dispatches and explainers, in plain English. No spam.</p>
-          <!-- TODO: point `action` at your newsletter provider (Buttondown / ConvertKit / Mailchimp) to go live. -->
-          <form class="sub-form" action="#" method="post" aria-label="Subscribe to the newsletter">
-            <input class="sub-input" type="email" name="email" required placeholder="you@example.com" aria-label="Email address" />
-            <button class="sub-btn" type="submit">Subscribe</button>
-          </form>
-          <a class="rss-link" href={url('/rss.xml')}>Or subscribe via RSS <span class="arr">&rarr;</span></a>
+          <p class="side-text">Follow new climate-finance dispatches and explainers through the RSS feed.</p>
+          <a class="rss-link" href={url('/rss.xml')}>Subscribe via RSS <span class="arr">&rarr;</span></a>
         </div>
         <div class="side-block">
           <span class="tag">Browse the Wiki</span>
@@ -214,26 +209,6 @@ const relatedWithHrefs = related.map(a => ({
     }
     .side-block .tag { display: block; margin-bottom: 16px; }
     .side-text { font-size: 14px; color: var(--ink-2); line-height: 1.6; max-width: 38ch; }
-    .sub-form { margin-top: 18px; }
-    .sub-input {
-      width: 100%;
-      border: 1px solid var(--line);
-      background: #fff;
-      padding: 12px 14px;
-      font: inherit; font-size: 14px; color: inherit;
-      transition: border-color .22s var(--ease);
-    }
-    .sub-input::placeholder { color: var(--ink-3); }
-    .sub-input:hover, .sub-input:focus { border-color: var(--ink); outline: 0; }
-    .sub-btn {
-      margin-top: 10px; width: 100%;
-      padding: 12px 14px;
-      border: 1px solid var(--ink);
-      font-size: 13.5px; font-weight: 500; letter-spacing: .02em;
-      transition: background-color .22s var(--ease), color .22s var(--ease), transform .1s var(--ease);
-    }
-    .sub-btn:hover { background: var(--ink); color: var(--bg); }
-    .sub-btn:active { transform: scale(.98); }
     .rss-link, .back-link {
       display: inline-flex; align-items: center; gap: 8px;
       margin-top: 16px;

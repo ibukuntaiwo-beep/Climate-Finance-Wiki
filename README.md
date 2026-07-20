@@ -2,7 +2,9 @@
 
 A curated reference for communications professionals navigating climate finance.
 
-48 articles across five categories, 240+ cross-references, and three guided reading trails. Every article is written in plain English, takes 2-3 minutes to read, and is built for the people who brief teams, write copy, and spot misleading claims.
+52 articles across five categories, 240+ cross-references, and three guided reading trails. Every article is written in plain English, takes 2-3 minutes to read, and is built for the people who brief teams, write copy, and spot misleading claims.
+
+**Project status:** Live and in maintenance mode. Expansion ideas remain owner-controlled backlog items until explicitly selected.
 
 ## What's inside
 

@@ -1,5 +1,29 @@
 {
-  "last_updated": "2026-05-09",
+  "last_updated": "2026-07-20",
+  "project_state": {
+    "status": "live-maintenance",
+    "active_work": [],
+    "public_url": "https://climatefinancewiki.org/",
+    "content_counts": {
+      "articles": 52,
+      "glossary_terms": 30,
+      "news_dispatches": 5,
+      "guided_trails": 3
+    },
+    "newsletter": {
+      "status": "deferred",
+      "current_subscription_method": "rss",
+      "note": "Email signup is intentionally hidden until the owner selects a provider and approves the related privacy-policy change."
+    },
+    "owner_controlled_backlog": [
+      "Set a recurring news-curation cadence",
+      "Build an interactive Cases/Tracker index",
+      "Build a Tools pillar",
+      "Surface reading trails as a Learn path",
+      "Select and connect an email newsletter provider"
+    ],
+    "inventory_note": "The article lists below preserve an earlier selective inventory. Current site counts and paths are authoritative in src/content and the project indexes."
+  },
   "topics": {
     "climate-finance": {
       "wiki_path": "wiki/climate-finance/",
@@ -65,144 +89,144 @@
             "title": "Paris Agreement",
             "file": "frameworks/paris-agreement.md",
             "status": "complete",
-            "site_article": "site/src/content/articles/paris-agreement.md"
+            "site_article": "src/content/articles/paris-agreement.md"
           },
           {
             "title": "TCFD",
             "file": "frameworks/tcfd.md",
             "status": "complete",
-            "site_article": "site/src/content/articles/tcfd.md"
+            "site_article": "src/content/articles/tcfd.md"
           },
           {
             "title": "IFRS S1 and S2",
             "file": "frameworks/ifrs-s1-s2.md",
             "status": "complete",
-            "site_article": "site/src/content/articles/ifrs-s1-s2.md"
+            "site_article": "src/content/articles/ifrs-s1-s2.md"
           },
           {
             "title": "EU Taxonomy",
             "file": "frameworks/eu-taxonomy.md",
             "status": "complete",
-            "site_article": "site/src/content/articles/eu-taxonomy.md"
+            "site_article": "src/content/articles/eu-taxonomy.md"
           },
           {
             "title": "CSRD",
             "file": "frameworks/csrd.md",
             "status": "complete",
-            "site_article": "site/src/content/articles/csrd.md"
+            "site_article": "src/content/articles/csrd.md"
           },
           {
             "title": "SFDR",
             "file": "frameworks/sfdr.md",
             "status": "complete",
-            "site_article": "site/src/content/articles/sfdr.md"
+            "site_article": "src/content/articles/sfdr.md"
           },
           {
             "title": "GHG Protocol",
             "file": "frameworks/ghg-protocol.md",
             "status": "complete",
-            "site_article": "site/src/content/articles/ghg-protocol.md"
+            "site_article": "src/content/articles/ghg-protocol.md"
           },
           {
             "title": "EU Green Deal",
             "file": "frameworks/eu-green-deal.md",
             "status": "complete",
-            "site_article": "site/src/content/articles/eu-green-deal.md"
+            "site_article": "src/content/articles/eu-green-deal.md"
           },
           {
             "title": "Inflation Reduction Act",
             "file": "frameworks/inflation-reduction-act.md",
             "status": "complete",
-            "site_article": "site/src/content/articles/inflation-reduction-act.md"
+            "site_article": "src/content/articles/inflation-reduction-act.md"
           },
           {
             "title": "Green Bond Principles",
             "file": "frameworks/green-bond-principles.md",
             "status": "complete",
-            "site_article": "site/src/content/articles/green-bond-principles.md"
+            "site_article": "src/content/articles/green-bond-principles.md"
           },
           {
             "title": "Kyoto Protocol",
             "file": "frameworks/kyoto-protocol.md",
             "status": "complete",
-            "site_article": "site/src/content/articles/kyoto-protocol.md"
+            "site_article": "src/content/articles/kyoto-protocol.md"
           },
           {
             "title": "Montreal Protocol",
             "file": "frameworks/montreal-protocol.md",
             "status": "complete",
-            "site_article": "site/src/content/articles/montreal-protocol.md"
+            "site_article": "src/content/articles/montreal-protocol.md"
           },
           {
             "title": "Article 6",
             "file": "frameworks/article-6.md",
             "status": "complete",
-            "site_article": "site/src/content/articles/article-6.md"
+            "site_article": "src/content/articles/article-6.md"
           }
         ],
         "markets": [],
         "case-studies": [
           {
             "title": "PG&E Bankruptcy",
-            "site_article": "site/src/content/articles/pge-bankruptcy.md",
+            "site_article": "src/content/articles/pge-bankruptcy.md",
             "status": "complete"
           },
           {
             "title": "Volkswagen Dieselgate",
-            "site_article": "site/src/content/articles/volkswagen-dieselgate.md",
+            "site_article": "src/content/articles/volkswagen-dieselgate.md",
             "status": "complete"
           },
           {
             "title": "HSBC Greenwashing",
-            "site_article": "site/src/content/articles/hsbc-greenwashing.md",
+            "site_article": "src/content/articles/hsbc-greenwashing.md",
             "status": "complete"
           },
           {
             "title": "DWS SEC Fine",
-            "site_article": "site/src/content/articles/dws-sec-fine.md",
+            "site_article": "src/content/articles/dws-sec-fine.md",
             "status": "complete"
           },
           {
             "title": "Seychelles Blue Bond",
-            "site_article": "site/src/content/articles/seychelles-blue-bond.md",
+            "site_article": "src/content/articles/seychelles-blue-bond.md",
             "status": "complete"
           },
           {
             "title": "ENEL SLB",
-            "site_article": "site/src/content/articles/enel-slb.md",
+            "site_article": "src/content/articles/enel-slb.md",
             "status": "complete"
           },
           {
             "title": "Marfrig Transition Bond",
-            "site_article": "site/src/content/articles/marfrig-transition-bond.md",
+            "site_article": "src/content/articles/marfrig-transition-bond.md",
             "status": "complete"
           },
           {
             "title": "Lombard Odier: Ice Cubes and Burning Logs",
-            "site_article": "site/src/content/articles/lombard-odier-ice-cubes.md",
+            "site_article": "src/content/articles/lombard-odier-ice-cubes.md",
             "status": "complete"
           },
           {
             "title": "Engine No. 1 vs ExxonMobil",
-            "site_article": "site/src/content/articles/engine-no-1-exxonmobil.md",
+            "site_article": "src/content/articles/engine-no-1-exxonmobil.md",
             "status": "complete",
             "added": "2026-04-28"
           },
           {
             "title": "BlackRock's Climate Ultimatum",
-            "site_article": "site/src/content/articles/blackrock-climate-letter.md",
+            "site_article": "src/content/articles/blackrock-climate-letter.md",
             "status": "complete",
             "added": "2026-04-28"
           },
           {
             "title": "Norway Divests from Oil",
-            "site_article": "site/src/content/articles/norway-gpfg-divestment.md",
+            "site_article": "src/content/articles/norway-gpfg-divestment.md",
             "status": "complete",
             "added": "2026-04-28"
           },
           {
             "title": "The Great Coal Exit",
-            "site_article": "site/src/content/articles/the-great-coal-exit.md",
+            "site_article": "src/content/articles/the-great-coal-exit.md",
             "status": "complete",
             "added": "2026-04-28"
           }
@@ -217,8 +241,8 @@
         "date": "2026-05-09",
         "description": "Added authoritative outbound source links to all 52 articles (189 URLs total)",
         "batches": [
-          { "category": "case-studies", "articles": 13, "links": 64 },
-          { "category": "frameworks", "articles": 12, "links": 41 },
+          { "category": "case-studies", "articles": 12, "links": 64 },
+          { "category": "frameworks", "articles": 13, "links": 41 },
           { "category": "actors", "articles": 9, "links": 30 },
           { "category": "concepts-instruments", "articles": 18, "links": 54 }
         ]
